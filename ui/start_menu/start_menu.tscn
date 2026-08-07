@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c7eb7hqkfw4g3"]
+
+[ext_resource type="Script" uid="uid://cybm7pbvk7i0k" path="res://ui/start_menu/start_menu.gd" id="1_qaoya"]
+
+[node name="StartMenu" type="Control" unique_id=1065199818]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qaoya")
+
+[node name="Panel" type="Panel" parent="." unique_id=1300037024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2115700187]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer" unique_id=14153566]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Title"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=871378077]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Panel/VBoxContainer/VBoxContainer" unique_id=1987477267]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="Settings" type="Button" parent="Panel/VBoxContainer/VBoxContainer" unique_id=354088529]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Settings
+"
+
+[node name="Quit" type="Button" parent="Panel/VBoxContainer/VBoxContainer" unique_id=669443308]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[connection signal="pressed" from="Panel/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

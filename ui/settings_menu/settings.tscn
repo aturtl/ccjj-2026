@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://be0yxybpackxn"]
+
+[ext_resource type="Script" uid="uid://k3eiwpbrqhfa" path="res://ui/settings_menu/settings.gd" id="1_gl4li"]
+
+[node name="Settings" type="Control" unique_id=1151713264]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gl4li")
+
+[node name="Panel" type="Panel" parent="." unique_id=495344098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1132556737]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -133.5
+offset_right = 140.0
+offset_bottom = 133.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer" unique_id=441712486]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=1722442463]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer/MarginContainer" unique_id=1016566234]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+
+[node name="General" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=1391326372]
+layout_mode = 2
+theme_override_constants/separation = 10
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/General" unique_id=1425750]
+layout_mode = 2
+text = "So empty, so sad"
+
+[node name="Audio" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=23997449]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=1430651063]
+layout_mode = 2
+
+[node name="MasterVolume" type="Button" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer" unique_id=1155423753]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer" unique_id=524768018]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=1236407915]
+layout_mode = 2
+
+[node name="MusicVolume" type="Button" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2" unique_id=943148106]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2" unique_id=1850854628]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=259413018]
+layout_mode = 2
+
+[node name="EffectsVolume" type="Button" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3" unique_id=323609578]
+layout_mode = 2
+text = "Effects Volume"
+
+[node name="EffectsSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3" unique_id=1911736891]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Graphics" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=949079957]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+metadata/_tab_index = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Graphics" unique_id=1166064729]
+layout_mode = 2
+text = "So empty, so sad"
+
+[node name="Back" type="Button" parent="Panel/VBoxContainer" unique_id=825961322]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Back
+
+"
+
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterVolume" to="." method="_on_master_volume_pressed"]
+[connection signal="changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterSlider" to="." method="_on_master_slider_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicVolume" to="." method="_on_music_volume_pressed"]
+[connection signal="changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3/EffectsVolume" to="." method="_on_effects_volume_pressed"]
+[connection signal="changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3/EffectsSlider" to="." method="_on_effects_slider_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]
