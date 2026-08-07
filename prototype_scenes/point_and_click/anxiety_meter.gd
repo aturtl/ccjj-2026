@@ -5,4 +5,4 @@ extends ColorRect
 
 
 func _physics_process(delta):
-	fill_thingy.scale.x -= .01 * delta
+	fill_thingy.scale.x -= .005 * delta

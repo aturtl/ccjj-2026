@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://bk7hhi537m033"]
 
-[ext_resource type="Script" uid="uid://d4kh631whbgyr" path="res://move_cam.gd" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://ctomiae3t1ad5" path="res://class_track.gd" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://0dy85qvbss8g" path="res://anxiety_meter.gd" id="2_5vw27"]
-[ext_resource type="Script" uid="uid://cqsomysvmpqnr" path="res://open_the_bubble.gd" id="2_7mycd"]
-[ext_resource type="Script" uid="uid://7cb8nmyfhr6j" path="res://tracks_manager.gd" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://ddmckrcw1cgyk" path="res://class_draggable.gd" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://w74s3i5rgcif" path="res://go_somewhere.gd" id="4_272bh"]
-[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="4_lquwl"]
-[ext_resource type="Script" uid="uid://bjdfchgcsep23" path="res://click_people.gd" id="9_kek77"]
+[ext_resource type="Script" uid="uid://d4kh631whbgyr" path="res://prototype_scenes/point_and_click/move_cam.gd" id="1_q8uck"]
+[ext_resource type="Script" uid="uid://0dy85qvbss8g" path="res://prototype_scenes/point_and_click/anxiety_meter.gd" id="2_ewonv"]
+[ext_resource type="Script" uid="uid://cqsomysvmpqnr" path="res://prototype_scenes/point_and_click/open_the_bubble.gd" id="3_bpl33"]
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://prototype_scenes/point_and_click/icon.svg" id="4_h2mb2"]
+[ext_resource type="Script" uid="uid://w74s3i5rgcif" path="res://prototype_scenes/point_and_click/go_somewhere.gd" id="5_x85ob"]
+[ext_resource type="Script" uid="uid://7cb8nmyfhr6j" path="res://prototype_scenes/point_and_click/tracks_manager.gd" id="6_omyy4"]
+[ext_resource type="Script" uid="uid://ctomiae3t1ad5" path="res://prototype_scenes/point_and_click/class_track.gd" id="7_qe1vo"]
+[ext_resource type="Script" uid="uid://bjdfchgcsep23" path="res://prototype_scenes/point_and_click/click_people.gd" id="8_sn2t4"]
+[ext_resource type="Script" uid="uid://ddmckrcw1cgyk" path="res://prototype_scenes/point_and_click/class_draggable.gd" id="9_pdqrm"]
 
 [node name="Node2D" type="Node2D" unique_id=85097110]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=568572151]
 z_index = 100
 process_callback = 0
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_q8uck")
 
 [node name="AnxietyMeter" type="ColorRect" parent="Camera2D" unique_id=1253170627]
 z_index = 100
@@ -23,7 +23,7 @@ offset_left = -556.0
 offset_top = 286.0
 offset_right = -232.0
 offset_bottom = 313.0
-script = ExtResource("2_5vw27")
+script = ExtResource("2_ewonv")
 metadata/_edit_use_anchors_ = true
 
 [node name="thing that fills anxiety meter" type="ColorRect" parent="Camera2D/AnxietyMeter" unique_id=1367712395]
@@ -41,7 +41,7 @@ offset_top = 251.0
 offset_right = 545.0
 offset_bottom = 301.0
 text = "the thought bubble"
-script = ExtResource("2_7mycd")
+script = ExtResource("3_bpl33")
 display = NodePath("../buble")
 metadata/_edit_use_anchors_ = true
 
@@ -50,7 +50,7 @@ visible = false
 z_index = 100
 position = Vector2(-29.999996, 225)
 scale = Vector2(6.265625, 0.78125006)
-texture = ExtResource("4_lquwl")
+texture = ExtResource("4_h2mb2")
 
 [node name="bedroom" type="Button" parent="Camera2D" unique_id=1765462506]
 z_index = 100
@@ -60,7 +60,7 @@ offset_right = 545.0
 offset_bottom = 231.0
 text = "go to de bedroom
 "
-script = ExtResource("4_272bh")
+script = ExtResource("5_x85ob")
 new_position = Vector2(0, 1000)
 metadata/_edit_use_anchors_ = true
 
@@ -72,10 +72,11 @@ offset_right = 545.0
 offset_bottom = 164.0
 text = "go to le party
 "
-script = ExtResource("4_272bh")
+script = ExtResource("5_x85ob")
 metadata/_edit_use_anchors_ = true
 
 [node name="Talk" type="Node2D" parent="Camera2D" unique_id=523410279]
+visible = false
 z_index = 100
 
 [node name="youperson" type="ColorRect" parent="Camera2D/Talk" unique_id=1615277045]
@@ -180,22 +181,22 @@ theme_override_font_sizes/normal_font_size = 8
 text = "FIGHT"
 
 [node name="Tracks" type="Node2D" parent="." unique_id=1468682347 node_paths=PackedStringArray("cam")]
-script = ExtResource("2_h2yge")
+script = ExtResource("6_omyy4")
 cam = NodePath("../Camera2D")
 
 [node name="TrackBackground" type="Node2D" parent="Tracks" unique_id=2026296381]
 z_index = -6
-script = ExtResource("2_0xm2m")
+script = ExtResource("7_qe1vo")
 move_factor = 0.4
 metadata/_custom_type_script = "uid://ctomiae3t1ad5"
 
 [node name="Sprite2D2" type="Sprite2D" parent="Tracks/TrackBackground" unique_id=1513094341]
 position = Vector2(1597.5, -250.5)
 scale = Vector2(42.226563, 1.8984371)
-texture = ExtResource("4_lquwl")
+texture = ExtResource("4_h2mb2")
 
 [node name="TrackDistant" type="Node2D" parent="Tracks" unique_id=1117426003]
-script = ExtResource("2_0xm2m")
+script = ExtResource("7_qe1vo")
 move_factor = 0.4
 metadata/_custom_type_script = "uid://ctomiae3t1ad5"
 
@@ -263,26 +264,28 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TrackMid" type="Node2D" parent="Tracks" unique_id=788122329]
 z_index = 6
-script = ExtResource("2_0xm2m")
+script = ExtResource("7_qe1vo")
 move_factor = 0.2
 
-[node name="people" type="Button" parent="Tracks/TrackMid" unique_id=1451002130 node_paths=PackedStringArray("talk_ui")]
+[node name="people" type="Button" parent="Tracks/TrackMid" unique_id=1451002130 node_paths=PackedStringArray("talk_ui", "anxiety_meter")]
 offset_left = 244.0
 offset_top = -55.0
 offset_right = 314.0
 offset_bottom = 91.0
-script = ExtResource("9_kek77")
+script = ExtResource("8_sn2t4")
 talk_ui = NodePath("../../../Camera2D/Talk")
+anxiety_meter = NodePath("../../../Camera2D/AnxietyMeter")
 metadata/_custom_type_script = "uid://bjdfchgcsep23"
 metadata/_edit_use_anchors_ = true
 
-[node name="people2" type="Button" parent="Tracks/TrackMid" unique_id=862822640 node_paths=PackedStringArray("talk_ui")]
+[node name="people2" type="Button" parent="Tracks/TrackMid" unique_id=862822640 node_paths=PackedStringArray("talk_ui", "anxiety_meter")]
 offset_left = 160.0
 offset_top = -54.0
 offset_right = 230.0
 offset_bottom = 92.0
-script = ExtResource("9_kek77")
+script = ExtResource("8_sn2t4")
 talk_ui = NodePath("../../../Camera2D/Talk")
+anxiety_meter = NodePath("../../../Camera2D/AnxietyMeter")
 metadata/_custom_type_script = "uid://bjdfchgcsep23"
 metadata/_edit_use_anchors_ = true
 
@@ -302,13 +305,14 @@ offset_right = -426.0
 offset_bottom = 322.0
 metadata/_edit_use_anchors_ = true
 
-[node name="people3" type="Button" parent="Tracks/TrackMid" unique_id=51749393 node_paths=PackedStringArray("talk_ui")]
+[node name="people3" type="Button" parent="Tracks/TrackMid" unique_id=51749393 node_paths=PackedStringArray("talk_ui", "anxiety_meter")]
 offset_left = -263.0
 offset_top = -94.0
 offset_right = -193.0
 offset_bottom = 52.0
-script = ExtResource("9_kek77")
+script = ExtResource("8_sn2t4")
 talk_ui = NodePath("../../../Camera2D/Talk")
+anxiety_meter = NodePath("../../../Camera2D/AnxietyMeter")
 metadata/_custom_type_script = "uid://bjdfchgcsep23"
 metadata/_edit_use_anchors_ = true
 
@@ -325,7 +329,7 @@ offset_top = -262.0
 offset_right = 412.0
 offset_bottom = -231.0
 text = "key"
-script = ExtResource("4_1bvp3")
+script = ExtResource("9_pdqrm")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="Tracks/TrackMid" unique_id=1827785300]
@@ -335,50 +339,53 @@ offset_right = -337.0
 offset_bottom = -11.0
 text = "appl
 "
-script = ExtResource("4_1bvp3")
+script = ExtResource("9_pdqrm")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Tracks/TrackMid" unique_id=519556458]
 z_index = -12
 position = Vector2(1597.5, 190.00002)
 scale = Vector2(42.226563, 5.09375)
-texture = ExtResource("4_lquwl")
+texture = ExtResource("4_h2mb2")
 metadata/_edit_lock_ = true
 
 [node name="TrackClose" type="Node2D" parent="Tracks" unique_id=1911714044]
 z_index = 12
-script = ExtResource("2_0xm2m")
+script = ExtResource("7_qe1vo")
 metadata/_custom_type_script = "uid://ctomiae3t1ad5"
 
-[node name="people" type="Button" parent="Tracks/TrackClose" unique_id=882932085 node_paths=PackedStringArray("talk_ui")]
+[node name="people" type="Button" parent="Tracks/TrackClose" unique_id=882932085 node_paths=PackedStringArray("talk_ui", "anxiety_meter")]
 offset_left = -613.0
 offset_top = 45.0
 offset_right = -436.0
 offset_bottom = 414.17145
-script = ExtResource("9_kek77")
+script = ExtResource("8_sn2t4")
 talk_ui = NodePath("../../../Camera2D/Talk")
+anxiety_meter = NodePath("../../../Camera2D/AnxietyMeter")
 metadata/_custom_type_script = "uid://bjdfchgcsep23"
 metadata/_edit_use_anchors_ = true
 
-[node name="people" type="Button" parent="Tracks/TrackClose/people" unique_id=1095049926 node_paths=PackedStringArray("talk_ui")]
+[node name="people" type="Button" parent="Tracks/TrackClose/people" unique_id=1095049926 node_paths=PackedStringArray("talk_ui", "anxiety_meter")]
 layout_mode = 0
 offset_left = 1687.0
 offset_top = -163.0
 offset_right = 1864.0
 offset_bottom = 206.17145
-script = ExtResource("9_kek77")
+script = ExtResource("8_sn2t4")
 talk_ui = NodePath("../../../../Camera2D/Talk")
+anxiety_meter = NodePath("../../../../Camera2D/AnxietyMeter")
 metadata/_custom_type_script = "uid://bjdfchgcsep23"
 metadata/_edit_use_anchors_ = true
 
-[node name="people" type="Button" parent="Tracks/TrackClose/people/people" unique_id=1743887937 node_paths=PackedStringArray("talk_ui")]
+[node name="people" type="Button" parent="Tracks/TrackClose/people/people" unique_id=1743887937 node_paths=PackedStringArray("talk_ui", "anxiety_meter")]
 layout_mode = 0
 offset_left = 763.0
 offset_top = 14.0
 offset_right = 940.0
 offset_bottom = 383.17145
-script = ExtResource("9_kek77")
+script = ExtResource("8_sn2t4")
 talk_ui = NodePath("../../../../../Camera2D/Talk")
+anxiety_meter = NodePath("../../../../../Camera2D/AnxietyMeter")
 metadata/_custom_type_script = "uid://bjdfchgcsep23"
 metadata/_edit_use_anchors_ = true
 
@@ -415,12 +422,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TracksBedroom" type="Node2D" parent="." unique_id=2135357212 node_paths=PackedStringArray("cam")]
 position = Vector2(0, 988)
-script = ExtResource("2_h2yge")
+script = ExtResource("6_omyy4")
 cam = NodePath("../Camera2D")
 
 [node name="TrackBackground" type="Node2D" parent="TracksBedroom" unique_id=1307492811]
 z_index = -6
-script = ExtResource("2_0xm2m")
+script = ExtResource("7_qe1vo")
 move_factor = 0.4
 metadata/_custom_type_script = "uid://ctomiae3t1ad5"
 
@@ -428,10 +435,10 @@ metadata/_custom_type_script = "uid://ctomiae3t1ad5"
 modulate = Color(1, 0.19215687, 1, 1)
 position = Vector2(1597.5, -250.5)
 scale = Vector2(42.226563, 1.8984371)
-texture = ExtResource("4_lquwl")
+texture = ExtResource("4_h2mb2")
 
 [node name="TrackDistant" type="Node2D" parent="TracksBedroom" unique_id=317118420]
-script = ExtResource("2_0xm2m")
+script = ExtResource("7_qe1vo")
 move_factor = 0.4
 metadata/_custom_type_script = "uid://ctomiae3t1ad5"
 
@@ -478,7 +485,7 @@ text = "windows"
 
 [node name="TrackMid" type="Node2D" parent="TracksBedroom" unique_id=786998980]
 z_index = 6
-script = ExtResource("2_0xm2m")
+script = ExtResource("7_qe1vo")
 move_factor = 0.2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TracksBedroom/TrackMid" unique_id=1789059626]
@@ -493,7 +500,7 @@ modulate = Color(1.0829419e-07, 0.20722029, 0.16969451, 1)
 z_index = -12
 position = Vector2(1598, 190.00002)
 scale = Vector2(42.226563, 5.09375)
-texture = ExtResource("4_lquwl")
+texture = ExtResource("4_h2mb2")
 
 [node name="ColorRect6" type="Button" parent="TracksBedroom/TrackMid" unique_id=669710987]
 offset_left = -541.0
@@ -522,7 +529,7 @@ text = "record player"
 
 [node name="TrackClose" type="Node2D" parent="TracksBedroom" unique_id=1144635951]
 z_index = 12
-script = ExtResource("2_0xm2m")
+script = ExtResource("7_qe1vo")
 metadata/_custom_type_script = "uid://ctomiae3t1ad5"
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=580083863]

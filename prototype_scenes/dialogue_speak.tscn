@@ -1,0 +1,336 @@
+[gd_scene format=3 uid="uid://c64sr3tqir6pj"]
+
+[ext_resource type="Script" uid="uid://du2cg7fa0jc6i" path="res://prototype_scenes/sway.gd" id="1_0yv2p"]
+[ext_resource type="Script" uid="uid://d2uwn8vog70ny" path="res://prototype_scenes/2_player.gd" id="1_wcpem"]
+[ext_resource type="Script" uid="uid://c4m0msrocvj5j" path="res://prototype_scenes/change_camera_button.gd" id="2_ob0pu"]
+[ext_resource type="Texture2D" uid="uid://b0rnlxmp0oj7q" path="res://random sprites/EVIL FISH.png" id="3_lkfe5"]
+[ext_resource type="Script" uid="uid://ci13n2oxkyak4" path="res://prototype_scenes/thought.gd" id="3_tv4fe"]
+[ext_resource type="Script" uid="uid://sny1sdih2jnr" path="res://prototype_scenes/evil_fish.gd" id="4_8a4xb"]
+[ext_resource type="Script" uid="uid://b13di1iwdk5h" path="res://prototype_scenes/sanity.gd" id="6_b8a7b"]
+[ext_resource type="Texture2D" uid="uid://3p56j38dnvoe" path="res://random sprites/time_runout.png" id="7_7bpwg"]
+
+[node name="Node2D" type="Node2D" unique_id=887111013]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1823330526]
+offset_left = -561.00006
+offset_top = 296.00003
+offset_right = -521.00006
+offset_bottom = 336.00003
+scale = Vector2(28.160002, 0.3199975)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=91584335]
+offset_left = -451.0
+offset_top = 33.0
+offset_right = -411.0
+offset_bottom = 63.348114
+scale = Vector2(2.959628, 6.6308265)
+color = Color(0.62781924, 0.35192138, 0.999991, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=727125250]
+offset_left = 235.0
+offset_top = -295.00003
+offset_right = 310.47742
+offset_bottom = -225.72745
+scale = Vector2(2.959628, 5.9908257)
+color = Color(0.8583423, 0.0002585584, 0.77498007, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect3" unique_id=1688089734]
+layout_mode = 0
+offset_left = 42.9108
+offset_top = 0.16692606
+offset_right = 82.9108
+offset_bottom = 40.166927
+rotation = 1.2541417
+text = ">:("
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect3" unique_id=279685213]
+layout_mode = 0
+offset_left = -191.24028
+offset_top = 52.24656
+offset_right = -151.24028
+offset_bottom = 92.24657
+rotation = 1.2541417
+text = "O"
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="ColorRect3" unique_id=710387770]
+layout_mode = 0
+offset_left = -202.39029
+offset_top = 50.577328
+offset_right = -162.39029
+offset_bottom = 90.57733
+rotation = -0.2751658
+text = "_"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1713223982]
+offset_left = 1608.0
+offset_top = 286.00003
+offset_right = 1648.0
+offset_bottom = 326.00003
+scale = Vector2(28.160002, 0.3199975)
+metadata/_edit_use_anchors_ = true
+
+[node name="2player" type="ColorRect" parent="." unique_id=225756129 node_paths=PackedStringArray("duck_animation")]
+offset_left = 1773.9999
+offset_top = -32.0
+offset_right = 1883.6031
+offset_bottom = 58.97403
+scale = Vector2(2.959628, 6.6308265)
+color = Color(0.62781924, 0.35192138, 0.999991, 1)
+script = ExtResource("1_wcpem")
+duck_animation = NodePath("../2playerduck")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="2player" unique_id=1716613004]
+layout_mode = 0
+offset_left = -38.51831
+offset_top = 0.90486455
+offset_right = 1.4816895
+offset_bottom = 40.904865
+scale = Vector2(4.122015, 1)
+text = "o-o"
+
+[node name="2playerduck" type="ColorRect" parent="." unique_id=489730086]
+visible = false
+offset_left = 1721.0
+offset_top = 104.0
+offset_right = 1830.6033
+offset_bottom = 194.97403
+scale = Vector2(2.959628, 2.990827)
+color = Color(0.62781924, 0.35192138, 0.999991, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="2playerduck" unique_id=741595341]
+layout_mode = 0
+offset_left = -17.231892
+offset_top = -4.680979
+offset_right = 22.768108
+offset_bottom = 35.319023
+scale = Vector2(4.122015, 1)
+text = ">-<"
+
+[node name="ColorRect7" type="ColorRect" parent="." unique_id=1400166834]
+offset_left = 2000.0
+offset_top = 197.0
+offset_right = 2032.0986
+offset_bottom = 209.40161
+scale = Vector2(2.959628, 6.6308265)
+
+[node name="ColorRect8" type="ColorRect" parent="." unique_id=1869930047]
+offset_left = 2064.0
+offset_top = 137.0
+offset_right = 2075.1501
+offset_bottom = 152.56865
+scale = Vector2(2.959628, 6.6308265)
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=220863341]
+offset_left = 2594.0002
+offset_top = -107.0
+offset_right = 2618.3276
+offset_bottom = -86.969376
+scale = Vector2(2.959628, 5.9908257)
+color = Color(0.8583423, 0.0002585584, 0.77498007, 1)
+
+[node name="cam1" type="Camera2D" parent="." unique_id=761468202]
+script = ExtResource("1_0yv2p")
+
+[node name="cam2" type="Camera2D" parent="." unique_id=1984333674]
+position = Vector2(2174, 20)
+scale = Vector2(-11.164155, 2.4240124)
+zoom = Vector2(0.785, 0.785)
+script = ExtResource("1_0yv2p")
+
+[node name="thought" type="RichTextLabel" parent="." unique_id=1630495110]
+offset_left = 1626.0002
+offset_top = -199.0
+offset_right = 2026.0002
+offset_bottom = -99.0
+rotation = -0.19057141
+theme_override_font_sizes/normal_font_size = 50
+text = "thought"
+script = ExtResource("3_tv4fe")
+metadata/_custom_type_script = "uid://ci13n2oxkyak4"
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="." unique_id=822225670]
+z_index = 12
+offset_left = -329.00003
+offset_top = -193.0
+offset_right = 70.99997
+offset_bottom = -93.0
+rotation = -0.049618423
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "I AM ANGRY"
+metadata/_edit_use_anchors_ = true
+
+[node name="thought2" type="RichTextLabel" parent="." unique_id=1528319546]
+offset_left = 1948.0002
+offset_top = -300.0
+offset_right = 2348.0002
+offset_bottom = -200.0
+rotation = 0.062125757
+theme_override_font_sizes/normal_font_size = 50
+text = "thought"
+script = ExtResource("3_tv4fe")
+metadata/_custom_type_script = "uid://ci13n2oxkyak4"
+
+[node name="thought3" type="RichTextLabel" parent="." unique_id=1899324318]
+offset_left = 2228.0
+offset_top = -204.0
+offset_right = 2628.0
+offset_bottom = -104.0
+rotation = 0.23034135
+theme_override_font_sizes/normal_font_size = 50
+text = "thought"
+script = ExtResource("3_tv4fe")
+metadata/_custom_type_script = "uid://ci13n2oxkyak4"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." unique_id=1542976317]
+offset_left = 2673.0002
+offset_top = -153.0
+offset_right = 3073.0002
+offset_bottom = -53.0
+theme_override_colors/default_color = Color(0.9356853, 0.5840186, 0.72978455, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "*shrinks*"
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="." unique_id=1475303346]
+offset_left = 2686.0
+offset_right = 3086.0
+offset_bottom = 100.0
+theme_override_colors/default_color = Color(1.8289685e-06, 0.8260017, 0.67943037, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "blurt timer
+(chooses for you)"
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="." unique_id=1181687270]
+offset_left = 2727.0
+offset_top = -380.0
+offset_right = 3127.0
+offset_bottom = -280.0
+theme_override_colors/default_color = Color(0.9356853, 0.5840186, 0.72978455, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "*camera out*"
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="." unique_id=315736890]
+offset_left = 2615.0
+offset_top = -309.0
+offset_right = 2958.0
+offset_bottom = -228.0
+theme_override_colors/default_color = Color(0.9356853, 0.5840186, 0.72978455, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "also shakes the longer the decision takes"
+
+[node name="RichTextLabel10" type="RichTextLabel" parent="." unique_id=2035105745]
+offset_left = 2133.0
+offset_top = 135.0
+offset_right = 2476.0
+offset_bottom = 216.0
+theme_override_colors/default_color = Color(0.9356853, 0.5840186, 0.72978455, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "<--- camera zooms"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="." unique_id=1560423415]
+offset_left = 1957.0002
+offset_top = -120.0
+offset_right = 2357.0002
+offset_bottom = -20.0
+theme_override_colors/default_color = Color(0.9356853, 0.5840186, 0.72978455, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "*grows*"
+
+[node name="RichTextLabel11" type="RichTextLabel" parent="." unique_id=945423523]
+offset_left = 683.0
+offset_top = -296.0
+offset_right = 1083.0
+offset_bottom = -196.0
+theme_override_colors/default_color = Color(0.9356853, 0.5840186, 0.72978455, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "I decided a paper prototype would be better."
+
+[node name="cam2button" type="Button" parent="." unique_id=746745314 node_paths=PackedStringArray("cam")]
+offset_left = -558.0
+offset_top = -308.0
+offset_right = -504.0
+offset_bottom = -277.0
+text = "cam2"
+script = ExtResource("2_ob0pu")
+cam = NodePath("../cam2")
+metadata/_custom_type_script = "uid://c4m0msrocvj5j"
+metadata/_edit_use_anchors_ = true
+
+[node name="cam1button" type="Button" parent="." unique_id=336157475 node_paths=PackedStringArray("cam")]
+offset_left = 1459.0
+offset_top = -375.0
+offset_right = 1513.0
+offset_bottom = -344.0
+text = "cam1"
+script = ExtResource("2_ob0pu")
+cam = NodePath("../cam1")
+metadata/_custom_type_script = "uid://c4m0msrocvj5j"
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=101984205]
+position = Vector2(-136, -253)
+polygon = PackedVector2Array(-223, -7, -259, 224, 141, 158, 183.97717, 150.75388, 237.02716, 141.80939, 312, 127, 312, 111, 418, 122, 310.6648, 84.24199, 307, 14)
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=902394441]
+position = Vector2(-17, -42)
+rotation = -0.23523842
+scale = Vector2(0.5599983, 0.5599983)
+polygon = PackedVector2Array(-223, -7, -259, 224, 141, 158, 183.97717, 150.75388, 237.02716, 141.80939, 313, 129, 307, 14)
+
+[node name="EvilFish" type="Sprite2D" parent="." unique_id=1868671495 node_paths=PackedStringArray("attack_pos", "cam2button", "sanity_label")]
+position = Vector2(2536, -258)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_lkfe5")
+script = ExtResource("4_8a4xb")
+attack_pos = NodePath("../AttackPos")
+cam2button = NodePath("../cam2button")
+custom_timer = 2.0
+sanity_label = NodePath("../SANITY")
+metadata/_custom_type_script = "uid://sny1sdih2jnr"
+
+[node name="EvilFish2" type="Sprite2D" parent="." unique_id=61142333 node_paths=PackedStringArray("attack_pos", "cam2button", "sanity_label")]
+position = Vector2(3786.0002, 1231)
+rotation = 0.78060126
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_lkfe5")
+script = ExtResource("4_8a4xb")
+attack_pos = NodePath("../AttackPos")
+cam2button = NodePath("../cam2button")
+custom_timer = 4.0
+sanity_label = NodePath("../SANITY")
+metadata/_custom_type_script = "uid://sny1sdih2jnr"
+
+[node name="EvilFish3" type="Sprite2D" parent="." unique_id=2084541355 node_paths=PackedStringArray("attack_pos", "cam2button", "sanity_label")]
+position = Vector2(-127, -1640)
+rotation = 0.78060126
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_lkfe5")
+flip_h = true
+script = ExtResource("4_8a4xb")
+attack_pos = NodePath("../AttackPos")
+cam2button = NodePath("../cam2button")
+custom_timer = 6.0
+sanity_label = NodePath("../SANITY")
+metadata/_custom_type_script = "uid://sny1sdih2jnr"
+
+[node name="SANITY" type="RichTextLabel" parent="." unique_id=1167205182]
+offset_left = 1477.0
+offset_top = 341.0
+offset_right = 1877.0
+offset_bottom = 741.0
+theme_override_font_sizes/normal_font_size = 60
+text = "SANITY: 5"
+script = ExtResource("6_b8a7b")
+sanity = 5
+
+[node name="AttackPos" type="Node2D" parent="." unique_id=321680371]
+position = Vector2(1937, 98)
+
+[node name="TimeRunout" type="Sprite2D" parent="." unique_id=491527581]
+position = Vector2(2744.0002, 149)
+scale = Vector2(0.31953126, 0.31953126)
+texture = ExtResource("7_7bpwg")
