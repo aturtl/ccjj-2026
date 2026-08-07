@@ -1,0 +1,1 @@
+class_name ChoiceTemplate extends Node2D

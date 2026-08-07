@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ce1e6q3be8nfn"]
+
+[ext_resource type="PackedScene" uid="uid://ds58kwd1nyny8" path="res://prototype_revolve_tracks.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://c6rulyvkfnu6t" path="res://dialogue/npc_talk.tscn" id="4_aqk2v"]
+
+[node name="World" type="Node2D" unique_id=141257703]
+
+[node name="DebugRoom" type="Node2D" parent="." unique_id=397358916]
+
+[node name="RevolveTracks" parent="DebugRoom" unique_id=1788342499 instance=ExtResource("1_fj7yv")]
+visible = false
+
+[node name="NPCTalk" parent="." unique_id=1866522664 instance=ExtResource("4_aqk2v")]
