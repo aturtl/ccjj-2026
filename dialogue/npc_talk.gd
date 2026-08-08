@@ -3,19 +3,25 @@ extends Node2D
 enum CameraAnimation {TALK, THOUGHT}
 var current_camera_animation: int = 0
 
-@export var debug_rect_display: ColorRect
-
-@export var ui_talk: UITalk
-@export var ui_choice_display: UIChoiceDisplay
 @export var talk_cam: Camera2D
-
-
 @export var player_sprite: AnimatedSprite2D
 @export var npc_sprite: AnimatedSprite2D
-
 @export var transitioners: Node2D
 
+@export_category("Talkers")
+@export var ui_npc_talk: UITalk
+@export var ui_choice_display: UIChoiceDisplay
+@export var ui_thought_talk: UITalk
+
 @onready var cheats: Cheats = %Cheats
+
+@export_category("Cheats")
+@export var dia_ex_lines: DialogueLine
+@export var dia_ex_choice: DialogueLine
+@export var dia_ex_thought: DialogueLine
+
+@export_category("Temporary")
+@export var debug_rect_display: ColorRect
 
 func _ready():
 	cheats.cheat_entered.connect(dialogue_cheats)
@@ -24,7 +30,11 @@ func _ready():
 func dialogue_cheats(s: String):
 	match s:
 		"dia_ex":
-			dialogue_start(get_child(0).get_child(0))
+			dialogue_start(dia_ex_lines)
+		"dia_ex_choice":
+			dialogue_start(dia_ex_choice)
+		"dia_ex_thought":
+			dialogue_start(dia_ex_thought)
 
 #region dialogue loop
 func dialogue_start(dl:DialogueLine):
@@ -39,15 +49,19 @@ func dialogue_loop(dl:DialogueLine):
 		dialogue_end()
 		return
 	
-	ui_talk.talk(dl.dialogue)
-	
 	if dl is DialogueStatement:
-		await ui_talk.start_next
+		tween_to_talk()
+		
+		ui_npc_talk.talk(dl.dialogue)
+		
+		await ui_npc_talk.start_next
 		
 		dialogue_loop(dl.goto)
 		
 	elif dl is DialogueQuestion:
-		await ui_talk.start_next
+		ui_npc_talk.talk(dl.dialogue)
+		
+		await ui_npc_talk.start_next
 		
 		await tween_to_thought()
 		
@@ -59,10 +73,17 @@ func dialogue_loop(dl:DialogueLine):
 		tween_to_talk()
 		dialogue_loop(goto)
 		print("QUESTION ASKED")
+	
+	elif dl is DialoguePlayerThought:
+		ui_thought_talk.talk(dl.dialogue)
+		
+		await ui_thought_talk.start_next
+		
+		dialogue_loop(dl.goto)
 
 
 func dialogue_end():
-	debug_rect_display.visible = true
+	pass
 	#stuff
 #endregion
 

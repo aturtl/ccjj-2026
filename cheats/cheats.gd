@@ -5,7 +5,7 @@ class_name Cheats extends Node2D
 
 @onready var text_console: LineEdit = $TextConsole
 
-signal cheat_entered
+signal cheat_entered # sends text on enter
 
 func text_set():
 	cheat_entered.emit(text_console.text)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ce1e6q3be8nfn"]
 
-[ext_resource type="PackedScene" uid="uid://ds58kwd1nyny8" path="res://prototype_revolve_tracks.tscn" id="1_fj7yv"]
-[ext_resource type="PackedScene" uid="uid://c0vcgctyyu75u" path="res://cheats.tscn" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://ds58kwd1nyny8" path="res://tracks/prototype_revolve_tracks.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://c0vcgctyyu75u" path="res://cheats/cheats.tscn" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://c6rulyvkfnu6t" path="res://dialogue/npc_talk.tscn" id="4_aqk2v"]
 
 [node name="World" type="Node2D" unique_id=141257703]
