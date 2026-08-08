@@ -5,7 +5,8 @@ var current_camera_animation: int = 0
 
 @export var debug_rect_display: ColorRect
 
-@export var talk_ui: UITalk
+@export var ui_talk: UITalk
+@export var ui_choice_display: UIChoiceDisplay
 @export var talk_cam: Camera2D
 
 
@@ -30,21 +31,22 @@ func dialogue_loop(dl:DialogueLine):
 		dialogue_end()
 		return
 	
-	talk_ui.box_talk(dl.dialogue)
+	ui_talk.talk(dl.dialogue)
 	
-	if dl.dialogue_type == 0:
-		await talk_ui.start_next
+	if dl is DialogueStatement:
+		await ui_talk.start_next
 		
 		dialogue_loop(dl.goto)
-	elif dl.dialogue_type == 1:
-		await talk_ui.start_next
+		
+	elif dl is DialogueQuestion:
+		await ui_talk.start_next
 		
 		await tween_to_thought()
 		
 		var choices = get_choices(dl)
-		talk_ui.display_choices(choices)
+		ui_choice_display.display_choices(choices)
 		
-		var goto: DialogueLine = await talk_ui.choice_selected
+		var goto: DialogueLine = await ui_choice_display.choice_selected
 		
 		tween_to_talk()
 		dialogue_loop(goto)
@@ -93,7 +95,7 @@ func tween_to_talk():
 	
 	var thought_trans_time = 1.5
 	
-	player_sprite.play("thought")
+	player_sprite.play("talk")
 	
 	player_tween.tween_property(player_sprite.get_parent(), "global_position", transitioners.get_node("TransPlayerTalk").global_position, 1.2).set_trans(Tween.TRANS_BACK)
 	player_tween.tween_property(player_sprite, "scale", transitioners.get_node("TransPlayerTalk").global_scale, thought_trans_time).set_trans(Tween.TRANS_BACK)

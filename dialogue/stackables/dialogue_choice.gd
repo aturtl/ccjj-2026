@@ -1,11 +1,15 @@
-class_name DialogueLine extends Node
+@icon("uid://wtyvo4svr0wq")
+
+class_name DialogueChoice extends Node
 ## stores info for dialogue line
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue
+@export var choice_text: String = ""
 
-@export var dialogue: String = ""
-@export_enum("STATEMENT","QUESTION") var dialogue_type = 0 # more types can be added, i.e. EXCLAMATION
+@export var prereq_item: String
+@export var prereq_sanity: float
 
+@export var sanity_change: float = 0.0
 
 
 func _ready():
