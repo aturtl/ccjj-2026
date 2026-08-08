@@ -3,8 +3,8 @@ extends Control
 #region AUDIO
 
 var master_slider_val: float
-var master_slider_val: float
-var master_slider_val: float
+#var master_slider_val: float
+#var master_slider_val: float
 
 @onready var master_slider: HSlider = $Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterSlider
 @onready var music_slider: HSlider = $Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicSlider
@@ -51,4 +51,4 @@ func _on_effects_slider_changed() -> void:
 
 
 func _on_back_pressed() -> void:
-	UIManager.switch_to_previous()
+	UIManager.close_overlay()

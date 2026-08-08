@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c7eb7hqkfw4g3"]
 
 [ext_resource type="Script" uid="uid://cybm7pbvk7i0k" path="res://ui/start_menu/start_menu.gd" id="1_qaoya"]
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="2_dbk64"]
 
 [node name="StartMenu" type="Control" unique_id=1065199818]
 layout_mode = 3
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qaoya")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=144499257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dbk64")
 
 [node name="Panel" type="Panel" parent="." unique_id=1300037024]
 layout_mode = 1

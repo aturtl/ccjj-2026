@@ -1,14 +1,15 @@
 extends Control
 
+signal start_game
+
+@onready var settings_menu: Control = %SettingsMenu
+
 
 func _on_play_pressed() -> void:
-	# TODO seperate UI from game state
-	UIManager.change_state(UIManager.UIState.GAME)
-
+	start_game.emit()
 
 func _on_settings_pressed() -> void:
-	UIManager.change_state(UIManager.UIState.SETTINGS)
-
+	UIManager.open_overlay(settings_menu)
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

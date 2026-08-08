@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ct26c1b8stbn6" path="res://ui/paused_menu/paused.gd" id="1_qn0hj"]
 
-[node name="Paused" type="Control" unique_id=784381929]
+[node name="PauseMenu" type="Control" unique_id=784381929]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

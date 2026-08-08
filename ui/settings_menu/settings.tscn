@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://be0yxybpackxn"]
 
 [ext_resource type="Script" uid="uid://k3eiwpbrqhfa" path="res://ui/settings_menu/settings.gd" id="1_gl4li"]
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="2_50bus"]
 
-[node name="Settings" type="Control" unique_id=1151713264]
+[node name="SettingsMenu" type="Control" unique_id=1151713264]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gl4li")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1292782547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_50bus")
 
 [node name="Panel" type="Panel" parent="." unique_id=495344098]
 layout_mode = 1

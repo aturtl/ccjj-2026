@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://c0fri55hif3q5"]
 
 [ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/GameJam_Background.png" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://bv3nymtsjwbh2" path="res://entities/objects/test_item.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
+[ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
 
 [node name="Game" type="Node" unique_id=574838011]
+process_mode = 3
+script = ExtResource("1_feb5d")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=747760484]
 modulate = Color(0.14406255, 0.14406255, 0.14406255, 1)
@@ -12,3 +18,19 @@ texture = ExtResource("1_80nbo")
 [node name="Sprite2D2" parent="." unique_id=1083545000 instance=ExtResource("2_e2o6t")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1459312706]
+process_mode = 2
+
+[node name="StartMenu" parent="UI" unique_id=1065199818 instance=ExtResource("4_fc0e3")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseMenu" parent="UI" unique_id=784381929 instance=ExtResource("6_eow3j")]
+unique_name_in_owner = true
+visible = false
+
+[node name="SettingsMenu" parent="UI" unique_id=1151713264 instance=ExtResource("5_ryrav")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="start_game" from="UI/StartMenu" to="." method="_on_start_game"]
+[connection signal="resume" from="UI/PauseMenu" to="." method="unpause_game"]

@@ -1,16 +1,23 @@
 extends Control
 
+signal resume
+
+@onready var start_menu: Control = %StartMenu
+@onready var settings_menu: Control = %SettingsMenu
+
 
 func _on_resume_pressed() -> void:
-	UIManager.change_state(UIManager.UIState.GAME)
+	UIManager.close_overlay()
+	resume.emit()
 	
 
 func _on_settings_pressed() -> void:
-	UIManager.change_state(UIManager.UIState.SETTINGS)
+	UIManager.open_overlay(settings_menu)
 
 
 func _on_main_pressed() -> void:
-	UIManager.change_state(UIManager.UIState.START)
+	UIManager.close_overlay()
+	UIManager.open_menu(start_menu)
 
 
 func _on_quit_pressed() -> void:
