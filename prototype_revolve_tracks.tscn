@@ -67,3 +67,8 @@ metadata/_custom_type_script = "uid://ctomiae3t1ad5"
 position = Vector2(1148, 593)
 scale = Vector2(18.09375, 2.046875)
 texture = ExtResource("3_kkyq0")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ForegroundTrack" unique_id=1543117866]
+position = Vector2(-1158, 597)
+scale = Vector2(18.09375, 2.046875)
+texture = ExtResource("3_kkyq0")

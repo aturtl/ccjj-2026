@@ -3,6 +3,10 @@ class_name DialogueChoice extends Node
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 @export var choice_text: String = ""
+
+@export var prereq_item: String
+@export var prereq_sanity: float
+
 @export var sanity_change: float = 0.0
 
 

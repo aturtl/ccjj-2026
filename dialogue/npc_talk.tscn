@@ -12,6 +12,23 @@
 [ext_resource type="Script" uid="uid://c70kymtkpjq10" path="res://dialogue/class_choice_template.gd" id="7_64tqn"]
 [ext_resource type="Texture2D" uid="uid://bchcjt000nkq3" path="res://placeholders/placeholder_player_converse.png" id="7_nyoxy"]
 [ext_resource type="Texture2D" uid="uid://dvqw73kytml1i" path="res://placeholders/placeholder_fish_guy.png" id="8_64tqn"]
+[ext_resource type="Texture2D" uid="uid://r4xs3u5woly8" path="res://placeholders/placeholder_cake_0000.png" id="13_qffds"]
+[ext_resource type="Texture2D" uid="uid://wj7xk48i8gfh" path="res://placeholders/placeholder_cake_0001.png" id="14_svhel"]
+[ext_resource type="Script" uid="uid://bh6ijehmecin3" path="res://generic/autoplay_animated_sprite_2d.gd" id="15_svhel"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1u1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_qffds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_svhel")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wwrea"]
 animations = [{
@@ -46,54 +63,110 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_ui", "talk_cam", "player_sprite", "npc_sprite", "positioners")]
+[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("debug_rect_display", "talk_ui", "talk_cam", "player_sprite", "npc_sprite", "transitioners")]
 script = ExtResource("1_m8yt7")
+debug_rect_display = NodePath("ColorRect")
 talk_ui = NodePath("UI/UITalk")
 talk_cam = NodePath("TalkCam")
 player_sprite = NodePath("Characters/Player/Sprite")
 npc_sprite = NodePath("Characters/NPC/Sprite")
-positioners = NodePath("Positioners")
+transitioners = NodePath("Transitioners")
 
-[node name="S_OrganizationTemplate" type="Node" parent="." unique_id=1076923469]
+[node name="EXAMPLELINES" type="Node" parent="." unique_id=118042448]
+
+[node name="S_OrganizationTemplate" type="Node" parent="EXAMPLELINES" unique_id=1076923469]
 script = ExtResource("2_t2mef")
 dialogue = "test dialogue"
 metadata/_custom_type_script = "uid://botruxk1gl834"
 
-[node name="S_YouMayChange" type="Node" parent="S_OrganizationTemplate" unique_id=869358553]
+[node name="S_YouMayChange" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate" unique_id=869358553]
 script = ExtResource("2_t2mef")
 dialogue = "example 2"
 metadata/_custom_type_script = "uid://botruxk1gl834"
 
-[node name="S_TheseNames" type="Node" parent="S_OrganizationTemplate/S_YouMayChange" unique_id=1780280195]
+[node name="S_TheseNames" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange" unique_id=1780280195]
 script = ExtResource("2_t2mef")
 dialogue = "example 3"
 metadata/_custom_type_script = "uid://botruxk1gl834"
 
-[node name="S_ToDepict" type="Node" parent="S_OrganizationTemplate/S_YouMayChange/S_TheseNames" unique_id=415421558]
+[node name="S_ToDepict" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames" unique_id=415421558]
 script = ExtResource("2_t2mef")
 dialogue = "example 4"
 metadata/_custom_type_script = "uid://botruxk1gl834"
 
-[node name="S_Dialogue" type="Node" parent="S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict" unique_id=1174797554]
+[node name="S_Dialogue" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict" unique_id=1174797554]
 script = ExtResource("2_t2mef")
 dialogue = "example 5"
 metadata/_custom_type_script = "uid://botruxk1gl834"
 
-[node name="Q_QuestionTest" type="Node" parent="S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue" unique_id=1711301935]
+[node name="Q_QuestionTest" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue" unique_id=1711301935]
 script = ExtResource("2_t2mef")
 dialogue = "did you get all that?"
 dialogue_type = 1
 metadata/_custom_type_script = "uid://botruxk1gl834"
 
-[node name="Choice_Maybe" type="Node" parent="S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1498668351]
+[node name="Choice_Maybe" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1498668351 node_paths=PackedStringArray("goto")]
 script = ExtResource("3_8o7g4")
+goto = NodePath("../../../../../../../S_Angry")
 choice_text = "hi there"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="Choice_Maybe2" type="Node" parent="S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1329882261]
+[node name="Choice_Maybe2" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1329882261 node_paths=PackedStringArray("goto")]
 script = ExtResource("3_8o7g4")
+goto = NodePath("../../../../../../../S_Angry")
 choice_text = "howdy"
+prereq_item = "yeah"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="Choice_Maybe3" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=680429954 node_paths=PackedStringArray("goto")]
+script = ExtResource("3_8o7g4")
+goto = NodePath("../../../../../../../S_Happy")
+choice_text = "*fight*"
+prereq_item = "yeah"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="Choice_Maybe4" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1972357610 node_paths=PackedStringArray("goto")]
+script = ExtResource("3_8o7g4")
+goto = NodePath("../../../../../../../S_Happy")
+choice_text = "grrr"
+prereq_item = "yeah"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="S_Angry" type="Node" parent="EXAMPLELINES" unique_id=1728117139]
+script = ExtResource("2_t2mef")
+dialogue = "me mad"
+metadata/_custom_type_script = "uid://botruxk1gl834"
+
+[node name="S_Angry2" type="Node" parent="EXAMPLELINES/S_Angry" unique_id=209365164]
+script = ExtResource("2_t2mef")
+dialogue = "grrr"
+metadata/_custom_type_script = "uid://botruxk1gl834"
+
+[node name="S_Angry3" type="Node" parent="EXAMPLELINES/S_Angry/S_Angry2" unique_id=1811242151]
+script = ExtResource("2_t2mef")
+dialogue = "how dare you"
+metadata/_custom_type_script = "uid://botruxk1gl834"
+
+[node name="S_Angry4" type="Node" parent="EXAMPLELINES/S_Angry/S_Angry2/S_Angry3" unique_id=996487796]
+script = ExtResource("2_t2mef")
+dialogue = "*dies*"
+metadata/_custom_type_script = "uid://botruxk1gl834"
+
+[node name="S_Happy" type="Node" parent="EXAMPLELINES" unique_id=1712340202]
+script = ExtResource("2_t2mef")
+dialogue = "haoy"
+metadata/_custom_type_script = "uid://botruxk1gl834"
+
+[node name="S_Happy2" type="Node" parent="EXAMPLELINES/S_Happy" unique_id=1079766441]
+script = ExtResource("2_t2mef")
+dialogue = "happy hap happy happy"
+metadata/_custom_type_script = "uid://botruxk1gl834"
+
+[node name="S_Happy3" type="Node" parent="EXAMPLELINES/S_Happy/S_Happy2" unique_id=1755672101 node_paths=PackedStringArray("goto")]
+script = ExtResource("2_t2mef")
+goto = NodePath("../../../S_OrganizationTemplate")
+dialogue = "IM SO HAPPY LETS DO THIS ALL OVER AGAN"
+metadata/_custom_type_script = "uid://botruxk1gl834"
 
 [node name="UI" type="Node2D" parent="." unique_id=1169543956]
 
@@ -101,16 +174,53 @@ metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 script = ExtResource("4_s0v2e")
 choice_template = NodePath("ChoiceTemplate")
 
-[node name="ChoiceTemplate" type="Node2D" parent="UI/UIChoice" unique_id=1659226158]
+[node name="ChoiceTemplate" type="Node2D" parent="UI/UIChoice" unique_id=1659226158 node_paths=PackedStringArray("select_button", "label", "sprite", "sanity_display")]
 script = ExtResource("7_64tqn")
+select_button = NodePath("Button")
+label = NodePath("RichTextLabel")
+sprite = NodePath("Sprite")
+sanity_display = NodePath("SanityDisplay")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/UIChoice/ChoiceTemplate" unique_id=754513161]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -136.0
+offset_top = 7.9999847
+offset_right = 136.0
+offset_bottom = 52.999985
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Choice[/center]"
+fit_content = true
 
-[node name="UITalk" type="Node2D" parent="UI" unique_id=501740599 node_paths=PackedStringArray("box_template")]
+[node name="SanityDisplay" type="RichTextLabel" parent="UI/UIChoice/ChoiceTemplate" unique_id=1365563672]
+offset_left = -136.0
+offset_top = -8.000015
+offset_right = 136.0
+offset_bottom = 36.999985
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]PREREQ[/center]"
+fit_content = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="UI/UIChoice/ChoiceTemplate" unique_id=2111596517]
+position = Vector2(0, -24)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_t1u1q")
+script = ExtResource("15_svhel")
+
+[node name="Button" type="Button" parent="UI/UIChoice/ChoiceTemplate" unique_id=1642728767]
+modulate = Color(1, 1, 1, 0)
+offset_left = -40.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 37.0
+
+[node name="UITalk" type="Node2D" parent="UI" unique_id=501740599 node_paths=PackedStringArray("box_template", "choice_template", "transitioners")]
 script = ExtResource("3_8dhno")
 box_template = NodePath("BoxTemplate")
+choice_template = NodePath("../UIChoice/ChoiceTemplate")
+transitioners = NodePath("../../Transitioners")
 
 [node name="BoxTemplate" type="Node2D" parent="UI/UITalk" unique_id=1136927499 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
 position = Vector2(247, -170)
@@ -145,30 +255,6 @@ texture = ExtResource("4_qynjn")
 
 [node name="UITemp" type="Node2D" parent="UI" unique_id=2033280774]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/UITemp" unique_id=1113817186]
-offset_left = -2223.0
-offset_top = 32.0
-offset_right = -1903.0
-offset_bottom = 192.0
-theme_override_font_sizes/normal_font_size = 32
-text = "Placeholder"
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="UI/UITemp" unique_id=1435709808]
-offset_left = -1934.0
-offset_top = -63.0
-offset_right = -1614.0
-offset_bottom = 97.0
-theme_override_font_sizes/normal_font_size = 32
-text = "Placeholder"
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="UI/UITemp" unique_id=40583322]
-offset_left = -1552.0
-offset_top = 36.0
-offset_right = -1232.0
-offset_bottom = 196.0
-theme_override_font_sizes/normal_font_size = 32
-text = "Placeholder"
-
 [node name="TalkCam" type="Camera2D" parent="." unique_id=993152993]
 
 [node name="Characters" type="Node2D" parent="." unique_id=992138454]
@@ -188,21 +274,43 @@ scale = Vector2(0.45118892, 0.4559301)
 [node name="Sprite" type="AnimatedSprite2D" parent="Characters/NPC" unique_id=1340904401]
 sprite_frames = SubResource("SpriteFrames_d80km")
 
-[node name="Positioners" type="Node2D" parent="." unique_id=249844191]
+[node name="Transitioners" type="Node2D" parent="." unique_id=249844191]
 
-[node name="PosPlayerTalk" type="Node2D" parent="Positioners" unique_id=1866418926]
+[node name="TransPlayerTalk" type="Node2D" parent="Transitioners" unique_id=1866418926]
 position = Vector2(-416, 176)
 
-[node name="PosPlayerThought" type="Node2D" parent="Positioners" unique_id=1793816180]
-position = Vector2(-1796, 297)
-
-[node name="PosNPCTalk" type="Node2D" parent="Positioners" unique_id=542569004]
+[node name="TransNPCTalk" type="Node2D" parent="Transitioners" unique_id=542569004]
 position = Vector2(400, -64)
 
-[node name="PosNPCThought" type="Node2D" parent="Positioners" unique_id=35700927]
-position = Vector2(-1332, 309)
+[node name="TransCameraTalk" type="Node2D" parent="Transitioners" unique_id=344368334]
 
-[node name="PosCameraTalk" type="Node2D" parent="Positioners" unique_id=344368334]
+[node name="TransPlayerThought" type="Node2D" parent="Transitioners" unique_id=861926996]
+position = Vector2(-384, 168)
+scale = Vector2(1.25, 1.25)
 
-[node name="PosCameraThought" type="Node2D" parent="Positioners" unique_id=1652590831]
-position = Vector2(-1798, 175)
+[node name="TransNPCThought" type="Node2D" parent="Transitioners" unique_id=1177986880]
+position = Vector2(274, 112)
+scale = Vector2(0.5, 0.5)
+
+[node name="TransCameraThought" type="Node2D" parent="Transitioners" unique_id=471356132]
+position = Vector2(-384, 0)
+scale = Vector2(1.5, 1.5)
+
+[node name="TransDisplayChoices" type="Node2D" parent="Transitioners" unique_id=2012092635]
+position = Vector2(-384, 128)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=746877131]
+visible = false
+offset_left = -576.0
+offset_top = -328.0
+offset_right = 576.0
+offset_bottom = 328.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=647855477]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 144.0
+offset_right = 512.0
+offset_bottom = 280.0
+text = "and everyone died"
