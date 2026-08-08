@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dp31gpxs4x57e"]
+
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_v6fng"]
+[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/key.png" id="2_ej0li"]
+[ext_resource type="Resource" uid="uid://d4d8061twem3j" path="res://data/items/key.tres" id="2_lghao"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="2_phtp7"]
+[ext_resource type="Script" uid="uid://dfdpwojb60q1j" path="res://entities/objects/key/key.gd" id="3_1xn5t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqxy4"]
+shader = ExtResource("1_v6fng")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
+radius = 67.0
+height = 320.0
+
+[node name="Key" type="Sprite2D" unique_id=78426552]
+material = SubResource("ShaderMaterial_bqxy4")
+texture = ExtResource("2_ej0li")
+script = ExtResource("3_1xn5t")
+item = ExtResource("2_lghao")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1611175926 node_paths=PackedStringArray("sprite")]
+script = ExtResource("2_phtp7")
+interaction_string = "Picked up Key"
+sprite = NodePath("..")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1578444104]
+position = Vector2(-36, 8)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yf5fn")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interacted"]

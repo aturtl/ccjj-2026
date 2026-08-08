@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bv3nymtsjwbh2"]
+
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_khexx"]
+[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/key.png" id="2_q5jdp"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="3_khuax"]
+[ext_resource type="Script" uid="uid://b8s4xdljvnidq" path="res://entities/objects/test_item.gd" id="3_q5jdp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0mmv"]
+shader = ExtResource("1_khexx")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_khuax"]
+radius = 177.10167
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1083545000]
+material = SubResource("ShaderMaterial_m0mmv")
+texture = ExtResource("2_q5jdp")
+script = ExtResource("3_q5jdp")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=2010139508 node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_khuax")
+interaction_string = "Collected Item"
+sprite = NodePath("..")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=890274750]
+position = Vector2(-44, 2)
+shape = SubResource("CircleShape2D_khuax")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

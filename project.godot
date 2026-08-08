@@ -24,7 +24,9 @@ UIManager="*uid://b6ilicojuqm50"
 
 folder_colors={
 "res://assets/": "red",
+"res://audio/": "purple",
 "res://components/": "gray",
+"res://data/": "blue",
 "res://entities/": "yellow",
 "res://ui/": "teal"
 }

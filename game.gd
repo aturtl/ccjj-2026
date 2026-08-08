@@ -3,6 +3,7 @@ extends Node
 @onready var start_menu: Control = %StartMenu
 @onready var pause_menu: Control = %PauseMenu
 @onready var settings_menu: Control = %SettingsMenu
+@onready var inventory_ui: Control = %InventoryUI
 
 func _ready() -> void:
 	UIManager.open_menu(start_menu)
@@ -31,3 +32,8 @@ func unpause_game() -> void:
 func _on_start_game() -> void:
 	get_tree().paused = false
 	UIManager.close_menu()
+	#inventory_ui.show()
+
+
+func _on_inventory_button_toggled(toggled_on: bool) -> void:
+	inventory_ui.visible = toggled_on

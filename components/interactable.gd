@@ -3,7 +3,7 @@ class_name Interactable
 
 @export var interaction_string: String
 @export var highlight_on_hover : bool = true
-@export var sprite: Sprite2D
+@export_custom(PROPERTY_HINT_NODE_TYPE, "AnimatedSprite2D,Sprite2D") var sprite: Node2D
 var shader: ShaderMaterial
 
 

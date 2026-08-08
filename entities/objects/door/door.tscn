@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dfrr822kcpjnh"]
+
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_icyyl"]
+[ext_resource type="Texture2D" uid="uid://beciuyn4vkxbq" path="res://assets/door.png" id="2_m4hsy"]
+[ext_resource type="Script" uid="uid://0v0d57ads7ij" path="res://entities/objects/door/door.gd" id="3_wy38q"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="4_biwhv"]
+[ext_resource type="Resource" uid="uid://d4d8061twem3j" path="res://data/items/key.tres" id="4_m4hsy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmq8n"]
+shader = ExtResource("1_icyyl")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ah2r"]
+size = Vector2(257, 373)
+
+[node name="Door" type="Sprite2D" unique_id=1090625724]
+material = SubResource("ShaderMaterial_bmq8n")
+texture = ExtResource("2_m4hsy")
+script = ExtResource("3_wy38q")
+requirement = ExtResource("4_m4hsy")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=444222629 node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_biwhv")
+interaction_string = "Interacted with Door"
+sprite = NodePath("..")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1975433016]
+position = Vector2(-12.5, 36.5)
+shape = SubResource("RectangleShape2D_7ah2r")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interacted"]
