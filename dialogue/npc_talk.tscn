@@ -76,96 +76,96 @@ transitioners = NodePath("Transitioners")
 
 [node name="EXAMPLELINES" type="Node" parent="." unique_id=118042448]
 
-[node name="S_OrganizationTemplate" type="Node" parent="EXAMPLELINES" unique_id=1533222074]
+[node name="OrganizationTemplate" type="Node" parent="EXAMPLELINES" unique_id=1533222074]
 script = ExtResource("2_bwfku")
 dialogue = "look at me"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_YouMayChange" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate" unique_id=1565826900]
+[node name="YouMayChange" type="Node" parent="EXAMPLELINES/OrganizationTemplate" unique_id=1565826900]
 script = ExtResource("2_bwfku")
 dialogue = "i can talk"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_TheseNames" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange" unique_id=1865244232]
+[node name="TheseNames" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange" unique_id=1865244232]
 script = ExtResource("2_bwfku")
 dialogue = "talk2"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_ToDepict" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames" unique_id=1510879930]
+[node name="ToDepict" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames" unique_id=1510879930]
 script = ExtResource("2_bwfku")
 dialogue = "talk3"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_Dialogue" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict" unique_id=2140778527]
+[node name="Dialogue" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict" unique_id=2140778527]
 script = ExtResource("2_bwfku")
 dialogue = "talk4"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="Q_QuestionTest" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue" unique_id=326980866]
+[node name="QuestionTest" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue" unique_id=326980866]
 script = ExtResource("3_nbgfc")
 dialogue = "did you get all that?"
 metadata/_custom_type_script = "uid://vyopck2u0qf4"
 
-[node name="Choice_Maybe" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1498668351 node_paths=PackedStringArray("goto")]
+[node name="Maybe" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest" unique_id=1498668351 node_paths=PackedStringArray("goto")]
 script = ExtResource("3_8o7g4")
-goto = NodePath("../../../../../../../S_Angry")
+goto = NodePath("../../../../../../../Angry")
 choice_text = "hi there"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="Choice_Maybe2" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1329882261 node_paths=PackedStringArray("goto")]
+[node name="Maybe2" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest" unique_id=1329882261 node_paths=PackedStringArray("goto")]
 script = ExtResource("3_8o7g4")
-goto = NodePath("../../../../../../../S_Angry")
+goto = NodePath("../../../../../../../Angry")
 choice_text = "howdy"
 prereq_item = "yeah"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="Choice_Maybe3" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=680429954 node_paths=PackedStringArray("goto")]
+[node name="Maybe3" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest" unique_id=680429954 node_paths=PackedStringArray("goto")]
 script = ExtResource("3_8o7g4")
-goto = NodePath("../../../../../../../S_Happy")
+goto = NodePath("../../../../../../../Happy")
 choice_text = "*fight*"
 prereq_item = "yeah"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="Choice_Maybe4" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1972357610 node_paths=PackedStringArray("goto")]
+[node name="Maybe4" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest" unique_id=1972357610 node_paths=PackedStringArray("goto")]
 script = ExtResource("3_8o7g4")
-goto = NodePath("../../../../../../../S_Happy")
+goto = NodePath("../../../../../../../Happy")
 choice_text = "grrr"
 prereq_item = "yeah"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="S_Angry" type="Node" parent="EXAMPLELINES" unique_id=2120435397]
+[node name="Angry" type="Node" parent="EXAMPLELINES" unique_id=2120435397]
 script = ExtResource("2_bwfku")
 dialogue = "now im angry"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_Angry2" type="Node" parent="EXAMPLELINES/S_Angry" unique_id=1639900722]
+[node name="Angry2" type="Node" parent="EXAMPLELINES/Angry" unique_id=1639900722]
 script = ExtResource("2_bwfku")
 dialogue = "grrr"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_Angry3" type="Node" parent="EXAMPLELINES/S_Angry/S_Angry2" unique_id=192417354]
+[node name="Angry3" type="Node" parent="EXAMPLELINES/Angry/Angry2" unique_id=192417354]
 script = ExtResource("2_bwfku")
 dialogue = "gah"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_Angry4" type="Node" parent="EXAMPLELINES/S_Angry/S_Angry2/S_Angry3" unique_id=1718663090]
+[node name="Angry4" type="Node" parent="EXAMPLELINES/Angry/Angry2/Angry3" unique_id=1718663090]
 script = ExtResource("2_bwfku")
 dialogue = "*dies of dead*"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_Happy" type="Node" parent="EXAMPLELINES" unique_id=1557267594]
+[node name="Happy" type="Node" parent="EXAMPLELINES" unique_id=1557267594]
 script = ExtResource("2_bwfku")
 dialogue = "happy happyh"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_Happy2" type="Node" parent="EXAMPLELINES/S_Happy" unique_id=891449611]
+[node name="Happy2" type="Node" parent="EXAMPLELINES/Happy" unique_id=891449611]
 script = ExtResource("2_bwfku")
 dialogue = "happeh im so happy :)"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="S_Happy3" type="Node" parent="EXAMPLELINES/S_Happy/S_Happy2" unique_id=1720182845 node_paths=PackedStringArray("goto")]
+[node name="Happy3" type="Node" parent="EXAMPLELINES/Happy/Happy2" unique_id=1720182845 node_paths=PackedStringArray("goto")]
 script = ExtResource("2_bwfku")
-goto = NodePath("../../../S_OrganizationTemplate")
+goto = NodePath("../../../OrganizationTemplate")
 dialogue = "im so happy lets go back to the start"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 

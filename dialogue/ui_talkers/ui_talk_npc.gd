@@ -33,7 +33,8 @@ func talk(s: String, starting_visible_characters: int = 0):
 	for i in s.length() - starting_visible_characters:
 		await get_tree().create_timer(in_between_time).timeout
 		play_talk_sound()
-		label.visible_characters += 1
+		if !label.is_queued_for_deletion():
+			label.visible_characters += 1
 	
 	talk_ended.emit()
 	

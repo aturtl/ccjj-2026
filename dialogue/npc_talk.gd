@@ -15,8 +15,16 @@ var current_camera_animation: int = 0
 
 @export var transitioners: Node2D
 
+@onready var cheats: Cheats = %Cheats
+
 func _ready():
-	dialogue_start(get_child(0).get_child(0)) #temp for debug
+	cheats.cheat_entered.connect(dialogue_cheats)
+
+
+func dialogue_cheats(s: String):
+	match s:
+		"dia_ex":
+			dialogue_start(get_child(0).get_child(0))
 
 #region dialogue loop
 func dialogue_start(dl:DialogueLine):
