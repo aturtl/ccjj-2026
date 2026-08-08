@@ -5,6 +5,9 @@ class_name DialoguePlayerThought extends DialogueLine
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 
+@export var parallel_gotos = [] # VERY SPECIFIC CASES. annoying to use so just use goto,
+	# but if you have to, this will absolutely work.
+	# also only store DialogueLines in this
 
 func _ready():
 	if !goto:
@@ -14,4 +17,7 @@ func _ready():
 func set_goto_from_child():
 	for child in self.get_children():
 		if child is DialogueLine:
-			goto = child
+			if !goto:
+				goto = child
+			else:
+				parallel_gotos.append(child)

@@ -1,9 +1,11 @@
 @icon("uid://wtyvo4svr0wq")
 
-class_name DialogueChoice extends Node
+class_name DialogueChoice extends DialogueLine
 ## stores info for dialogue line
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue
+@export var parallel_gotos = []
+
 @export var choice_text: String = ""
 
 @export var prereq_item: String
@@ -13,11 +15,13 @@ class_name DialogueChoice extends Node
 
 
 func _ready():
-	if !goto:
-		set_goto_from_child()
+	set_goto_from_child()
 
 
 func set_goto_from_child():
 	for child in self.get_children():
 		if child is DialogueLine:
-			goto = child
+			if !goto:
+				goto = child
+			else:
+				parallel_gotos.append(child)

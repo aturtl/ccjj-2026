@@ -11,7 +11,7 @@ signal selected
 
 
 func bd():
-	selected.emit(goto)
+	selected.emit(self)
 	print("GOTO:", goto)
 
 

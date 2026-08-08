@@ -39,7 +39,7 @@ func display_choices(choices: Array):
 		choice_instance.sanity_display.visible = prereq_sanity != 0.0
 		choice_instance.sprite.visible = prereq_item != ""
 		
-		choice_instance.goto = choice_info.goto
+		choice_instance.goto = choice_info
 
 
 func add_templated_choice_instance(choice_temp: ChoiceTemplate):
@@ -64,7 +64,8 @@ func add_templated_choice_instance(choice_temp: ChoiceTemplate):
 	
 	return choice
 	
-func on_choice_selected(goto: DialogueLine):
+func on_choice_selected(chosen_choice):
+	var goto = chosen_choice.goto
 	for choice: ChoiceTemplate in connected_choice_instances:
 		choice.selected.disconnect(on_choice_selected)
 		choice.queue_free()

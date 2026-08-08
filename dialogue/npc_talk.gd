@@ -47,9 +47,17 @@ func dialogue_loop(dl:DialogueLine):
 		dialogue_end()
 		return
 	
+	if dl.switch_npc_animation_to != "":
+		npc_sprite.play(dl.switch_npc_animation_to)
+	
+	if dl.switch_player_animation_to != "":
+		player_sprite.play(dl.switch_player_animation_to)
+	
 	if dl is DialogueStatement:
 		player_sprite.play("talk")
 		# current_camera_animation = CameraAnimation.TALK
+		
+		
 		
 		tween_to_talk()
 		
@@ -57,7 +65,7 @@ func dialogue_loop(dl:DialogueLine):
 		
 		await ui_npc_talk.start_next
 		
-		dialogue_loop(dl.goto)
+		loop_with_parallels(dl)
 		
 	elif dl is DialogueQuestion:
 		ui_npc_talk.talk(dl.dialogue)
@@ -69,10 +77,12 @@ func dialogue_loop(dl:DialogueLine):
 		var choices = get_choices(dl)
 		ui_choice_display.display_choices(choices)
 		
-		var goto: DialogueLine = await ui_choice_display.choice_selected
+		var choice_dl: DialogueChoice = await ui_choice_display.choice_selected
 		
 		tween_to_talk()
-		dialogue_loop(goto)
+		
+		loop_with_parallels(choice_dl)
+		
 		print("QUESTION ASKED")
 	
 	elif dl is DialoguePlayerThought:
@@ -80,13 +90,21 @@ func dialogue_loop(dl:DialogueLine):
 		
 		await ui_thought_talk.start_next
 		
-		dialogue_loop(dl.goto)
+		loop_with_parallels(dl)
 
 
 func dialogue_end():
 	pass
 	#stuff
 #endregion
+
+
+func loop_with_parallels(dl: DialogueLine):
+	dialogue_loop(dl.goto)
+	for goto in dl.parallel_gotos:
+		print("p_loop", dl)
+		dialogue_loop(goto)
+
 
 func display_ui():
 	pass
