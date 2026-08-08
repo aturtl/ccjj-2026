@@ -68,5 +68,6 @@ func animate_kill_box_instance(box: BoxTemplate):
 	
 	await kill_tween.finished
 	
+	
 	box.queue_free()
 #endregion

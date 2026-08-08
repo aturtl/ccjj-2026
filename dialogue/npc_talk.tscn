@@ -132,13 +132,6 @@ choice_text = "*fight*"
 prereq_item = "yeah"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="Maybe4" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest" unique_id=1972357610 node_paths=PackedStringArray("goto")]
-script = ExtResource("3_8o7g4")
-goto = NodePath("../../../../../../../Happy")
-choice_text = "grrr"
-prereq_item = "yeah"
-metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
-
 [node name="Angry" type="Node" parent="EXAMPLELINES" unique_id=2120435397]
 script = ExtResource("2_bwfku")
 dialogue = "now im angry"

@@ -39,8 +39,6 @@ func dialogue_cheats(s: String):
 #region dialogue loop
 func dialogue_start(dl:DialogueLine):
 	display_ui()
-	player_sprite.play("talk")
-	current_camera_animation = CameraAnimation.TALK
 	dialogue_loop(dl)
 
 
@@ -50,6 +48,9 @@ func dialogue_loop(dl:DialogueLine):
 		return
 	
 	if dl is DialogueStatement:
+		player_sprite.play("talk")
+		# current_camera_animation = CameraAnimation.TALK
+		
 		tween_to_talk()
 		
 		ui_npc_talk.talk(dl.dialogue)
