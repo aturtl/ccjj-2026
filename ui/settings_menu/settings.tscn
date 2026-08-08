@@ -58,9 +58,11 @@ layout_mode = 2
 theme_override_constants/separation = 10
 metadata/_tab_index = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/General" unique_id=1425750]
+[node name="CheckBox" type="CheckBox" parent="Panel/VBoxContainer/MarginContainer/TabContainer/General" unique_id=166409173]
 layout_mode = 2
-text = "So empty, so sad"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Highlight Interactables"
 
 [node name="Audio" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=23997449]
 visible = false
@@ -73,6 +75,7 @@ layout_mode = 2
 
 [node name="MasterVolume" type="Button" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer" unique_id=1155423753]
 layout_mode = 2
+toggle_mode = true
 text = "Master Volume"
 
 [node name="MasterSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer" unique_id=524768018]
@@ -122,7 +125,7 @@ text = "Back
 
 "
 
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterVolume" to="." method="_on_master_volume_pressed"]
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterVolume" to="." method="_on_master_volume_toggled"]
 [connection signal="changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterSlider" to="." method="_on_master_slider_changed"]
 [connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicVolume" to="." method="_on_music_volume_pressed"]
 [connection signal="changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_changed"]

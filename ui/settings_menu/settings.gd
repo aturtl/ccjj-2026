@@ -2,9 +2,22 @@ extends Control
 
 #region AUDIO
 
+var master_slider_val: float
+var master_slider_val: float
+var master_slider_val: float
+
+@onready var master_slider: HSlider = $Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterSlider
+@onready var music_slider: HSlider = $Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicSlider
+@onready var effects_slider: HSlider = $Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3/EffectsSlider
+
+
 #region MASTER
-func _on_master_volume_pressed() -> void:
+func _on_master_volume_toggled(toggled_on: bool) -> void:
 	# mute master bus
+	if toggled_on:
+		master_slider.modulate = Color.DIM_GRAY
+	else:
+		master_slider.modulate = Color.WHITE
 	pass
 
 func _on_master_slider_changed() -> void:
