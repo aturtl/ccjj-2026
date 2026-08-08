@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
-[ext_resource type="PackedScene" uid="uid://ix4858unbekg" path="res://ui/inventory/inventory_ui.tscn" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://ix4858unbekg" path="res://ui/inventory_ui/inventory_ui.tscn" id="7_eow3j"]
 
 [node name="Game" type="Node" unique_id=574838011]
 process_mode = 3
@@ -15,6 +15,8 @@ script = ExtResource("1_feb5d")
 
 [node name="BG" type="Sprite2D" parent="." unique_id=747760484]
 modulate = Color(0.14406255, 0.14406255, 0.14406255, 1)
+position = Vector2(589, 317)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_80nbo")
 
 [node name="Objects" type="Node" parent="." unique_id=238105188]
