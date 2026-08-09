@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://h566jkatlbcl"]
 
 [ext_resource type="Script" uid="uid://ct26c1b8stbn6" path="res://ui/paused_menu/paused.gd" id="1_qn0hj"]
-[ext_resource type="Shader" uid="uid://5ktnjych6umt" path="res://ui/paused_menu/blur_bg.gdshader" id="2_ij04n"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
-shader = ExtResource("2_ij04n")
 
 [node name="PauseMenu" type="Control" unique_id=784381929]
 layout_mode = 3
@@ -14,15 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qn0hj")
-
-[node name="Blur" type="ColorRect" parent="." unique_id=1838641014]
-material = SubResource("ShaderMaterial_g4v7s")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="." unique_id=1432176120]
 layout_mode = 1
