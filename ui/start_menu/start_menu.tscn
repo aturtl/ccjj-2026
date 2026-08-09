@@ -69,6 +69,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
+[node name="Creddits" type="Button" parent="." unique_id=626579858]
+layout_mode = 0
+offset_left = 1043.0
+offset_top = 594.0
+offset_right = 1119.0
+offset_bottom = 625.0
+text = "Credits"
+
 [connection signal="pressed" from="Panel/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Creddits" to="." method="_on_creddits_pressed"]

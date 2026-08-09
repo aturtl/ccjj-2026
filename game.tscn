@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://sdj0thafmbhh" path="res://dialogue_lines.gd" id="11_7sc4i"]
 [ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/dialogue_player_thought.gd" id="12_80cx4"]
 [ext_resource type="Script" uid="uid://bf6xushulbekl" path="res://dialogue/stackables/dialogue_statement.gd" id="13_e8heu"]
+[ext_resource type="PackedScene" uid="uid://bvg0cccacnihn" path="res://ui/credits_menu/credits_menu.tscn" id="14_215e1"]
 
 [node name="Game" type="Node2D" unique_id=69826831]
 process_mode = 3
@@ -128,6 +129,10 @@ visible = false
 [node name="SettingsMenu" parent="UI" unique_id=1151713264 instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
 process_mode = 2
+visible = false
+
+[node name="CreditsMenu" parent="UI" unique_id=1868038932 instance=ExtResource("14_215e1")]
+unique_name_in_owner = true
 visible = false
 
 [connection signal="toggled" from="UI/HUD/InventoryButton" to="." method="_on_inventory_button_toggled"]

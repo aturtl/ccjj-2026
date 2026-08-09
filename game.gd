@@ -5,6 +5,7 @@ extends Node
 @onready var settings_menu: Control = %SettingsMenu
 @onready var inventory_ui: Control = %InventoryUI
 
+
 func _ready() -> void:
 	UIManager.open_menu(start_menu)
 	get_tree().paused = true

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bvg0cccacnihn"]
+
+[ext_resource type="Script" uid="uid://d1kwhdrneuqed" path="res://ui/credits_menu/credits_menu.gd" id="1_brexn"]
+
+[node name="CreditsMenu" type="Control" unique_id=1868038932]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brexn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1227186552]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1891501996]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -338.5
+offset_top = -24.5
+offset_right = 338.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "(placeholder text)
+Tinkle, Wrinkle, Stinkle, Krinkle, and Doo worked very hard on this give them some love!"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="." unique_id=24777927]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -148.0
+offset_right = 50.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Back
+
+"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
