@@ -8,20 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="4_qynjn"]
 [ext_resource type="Script" uid="uid://cefhro15wp6v7" path="res://dialogue/ui_choice_displays/ui_choice_display.gd" id="4_s0v2e"]
 [ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/dialogue_player_thought.gd" id="5_nbgfc"]
-[ext_resource type="Texture2D" uid="uid://wtyvo4svr0wq" path="res://placeholders/placeholder_player_think_0000.png" id="6_ix2yu"]
-[ext_resource type="Texture2D" uid="uid://da6pn7yvwrpxf" path="res://placeholders/placeholder_player_think_0001.png" id="7_8o7g4"]
 [ext_resource type="Script" uid="uid://c70kymtkpjq10" path="res://dialogue/ui_templates/choice_template.gd" id="7_64tqn"]
-[ext_resource type="Texture2D" uid="uid://bchcjt000nkq3" path="res://placeholders/placeholder_player_converse.png" id="7_nyoxy"]
-[ext_resource type="Texture2D" uid="uid://dvqw73kytml1i" path="res://placeholders/placeholder_fish_guy.png" id="8_64tqn"]
 [ext_resource type="Script" uid="uid://c0agvk4gyihqb" path="res://dialogue/ui_talkers/ui_talk_npc.gd" id="9_ak87k"]
 [ext_resource type="Texture2D" uid="uid://r4xs3u5woly8" path="res://placeholders/placeholder_cake_0000.png" id="13_qffds"]
 [ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="14_7pvnj"]
 [ext_resource type="Texture2D" uid="uid://wj7xk48i8gfh" path="res://placeholders/placeholder_cake_0001.png" id="14_svhel"]
+[ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="15_bwfku"]
 [ext_resource type="Script" uid="uid://bh6ijehmecin3" path="res://generic/autoplay_animated_sprite_2d.gd" id="15_svhel"]
-[ext_resource type="Texture2D" uid="uid://qbs3dp6umr1f" path="res://placeholders/placeholder_wormy_0002.png" id="19_hieh2"]
-[ext_resource type="Texture2D" uid="uid://b0s0wenm6u4ud" path="res://placeholders/placeholder_wormy_0003.png" id="20_1lraq"]
-[ext_resource type="Texture2D" uid="uid://bs13yjlxmeuhu" path="res://placeholders/placeholder_wormy_0000.png" id="21_04flo"]
-[ext_resource type="Texture2D" uid="uid://dlm758x78w56q" path="res://placeholders/placeholder_wormy_0001.png" id="22_nnhk2"]
+[ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="16_nbgfc"]
 [ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="23_1lraq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1u1q"]
@@ -35,61 +29,6 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wwrea"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_nyoxy")
-}],
-"loop": 1,
-"name": &"talk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_ix2yu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_8o7g4")
-}],
-"loop": 1,
-"name": &"thought",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_d80km"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_64tqn")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("19_hieh2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_1lraq")
-}],
-"loop": 1,
-"name": &"wormy_angry",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("21_04flo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_nnhk2")
-}],
-"loop": 1,
-"name": &"wormy_basic",
 "speed": 5.0
 }]
 
@@ -112,33 +51,27 @@ blip_player = NodePath("tempblipplayer")
 
 [node name="OrganizationTemplate" type="Node" parent="EXAMPLELINES" unique_id=1533222074]
 script = ExtResource("2_bwfku")
-dialogue = "look at me"
 switch_npc_animation_to = "wormy_basic"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="YouMayChange" type="Node" parent="EXAMPLELINES/OrganizationTemplate" unique_id=1565826900]
 script = ExtResource("2_bwfku")
-dialogue = "i can talk"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="TheseNames" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange" unique_id=1865244232]
 script = ExtResource("2_bwfku")
-dialogue = "talk2"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="ToDepict" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames" unique_id=1510879930]
 script = ExtResource("2_bwfku")
-dialogue = "talk3"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Dialogue" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict" unique_id=2140778527]
 script = ExtResource("2_bwfku")
-dialogue = "talk4"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="QuestionTest" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue" unique_id=326980866]
 script = ExtResource("3_nbgfc")
-dialogue = "did you get all that?"
 metadata/_custom_type_script = "uid://vyopck2u0qf4"
 
 [node name="Maybe" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest" unique_id=1498668351 node_paths=PackedStringArray("goto")]
@@ -149,17 +82,14 @@ metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
 [node name="Thought5" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest/Maybe" unique_id=736048970]
 script = ExtResource("5_nbgfc")
-dialogue = "hi there it is me"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="Thought6" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest/Maybe/Thought5" unique_id=799519153]
 script = ExtResource("5_nbgfc")
-dialogue = "i decided to choose this option instead of howdy for some reason"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="DialogueStatement" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest/Maybe/Thought5/Thought6" unique_id=58342646]
 script = ExtResource("2_bwfku")
-dialogue = "that's lame..."
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Maybe2" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest" unique_id=1329882261 node_paths=PackedStringArray("goto")]
@@ -171,7 +101,6 @@ metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
 [node name="Thought5" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest/Maybe2" unique_id=1243263768]
 script = ExtResource("5_nbgfc")
-dialogue = "howdy pardner"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="Maybe3" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest" unique_id=680429954 node_paths=PackedStringArray("goto")]
@@ -183,28 +112,23 @@ metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
 [node name="Thought6" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest/Maybe3" unique_id=324860867]
 script = ExtResource("5_nbgfc")
-dialogue = "*grrr* growls grrr grrr >:("
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="Angry" type="Node" parent="EXAMPLELINES" unique_id=2120435397]
 script = ExtResource("2_bwfku")
-dialogue = "now im angry"
 switch_npc_animation_to = "wormy_angry"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Angry2" type="Node" parent="EXAMPLELINES/Angry" unique_id=1639900722]
 script = ExtResource("2_bwfku")
-dialogue = "grrr"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Angry3" type="Node" parent="EXAMPLELINES/Angry/Angry2" unique_id=192417354]
 script = ExtResource("2_bwfku")
-dialogue = "gah"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Angry4" type="Node" parent="EXAMPLELINES/Angry/Angry2/Angry3" unique_id=1718663090]
 script = ExtResource("2_bwfku")
-dialogue = "*dies of dead*"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="KILL2" type="Node" parent="EXAMPLELINES/Angry/Angry2/Angry3/Angry4" unique_id=1402318505]
@@ -217,44 +141,38 @@ metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Happy" type="Node" parent="EXAMPLELINES" unique_id=1557267594]
 script = ExtResource("2_bwfku")
-dialogue = "happy happyh"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Happy2" type="Node" parent="EXAMPLELINES/Happy" unique_id=891449611]
 script = ExtResource("2_bwfku")
-dialogue = "happeh im so happy :)"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Happy3" type="Node" parent="EXAMPLELINES/Happy/Happy2" unique_id=1720182845 node_paths=PackedStringArray("goto")]
 script = ExtResource("2_bwfku")
 goto = NodePath("../../../OrganizationTemplate")
-dialogue = "im so happy lets go back to the start"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Thought" type="Node" parent="EXAMPLELINES" unique_id=1823922508]
 script = ExtResource("5_nbgfc")
-dialogue = "yeah"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="Thought2" type="Node" parent="EXAMPLELINES/Thought" unique_id=1307019687]
 script = ExtResource("5_nbgfc")
-dialogue = "idrk why i am thinking right now"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="Thought3" type="Node" parent="EXAMPLELINES/Thought/Thought2" unique_id=1705311326]
 script = ExtResource("5_nbgfc")
-dialogue = "i mean sometimes i just think to think"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="Thought4" type="Node" parent="EXAMPLELINES/Thought/Thought2/Thought3" unique_id=191291279]
 script = ExtResource("5_nbgfc")
-dialogue = "i think..."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="UI" type="Node2D" parent="." unique_id=1169543956]
 z_index = 100
 
 [node name="UIChoice" type="Node2D" parent="UI" unique_id=2085162665 node_paths=PackedStringArray("choice_template", "transitioners")]
+z_index = 10
 script = ExtResource("4_s0v2e")
 choice_template = NodePath("ChoiceTemplate")
 transitioners = NodePath("../../Transitioners")
@@ -304,6 +222,7 @@ offset_right = 40.0
 offset_bottom = 37.0
 
 [node name="UITalkNPC" type="Node2D" parent="UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
+z_index = 10
 script = ExtResource("9_ak87k")
 box_template = NodePath("BoxTemplate")
 transitioners = NodePath("../../Transitioners")
@@ -330,7 +249,7 @@ offset_left = -518.0
 offset_top = -51.0
 offset_right = 82.0
 offset_bottom = 49.0
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "DIALOGUE"
 
@@ -367,7 +286,7 @@ offset_left = -518.0
 offset_top = -51.0
 offset_right = 82.0
 offset_bottom = 49.0
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "DIALOGUE"
 
@@ -382,20 +301,20 @@ texture = ExtResource("4_qynjn")
 [node name="Characters" type="Node2D" parent="." unique_id=992138454]
 
 [node name="Player" type="Node2D" parent="Characters" unique_id=1966904080]
-position = Vector2(-864, -296)
+position = Vector2(-776, 137)
 scale = Vector2(0.5199988, 0.56)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Characters/Player" unique_id=1581549206]
-sprite_frames = SubResource("SpriteFrames_wwrea")
+sprite_frames = ExtResource("15_bwfku")
 animation = &"thought"
 
 [node name="NPC" type="Node2D" parent="Characters" unique_id=286059124]
-position = Vector2(832, -336)
+position = Vector2(728.00006, -112)
 scale = Vector2(0.45118892, 0.4559301)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Characters/NPC" unique_id=1340904401]
 position = Vector2(78.90354, -126.98798)
-sprite_frames = SubResource("SpriteFrames_d80km")
+sprite_frames = ExtResource("16_nbgfc")
 animation = &"wormy_angry"
 
 [node name="Transitioners" type="Node2D" parent="." unique_id=249844191]

@@ -1,6 +1,10 @@
 extends Node2D
 
 
+func _ready():
+	%Cheats.cheat_entered.connect(_on_cheat_entered)
+
+
 func _on_cheat_entered(s: String):
 	print("CHEATING")
 	

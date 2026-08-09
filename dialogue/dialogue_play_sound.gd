@@ -1,9 +1,9 @@
-@icon("res://placeholders/placeholder_cake_0001.png")
+@icon("res://icons/icon_event.png")
 
-class_name DialogueStatement extends DialogueLine
+class_name DialoguePlaySound extends DialogueLine
 
 
-@export var dialogue: String = ""
+@export var audio_stream: AudioStream
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 
 @export var parallel_gotos = [] # VERY SPECIFIC CASES. annoying to use so just use goto,

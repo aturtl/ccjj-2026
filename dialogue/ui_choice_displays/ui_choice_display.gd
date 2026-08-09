@@ -49,9 +49,11 @@ func add_templated_choice_instance(choice_temp: ChoiceTemplate):
 	var spread_start = -choice_spread
 	var spread_end = choice_spread
 	
-	var angle = spread_start + spread_end * choice_instance_count/(float(total_choice_instance_count-1)) - (PI-choice_spread)/2.0
+	var direction = Vector2(0, 1)
 	
-	var direction = Vector2(cos(angle), sin(angle))
+	if total_choice_instance_count >= 1:
+		var angle = spread_start + spread_end * choice_instance_count/(float(total_choice_instance_count-1)) - (PI-choice_spread)/2.0
+		direction = Vector2(cos(angle), sin(angle))
 	
 	choice.global_position = transitioners.get_node("TransDisplayChoices").global_position + 250.0*direction
 	

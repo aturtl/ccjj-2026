@@ -1,9 +1,12 @@
-@icon("res://placeholders/placeholder_cake_0001.png")
+@icon("res://icons/icon_event.png")
 
-class_name DialogueStatement extends DialogueLine
+class_name DialogueFadeScreen extends DialogueLine
 
+@export var fade_time: float = 1.0
 
-@export var dialogue: String = ""
+enum FadeType {IN, OUT}
+@export var fade_type = FadeType.IN
+
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 
 @export var parallel_gotos = [] # VERY SPECIFIC CASES. annoying to use so just use goto,

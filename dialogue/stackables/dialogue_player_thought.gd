@@ -2,7 +2,7 @@
 
 class_name DialoguePlayerThought extends DialogueLine
 
-
+@export var dialogue: String = ""
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 
 @export var parallel_gotos = [] # VERY SPECIFIC CASES. annoying to use so just use goto,

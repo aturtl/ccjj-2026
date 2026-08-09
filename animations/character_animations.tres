@@ -1,0 +1,27 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cptx6biw1bgdv"]
+
+[ext_resource type="Texture2D" uid="uid://bchcjt000nkq3" path="res://placeholders/placeholder_player_converse.png" id="1_6w5ca"]
+[ext_resource type="Texture2D" uid="uid://wtyvo4svr0wq" path="res://placeholders/placeholder_player_think_0000.png" id="2_ikiu4"]
+[ext_resource type="Texture2D" uid="uid://da6pn7yvwrpxf" path="res://placeholders/placeholder_player_think_0001.png" id="3_ypysx"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6w5ca")
+}],
+"loop": 1,
+"name": &"talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ikiu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ypysx")
+}],
+"loop": 1,
+"name": &"thought",
+"speed": 5.0
+}]

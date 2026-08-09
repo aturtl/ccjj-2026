@@ -20,7 +20,12 @@ func play_talk_sound():
 
 
 #region box
-func talk(s: String, starting_visible_characters: int = 0):
+func talk(dl: DialogueLine, starting_visible_characters: int = 0):
+	if dl.in_between_time == -1.0:
+		dl.in_between_time = in_between_time
+	
+	var s = dl.dialogue
+	
 	if s == "":
 		talk_ended.emit()
 		start_next.emit()
@@ -37,8 +42,11 @@ func talk(s: String, starting_visible_characters: int = 0):
 	
 	for i in s.length() - starting_visible_characters:
 		if s[true_index] != ' ':
-			get_parent().get_parent().play_blip() #temp
-		await get_tree().create_timer(in_between_time).timeout
+			if dl.dynamic_range == -1.0:
+				get_parent().get_parent().play_blip() #temp
+			else:
+				get_parent().get_parent().play_blip(dl.dynamic_range) #temp
+		await get_tree().create_timer(dl.in_between_time).timeout
 		if label and !label.is_queued_for_deletion():
 			label.visible_characters += 1
 		true_index += 1
@@ -67,6 +75,11 @@ func add_templated_box_instance(box_temp: BoxTemplate):
 
 func animate_box_instance(num: int, box: BoxTemplate):
 	pass
+
+
+func kill_box_instance():
+	if box_instance:
+		animate_kill_box_instance(box_instance)
 
 
 func animate_kill_box_instance(box: BoxTemplate):
