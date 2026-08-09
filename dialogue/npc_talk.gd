@@ -124,6 +124,10 @@ func dialogue_loop(dl:DialogueLine):
 	elif dl is DialogueSetCam:
 		if dl.id == "Player":
 			tween_back_to_original_positions()
+		if dl.id == "Talk":
+			tween_to_talk(1.5)
+		if dl.id == "Thought":
+			tween_to_thought()
 	
 	elif dl is DialogueFadeScreen:
 		screen_fader.visible = true

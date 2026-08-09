@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://jyajy7mer30n" path="res://dialogue/stackable_presets/ds_reward_preset.tscn" id="13_s3jmc"]
 [ext_resource type="PackedScene" uid="uid://c0y6fbaviheuw" path="res://dialogue/stackable_presets/ds_scenefade_preset.tscn" id="14_swbew"]
 [ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/scenes/visual/question/dialogue_question.tscn" id="15_0v8oo"]
+[ext_resource type="PackedScene" uid="uid://b6dc0oxjf7wsh" path="res://dialogue/stackables/scenes/event/dialogue_set_cam.tscn" id="16_1vab1"]
 [ext_resource type="PackedScene" uid="uid://dne775fhoxpao" path="res://dialogue/stackables/scenes/visual/dialogue_player_thought.tscn" id="17_xyyno"]
 [ext_resource type="PackedScene" uid="uid://dli177chi42cs" path="res://dialogue/stackables/scenes/event/dialogue_reward.tscn" id="18_ahw2j"]
 [ext_resource type="PackedScene" uid="uid://bkld8nuvrrlnt" path="res://dialogue/stackables/scenes/event/dialogue_play_sound.tscn" id="19_bieie"]
@@ -203,6 +204,8 @@ script = ExtResource("2_3mtrk")
 dialogue = "The bushes here are well maintained."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
+[node name="DialogueSetCam" parent="InteractBushNoCarKeys/DialoguePlayerThought" unique_id=1105772095 instance=ExtResource("16_1vab1")]
+
 [node name="InteractBushCarKeys" type="Node2D" parent="." unique_id=809021485]
 
 [node name="DialoguePlayerThought" type="Node" parent="InteractBushCarKeys" unique_id=1687990845]
@@ -229,6 +232,8 @@ script = ExtResource("12_na5fk")
 reward_text = "CAR KEYS acquired!"
 metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
+[node name="DialogueSetCam" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter/DialogueReward" unique_id=1181379866 instance=ExtResource("16_1vab1")]
+
 [node name="InteractDoor" type="Node2D" parent="." unique_id=1096447482]
 
 [node name="DialoguePlayerThought" type="Node" parent="InteractDoor" unique_id=1654004353]
@@ -249,6 +254,11 @@ metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 script = ExtResource("2_3mtrk")
 dialogue = "Ugh, I don't know how this party thing works."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DialogueSetCam" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=1572668965 instance=ExtResource("16_1vab1")]
+
+[node name="DialogueSetCam" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=1083780904 instance=ExtResource("16_1vab1")]
+id = "Talk"
 
 [node name="DialogueChoice2" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion" unique_id=1879178135]
 script = ExtResource("5_k1frf")
@@ -271,6 +281,8 @@ dialogue = "... Well, in any case, I guess I’m here now. She must be around he
 
 [node name="DialogueReward" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought" unique_id=1972223848 instance=ExtResource("18_ahw2j")]
 reward_text = "(LIVING ROOM can now be explored)"
+
+[node name="DialogueSetCam" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueReward" unique_id=598835482 instance=ExtResource("16_1vab1")]
 
 [node name="DialoguePlaySound" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" parent_id_path=PackedInt32Array(607337241, 1413183850) index="1" unique_id=63000943 instance=ExtResource("19_bieie")]
 

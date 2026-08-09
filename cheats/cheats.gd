@@ -8,7 +8,21 @@ class_name Cheats extends Node2D
 signal cheat_entered # sends text on enter
 
 func text_set():
-	cheat_entered.emit(text_console.text)
+	var console_text = text_console.text
+	cheat_entered.emit(console_text)
+	match console_text:
+		"confidence":
+			Stats.confidence += 5
+		"extrovert":
+			Stats.confidence += 1000
+	if console_text.match("item_*"):
+		var item = load("res://data/items/"+console_text.substr(5)+".tres")
+		if item and item is ItemData:
+			Inventory.add_item(item)
+	if console_text.match("confidence_*"):
+		var num = int(console_text.substr(11))
+		Stats.confidence += num
+		print("CONFIDENCE ADDED: "+str(num))
 
 
 func _ready():
