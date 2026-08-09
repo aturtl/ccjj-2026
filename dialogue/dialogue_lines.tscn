@@ -10,20 +10,27 @@
 [ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/stackables/functionality/dialogue_play_sound.gd" id="8_8abdn"]
 [ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="9_dswi5"]
 [ext_resource type="Script" uid="uid://do1oojhpndbhe" path="res://dialogue/stackables/functionality/dialogue_stat_setter.gd" id="9_v0p3i"]
-[ext_resource type="PackedScene" uid="uid://dln6nhlu213ty" path="res://dialogue/stackables/dialogue_stat_setter.tscn" id="10_n5o83"]
+[ext_resource type="PackedScene" uid="uid://dln6nhlu213ty" path="res://dialogue/stackables/scenes/event/dialogue_stat_setter.tscn" id="10_n5o83"]
 [ext_resource type="Resource" uid="uid://d4d8061twem3j" path="res://data/items/key.tres" id="11_4w2fl"]
 [ext_resource type="Script" uid="uid://bl4vdyegyay3" path="res://dialogue/stackables/functionality/dialogue_reward.gd" id="12_na5fk"]
 [ext_resource type="Resource" uid="uid://dfme7khnhrmxg" path="res://data/items/car_keys.tres" id="13_dle7b"]
 [ext_resource type="PackedScene" uid="uid://jyajy7mer30n" path="res://dialogue/stackable_presets/ds_reward_preset.tscn" id="13_s3jmc"]
 [ext_resource type="PackedScene" uid="uid://c0y6fbaviheuw" path="res://dialogue/stackable_presets/ds_scenefade_preset.tscn" id="14_swbew"]
-[ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/dialogue_question.tscn" id="15_0v8oo"]
-[ext_resource type="PackedScene" uid="uid://dne775fhoxpao" path="res://dialogue/stackables/dialogue_player_thought.tscn" id="17_xyyno"]
-[ext_resource type="PackedScene" uid="uid://dli177chi42cs" path="res://dialogue/stackables/dialogue_reward.tscn" id="18_ahw2j"]
-[ext_resource type="PackedScene" uid="uid://bkld8nuvrrlnt" path="res://dialogue/stackables/dialogue_play_sound.tscn" id="19_bieie"]
-[ext_resource type="PackedScene" uid="uid://bj2jvyycscjx" path="res://dialogue/stackables/_dtree.tscn" id="20_sj2u3"]
-[ext_resource type="PackedScene" uid="uid://3pkkj171l7os" path="res://dialogue/stackables/dialogue_choice.tscn" id="22_ikrlq"]
-[ext_resource type="PackedScene" uid="uid://cwfb74agbws57" path="res://dialogue/stackables/dialogue_statement.tscn" id="23_258b8"]
+[ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/scenes/visual/question/dialogue_question.tscn" id="15_0v8oo"]
+[ext_resource type="PackedScene" uid="uid://dne775fhoxpao" path="res://dialogue/stackables/scenes/visual/dialogue_player_thought.tscn" id="17_xyyno"]
+[ext_resource type="PackedScene" uid="uid://dli177chi42cs" path="res://dialogue/stackables/scenes/event/dialogue_reward.tscn" id="18_ahw2j"]
+[ext_resource type="PackedScene" uid="uid://bkld8nuvrrlnt" path="res://dialogue/stackables/scenes/event/dialogue_play_sound.tscn" id="19_bieie"]
+[ext_resource type="PackedScene" uid="uid://bj2jvyycscjx" path="res://dialogue/stackables/scenes/_dtree.tscn" id="20_sj2u3"]
+[ext_resource type="PackedScene" uid="uid://3pkkj171l7os" path="res://dialogue/stackables/scenes/visual/question/dialogue_choice.tscn" id="22_ikrlq"]
+[ext_resource type="PackedScene" uid="uid://cwfb74agbws57" path="res://dialogue/stackables/scenes/visual/dialogue_statement.tscn" id="23_258b8"]
 [ext_resource type="Resource" uid="uid://bji3o44gneqbk" path="res://data/items/earring.tres" id="24_v3i0m"]
+[ext_resource type="PackedScene" uid="uid://c0lwbakueisyc" path="res://dialogue/stackables/scenes/event/dialogue_fade_screen.tscn" id="25_xyyno"]
+[ext_resource type="Resource" uid="uid://em4issnmvxmc" path="res://data/items/stepladder.tres" id="26_v3i0m"]
+[ext_resource type="Resource" uid="uid://b7x8mlbvim3un" path="res://data/items/stepladder_quest.tres" id="27_1vab1"]
+[ext_resource type="Resource" uid="uid://dcs0wnd2i8w6q" path="res://data/items/drink.tres" id="28_sh30a"]
+[ext_resource type="Resource" uid="uid://dirbwttvxbhpf" path="res://data/items/drink_quest.tres" id="29_ikg4h"]
+[ext_resource type="Resource" uid="uid://jlfjfmwpsoc7" path="res://data/items/screwdriver.tres" id="30_d0pek"]
+[ext_resource type="Resource" uid="uid://ceayw5x8ois71" path="res://data/items/painkillers.tres" id="31_74mgt"]
 
 [node name="DialogueLines" type="Node2D" unique_id=161622172]
 script = ExtResource("1_3etux")
@@ -387,51 +394,656 @@ dialogue = "Thanks again for finding my earring! We should hang out sometime!"
 
 [node name="Reef1" parent="." unique_id=1536150228 instance=ExtResource("20_sj2u3")]
 
+[node name="DialoguePlayerThought" parent="Reef1" unique_id=292560011 instance=ExtResource("17_xyyno")]
+dialogue = "They're blocking the hallway..."
+
+[node name="DialogueQuestion" parent="Reef1/DialoguePlayerThought" unique_id=914629503 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Reef1/DialoguePlayerThought/DialogueQuestion" unique_id=1491248777 instance=ExtResource("22_ikrlq")]
+choice_text = "It's fine... They'll probably move later?"
+
+[node name="DialogueChoice2" parent="Reef1/DialoguePlayerThought/DialogueQuestion" unique_id=1237440570 instance=ExtResource("22_ikrlq")]
+choice_text = "Ask them to move."
+
+[node name="DialoguePlayerThought" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=724052045 instance=ExtResource("17_xyyno")]
+dialogue = "..."
+
+[node name="DialogueStatement" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=919122169 instance=ExtResource("23_258b8")]
+dialogue = "..."
+
+[node name="DialogueStatement2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=1349722989 instance=ExtResource("23_258b8")]
+dialogue = "Oh. Hello. I didn't see you there."
+
+[node name="DialogueChoice" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=255782395 instance=ExtResource("22_ikrlq")]
+choice_text = "Move, please??"
+
+[node name="DialoguePlayerThought" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice" unique_id=780566719 instance=ExtResource("17_xyyno")]
+dialogue = "I need to get through that door. Could you move over a bit?"
+
+[node name="DialogueStatement" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought" unique_id=1748646008 instance=ExtResource("23_258b8")]
+dialogue = "Mmmmmm, how about... no. I’m comfortable here, thanks."
+
+[node name="DialogueStatement2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=900826836 instance=ExtResource("23_258b8")]
+dialogue = "Though I MIGHT be able to be persuaded. If you went and fetched me a drink."
+
+[node name="DialogueChoice2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1287416024 instance=ExtResource("22_ikrlq")]
+choice_text = "How did you [i]not[/i] see me?"
+
+[node name="DialogueStatement" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2" unique_id=1849788242 instance=ExtResource("23_258b8")]
+dialogue = "I don't feel the need to strain my eyes by paying attention to those who are beneath me."
+
+[node name="DialogueStatement" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement" unique_id=1632611808 instance=ExtResource("23_258b8")]
+dialogue = "..."
+
+[node name="DialogueStatement2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement" unique_id=483246071 instance=ExtResource("23_258b8")]
+dialogue = "Why are you still here? Go grab me a drink."
+
+[node name="DialoguePlayerThought2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement" unique_id=1899566348 instance=ExtResource("17_xyyno")]
+dialogue = "..."
+
+[node name="DialoguePlayerThought" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2" unique_id=656636789 instance=ExtResource("17_xyyno")]
+dialogue = "How did you not see me, I'm LITERALLY standing right in front of you"
+
+[node name="UNFINISHEDBOOKMARK" parent="." unique_id=46507180 instance=ExtResource("20_sj2u3")]
+
 [node name="Reef2HasQuest" parent="." unique_id=1388964652 instance=ExtResource("20_sj2u3")]
 
-[node name="Reef3HasDrink" parent="." unique_id=690051748 instance=ExtResource("20_sj2u3")]
+[node name="DialogueStatement" parent="Reef2HasQuest" unique_id=844837994 instance=ExtResource("23_258b8")]
+dialogue = "Oh… it’s you again. Have you brought my drink yet?"
 
-[node name="Reef4After" parent="." unique_id=1245709528 instance=ExtResource("20_sj2u3")]
+[node name="DialogueQuestion" parent="Reef2HasQuest/DialogueStatement" unique_id=444421236 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion" unique_id=1439943348 instance=ExtResource("22_ikrlq")]
+choice_text = "Nope."
+
+[node name="DialogueStatement" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=2006312603 instance=ExtResource("23_258b8")]
+dialogue = "Then go get it!"
+
+[node name="DialogueChoice" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion" unique_id=1521618385 instance=ExtResource("22_ikrlq")]
+choice_text = "Give them the drink"
+prereq_item = ExtResource("28_sh30a")
+
+[node name="DialogueStatSetter" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=1249917628 instance=ExtResource("10_n5o83")]
+remove_item = ExtResource("28_sh30a")
+
+[node name="DialogueStatement" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice/DialogueStatSetter" unique_id=2086509736 instance=ExtResource("23_258b8")]
+dialogue = "Hm. I guess you turned out to be useful after all."
+
+[node name="DialogueStatement2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice/DialogueStatSetter/DialogueStatement" unique_id=25196293 instance=ExtResource("23_258b8")]
+dialogue = "You may pass."
+
+[node name="DialogueFadeScreen" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice/DialogueStatSetter/DialogueStatement/DialogueStatement2" unique_id=129186986 instance=ExtResource("25_xyyno")]
+
+[node name="DialoguePlaySound" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice/DialogueStatSetter/DialogueStatement/DialogueStatement2/DialogueFadeScreen" unique_id=516960596 instance=ExtResource("19_bieie")]
+
+[node name="DialogueFadeScreen2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice/DialogueStatSetter/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound" unique_id=1559603373 node_paths=PackedStringArray("goto") instance=ExtResource("25_xyyno")]
+goto = NodePath("../../../../../../../../../../_Reef2_Reward/DialogueStatSetter")
+
+[node name="DialogueChoice3" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion" unique_id=787422757 instance=ExtResource("22_ikrlq")]
+choice_text = "Spill it on them"
+prereq_item = ExtResource("28_sh30a")
+
+[node name="DialoguePlayerThought" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3" unique_id=1312906060 instance=ExtResource("17_xyyno")]
+dialogue = "Heh."
+
+[node name="DialogueStatSetter" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought" unique_id=1380598912 instance=ExtResource("10_n5o83")]
+remove_item = ExtResource("28_sh30a")
+
+[node name="DialogueStatement" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought" unique_id=388015998 instance=ExtResource("23_258b8")]
+dialogue = "!! WH-WHY WOULD YOU DO THAT?"
+
+[node name="DialogueStatement2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement" unique_id=1211622817 instance=ExtResource("23_258b8")]
+dialogue = "UGH! THIS OUTFIT WAS DESIGNER!"
+
+[node name="DialogueFadeScreen" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1124020636 instance=ExtResource("25_xyyno")]
+
+[node name="DialoguePlaySound" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen" unique_id=822277604 instance=ExtResource("19_bieie")]
+
+[node name="DialogueFadeScreen2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound" unique_id=831340116 instance=ExtResource("25_xyyno")]
+
+[node name="DialoguePlayerThought" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2" unique_id=1147490190 instance=ExtResource("17_xyyno")]
+dialogue = "Aaaand they’re gone."
+
+[node name="DialoguePlayerThought2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought" unique_id=1661114874 node_paths=PackedStringArray("goto") instance=ExtResource("17_xyyno")]
+dialogue = "Well, serves them right I guess."
+goto = NodePath("../../../../../../../../../../../../_Reef2_Reward/DialogueStatSetter")
+
+[node name="_Reef2_Reward" parent="." unique_id=1245709528 instance=ExtResource("20_sj2u3")]
+
+[node name="DialogueStatSetter" parent="_Reef2_Reward" unique_id=1194857724 instance=ExtResource("13_s3jmc")]
+
+[node name="Reef3_After" parent="." unique_id=2058692846 instance=ExtResource("20_sj2u3")]
+
+[node name="DialogueStatement" parent="Reef3_After" unique_id=2009554098 instance=ExtResource("23_258b8")]
+dialogue = "Thanks for bringing me that drink, I suppose."
+
+[node name="DialogueStatement" parent="Reef3_After/DialogueStatement" unique_id=1360670716 instance=ExtResource("23_258b8")]
+dialogue = "... Where did you get your dress? It’s very chic."
 
 [node name="Atolla" parent="." unique_id=646586006 instance=ExtResource("20_sj2u3")]
 
-[node name="Atolla2HasQuest" parent="." unique_id=1999141843 instance=ExtResource("20_sj2u3")]
+[node name="DialoguePlayerThought" parent="Atolla" unique_id=1798045690 instance=ExtResource("17_xyyno")]
+dialogue = "They look busy.."
+
+[node name="DialogueQuestion" parent="Atolla/DialoguePlayerThought" unique_id=270904455 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Atolla/DialoguePlayerThought/DialogueQuestion" unique_id=2088113893 instance=ExtResource("22_ikrlq")]
+choice_text = "Don't bother them."
+
+[node name="DialogueChoice2" parent="Atolla/DialoguePlayerThought/DialogueQuestion" unique_id=759596950 instance=ExtResource("22_ikrlq")]
+choice_text = "What are you doing?"
+
+[node name="DialogueStatement" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=677422804 instance=ExtResource("23_258b8")]
+dialogue = "I’m decorating!"
+
+[node name="DialoguePlayerThought" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement" unique_id=136430391 instance=ExtResource("17_xyyno")]
+dialogue = "Uhh, but hasn’t the party already started?"
+
+[node name="DialogueStatement" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialoguePlayerThought" unique_id=686191741 instance=ExtResource("23_258b8")]
+dialogue = "Has it? I hadn’t noticed."
+
+[node name="DialogueChoice3" parent="Atolla/DialoguePlayerThought/DialogueQuestion" unique_id=1280479319 instance=ExtResource("22_ikrlq")]
+choice_text = "Can I borrow that stepladder?"
+prereq_confidence = 20
+
+[node name="DialoguePlayerThought" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3" unique_id=1113734023 instance=ExtResource("17_xyyno")]
+dialogue = "Hey, can I borrow your stepladder?"
+
+[node name="DialogueStatement" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought" unique_id=2042085760 instance=ExtResource("23_258b8")]
+dialogue = "My stepladder? I need that for decorating!"
+
+[node name="DialoguePlayerThought" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement" unique_id=2138073123 instance=ExtResource("17_xyyno")]
+dialogue = "How about this? I’ll finish decorating for you! And then you could, maybe, take a break?"
+
+[node name="DialogueStatement" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1627435978 instance=ExtResource("23_258b8")]
+dialogue = "Hmm… okay!"
+
+[node name="DialogueStatSetter2" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement" unique_id=1814918896 instance=ExtResource("13_s3jmc")]
+confidence_reward = 0
+add_item = ExtResource("26_v3i0m")
+remove_item = ExtResource("27_1vab1")
+
+[node name="DialogueReward" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2" index="0" unique_id=1748942105]
+reward_text = "YOU GAINED A STEPLADDER! Now you have to carry it.."
 
 [node name="InteractDrinksCounter" parent="." unique_id=1211615236 instance=ExtResource("20_sj2u3")]
 
+[node name="DialoguePlayerThought" parent="InteractDrinksCounter" unique_id=1476783340 instance=ExtResource("17_xyyno")]
+dialogue = "Ooh, drinks!"
+
+[node name="DialogueQuestion" parent="InteractDrinksCounter/DialoguePlayerThought" unique_id=1435325499 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion" unique_id=1623544146 instance=ExtResource("22_ikrlq")]
+choice_text = "Maybe later."
+
+[node name="DialogueChoice2" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion" unique_id=967492880 instance=ExtResource("22_ikrlq")]
+choice_text = "Grab a drink for yourself?"
+prereq_confidence = 20
+
+[node name="DialoguePlayerThought" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=450238705 instance=ExtResource("17_xyyno")]
+dialogue = "Well… [i]it[/i] is a party after all. Maybe I should live a little."
+
+[node name="DialogueStatSetter" type="Node" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=1884188666]
+script = ExtResource("9_v0p3i")
+confidence_reward = 10
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
+
+[node name="DialoguePlaySound" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter" unique_id=1277016455 instance=ExtResource("19_bieie")]
+
+[node name="DialogueReward" type="Node" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter" unique_id=238514120]
+script = ExtResource("12_na5fk")
+reward_text = "CONFIDENCE increased by 10!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialogueSetCam" type="Node" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter/DialogueReward" unique_id=619172470]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
+
+[node name="DialogueChoice3" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion" unique_id=480886610 instance=ExtResource("22_ikrlq")]
+choice_text = "Grab a drink for Reef?"
+prereq_item = ExtResource("28_sh30a")
+
+[node name="DialogueStatSetter" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice3" unique_id=1518181120 instance=ExtResource("13_s3jmc")]
+confidence_reward = 0
+add_item = ExtResource("28_sh30a")
+remove_item = ExtResource("29_ikg4h")
+
+[node name="DialogueReward" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialogueStatSetter" index="0" unique_id=1748942105]
+reward_text = "DRINK ACQUIRED!"
+
 [node name="Moray1" type="Node2D" parent="." unique_id=1657624928]
+
+[node name="DialoguePlayerThought" parent="Moray1" unique_id=256903984 instance=ExtResource("17_xyyno")]
+dialogue = "It's a VIP room... And someone's blocking the door. Great."
+
+[node name="DialogueQuestion" parent="Moray1/DialoguePlayerThought" unique_id=1014345809 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Moray1/DialoguePlayerThought/DialogueQuestion" unique_id=107471113 instance=ExtResource("22_ikrlq")]
+choice_text = "Guess I can't enter."
+
+[node name="DialogueChoice2" parent="Moray1/DialoguePlayerThought/DialogueQuestion" unique_id=2103027239 instance=ExtResource("22_ikrlq")]
+choice_text = "Ask for entry"
+prereq_confidence = 20
+
+[node name="DialoguePlayerThought" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=1629498994 instance=ExtResource("17_xyyno")]
+dialogue = "Can I… use the door? I think my friend might have gone through."
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=894766424 instance=ExtResource("23_258b8")]
+dialogue = "We don’t let just anyone through here. We only let the best of the best into the VIP party. The champions. The winners."
+
+[node name="DialogueQuestion" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=1309753705 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion" unique_id=714981877 instance=ExtResource("22_ikrlq")]
+choice_text = "Isn't that just the backyard...?"
+
+[node name="DialoguePlayerThought" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=163177266 instance=ExtResource("17_xyyno")]
+dialogue = "That's literally just the back yard."
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=297790655 instance=ExtResource("23_258b8")]
+dialogue = "... No it isn’t. It’s the VIP party. And I’ll only let you through if you prove that you’ve got what it takes to be a VIP."
+
+[node name="DialogueStatement2" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=1279955672 instance=ExtResource("23_258b8")]
+dialogue = "Verifiably Impressive at Pong."
+
+[node name="DialogueQuestion" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1715298491 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion" unique_id=544217994 instance=ExtResource("22_ikrlq")]
+choice_text = "That’s not what VIP stands for"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion/DialogueChoice" unique_id=1833936544 instance=ExtResource("23_258b8")]
+dialogue = "Well what else is it supposed to stand for?"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion/DialogueChoice/DialogueStatement" unique_id=1884263650 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+dialogue = "Never mind that- unless you beat ME, the Beer Pong Champion, in an epic battle of pong, you aren’t getting anywhere near this door."
+goto = NodePath("../../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
+
+[node name="DialogueChoice2" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion" unique_id=1867289303 instance=ExtResource("22_ikrlq")]
+choice_text = "So I’ve got to win at beer pong to get in?"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion/DialogueChoice2" unique_id=461888566 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+dialogue = "If you think you can beat me, heheheh…"
+goto = NodePath("../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
+
+[node name="DialogueChoice2" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion" unique_id=1892746536 instance=ExtResource("22_ikrlq")]
+choice_text = "Winners?"
+
+[node name="DialoguePlayerThought" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=1734891140 instance=ExtResource("17_xyyno")]
+dialogue = "Winners?"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=956383506 instance=ExtResource("23_258b8")]
+dialogue = "Those with the strength, the wit, the courage. I’ll yield to anyone who can best me in my championing sport…"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=1809626372 instance=ExtResource("23_258b8")]
+dialogue = "... BEER PONG!"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement" unique_id=1542250125 instance=ExtResource("23_258b8")]
+dialogue = "Doesn’t the very name send shivers down your spine?"
+
+[node name="DialogueQuestion" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement" unique_id=1214844009 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion" unique_id=1630309921 instance=ExtResource("22_ikrlq")]
+choice_text = "Yes"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=409222882 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+dialogue = "You are a kindred spirit, I can tell. Perhaps you have a chance of defeating me."
+goto = NodePath("../../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
+
+[node name="DialogueChoice2" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion" unique_id=473699289 instance=ExtResource("22_ikrlq")]
+choice_text = "No"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=216455528 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+dialogue = "Hmph. That kind of attitude will get you nowhere in this challenge."
+goto = NodePath("../../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
+
+[node name="DialogueChoice3" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion" unique_id=1009797916 instance=ExtResource("22_ikrlq")]
+choice_text = "What"
+
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice3" unique_id=1125210033 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+dialogue = "Already your knowledge of the artform seems to be lacking. I doubt your ability to match my undeniable skill."
+goto = NodePath("../../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
+
+[node name="_Moray1_Challenge" type="Node2D" parent="." unique_id=394442604]
+
+[node name="DialogueStatement" parent="_Moray1_Challenge" unique_id=1965586435 instance=ExtResource("23_258b8")]
+dialogue = "Are you prepared to challenge me, the Beer Pong Champion?"
+
+[node name="DialogueQuestion" parent="_Moray1_Challenge/DialogueStatement" unique_id=1007937051 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="_Moray1_Challenge/DialogueStatement/DialogueQuestion" unique_id=846154698 instance=ExtResource("22_ikrlq")]
+choice_text = "Oops, gotta go! I'll be back!!"
+
+[node name="DialogueChoice2" parent="_Moray1_Challenge/DialogueStatement/DialogueQuestion" unique_id=592708729 instance=ExtResource("22_ikrlq")]
+choice_text = "Challenge Moray to Beer Pong"
+prereq_confidence = 50
 
 [node name="_Moray1_Defeat" type="Node2D" parent="." unique_id=232085123]
 
+[node name="DialogueStatement2" parent="_Moray1_Defeat" unique_id=2138541971 instance=ExtResource("23_258b8")]
+dialogue = "This outcome was inevitable."
+
 [node name="_Moray1_Victory" type="Node2D" parent="." unique_id=1380481500]
 
-[node name="Moray1TryAgain" type="Node2D" parent="." unique_id=1227434860]
+[node name="DialogueStatement" parent="_Moray1_Victory" unique_id=435689232 instance=ExtResource("23_258b8")]
+dialogue = "You… you’ve bested me at my own game! How can this be?"
 
-[node name="Moray2After" type="Node2D" parent="." unique_id=248364897]
+[node name="DialogueStatement2" parent="_Moray1_Victory/DialogueStatement" unique_id=1518532729 instance=ExtResource("23_258b8")]
+dialogue = "[i]Siiigghhh.[/i] A true master knows when to admit defeat."
+
+[node name="DialogueStatement3" parent="_Moray1_Victory/DialogueStatement/DialogueStatement2" unique_id=1914796569 instance=ExtResource("23_258b8")]
+dialogue = "You may now consider yourself a VIP: Verifiably Impressive at Pong. Enter the VIP party as you wish."
+
+[node name="DialogueFadeScreen" parent="_Moray1_Victory/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=1145489253 instance=ExtResource("25_xyyno")]
+
+[node name="DialoguePlaySound" parent="_Moray1_Victory/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeScreen" unique_id=516844367 instance=ExtResource("19_bieie")]
+
+[node name="DialogueFadeScreen2" parent="_Moray1_Victory/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeScreen/DialoguePlaySound" unique_id=86404302 instance=ExtResource("25_xyyno")]
+fade_type = 1
+
+[node name="Moray2TryAgain" type="Node2D" parent="." unique_id=1227434860]
+
+[node name="DialoguePlayerThought" parent="Moray2TryAgain" unique_id=1565716181 node_paths=PackedStringArray("goto") instance=ExtResource("17_xyyno")]
+dialogue = "He's still here..."
+goto = NodePath("../../_Moray1_Challenge/DialogueStatement")
 
 [node name="Dog" type="Node2D" parent="." unique_id=1802682967]
 
-[node name="DialogueQuestion" parent="Dog" unique_id=1546841826 instance=ExtResource("15_0v8oo")]
+[node name="DialoguePlayerThought" parent="Dog" unique_id=1075892523 instance=ExtResource("17_xyyno")]
+dialogue = "DOG!"
 
-[node name="DialogueChoice" parent="Dog/DialogueQuestion" unique_id=1869705463 instance=ExtResource("22_ikrlq")]
+[node name="DialogueQuestion" parent="Dog/DialoguePlayerThought" unique_id=1546841826 instance=ExtResource("15_0v8oo")]
 
-[node name="DialogueChoice2" parent="Dog/DialogueQuestion" unique_id=2110821684 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice2" parent="Dog/DialoguePlayerThought/DialogueQuestion" unique_id=2110821684 instance=ExtResource("22_ikrlq")]
+choice_text = "Don't pet dog. (Why would you choose this?)"
+
+[node name="DialogueChoice" parent="Dog/DialoguePlayerThought/DialogueQuestion" unique_id=1869705463 instance=ExtResource("22_ikrlq")]
+choice_text = "Pet dog"
+
+[node name="DialoguePlayerThought" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=192239991 instance=ExtResource("17_xyyno")]
+dialogue = "Hehe. Good puppy!"
+
+[node name="DialogueStatement" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=1159961602 instance=ExtResource("23_258b8")]
+dialogue = "Arf!"
+
+[node name="DialogueStatSetter" type="Node" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=1596225917]
+script = ExtResource("9_v0p3i")
+confidence_reward = 5
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
+
+[node name="DialogueReward" type="Node" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter" unique_id=1927465762]
+script = ExtResource("12_na5fk")
+reward_text = "YOU GAINED 5 CONFIDENCE! YOU PET THE DOG!!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialoguePlayerThought" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward" unique_id=878611402 instance=ExtResource("17_xyyno")]
+dialogue = "Hey… whatcha got there?"
+
+[node name="DialogueStatement" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought" unique_id=1004908677 instance=ExtResource("23_258b8")]
+dialogue = "Arf?"
+
+[node name="DialogueStatSetter" type="Node" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement" unique_id=1742556237]
+script = ExtResource("9_v0p3i")
+add_item = ExtResource("30_d0pek")
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
+
+[node name="DialogueReward" type="Node" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement/DialogueStatSetter" unique_id=383466661]
+script = ExtResource("12_na5fk")
+reward_text = "You also gained.. A SCREWDRIVER!?"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialoguePlayerThought" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward" unique_id=123214935 instance=ExtResource("17_xyyno")]
+dialogue = "... It’s all slobbery."
+
+[node name="DialogueStatement" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought" unique_id=1132117043 instance=ExtResource("23_258b8")]
+dialogue = "Arf-!"
+
+[node name="DialogueSetCam" type="Node" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement" unique_id=524540860]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
 [node name="Brad1" parent="." unique_id=884706717 instance=ExtResource("20_sj2u3")]
 
-[node name="Brad2" parent="." unique_id=763491533 instance=ExtResource("20_sj2u3")]
+[node name="DialoguePlayerThought" parent="Brad1" unique_id=1734276527 instance=ExtResource("17_xyyno")]
+dialogue = "It's just Brad."
+
+[node name="DialogueQuestion" parent="Brad1/DialoguePlayerThought" unique_id=1668823838 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Brad1/DialoguePlayerThought/DialogueQuestion" unique_id=1571145935 instance=ExtResource("22_ikrlq")]
+choice_text = "Maybe next time?"
+
+[node name="DialogueChoice2" parent="Brad1/DialoguePlayerThought/DialogueQuestion" unique_id=1414187109 instance=ExtResource("22_ikrlq")]
+choice_text = "Talk to Brad"
+prereq_confidence = 15
+
+[node name="DialogueStatement" parent="Brad1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=906972559 instance=ExtResource("23_258b8")]
+dialogue = "Hey. How’s it… ugh… going?"
+
+[node name="DialogueQuestion" parent="Brad1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement" unique_id=1710009003 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Brad1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1267777054 instance=ExtResource("22_ikrlq")]
+choice_text = "It’s going alright"
+
+[node name="DialogueStatement" parent="Brad1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=691718778 instance=ExtResource("23_258b8")]
+dialogue = "Glad to hear it. One of us might as well be having a good time, am I right? Heh."
+
+[node name="DialoguePlayerThought" parent="Brad1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialogueStatement" unique_id=399003426 node_paths=PackedStringArray("goto") instance=ExtResource("17_xyyno")]
+dialogue = "What do you mean?"
+goto = NodePath("../../../../../../../../../_Brad1_HeadacheGiveQuest/DialogueStatement")
+
+[node name="DialogueChoice2" parent="Brad1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=143260560 node_paths=PackedStringArray("goto") instance=ExtResource("22_ikrlq")]
+goto = NodePath("../../../../../../../_Brad1_HeadacheGiveQuest/DialogueStatement")
+choice_text = "What’s up with you?"
+
+[node name="_Brad1_HeadacheGiveQuest" parent="." unique_id=763491533 instance=ExtResource("20_sj2u3")]
+
+[node name="DialogueStatement" parent="_Brad1_HeadacheGiveQuest" unique_id=1185092351 instance=ExtResource("23_258b8")]
+dialogue = "I’ve got a killer headache. Came over here hoping a drink might help, but… nada."
+
+[node name="DialogueStatement2" parent="_Brad1_HeadacheGiveQuest/DialogueStatement" unique_id=749983630 instance=ExtResource("23_258b8")]
+dialogue = "I wonder if they keep any medicine around here somewhere…"
+
+[node name="DialogueStatement" parent="_Brad1_HeadacheGiveQuest/DialogueStatement/DialogueStatement2" unique_id=539786753 instance=ExtResource("23_258b8")]
+dialogue = "Oh well. I’m not gonna let some measly migraine keep me from having a good time! HA!"
+
+[node name="DialogueStatement" parent="_Brad1_HeadacheGiveQuest/DialogueStatement/DialogueStatement2/DialogueStatement" unique_id=52183938 instance=ExtResource("23_258b8")]
+dialogue = "... Ouch."
+
+[node name="Brad2" parent="." unique_id=754524452 instance=ExtResource("20_sj2u3")]
+
+[node name="DialogueStatement" parent="Brad2" unique_id=1175896762 instance=ExtResource("23_258b8")]
+dialogue = "Need something?"
+
+[node name="DialogueQuestion" parent="Brad2/DialogueStatement" unique_id=2117946942 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Brad2/DialogueStatement/DialogueQuestion" unique_id=887437035 instance=ExtResource("22_ikrlq")]
+choice_text = "Nah"
+
+[node name="DialogueChoice2" parent="Brad2/DialogueStatement/DialogueQuestion" unique_id=1274239076 instance=ExtResource("22_ikrlq")]
+choice_text = "Painkillers"
+prereq_item = ExtResource("31_74mgt")
+
+[node name="DialoguePlayerThought" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=392996154 instance=ExtResource("17_xyyno")]
+dialogue = "I brought you some pain killers for that headache. Thought you could use them."
+
+[node name="DialogueStatement" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=695315346 instance=ExtResource("23_258b8")]
+dialogue = "You did? Damn! You’re, like, a hero! Thanks dude!"
+
+[node name="DialogueStatSetter" type="Node" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=960920805]
+script = ExtResource("9_v0p3i")
+confidence_reward = 10
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
+
+[node name="DialogueReward" type="Node" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatSetter" unique_id=524373253]
+script = ExtResource("12_na5fk")
+reward_text = "Confidence INCREASED BY 10!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialogueSetCam" type="Node" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward" unique_id=1407282805]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
 [node name="Brad3After" parent="." unique_id=257201578 instance=ExtResource("20_sj2u3")]
 
-[node name="Brad3After2" parent="." unique_id=338699693 instance=ExtResource("20_sj2u3")]
+[node name="DialogueStatement" parent="Brad3After" unique_id=162004739 instance=ExtResource("23_258b8")]
+dialogue = "Thanks again for your help man. I’m feeling better already!"
 
 [node name="AtollaKitchen" parent="." unique_id=770615894 instance=ExtResource("20_sj2u3")]
 
+[node name="DialogueStatement" parent="AtollaKitchen" unique_id=129533533 instance=ExtResource("23_258b8")]
+dialogue = "Hey, thanks for the help earlier, man. It’s good to be on break from decorating."
+
+[node name="DialogueStatement" parent="AtollaKitchen/DialogueStatement" unique_id=1884204067 instance=ExtResource("23_258b8")]
+dialogue = "Though… now that I think about it, that wall over there is looking PRETTY blank… Hmm…"
+
 [node name="Shoal1" parent="." unique_id=2077568846 instance=ExtResource("20_sj2u3")]
+
+[node name="DialoguePlayerThought" parent="Shoal1" unique_id=1795203278 instance=ExtResource("17_xyyno")]
+dialogue = "Why's he standing in a corner? Should I go talk to him?"
+
+[node name="DialogueQuestion" parent="Shoal1/DialoguePlayerThought" unique_id=1777527696 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Shoal1/DialoguePlayerThought/DialogueQuestion" unique_id=782291021 instance=ExtResource("22_ikrlq")]
+choice_text = "Don't bother him"
+
+[node name="DialoguePlayerThought2" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=1156353442 instance=ExtResource("17_xyyno")]
+dialogue = "You quickly scatter."
+
+[node name="DialogueChoice2" parent="Shoal1/DialoguePlayerThought/DialogueQuestion" unique_id=1325676842 instance=ExtResource("22_ikrlq")]
+choice_text = "BOTHER HIM!!!"
+
+[node name="DialoguePlayerThought" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=675741238 instance=ExtResource("17_xyyno")]
+dialogue = "... Um, hi!"
+
+[node name="DialogueStatement" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=1222746249 instance=ExtResource("23_258b8")]
+dialogue = "Oh, uh, hello."
+
+[node name="DialoguePlayerThought" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=45926870 instance=ExtResource("17_xyyno")]
+dialogue = "I’m Annemette. What’s your name?"
+
+[node name="DialogueStatement" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=290908190 instance=ExtResource("23_258b8")]
+dialogue = "...Shoal. It’s… nice to meet you."
+
+[node name="DialoguePlayerThought" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement" unique_id=1759625627 instance=ExtResource("17_xyyno")]
+dialogue = "I’m guessing parties aren’t your thing?"
+
+[node name="DialogueStatement" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1104743449 instance=ExtResource("23_258b8")]
+dialogue = "... Not particularly."
+
+[node name="DialoguePlayerThought" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement" unique_id=339587572 instance=ExtResource("17_xyyno")]
+dialogue = "Me neither. I’m mostly only here because my friend Marley invited me to come, but who knows where she’s at now."
+
+[node name="DialogueStatement" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=417604442 instance=ExtResource("23_258b8")]
+dialogue = "Seems like we might be having the same night."
+
+[node name="DialogueStatement" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement" unique_id=851286226 instance=ExtResource("23_258b8")]
+dialogue = "If you need a corner to hide in while you’re here, there’s probably enough space for one more."
+
+[node name="DialoguePlayerThought" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatement" unique_id=160108138 instance=ExtResource("17_xyyno")]
+dialogue = "Haha, thanks. I just might take you up on that."
+
+[node name="DialogueStatSetter" type="Node" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialoguePlayerThought" unique_id=60404294]
+script = ExtResource("9_v0p3i")
+confidence_reward = 5
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
+
+[node name="DialogueReward" type="Node" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialoguePlayerThought/DialogueStatSetter" unique_id=262627295]
+script = ExtResource("12_na5fk")
+reward_text = "YOU GAINED 5 CONFIDENCE!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialogueSetCam" type="Node" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialoguePlayerThought/DialogueStatSetter/DialogueReward" unique_id=1679066092]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
 [node name="Shoal2After" parent="." unique_id=755198216 instance=ExtResource("20_sj2u3")]
 
+[node name="DialogueStatement" parent="Shoal2After" unique_id=136815932 instance=ExtResource("23_258b8")]
+dialogue = "Need a break from the crowds?"
+
+[node name="DialogueQuestion" parent="Shoal2After/DialogueStatement" unique_id=1965522554 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Shoal2After/DialogueStatement/DialogueQuestion" unique_id=641816528 instance=ExtResource("22_ikrlq")]
+choice_text = "Yeah"
+
+[node name="DialoguePlayerThought" parent="Shoal2After/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=243019656 instance=ExtResource("17_xyyno")]
+dialogue = "Yeah, it'd be nice."
+
+[node name="DialogueFadeScreen" parent="Shoal2After/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=1914240917 instance=ExtResource("25_xyyno")]
+
+[node name="DialoguePlaySound" parent="Shoal2After/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueFadeScreen" unique_id=74194234 instance=ExtResource("19_bieie")]
+
+[node name="DialogueFadeScreen2" parent="Shoal2After/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueFadeScreen/DialoguePlaySound" unique_id=1253452591 instance=ExtResource("25_xyyno")]
+fade_type = 1
+
+[node name="DialoguePlayerThought" parent="Shoal2After/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2" unique_id=1430020635 instance=ExtResource("17_xyyno")]
+dialogue = "Thanks, Shoal. I needed that."
+
+[node name="DialogueStatement" parent="Shoal2After/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought" unique_id=1007663292 instance=ExtResource("23_258b8")]
+dialogue = "Anytime."
+
+[node name="DialogueChoice2" parent="Shoal2After/DialogueStatement/DialogueQuestion" unique_id=1316996461 instance=ExtResource("22_ikrlq")]
+choice_text = "I'm good."
+
+[node name="DialoguePlayerThought" parent="Shoal2After/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=837442066 instance=ExtResource("17_xyyno")]
+dialogue = "I'm good for now."
+
+[node name="DialogueStatement" parent="Shoal2After/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=912441185 instance=ExtResource("23_258b8")]
+dialogue = "Suit yourself. See you later."
+
 [node name="InteractVent" parent="." unique_id=1333777381 instance=ExtResource("20_sj2u3")]
+
+[node name="DialoguePlayerThought" parent="InteractVent" unique_id=320311814 instance=ExtResource("17_xyyno")]
+dialogue = "Oh look, a vent."
+
+[node name="DialogueQuestion" parent="InteractVent/DialoguePlayerThought" unique_id=1480170914 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice2" parent="InteractVent/DialoguePlayerThought/DialogueQuestion" unique_id=1907034103 instance=ExtResource("22_ikrlq")]
+choice_text = "Attempt to pry open"
+
+[node name="DialogueFadeScreen" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=681194964 instance=ExtResource("25_xyyno")]
+
+[node name="DialoguePlaySound" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueFadeScreen" unique_id=1569031231 instance=ExtResource("19_bieie")]
+
+[node name="DialogueFadeScreen2" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueFadeScreen/DialoguePlaySound" unique_id=1764407009 instance=ExtResource("25_xyyno")]
+fade_type = 1
+
+[node name="DialoguePlayerThought" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2" unique_id=279227217 instance=ExtResource("17_xyyno")]
+dialogue = "I don’t think I can open this with my bare hands."
+
+[node name="DialogueChoice" parent="InteractVent/DialoguePlayerThought/DialogueQuestion" unique_id=768179957 instance=ExtResource("22_ikrlq")]
+choice_text = "Use screwdriver"
+prereq_item = ExtResource("30_d0pek")
+
+[node name="DialogueFadeScreen" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=1818211831 instance=ExtResource("25_xyyno")]
+
+[node name="DialoguePlaySound" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen" unique_id=1754225215 instance=ExtResource("19_bieie")]
+
+[node name="DialogueFadeScreen2" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound" unique_id=549072620 instance=ExtResource("25_xyyno")]
+fade_type = 1
+
+[node name="DialoguePlayerThought" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2" unique_id=438977974 instance=ExtResource("17_xyyno")]
+dialogue = "It opened!"
+
+[node name="DialoguePlayerThought" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought" unique_id=374573485 instance=ExtResource("17_xyyno")]
+dialogue = "Looks like there’s an earring in here."
+
+[node name="DialogueStatSetter" type="Node" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought" unique_id=154662198]
+script = ExtResource("9_v0p3i")
+add_item = ExtResource("24_v3i0m")
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
+
+[node name="DialogueReward" type="Node" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueStatSetter" unique_id=1817814052]
+script = ExtResource("12_na5fk")
+reward_text = "EARRING acquired!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialogueSetCam" type="Node" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueStatSetter/DialogueReward" unique_id=1408446368]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
+
+[node name="InteractVentAlreadyOpen" parent="." unique_id=1214575286 instance=ExtResource("20_sj2u3")]
+
+[node name="DialoguePlayerThought" parent="InteractVentAlreadyOpen" unique_id=334863785 instance=ExtResource("17_xyyno")]
+dialogue = "Oh look, an open vent."
 
 [node name="InteractLockedDoor" parent="." unique_id=832286071 instance=ExtResource("20_sj2u3")]
 
@@ -442,3 +1054,6 @@ dialogue = "Thanks again for finding my earring! We should hang out sometime!"
 [editable path="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DSRewardPreset"]
 [editable path="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]
 [editable path="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter"]
+[editable path="_Reef2_Reward/DialogueStatSetter"]
+[editable path="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2"]
+[editable path="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialogueStatSetter"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dcs0wnd2i8w6q"]
+
+[ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="1_rko8y"]
+[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/key.png" id="2_rdpyd"]
+
+[resource]
+script = ExtResource("1_rko8y")
+name = "Key"
+texture = ExtResource("2_rdpyd")
+id = "key"
+description = "Key item for keying things"
+metadata/_custom_type_script = "uid://cnnmfouky31n8"
