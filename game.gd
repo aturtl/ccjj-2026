@@ -32,6 +32,7 @@ func unpause_game() -> void:
 func _on_start_game() -> void:
 	get_tree().paused = false
 	UIManager.close_menu()
+	AudioManager.stop_music()
 	#inventory_ui.show()
 
 
