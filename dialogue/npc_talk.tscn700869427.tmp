@@ -1,0 +1,319 @@
+[gd_scene format=3 uid="uid://c6rulyvkfnu6t"]
+
+[ext_resource type="Script" uid="uid://sl735wmgnlki" path="res://dialogue/npc_talk.gd" id="1_m8yt7"]
+[ext_resource type="Script" uid="uid://bf6xushulbekl" path="res://dialogue/stackables/dialogue_statement.gd" id="2_bwfku"]
+[ext_resource type="Script" uid="uid://d0wrttl5pqxhg" path="res://dialogue/stackables/dialogue_choice.gd" id="3_8o7g4"]
+[ext_resource type="Script" uid="uid://vyopck2u0qf4" path="res://dialogue/stackables/dialogue_question.gd" id="3_nbgfc"]
+[ext_resource type="Script" uid="uid://b04fwqkn4w1tf" path="res://dialogue/ui_templates/box_template.gd" id="4_muvp4"]
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="4_qynjn"]
+[ext_resource type="Script" uid="uid://cefhro15wp6v7" path="res://dialogue/ui_choice_displays/ui_choice_display.gd" id="4_s0v2e"]
+[ext_resource type="Texture2D" uid="uid://wtyvo4svr0wq" path="res://placeholders/placeholder_player_think_0000.png" id="6_ix2yu"]
+[ext_resource type="Texture2D" uid="uid://da6pn7yvwrpxf" path="res://placeholders/placeholder_player_think_0001.png" id="7_8o7g4"]
+[ext_resource type="Script" uid="uid://c70kymtkpjq10" path="res://dialogue/ui_templates/choice_template.gd" id="7_64tqn"]
+[ext_resource type="Texture2D" uid="uid://bchcjt000nkq3" path="res://placeholders/placeholder_player_converse.png" id="7_nyoxy"]
+[ext_resource type="Texture2D" uid="uid://dvqw73kytml1i" path="res://placeholders/placeholder_fish_guy.png" id="8_64tqn"]
+[ext_resource type="Script" uid="uid://c0agvk4gyihqb" path="res://dialogue/ui_talkers/ui_talk_npc.gd" id="9_ak87k"]
+[ext_resource type="Texture2D" uid="uid://r4xs3u5woly8" path="res://placeholders/placeholder_cake_0000.png" id="13_qffds"]
+[ext_resource type="Texture2D" uid="uid://wj7xk48i8gfh" path="res://placeholders/placeholder_cake_0001.png" id="14_svhel"]
+[ext_resource type="Script" uid="uid://bh6ijehmecin3" path="res://generic/autoplay_animated_sprite_2d.gd" id="15_svhel"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1u1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_qffds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_svhel")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwrea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_nyoxy")
+}],
+"loop": 1,
+"name": &"talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ix2yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8o7g4")
+}],
+"loop": 1,
+"name": &"thought",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d80km"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_64tqn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("debug_rect_display", "ui_talk", "ui_choice_display", "talk_cam", "player_sprite", "npc_sprite", "transitioners")]
+script = ExtResource("1_m8yt7")
+debug_rect_display = NodePath("tempscreen")
+ui_talk = NodePath("UI/UITalkNPC")
+ui_choice_display = NodePath("UI/UIChoice")
+talk_cam = NodePath("TalkCam")
+player_sprite = NodePath("Characters/Player/Sprite")
+npc_sprite = NodePath("Characters/NPC/Sprite")
+transitioners = NodePath("Transitioners")
+
+[node name="EXAMPLELINES" type="Node" parent="." unique_id=118042448]
+
+[node name="S_OrganizationTemplate" type="Node" parent="EXAMPLELINES" unique_id=1533222074]
+script = ExtResource("2_bwfku")
+dialogue = "look at me"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_YouMayChange" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate" unique_id=1565826900]
+script = ExtResource("2_bwfku")
+dialogue = "i can talk"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_TheseNames" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange" unique_id=1865244232]
+script = ExtResource("2_bwfku")
+dialogue = "talk2"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_ToDepict" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames" unique_id=1510879930]
+script = ExtResource("2_bwfku")
+dialogue = "talk3"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_Dialogue" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict" unique_id=2140778527]
+script = ExtResource("2_bwfku")
+dialogue = "talk4"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="Q_QuestionTest" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue" unique_id=326980866]
+script = ExtResource("3_nbgfc")
+dialogue = "did you get all that?"
+metadata/_custom_type_script = "uid://vyopck2u0qf4"
+
+[node name="Choice_Maybe" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1498668351 node_paths=PackedStringArray("goto")]
+script = ExtResource("3_8o7g4")
+goto = NodePath("../../../../../../../S_Angry")
+choice_text = "hi there"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="Choice_Maybe2" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1329882261 node_paths=PackedStringArray("goto")]
+script = ExtResource("3_8o7g4")
+goto = NodePath("../../../../../../../S_Angry")
+choice_text = "howdy"
+prereq_item = "yeah"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="Choice_Maybe3" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=680429954 node_paths=PackedStringArray("goto")]
+script = ExtResource("3_8o7g4")
+goto = NodePath("../../../../../../../S_Happy")
+choice_text = "*fight*"
+prereq_item = "yeah"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="Choice_Maybe4" type="Node" parent="EXAMPLELINES/S_OrganizationTemplate/S_YouMayChange/S_TheseNames/S_ToDepict/S_Dialogue/Q_QuestionTest" unique_id=1972357610 node_paths=PackedStringArray("goto")]
+script = ExtResource("3_8o7g4")
+goto = NodePath("../../../../../../../S_Happy")
+choice_text = "grrr"
+prereq_item = "yeah"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="S_Angry" type="Node" parent="EXAMPLELINES" unique_id=2120435397]
+script = ExtResource("2_bwfku")
+dialogue = "now im angry"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_Angry2" type="Node" parent="EXAMPLELINES/S_Angry" unique_id=1639900722]
+script = ExtResource("2_bwfku")
+dialogue = "grrr"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_Angry3" type="Node" parent="EXAMPLELINES/S_Angry/S_Angry2" unique_id=192417354]
+script = ExtResource("2_bwfku")
+dialogue = "gah"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_Angry4" type="Node" parent="EXAMPLELINES/S_Angry/S_Angry2/S_Angry3" unique_id=1718663090]
+script = ExtResource("2_bwfku")
+dialogue = "*dies of dead*"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_Happy" type="Node" parent="EXAMPLELINES" unique_id=1557267594]
+script = ExtResource("2_bwfku")
+dialogue = "happy happyh"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_Happy2" type="Node" parent="EXAMPLELINES/S_Happy" unique_id=891449611]
+script = ExtResource("2_bwfku")
+dialogue = "happeh im so happy :)"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="S_Happy3" type="Node" parent="EXAMPLELINES/S_Happy/S_Happy2" unique_id=1720182845 node_paths=PackedStringArray("goto")]
+script = ExtResource("2_bwfku")
+goto = NodePath("../../../S_OrganizationTemplate")
+dialogue = "im so happy lets go back to the start"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="UI" type="Node2D" parent="." unique_id=1169543956]
+
+[node name="UIChoice" type="Node2D" parent="UI" unique_id=2085162665 node_paths=PackedStringArray("choice_template", "transitioners")]
+script = ExtResource("4_s0v2e")
+choice_template = NodePath("ChoiceTemplate")
+transitioners = NodePath("../../Transitioners")
+
+[node name="ChoiceTemplate" type="Node2D" parent="UI/UIChoice" unique_id=1659226158 node_paths=PackedStringArray("select_button", "label", "sprite", "sanity_display")]
+script = ExtResource("7_64tqn")
+select_button = NodePath("Button")
+label = NodePath("RichTextLabel")
+sprite = NodePath("Sprite")
+sanity_display = NodePath("SanityDisplay")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/UIChoice/ChoiceTemplate" unique_id=754513161]
+offset_left = -136.0
+offset_top = 7.9999847
+offset_right = 136.0
+offset_bottom = 52.999985
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Choice[/center]"
+fit_content = true
+
+[node name="SanityDisplay" type="RichTextLabel" parent="UI/UIChoice/ChoiceTemplate" unique_id=1365563672]
+offset_left = -136.0
+offset_top = -8.000015
+offset_right = 136.0
+offset_bottom = 36.999985
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]PREREQ[/center]"
+fit_content = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="UI/UIChoice/ChoiceTemplate" unique_id=2111596517]
+position = Vector2(0, -24)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_t1u1q")
+script = ExtResource("15_svhel")
+
+[node name="Button" type="Button" parent="UI/UIChoice/ChoiceTemplate" unique_id=1642728767]
+modulate = Color(1, 1, 1, 0)
+offset_left = -40.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 37.0
+
+[node name="UITalkNPC" type="Node2D" parent="UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
+script = ExtResource("9_ak87k")
+box_template = NodePath("BoxTemplate")
+transitioners = NodePath("../../Transitioners")
+metadata/_custom_type_script = "uid://c0agvk4gyihqb"
+
+[node name="BoxTemplate" type="Node2D" parent="UI/UITalkNPC" unique_id=1136927499 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(247, -170)
+script = ExtResource("4_muvp4")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="UI/UITalkNPC/BoxTemplate" unique_id=1253478562]
+
+[node name="Rotater" type="Node2D" parent="UI/UITalkNPC/BoxTemplate/Positioner" unique_id=1596749516]
+
+[node name="Sizer" type="Node2D" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater" unique_id=899929884]
+position = Vector2(-76, -4)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=491054044]
+clip_contents = false
+offset_left = -518.0
+offset_top = -51.0
+offset_right = 82.0
+offset_bottom = 49.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="Background" type="Sprite2D" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1306438264]
+z_index = -1
+position = Vector2(-234.00003, 8)
+scale = Vector2(4.851242, 1.2489974)
+texture = ExtResource("4_qynjn")
+
+[node name="TalkCam" type="Camera2D" parent="." unique_id=993152993]
+
+[node name="Characters" type="Node2D" parent="." unique_id=992138454]
+
+[node name="Player" type="Node2D" parent="Characters" unique_id=1966904080]
+position = Vector2(-408, 172)
+scale = Vector2(0.5199988, 0.56)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Characters/Player" unique_id=1581549206]
+sprite_frames = SubResource("SpriteFrames_wwrea")
+animation = &"thought"
+
+[node name="NPC" type="Node2D" parent="Characters" unique_id=286059124]
+position = Vector2(404.3996, -102.102356)
+scale = Vector2(0.45118892, 0.4559301)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Characters/NPC" unique_id=1340904401]
+position = Vector2(78.90354, -126.98798)
+sprite_frames = SubResource("SpriteFrames_d80km")
+
+[node name="Transitioners" type="Node2D" parent="." unique_id=249844191]
+
+[node name="TransPlayerTalk" type="Node2D" parent="Transitioners" unique_id=1866418926]
+position = Vector2(-416, 176)
+
+[node name="TransNPCTalk" type="Node2D" parent="Transitioners" unique_id=542569004]
+position = Vector2(400, -64)
+
+[node name="TransCameraTalk" type="Node2D" parent="Transitioners" unique_id=344368334]
+
+[node name="TransPlayerThought" type="Node2D" parent="Transitioners" unique_id=861926996]
+position = Vector2(-384, 168)
+scale = Vector2(1.25, 1.25)
+
+[node name="TransNPCThought" type="Node2D" parent="Transitioners" unique_id=1177986880]
+position = Vector2(274, 112)
+scale = Vector2(0.5, 0.5)
+
+[node name="TransCameraThought" type="Node2D" parent="Transitioners" unique_id=471356132]
+position = Vector2(-384, 0)
+scale = Vector2(1.5, 1.5)
+
+[node name="TransDisplayChoices" type="Node2D" parent="Transitioners" unique_id=2012092635]
+position = Vector2(-384, 128)
+
+[node name="tempscreen" type="ColorRect" parent="." unique_id=746877131]
+visible = false
+offset_left = -576.0
+offset_top = -328.0
+offset_right = 576.0
+offset_bottom = 328.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="tempscreen" unique_id=647855477]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 144.0
+offset_right = 512.0
+offset_bottom = 280.0
+text = "and everyone died"

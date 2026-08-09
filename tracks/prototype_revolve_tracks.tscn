@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://ds58kwd1nyny8"]
+
+[ext_resource type="Script" uid="uid://mgf7y2wvumlt" path="res://tracks/revolve_tracks.gd" id="1_4c30l"]
+[ext_resource type="Script" uid="uid://ctomiae3t1ad5" path="res://tracks/track.gd" id="2_kbj8e"]
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="3_kkyq0"]
+
+[node name="RevolveTracks" type="Node2D" unique_id=1788342499 node_paths=PackedStringArray("background_track")]
+script = ExtResource("1_4c30l")
+background_track = NodePath("BackgroundTrack")
+
+[node name="BackgroundTrack" type="Node2D" parent="." unique_id=51716591]
+script = ExtResource("2_kbj8e")
+size_x = 1158.0
+metadata/_custom_type_script = "uid://ctomiae3t1ad5"
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundTrack" unique_id=126531653]
+position = Vector2(1158, 131)
+scale = Vector2(18.09375, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BackgroundTrack" unique_id=553439557]
+position = Vector2(-1158, 131)
+scale = Vector2(18.09375, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BackgroundTrack" unique_id=1146457480]
+position = Vector2(-3471, 137)
+scale = Vector2(18.09375, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BackgroundTrack" unique_id=1729585133]
+position = Vector2(-5786, 132)
+scale = Vector2(18.09375, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="MidgroundTrack" type="Node2D" parent="." unique_id=1378930470]
+script = ExtResource("2_kbj8e")
+size_x = 2177.0
+metadata/_custom_type_script = "uid://ctomiae3t1ad5"
+
+[node name="Sprite2D3" type="Sprite2D" parent="MidgroundTrack" unique_id=476631502]
+position = Vector2(-2177.5, 362.00003)
+scale = Vector2(34.023438, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="Sprite2D5" type="Sprite2D" parent="MidgroundTrack" unique_id=884876229]
+position = Vector2(-6520.0005, 357)
+scale = Vector2(34.023438, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="Sprite2D6" type="Sprite2D" parent="MidgroundTrack" unique_id=513209104]
+position = Vector2(-10831, 353)
+scale = Vector2(34.023438, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="Sprite2D4" type="Sprite2D" parent="MidgroundTrack" unique_id=2085420939]
+position = Vector2(2177, 361)
+scale = Vector2(34.023438, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="ForegroundTrack" type="Node2D" parent="." unique_id=127798311]
+script = ExtResource("2_kbj8e")
+size_x = 100.0
+metadata/_custom_type_script = "uid://ctomiae3t1ad5"
+
+[node name="Sprite2D3" type="Sprite2D" parent="ForegroundTrack" unique_id=1858859123]
+position = Vector2(1148, 593)
+scale = Vector2(18.09375, 2.046875)
+texture = ExtResource("3_kkyq0")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ForegroundTrack" unique_id=1543117866]
+position = Vector2(-1158, 597)
+scale = Vector2(18.09375, 2.046875)
+texture = ExtResource("3_kkyq0")
