@@ -15,16 +15,22 @@ run/main_scene="uid://c0fri55hif3q5"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dfgicgtqmnp3k"
+
 [autoload]
 
 Inventory="*uid://btvtjngct6bnv"
 UIManager="*uid://b6ilicojuqm50"
+AudioManager="*uid://dk60r14rx1pqk"
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "red",
 "res://audio/": "purple",
+"res://autoloads/": "gray",
 "res://components/": "gray",
 "res://data/": "blue",
 "res://entities/": "yellow",

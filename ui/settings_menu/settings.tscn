@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://k3eiwpbrqhfa" path="res://ui/settings_menu/settings.gd" id="1_gl4li"]
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="2_50bus"]
+[ext_resource type="Script" uid="uid://duu3y4o4ts66m" path="res://ui/settings_menu/audio_tab.gd" id="3_l8i4v"]
 
 [node name="SettingsMenu" type="Control" unique_id=1151713264]
 layout_mode = 3
@@ -55,15 +56,16 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer/MarginContainer" unique_id=1016566234]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(300, 250)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 clip_tabs = false
 
 [node name="General" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=1391326372]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 metadata/_tab_index = 0
@@ -75,57 +77,64 @@ size_flags_vertical = 4
 text = "Highlight Interactables"
 
 [node name="Audio" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=23997449]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
+script = ExtResource("3_l8i4v")
 metadata/_tab_index = 1
+
+[node name="Master" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=1242739749]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=1430651063]
 layout_mode = 2
 
-[node name="MasterVolume" type="Button" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer" unique_id=1155423753]
+[node name="MasterCheckBox" type="CheckBox" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer" unique_id=657922909]
 layout_mode = 2
-toggle_mode = true
-text = "Master Volume"
+button_pressed = true
 
 [node name="MasterSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer" unique_id=524768018]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+value = 100.0
+
+[node name="Music" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=378129631]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=1236407915]
 layout_mode = 2
 
-[node name="MusicVolume" type="Button" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2" unique_id=943148106]
+[node name="MusicCheckBox" type="CheckBox" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2" unique_id=530224364]
 layout_mode = 2
-text = "Music Volume"
+button_pressed = true
 
 [node name="MusicSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2" unique_id=1850854628]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+value = 100.0
+
+[node name="SFX" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=155736739]
+layout_mode = 2
+text = "SFX Volume"
+horizontal_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" unique_id=259413018]
 layout_mode = 2
 
-[node name="EffectsVolume" type="Button" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3" unique_id=323609578]
+[node name="EffectsCheckBox" type="CheckBox" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3" unique_id=1837451269]
 layout_mode = 2
-text = "Effects Volume"
+button_pressed = true
 
 [node name="EffectsSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3" unique_id=1911736891]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-
-[node name="Graphics" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=949079957]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 10
-metadata/_tab_index = 2
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Graphics" unique_id=1166064729]
-layout_mode = 2
-text = "So empty, so sad"
+value = 100.0
 
 [node name="Back" type="Button" parent="Panel/VBoxContainer" unique_id=825961322]
 layout_mode = 2
@@ -135,10 +144,10 @@ text = "Back
 
 "
 
-[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterVolume" to="." method="_on_master_volume_toggled"]
-[connection signal="changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterSlider" to="." method="_on_master_slider_changed"]
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicVolume" to="." method="_on_music_volume_pressed"]
-[connection signal="changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_changed"]
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3/EffectsVolume" to="." method="_on_effects_volume_pressed"]
-[connection signal="changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3/EffectsSlider" to="." method="_on_effects_slider_changed"]
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterCheckBox" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_master_volume_toggled"]
+[connection signal="value_changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterSlider" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_master_slider_value_changed"]
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicCheckBox" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_music_volume_toggled"]
+[connection signal="value_changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicSlider" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3/EffectsCheckBox" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_effects_volume_toggled"]
+[connection signal="value_changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer3/EffectsSlider" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_effects_slider_value_changed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]
