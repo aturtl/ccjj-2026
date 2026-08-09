@@ -13,6 +13,7 @@ var current_camera_animation: int = 0
 @export var ui_npc_talk: UITalkNPC
 @export var ui_choice_display: UIChoiceDisplay
 @export var ui_thought_talk: UITalkThought
+@export var ui_reward: UIReward
 @export var blip_player: AudioStreamPlayer
 
 @onready var cheats: Cheats = %Cheats
@@ -152,6 +153,14 @@ func dialogue_loop(dl:DialogueLine):
 		if dl.remove_item:
 			Inventory.remove_item(dl.remove_item)
 		loop_with_parallels(dl) # add func
+	
+	elif dl is DialogueReward:
+		await ui_reward.display(dl.reward_text)
+		loop_with_parallels(dl)
+	
+	elif dl is DialogueChangeScene:
+		#change scene here
+		loop_with_parallels(dl)
 
 
 func kill_boxes():

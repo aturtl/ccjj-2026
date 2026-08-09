@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://btdknc5yj4udj"]
+
+[ext_resource type="Script" uid="uid://da0e24hbw4uct" path="res://dialogue/stackables/functionality/dialogue_change_scene.gd" id="1_5whwk"]
+
+[node name="DialogueChangeScene" type="Node" unique_id=1826991443]
+script = ExtResource("1_5whwk")
+metadata/_custom_type_script = "uid://da0e24hbw4uct"

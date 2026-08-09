@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://3pkkj171l7os"]
+
+[ext_resource type="Script" uid="uid://d0wrttl5pqxhg" path="res://dialogue/stackables/functionality/dialogue_choice.gd" id="1_svdry"]
+
+[node name="DialogueChoice" type="Node" unique_id=1891817657]
+script = ExtResource("1_svdry")
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"

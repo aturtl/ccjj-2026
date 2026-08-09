@@ -1,19 +1,45 @@
 [gd_scene format=3 uid="uid://b6u44p43el3vx"]
 
 [ext_resource type="Script" uid="uid://sdj0thafmbhh" path="res://dialogue_line_tree_holder.gd" id="1_3etux"]
-[ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/dialogue_player_thought.gd" id="2_3mtrk"]
-[ext_resource type="Script" uid="uid://bf6xushulbekl" path="res://dialogue/stackables/dialogue_statement.gd" id="3_jak5m"]
-[ext_resource type="Script" uid="uid://dv067w6ebkvde" path="res://dialogue/dialogue_set_cam.gd" id="3_k1frf"]
-[ext_resource type="Script" uid="uid://vyopck2u0qf4" path="res://dialogue/stackables/dialogue_question.gd" id="4_jak5m"]
-[ext_resource type="Script" uid="uid://d0wrttl5pqxhg" path="res://dialogue/stackables/dialogue_choice.gd" id="5_k1frf"]
-[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/dialogue_fade_screen.gd" id="7_aux7e"]
-[ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/dialogue_play_sound.gd" id="8_8abdn"]
+[ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/functionality/dialogue_player_thought.gd" id="2_3mtrk"]
+[ext_resource type="Script" uid="uid://bf6xushulbekl" path="res://dialogue/stackables/functionality/dialogue_statement.gd" id="3_jak5m"]
+[ext_resource type="Script" uid="uid://dv067w6ebkvde" path="res://dialogue/stackables/functionality/dialogue_set_cam.gd" id="3_k1frf"]
+[ext_resource type="Script" uid="uid://vyopck2u0qf4" path="res://dialogue/stackables/functionality/dialogue_question.gd" id="4_jak5m"]
+[ext_resource type="Script" uid="uid://d0wrttl5pqxhg" path="res://dialogue/stackables/functionality/dialogue_choice.gd" id="5_k1frf"]
+[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/stackables/functionality/dialogue_fade_screen.gd" id="7_aux7e"]
+[ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/stackables/functionality/dialogue_play_sound.gd" id="8_8abdn"]
 [ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="9_dswi5"]
-[ext_resource type="Script" uid="uid://do1oojhpndbhe" path="res://dialogue/dialogue_reward.gd" id="9_v0p3i"]
+[ext_resource type="Script" uid="uid://do1oojhpndbhe" path="res://dialogue/stackables/functionality/dialogue_stat_setter.gd" id="9_v0p3i"]
 [ext_resource type="Resource" uid="uid://d4d8061twem3j" path="res://data/items/key.tres" id="11_4w2fl"]
+[ext_resource type="Script" uid="uid://bl4vdyegyay3" path="res://dialogue/stackables/functionality/dialogue_reward.gd" id="12_na5fk"]
+[ext_resource type="Resource" uid="uid://dfme7khnhrmxg" path="res://data/items/car_keys.tres" id="13_dle7b"]
+[ext_resource type="PackedScene" uid="uid://jyajy7mer30n" path="res://dialogue/stackable_presets/ds_reward_preset.tscn" id="13_s3jmc"]
+[ext_resource type="PackedScene" uid="uid://c0y6fbaviheuw" path="res://dialogue/stackable_presets/ds_scenefade_preset.tscn" id="14_swbew"]
+[ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/dialogue_question.tscn" id="15_0v8oo"]
 
 [node name="DialogueLines" type="Node2D" unique_id=161622172]
 script = ExtResource("1_3etux")
+
+[node name="TestReward" type="Node2D" parent="." unique_id=1643660448]
+
+[node name="DialogueStatement3" type="Node" parent="TestReward" unique_id=804837316]
+script = ExtResource("2_3mtrk")
+dialogue = "Huh. Guess it was a good thing I was here."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DialogueStatSetter" type="Node" parent="TestReward/DialogueStatement3" unique_id=1074661978]
+script = ExtResource("9_v0p3i")
+confidence_reward = 5
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
+
+[node name="DialogueReward" type="Node" parent="TestReward/DialogueStatement3/DialogueStatSetter" unique_id=335159806]
+script = ExtResource("12_na5fk")
+reward_text = "YOU GAINED 5 CONFIDENCE"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialogueSetCam" type="Node" parent="TestReward/DialogueStatement3/DialogueStatSetter/DialogueReward" unique_id=204209715]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
 [node name="Intro" type="Node2D" parent="." unique_id=1810405107]
 
@@ -50,111 +76,176 @@ metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 [node name="DialogueSetCam" type="Node2D" parent="Intro/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialoguePlayerThought4/DialoguePlayerThought5/DialoguePlayerThought6" unique_id=1151480701]
 script = ExtResource("3_k1frf")
 
-[node name="CarKey1" type="Node2D" parent="." unique_id=1953093754]
+[node name="CarKeys1" type="Node2D" parent="." unique_id=1953093754]
 
-[node name="DialogueStatement" type="Node" parent="CarKey1" unique_id=475602845]
+[node name="DialogueStatement" type="Node" parent="CarKeys1" unique_id=475602845]
 script = ExtResource("3_jak5m")
 dialogue = "..."
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialoguePlayerThought" type="Node" parent="CarKey1/DialogueStatement" unique_id=1312682572]
+[node name="DialoguePlayerThought" type="Node" parent="CarKeys1/DialogueStatement" unique_id=1312682572]
 script = ExtResource("2_3mtrk")
 dialogue = "Umm… excuse me? Are you okay?"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement2" type="Node" parent="CarKey1/DialogueStatement/DialoguePlayerThought" unique_id=1301944611]
+[node name="DialogueStatement2" type="Node" parent="CarKeys1/DialogueStatement/DialoguePlayerThought" unique_id=1301944611]
 script = ExtResource("3_jak5m")
 dialogue = "Me? Just peachy."
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement3" type="Node" parent="CarKey1/DialogueStatement/DialoguePlayerThought/DialogueStatement2" unique_id=5370644]
+[node name="DialogueStatement3" type="Node" parent="CarKeys1/DialogueStatement/DialoguePlayerThought/DialogueStatement2" unique_id=5370644]
 script = ExtResource("3_jak5m")
 dialogue = "I dropped my keys on the way out, and now I can’t find them. I’ve got work early in the morning too."
 in_between_time = 0.04
 dynamic_range = 0.05
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement4" type="Node" parent="CarKey1/DialogueStatement/DialoguePlayerThought/DialogueStatement2/DialogueStatement3" unique_id=1183702761]
+[node name="DialogueStatement4" type="Node" parent="CarKeys1/DialogueStatement/DialoguePlayerThought/DialogueStatement2/DialogueStatement3" unique_id=1183702761]
 script = ExtResource("3_jak5m")
 dialogue = "Just my luck."
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueSetCam" type="Node2D" parent="CarKey1/DialogueStatement/DialoguePlayerThought/DialogueStatement2/DialogueStatement3/DialogueStatement4" unique_id=817524229]
+[node name="DialogueSetCam" type="Node2D" parent="CarKeys1/DialogueStatement/DialoguePlayerThought/DialogueStatement2/DialogueStatement3/DialogueStatement4" unique_id=817524229]
 script = ExtResource("3_k1frf")
 
-[node name="CarKey2" type="Node2D" parent="." unique_id=2069556983]
+[node name="CarKeys2" type="Node2D" parent="." unique_id=2069556983]
 
-[node name="DialogueStatement" type="Node" parent="CarKey2" unique_id=1237844328]
+[node name="DialogueStatement" type="Node" parent="CarKeys2" unique_id=1237844328]
 script = ExtResource("3_jak5m")
 dialogue = "[i]mutter mutter[/i]… first my girlfriend, now my keys… [i]mutter…[/i]"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueQuestion" type="Node" parent="CarKey2/DialogueStatement" unique_id=598192900]
+[node name="DialogueQuestion" type="Node" parent="CarKeys2/DialogueStatement" unique_id=598192900]
 script = ExtResource("4_jak5m")
 metadata/_custom_type_script = "uid://vyopck2u0qf4"
 
-[node name="DialogueChoice2" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion" unique_id=78187933]
+[node name="DialogueChoice2" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion" unique_id=78187933]
 script = ExtResource("5_k1frf")
 choice_text = "Run"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialogueSetCam" type="Node2D" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=749207825]
+[node name="DialogueSetCam" type="Node2D" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=749207825]
 script = ExtResource("3_k1frf")
 
-[node name="DialogueChoice" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion" unique_id=1091542712]
+[node name="DialogueChoice" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion" unique_id=1091542712]
 script = ExtResource("5_k1frf")
 choice_text = "Keys"
 prereq_item = ExtResource("11_4w2fl")
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialoguePlayerThought" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=721834466]
+[node name="DialoguePlayerThought" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=721834466]
 script = ExtResource("2_3mtrk")
 dialogue = "I found these in the bushes over there. Do they belong to you?"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=1325462316]
+[node name="DialogueStatement" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=1325462316]
 script = ExtResource("3_jak5m")
 dialogue = "Oh. Yes! Yes, they’re mine! Maybe my luck ain’t so bad after all!!!!"
 in_between_time = 0.03
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement2" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=1182347400]
+[node name="DialogueStatement2" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=1182347400]
 script = ExtResource("3_jak5m")
 dialogue = "Thanks for helping me out! I owe you one... uh... whatever your name is."
 in_between_time = 0.04
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement3" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=828161691]
+[node name="DialogueStatement3" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=828161691]
 script = ExtResource("3_jak5m")
 dialogue = "Okay, well. Bye. Enjoy the party!"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueFadeIn" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=669915050]
+[node name="DialogueFadeIn" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=669915050]
 script = ExtResource("7_aux7e")
 metadata/_custom_type_script = "uid://cjfyjpl406rmo"
 
-[node name="DialoguePlaySound" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn" unique_id=204943900]
+[node name="DialoguePlaySound" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn" unique_id=204943900]
 script = ExtResource("8_8abdn")
 audio_stream = ExtResource("9_dswi5")
 switch_npc_animation_to = "gone"
 after_wait = 4.0
 metadata/_custom_type_script = "uid://sl5iutsqybsx"
 
-[node name="DialogueFadeOut" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound" unique_id=104484829]
+[node name="DialogueFadeOut" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound" unique_id=104484829]
 script = ExtResource("7_aux7e")
 fade_type = 1
 metadata/_custom_type_script = "uid://cjfyjpl406rmo"
 
-[node name="DialogueStatement3" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut" unique_id=1677079913]
+[node name="DialogueStatement3" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut" unique_id=1677079913]
 script = ExtResource("2_3mtrk")
 dialogue = "Huh. Guess it was a good thing I was here."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatSetter" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3" unique_id=1479510621]
+[node name="DSRewardPreset" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3" unique_id=147542195 instance=ExtResource("13_s3jmc")]
+
+[node name="InteractBushNoCarKeys" type="Node2D" parent="." unique_id=1544875803]
+
+[node name="DialoguePlayerThought" type="Node" parent="InteractBushNoCarKeys" unique_id=929959777]
+script = ExtResource("2_3mtrk")
+dialogue = "The bushes here are well maintained."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="InteractBushCarKeys" type="Node2D" parent="." unique_id=809021485]
+
+[node name="DialoguePlayerThought" type="Node" parent="InteractBushCarKeys" unique_id=1687990845]
+script = ExtResource("2_3mtrk")
+dialogue = "The bushes here are well maintained."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DialoguePlayerThought3" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought" unique_id=1327437069]
+script = ExtResource("8_8abdn")
+metadata/_custom_type_script = "uid://sl5iutsqybsx"
+
+[node name="DialoguePlayerThought2" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought" unique_id=1700302116]
+script = ExtResource("2_3mtrk")
+dialogue = "...Except for these car keys caught in the branches."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DialogueStatSetter" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2" unique_id=1491847242]
 script = ExtResource("9_v0p3i")
-confidence_reward = 5
+add_item = ExtResource("13_dle7b")
 metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
-[node name="DialogueSetCam" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DialogueStatSetter" unique_id=1868548413]
-script = ExtResource("3_k1frf")
-metadata/_custom_type_script = "uid://dv067w6ebkvde"
+[node name="DialogueReward" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter" unique_id=428732571]
+script = ExtResource("12_na5fk")
+reward_text = "CAR KEYS acquired!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialogueQuestion" parent="." unique_id=732854441 instance=ExtResource("15_0v8oo")]
+
+[node name="InteractDoor" type="Node2D" parent="." unique_id=1096447482]
+
+[node name="DialoguePlayerThought" type="Node" parent="InteractDoor" unique_id=1654004353]
+script = ExtResource("2_3mtrk")
+dialogue = "Do I… knock? Or do I just go in?"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DialogueQuestion" type="Node" parent="InteractDoor/DialoguePlayerThought" unique_id=381764386]
+script = ExtResource("4_jak5m")
+metadata/_custom_type_script = "uid://vyopck2u0qf4"
+
+[node name="DialogueChoice" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion" unique_id=578194626]
+script = ExtResource("5_k1frf")
+choice_text = "Forget it."
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="DialoguePlayerThought" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=1490745033]
+script = ExtResource("2_3mtrk")
+dialogue = "Ugh, I don't know how this party thing works."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DialogueChoice2" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion" unique_id=1879178135]
+script = ExtResource("5_k1frf")
+choice_text = "Enter."
+prereq_confidence = 5
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
+
+[node name="DialoguePlayerThought" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=1297215551]
+script = ExtResource("2_3mtrk")
+dialogue = "Well, here goes nothing."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DSSceneFadePreset" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=607337241 instance=ExtResource("14_swbew")]
+
+[editable path="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DSRewardPreset"]
+[editable path="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]

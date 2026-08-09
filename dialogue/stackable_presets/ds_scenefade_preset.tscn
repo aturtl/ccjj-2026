@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c0y6fbaviheuw"]
+
+[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/stackables/functionality/dialogue_fade_screen.gd" id="1_yfqrg"]
+[ext_resource type="Script" uid="uid://da0e24hbw4uct" path="res://dialogue/stackables/functionality/dialogue_change_scene.gd" id="2_qk28l"]
+
+[node name="DialogueFadeScreen" type="Node" unique_id=607337241]
+script = ExtResource("1_yfqrg")
+metadata/_custom_type_script = "uid://cjfyjpl406rmo"
+
+[node name="DialogueChangeScene" type="Node" parent="." unique_id=1413183850]
+script = ExtResource("2_qk28l")
+metadata/_custom_type_script = "uid://da0e24hbw4uct"
+
+[node name="DialogueFadeScreen2" type="Node" parent="DialogueChangeScene" unique_id=1039843711]
+script = ExtResource("1_yfqrg")
+fade_type = 1
+metadata/_custom_type_script = "uid://cjfyjpl406rmo"
