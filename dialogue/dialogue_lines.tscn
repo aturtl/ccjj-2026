@@ -10,12 +10,20 @@
 [ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/stackables/functionality/dialogue_play_sound.gd" id="8_8abdn"]
 [ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="9_dswi5"]
 [ext_resource type="Script" uid="uid://do1oojhpndbhe" path="res://dialogue/stackables/functionality/dialogue_stat_setter.gd" id="9_v0p3i"]
+[ext_resource type="PackedScene" uid="uid://dln6nhlu213ty" path="res://dialogue/stackables/dialogue_stat_setter.tscn" id="10_n5o83"]
 [ext_resource type="Resource" uid="uid://d4d8061twem3j" path="res://data/items/key.tres" id="11_4w2fl"]
 [ext_resource type="Script" uid="uid://bl4vdyegyay3" path="res://dialogue/stackables/functionality/dialogue_reward.gd" id="12_na5fk"]
 [ext_resource type="Resource" uid="uid://dfme7khnhrmxg" path="res://data/items/car_keys.tres" id="13_dle7b"]
 [ext_resource type="PackedScene" uid="uid://jyajy7mer30n" path="res://dialogue/stackable_presets/ds_reward_preset.tscn" id="13_s3jmc"]
 [ext_resource type="PackedScene" uid="uid://c0y6fbaviheuw" path="res://dialogue/stackable_presets/ds_scenefade_preset.tscn" id="14_swbew"]
 [ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/dialogue_question.tscn" id="15_0v8oo"]
+[ext_resource type="PackedScene" uid="uid://dne775fhoxpao" path="res://dialogue/stackables/dialogue_player_thought.tscn" id="17_xyyno"]
+[ext_resource type="PackedScene" uid="uid://dli177chi42cs" path="res://dialogue/stackables/dialogue_reward.tscn" id="18_ahw2j"]
+[ext_resource type="PackedScene" uid="uid://bkld8nuvrrlnt" path="res://dialogue/stackables/dialogue_play_sound.tscn" id="19_bieie"]
+[ext_resource type="PackedScene" uid="uid://bj2jvyycscjx" path="res://dialogue/stackables/_dtree.tscn" id="20_sj2u3"]
+[ext_resource type="PackedScene" uid="uid://3pkkj171l7os" path="res://dialogue/stackables/dialogue_choice.tscn" id="22_ikrlq"]
+[ext_resource type="PackedScene" uid="uid://cwfb74agbws57" path="res://dialogue/stackables/dialogue_statement.tscn" id="23_258b8"]
+[ext_resource type="Resource" uid="uid://bji3o44gneqbk" path="res://data/items/earring.tres" id="24_v3i0m"]
 
 [node name="DialogueLines" type="Node2D" unique_id=161622172]
 script = ExtResource("1_3etux")
@@ -155,6 +163,9 @@ script = ExtResource("3_jak5m")
 dialogue = "Okay, well. Bye. Enjoy the party!"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
+[node name="DialogueStatSetter" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=2019433984 instance=ExtResource("10_n5o83")]
+remove_item = ExtResource("13_dle7b")
+
 [node name="DialogueFadeIn" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=669915050]
 script = ExtResource("7_aux7e")
 metadata/_custom_type_script = "uid://cjfyjpl406rmo"
@@ -211,8 +222,6 @@ script = ExtResource("12_na5fk")
 reward_text = "CAR KEYS acquired!"
 metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
-[node name="DialogueQuestion" parent="." unique_id=732854441 instance=ExtResource("15_0v8oo")]
-
 [node name="InteractDoor" type="Node2D" parent="." unique_id=1096447482]
 
 [node name="DialoguePlayerThought" type="Node" parent="InteractDoor" unique_id=1654004353]
@@ -247,5 +256,189 @@ metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="DSSceneFadePreset" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=607337241 instance=ExtResource("14_swbew")]
 
+[node name="DialoguePlayerThought" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2" parent_id_path=PackedInt32Array(607337241, 1039843711) index="0" unique_id=43495928 instance=ExtResource("17_xyyno")]
+dialogue = "Wow, it’s loud in here. And bright. And crowded. Why did I let Marley talk me into this again?"
+
+[node name="DialoguePlayerThought" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought" unique_id=236610748 instance=ExtResource("17_xyyno")]
+dialogue = "... Well, in any case, I guess I’m here now. She must be around here somewhere."
+
+[node name="DialogueReward" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought" unique_id=1972223848 instance=ExtResource("18_ahw2j")]
+reward_text = "(LIVING ROOM can now be explored)"
+
+[node name="DialoguePlaySound" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" parent_id_path=PackedInt32Array(607337241, 1413183850) index="1" unique_id=63000943 instance=ExtResource("19_bieie")]
+
+[node name="Pacifica1" parent="." unique_id=1501639869 instance=ExtResource("20_sj2u3")]
+
+[node name="DialoguePlayerThought" parent="Pacifica1" unique_id=378653830 instance=ExtResource("17_xyyno")]
+dialogue = "Should I talk to her?"
+
+[node name="DialogueQuestion" parent="Pacifica1/DialoguePlayerThought" unique_id=732854441 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion" unique_id=1891817657 instance=ExtResource("22_ikrlq")]
+choice_text = "Avoid eye contact"
+
+[node name="DialogueChoice2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion" unique_id=1530233140 instance=ExtResource("22_ikrlq")]
+choice_text = "Talk to her"
+prereq_confidence = 10
+
+[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=1190864237 instance=ExtResource("23_258b8")]
+dialogue = "Hey! Great party, right?"
+
+[node name="DialogueQuestion" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement" unique_id=1277959711 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=2061609367 instance=ExtResource("22_ikrlq")]
+choice_text = "Yeah, it's fun"
+
+[node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=1841949245 instance=ExtResource("17_xyyno")]
+dialogue = "Yeah,...."
+
+[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=859383634 instance=ExtResource("23_258b8")]
+dialogue = "Is it your first party, then?"
+
+[node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=1787742748 instance=ExtResource("17_xyyno")]
+dialogue = " guess so. My friend Marley asked me to come with her, but I can't seem to find her anywhere."
+
+[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1601622614 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+dialogue = "Hm. Well, I haven’t seen her, but I’ll be sure to keep an eye out!"
+goto = NodePath("../../../../../../../../../../../_Pacifica1_2/DialogueStatement")
+
+[node name="DialogueChoice2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1697917284 instance=ExtResource("22_ikrlq")]
+choice_text = "Eh"
+
+[node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=899733109 instance=ExtResource("17_xyyno")]
+dialogue = "Parties aren't really my thing"
+
+[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=1008160164 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+dialogue = "Awe, that’s a shame. I love a good party, but I get why you might not."
+goto = NodePath("../../../../../../../../../_Pacifica1_2/DialogueStatement")
+
+[node name="DialogueChoice3" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1100904278 instance=ExtResource("22_ikrlq")]
+choice_text = "HATE THOSE"
+
+[node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3" unique_id=1775182589 instance=ExtResource("17_xyyno")]
+dialogue = "I hate it"
+
+[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought" unique_id=684865818 instance=ExtResource("23_258b8")]
+dialogue = "Oh."
+
+[node name="DialogueStatement2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement" unique_id=323940230 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+dialogue = "Well.... I guess it's not for everyone"
+goto = NodePath("../../../../../../../../../../_Pacifica1_2/DialogueStatement")
+
+[node name="_Pacifica1_2" type="Node2D" parent="." unique_id=1522920619]
+
+[node name="DialogueStatement" parent="_Pacifica1_2" unique_id=1806658433 instance=ExtResource("23_258b8")]
+dialogue = "I'm Pacifica, by the way."
+
+[node name="DialogueStatement2" parent="_Pacifica1_2/DialogueStatement" unique_id=1587880844 instance=ExtResource("23_258b8")]
+dialogue = "I’ve seen you around school, but I don’t think we’ve really had the chance to introduce ourselves."
+
+[node name="DialoguePlayerThought" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2" unique_id=1753856372 instance=ExtResource("17_xyyno")]
+dialogue = "I’m Annemette."
+after_wait = 0.25
+
+[node name="DialoguePlayerThought2" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought" unique_id=1832313626 instance=ExtResource("17_xyyno")]
+dialogue = "Um..."
+after_wait = 0.25
+
+[node name="DialoguePlayerThought3" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2" unique_id=1623709895 instance=ExtResource("17_xyyno")]
+dialogue = "How's everything going, uh, with the party and what?"
+
+[node name="DialogueStatement" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3" unique_id=770624347 instance=ExtResource("23_258b8")]
+dialogue = "Well it WOULD be perfect, except that I lost one of my earrings around here. If you happen to see it, would you let me know?"
+
+[node name="DialoguePlayerThought" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialogueStatement" unique_id=522771564 instance=ExtResource("17_xyyno")]
+dialogue = "I’ll look out for it."
+
+[node name="Pacifica2" parent="." unique_id=1337555345 instance=ExtResource("20_sj2u3")]
+
+[node name="DialogueStatement" parent="Pacifica2" unique_id=1304366687 instance=ExtResource("23_258b8")]
+dialogue = "Keep an eye out for my earing, would you?"
+
+[node name="DialogueQuestion" parent="Pacifica2/DialogueStatement" unique_id=93979187 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Pacifica2/DialogueStatement/DialogueQuestion" unique_id=1048408982 instance=ExtResource("22_ikrlq")]
+choice_text = "On it!"
+
+[node name="DialogueChoice2" parent="Pacifica2/DialogueStatement/DialogueQuestion" unique_id=1334563762 instance=ExtResource("22_ikrlq")]
+choice_text = "Your earring?"
+prereq_item = ExtResource("24_v3i0m")
+
+[node name="DialoguePlayerThought" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=1764489708 instance=ExtResource("17_xyyno")]
+dialogue = "I found your-"
+
+[node name="DialogueStatement" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=865882938 instance=ExtResource("23_258b8")]
+dialogue = "Oh. My God. I can’t believe you found it!! You’re an absolute LIFESAVER! Thanks so much!"
+
+[node name="DialoguePlayerThought" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=2033143360 instance=ExtResource("17_xyyno")]
+dialogue = "No problem!"
+
+[node name="DialogueStatSetter" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1805016260 instance=ExtResource("13_s3jmc")]
+confidence_reward = 10
+remove_item = ExtResource("24_v3i0m")
+
+[node name="DialogueReward" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter" index="0" unique_id=1748942105]
+reward_text = "CONFIDENCE INCREASED BY 10!"
+
+[node name="Pacifica3" type="Node2D" parent="." unique_id=678710474]
+
+[node name="DialogueStatement" parent="Pacifica3" unique_id=1821126711 instance=ExtResource("23_258b8")]
+dialogue = "Thanks again for finding my earring! We should hang out sometime!"
+
+[node name="Reef1" parent="." unique_id=1536150228 instance=ExtResource("20_sj2u3")]
+
+[node name="Reef2HasQuest" parent="." unique_id=1388964652 instance=ExtResource("20_sj2u3")]
+
+[node name="Reef3HasDrink" parent="." unique_id=690051748 instance=ExtResource("20_sj2u3")]
+
+[node name="Reef4After" parent="." unique_id=1245709528 instance=ExtResource("20_sj2u3")]
+
+[node name="Atolla" parent="." unique_id=646586006 instance=ExtResource("20_sj2u3")]
+
+[node name="Atolla2HasQuest" parent="." unique_id=1999141843 instance=ExtResource("20_sj2u3")]
+
+[node name="InteractDrinksCounter" parent="." unique_id=1211615236 instance=ExtResource("20_sj2u3")]
+
+[node name="Moray1" type="Node2D" parent="." unique_id=1657624928]
+
+[node name="_Moray1_Defeat" type="Node2D" parent="." unique_id=232085123]
+
+[node name="_Moray1_Victory" type="Node2D" parent="." unique_id=1380481500]
+
+[node name="Moray1TryAgain" type="Node2D" parent="." unique_id=1227434860]
+
+[node name="Moray2After" type="Node2D" parent="." unique_id=248364897]
+
+[node name="Dog" type="Node2D" parent="." unique_id=1802682967]
+
+[node name="DialogueQuestion" parent="Dog" unique_id=1546841826 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice" parent="Dog/DialogueQuestion" unique_id=1869705463 instance=ExtResource("22_ikrlq")]
+
+[node name="DialogueChoice2" parent="Dog/DialogueQuestion" unique_id=2110821684 instance=ExtResource("22_ikrlq")]
+
+[node name="Brad1" parent="." unique_id=884706717 instance=ExtResource("20_sj2u3")]
+
+[node name="Brad2" parent="." unique_id=763491533 instance=ExtResource("20_sj2u3")]
+
+[node name="Brad3After" parent="." unique_id=257201578 instance=ExtResource("20_sj2u3")]
+
+[node name="Brad3After2" parent="." unique_id=338699693 instance=ExtResource("20_sj2u3")]
+
+[node name="AtollaKitchen" parent="." unique_id=770615894 instance=ExtResource("20_sj2u3")]
+
+[node name="Shoal1" parent="." unique_id=2077568846 instance=ExtResource("20_sj2u3")]
+
+[node name="Shoal2After" parent="." unique_id=755198216 instance=ExtResource("20_sj2u3")]
+
+[node name="InteractVent" parent="." unique_id=1333777381 instance=ExtResource("20_sj2u3")]
+
+[node name="InteractLockedDoor" parent="." unique_id=832286071 instance=ExtResource("20_sj2u3")]
+
+[node name="MedicineCabinet" parent="." unique_id=2049622896 instance=ExtResource("20_sj2u3")]
+
+[node name="MarleyEndingScene" parent="." unique_id=68200943 instance=ExtResource("20_sj2u3")]
+
 [editable path="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DSRewardPreset"]
 [editable path="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]
+[editable path="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter"]
