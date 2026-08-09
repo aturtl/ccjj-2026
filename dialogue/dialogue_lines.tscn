@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c0y6fbaviheuw" path="res://dialogue/stackable_presets/ds_scenefade_preset.tscn" id="14_swbew"]
 [ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/scenes/visual/question/dialogue_question.tscn" id="15_0v8oo"]
 [ext_resource type="PackedScene" uid="uid://b6dc0oxjf7wsh" path="res://dialogue/stackables/scenes/event/dialogue_set_cam.tscn" id="16_1vab1"]
+[ext_resource type="Script" uid="uid://b6ilt730j81f4" path="res://dialogue/stackables/dialogue_line_tree.gd" id="17_sh30a"]
 [ext_resource type="PackedScene" uid="uid://dne775fhoxpao" path="res://dialogue/stackables/scenes/visual/dialogue_player_thought.tscn" id="17_xyyno"]
 [ext_resource type="PackedScene" uid="uid://dli177chi42cs" path="res://dialogue/stackables/scenes/event/dialogue_reward.tscn" id="18_ahw2j"]
 [ext_resource type="PackedScene" uid="uid://bkld8nuvrrlnt" path="res://dialogue/stackables/scenes/event/dialogue_play_sound.tscn" id="19_bieie"]
@@ -235,6 +236,7 @@ metadata/_custom_type_script = "uid://bl4vdyegyay3"
 [node name="DialogueSetCam" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter/DialogueReward" unique_id=1181379866 instance=ExtResource("16_1vab1")]
 
 [node name="InteractDoor" type="Node2D" parent="." unique_id=1096447482]
+script = ExtResource("17_sh30a")
 
 [node name="DialoguePlayerThought" type="Node" parent="InteractDoor" unique_id=1654004353]
 script = ExtResource("2_3mtrk")

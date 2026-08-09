@@ -31,6 +31,8 @@ var original_player_pos: Vector2
 var original_npc_pos: Vector2
 var original_cam_pos: Vector2
 
+var parallel_count: int = 0
+
 var scene = ""
 
 func _ready():
@@ -55,6 +57,8 @@ func play_blip(dyn_range: float = blip_dynamic_range):
 
 #region dialogue loop
 func dialogue_start(dl:DialogueLine):
+	parallel_count += 1
+	
 	scene = ""
 	player_sprite.visible = true
 	npc_sprite.visible = true
@@ -173,7 +177,12 @@ func kill_boxes():
 
 
 func dialogue_end():
-	kill_boxes()
+	parallel_count -= 1
+	if parallel_count == 0:
+		kill_boxes()
+		tween_back_to_original_positions()
+	else:
+		pass
 #endregion
 
 
