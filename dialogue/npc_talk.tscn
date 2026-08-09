@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b0s0wenm6u4ud" path="res://placeholders/placeholder_wormy_0003.png" id="20_1lraq"]
 [ext_resource type="Texture2D" uid="uid://bs13yjlxmeuhu" path="res://placeholders/placeholder_wormy_0000.png" id="21_04flo"]
 [ext_resource type="Texture2D" uid="uid://dlm758x78w56q" path="res://placeholders/placeholder_wormy_0001.png" id="22_nnhk2"]
+[ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="23_1lraq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1u1q"]
 animations = [{
@@ -92,7 +93,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "dia_ex_lines", "dia_ex_choice", "dia_ex_thought", "debug_rect_display")]
+[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "dia_ex_lines", "dia_ex_choice", "dia_ex_thought", "debug_rect_display", "blip_player")]
 script = ExtResource("1_m8yt7")
 talk_cam = NodePath("TalkCam")
 player_sprite = NodePath("Characters/Player/Sprite")
@@ -105,6 +106,7 @@ dia_ex_lines = NodePath("EXAMPLELINES/OrganizationTemplate")
 dia_ex_choice = NodePath("EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest")
 dia_ex_thought = NodePath("EXAMPLELINES/Thought")
 debug_rect_display = NodePath("tempscreen")
+blip_player = NodePath("tempblipplayer")
 
 [node name="EXAMPLELINES" type="Node" parent="." unique_id=118042448]
 
@@ -448,3 +450,6 @@ offset_top = 144.0
 offset_right = 512.0
 offset_bottom = 280.0
 text = "and everyone died"
+
+[node name="tempblipplayer" type="AudioStreamPlayer" parent="." unique_id=106897715]
+stream = ExtResource("23_1lraq")

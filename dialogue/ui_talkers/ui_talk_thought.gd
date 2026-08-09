@@ -1,7 +1,8 @@
 class_name UITalkThought extends UITalk
 
 @export var box_template: BoxTemplate
-@export var in_between_time = .1
+@export var in_between_time = .06
+@export var end_wait = .7
 
 var box_instance: BoxTemplate
 
@@ -20,21 +21,31 @@ func play_talk_sound():
 
 #region box
 func talk(s: String, starting_visible_characters: int = 0):
+	if s == "":
+		talk_ended.emit()
+		start_next.emit()
+		animate_kill_box_instance(box_instance)
+		return
+	
 	var box = add_templated_box_instance(box_template)
 	var label = box.label
 	
 	label.text = s
 	label.visible_characters = starting_visible_characters
 	
+	var true_index = starting_visible_characters
+	
 	for i in s.length() - starting_visible_characters:
+		if s[true_index] != ' ':
+			get_parent().get_parent().play_blip() #temp
 		await get_tree().create_timer(in_between_time).timeout
-		play_talk_sound()
 		if label and !label.is_queued_for_deletion():
 			label.visible_characters += 1
+		true_index += 1
 	
 	talk_ended.emit()
 	
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(end_wait).timeout
 	
 	start_next.emit()
 

@@ -22,11 +22,14 @@ var current_camera_animation: int = 0
 
 @export_category("Temporary")
 @export var debug_rect_display: ColorRect
+@export var blip_player: AudioStreamPlayer
+@export var blip_dynamic_range: float = .1
 
 func _ready():
 	cheats.cheat_entered.connect(dialogue_cheats)
 
 
+#region temp
 func dialogue_cheats(s: String):
 	match s:
 		"dia_ex":
@@ -35,6 +38,12 @@ func dialogue_cheats(s: String):
 			dialogue_start(dia_ex_choice)
 		"dia_ex_thought":
 			dialogue_start(dia_ex_thought)
+
+
+func play_blip():
+	blip_player.pitch_scale = randf_range(1-blip_dynamic_range,1+blip_dynamic_range)
+	blip_player.play()
+#endregion
 
 #region dialogue loop
 func dialogue_start(dl:DialogueLine):
@@ -56,8 +65,6 @@ func dialogue_loop(dl:DialogueLine):
 	if dl is DialogueStatement:
 		player_sprite.play("talk")
 		# current_camera_animation = CameraAnimation.TALK
-		
-		
 		
 		tween_to_talk()
 		

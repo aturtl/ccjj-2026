@@ -5,7 +5,9 @@ class_name UITalkNPC extends UITalk
 @export var instance_count = 3
 
 @export var transitioners: Node2D
-@export var in_between_time = .1
+@export var in_between_time = .09
+
+@export var end_wait = 1.0
 
 var box_instances = {}
 
@@ -24,23 +26,38 @@ func play_talk_sound():
 
 #region box
 func talk(s: String, starting_visible_characters: int = 0):
+	if s == "":
+		talk_ended.emit()
+		start_next.emit()
+		kill_all_box_instances()
+		return
+	
 	var box = add_templated_box_instance(box_template)
 	var label = box.label
 	
 	label.text = s
 	label.visible_characters = starting_visible_characters
 	
+	var true_index = starting_visible_characters
+	
 	for i in s.length() - starting_visible_characters:
+		if s[true_index] != ' ':
+			get_parent().get_parent().play_blip() #temp
 		await get_tree().create_timer(in_between_time).timeout
-		play_talk_sound()
 		if label and !label.is_queued_for_deletion():
 			label.visible_characters += 1
+		true_index += 1
 	
 	talk_ended.emit()
 	
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(end_wait).timeout
 	
 	start_next.emit()
+
+
+func kill_all_box_instances():
+	for instance in box_instances:
+		animate_kill_box_instance(instance)
 
 
 func add_templated_box_instance(box_temp: BoxTemplate):
