@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 Inventory="*uid://btvtjngct6bnv"
 UIManager="*uid://b6ilicojuqm50"
-
 run/main_scene="uid://ce1e6q3be8nfn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -37,8 +36,8 @@ folder_colors={
 "res://components/": "gray",
 "res://data/": "blue",
 "res://entities/": "yellow",
-"res://ui/": "teal",
-"res://placeholders/": "purple"
+"res://placeholders/": "purple",
+"res://ui/": "teal"
 }
 
 [input]
