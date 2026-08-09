@@ -7,11 +7,13 @@ var current_camera_animation: int = 0
 @export var player_sprite: AnimatedSprite2D
 @export var npc_sprite: AnimatedSprite2D
 @export var transitioners: Node2D
+@export var screen_fader: ColorRect
 
 @export_category("Talkers")
 @export var ui_npc_talk: UITalkNPC
 @export var ui_choice_display: UIChoiceDisplay
 @export var ui_thought_talk: UITalkThought
+@export var blip_player: AudioStreamPlayer
 
 @onready var cheats: Cheats = %Cheats
 
@@ -22,7 +24,6 @@ var current_camera_animation: int = 0
 
 @export_category("Temporary")
 @export var debug_rect_display: ColorRect
-@export var blip_player: AudioStreamPlayer
 @export var blip_dynamic_range: float = .1
 
 var original_player_pos: Vector2
@@ -47,13 +48,15 @@ func dialogue_cheats(s: String):
 
 
 func play_blip(dyn_range: float = blip_dynamic_range):
-	blip_player.pitch_scale = randf_range(1-dyn_range,1+dyn_range)
+	var pitch_scale = randf_range(1-dyn_range,1+dyn_range)
 	blip_player.play()
 #endregion
 
 #region dialogue loop
 func dialogue_start(dl:DialogueLine):
 	scene = ""
+	player_sprite.visible = true
+	npc_sprite.visible = true
 	original_player_pos = player_sprite.get_parent().global_position
 	original_npc_pos = npc_sprite.get_parent().global_position
 	original_cam_pos = talk_cam.global_position
@@ -67,7 +70,10 @@ func dialogue_loop(dl:DialogueLine):
 		return
 	
 	if dl.switch_npc_animation_to != "":
-		npc_sprite.play(dl.switch_npc_animation_to)
+		if dl.switch_npc_animation_to == "gone":
+			npc_sprite.visible = false
+		else:
+			npc_sprite.play(dl.switch_npc_animation_to)
 	
 	if dl.switch_player_animation_to != "":
 		player_sprite.play(dl.switch_player_animation_to)
@@ -119,13 +125,32 @@ func dialogue_loop(dl:DialogueLine):
 			tween_back_to_original_positions()
 	
 	elif dl is DialogueFadeScreen:
-		await get_tree().create_timer(dl.fade_time).timeout #replace with screen tween
+		screen_fader.visible = true
+		
+		var alpha = 1.0 if dl.fade_type == dl.FadeType.IN else 0.0
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(screen_fader,"modulate:a",alpha,dl.fade_time)
+		tween.play()
+		
+		await tween.finished
+		
+		if dl.fade_type == dl.FadeType.OUT:
+			screen_fader.visible = false
+		
 		loop_with_parallels(dl)
 	
 	elif dl is DialoguePlaySound:
+		AudioManager.play_sfx(dl.audio_stream)
 		loop_with_parallels(dl) # add func
 	
-	elif dl is DialogueReward:
+	elif dl is DialogueStatSetter:
+		Stats.confidence += dl.confidence_reward
+		dl.confidence_reward = 0
+		if dl.add_item:
+			Inventory.add_item(dl.add_item)
+		if dl.remove_item:
+			Inventory.remove_item(dl.remove_item)
 		loop_with_parallels(dl) # add func
 
 
@@ -140,6 +165,8 @@ func dialogue_end():
 
 
 func loop_with_parallels(dl: DialogueLine):
+	if dl.after_wait > 0.0:
+		await get_tree().create_timer(dl.after_wait).timeout
 	dialogue_loop(dl.goto)
 	for goto in dl.parallel_gotos:
 		print("p_loop", dl)

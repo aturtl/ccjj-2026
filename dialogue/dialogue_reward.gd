@@ -1,7 +1,8 @@
-class_name DialogueReward extends DialogueLine
+class_name DialogueStatSetter extends DialogueLine
 
-@export var confidence_reward = 0.0
-@export var item_reward = "" # Not blank = item, you know the drill
+@export var confidence_reward: int = 0
+@export var add_item: ItemData # Not blank = item, you know the drill
+@export var remove_item: ItemData
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 

@@ -8,10 +8,8 @@ class_name DialogueChoice extends DialogueLine
 
 @export var choice_text: String = ""
 
-@export var prereq_item: String
-@export var prereq_sanity: float
-
-@export var sanity_change: float = 0.0
+@export var prereq_item: ItemData
+@export var prereq_confidence: int
 
 
 func _ready():

@@ -22,12 +22,14 @@ unique_name_in_owner = true
 z_index = 1000
 position = Vector2(576, 324)
 
-[node name="NPCTalk" parent="." unique_id=1866522664 instance=ExtResource("10_215e1")]
+[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader") instance=ExtResource("10_215e1")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
+screen_fader = NodePath("../UI/ScreenFader")
 
-[node name="DialogueLines" parent="." unique_id=161622172 instance=ExtResource("4_iotsf")]
+[node name="DialogueLineTreeHolder" parent="." unique_id=161622172 instance=ExtResource("4_iotsf")]
+unique_name_in_owner = true
 position = Vector2(576, 324)
 
 [node name="BG" type="Sprite2D" parent="." unique_id=747760484]
@@ -79,6 +81,16 @@ visible = false
 unique_name_in_owner = true
 visible = false
 
+[node name="ScreenFader" type="ColorRect" parent="UI" unique_id=466942919]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 50
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
 [connection signal="toggled" from="UI/HUD/InventoryButton" to="." method="_on_inventory_button_toggled"]
 [connection signal="start_game" from="UI/StartMenu" to="." method="_on_start_game"]
 [connection signal="resume" from="UI/PauseMenu" to="." method="unpause_game"]
+
+[editable path="DialogueLineTreeHolder"]

@@ -1,16 +1,16 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://gn5nv32ihl4k"]
 
-[ext_resource type="Texture2D" uid="uid://dvqw73kytml1i" path="res://placeholders/placeholder_fish_guy.png" id="1_ao6a8"]
-[ext_resource type="Texture2D" uid="uid://qbs3dp6umr1f" path="res://placeholders/placeholder_wormy_0002.png" id="2_ufopm"]
-[ext_resource type="Texture2D" uid="uid://b0s0wenm6u4ud" path="res://placeholders/placeholder_wormy_0003.png" id="3_br7cf"]
-[ext_resource type="Texture2D" uid="uid://bs13yjlxmeuhu" path="res://placeholders/placeholder_wormy_0000.png" id="4_4snak"]
-[ext_resource type="Texture2D" uid="uid://dlm758x78w56q" path="res://placeholders/placeholder_wormy_0001.png" id="5_7wdnb"]
+[ext_resource type="Texture2D" uid="uid://dvqw73kytml1i" path="res://placeholders/placeholder_fish_guy.png" id="1_3swmn"]
+[ext_resource type="Texture2D" uid="uid://qbs3dp6umr1f" path="res://placeholders/placeholder_wormy_0002.png" id="2_13ghi"]
+[ext_resource type="Texture2D" uid="uid://b0s0wenm6u4ud" path="res://placeholders/placeholder_wormy_0003.png" id="3_e4pui"]
+[ext_resource type="Texture2D" uid="uid://bs13yjlxmeuhu" path="res://placeholders/placeholder_wormy_0000.png" id="4_lbol6"]
+[ext_resource type="Texture2D" uid="uid://dlm758x78w56q" path="res://placeholders/placeholder_wormy_0001.png" id="5_mbnej"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ao6a8")
+"texture": ExtResource("1_3swmn")
 }],
 "loop": 1,
 "name": &"default",
@@ -18,10 +18,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ufopm")
+"texture": ExtResource("2_13ghi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_br7cf")
+"texture": ExtResource("3_e4pui")
 }],
 "loop": 1,
 "name": &"wormy_angry",
@@ -29,10 +29,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_4snak")
+"texture": ExtResource("4_lbol6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_7wdnb")
+"texture": ExtResource("5_mbnej")
 }],
 "loop": 1,
 "name": &"wormy_basic",

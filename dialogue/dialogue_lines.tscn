@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6u44p43el3vx"]
 
-[ext_resource type="Script" uid="uid://sdj0thafmbhh" path="res://dialogue_lines.gd" id="1_3etux"]
+[ext_resource type="Script" uid="uid://sdj0thafmbhh" path="res://dialogue_line_tree_holder.gd" id="1_3etux"]
 [ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/dialogue_player_thought.gd" id="2_3mtrk"]
 [ext_resource type="Script" uid="uid://bf6xushulbekl" path="res://dialogue/stackables/dialogue_statement.gd" id="3_jak5m"]
 [ext_resource type="Script" uid="uid://dv067w6ebkvde" path="res://dialogue/dialogue_set_cam.gd" id="3_k1frf"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://d0wrttl5pqxhg" path="res://dialogue/stackables/dialogue_choice.gd" id="5_k1frf"]
 [ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/dialogue_fade_screen.gd" id="7_aux7e"]
 [ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/dialogue_play_sound.gd" id="8_8abdn"]
+[ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="9_dswi5"]
 [ext_resource type="Script" uid="uid://do1oojhpndbhe" path="res://dialogue/dialogue_reward.gd" id="9_v0p3i"]
+[ext_resource type="Resource" uid="uid://d4d8061twem3j" path="res://data/items/key.tres" id="11_4w2fl"]
 
 [node name="DialogueLines" type="Node2D" unique_id=161622172]
 script = ExtResource("1_3etux")
@@ -102,7 +104,7 @@ script = ExtResource("3_k1frf")
 [node name="DialogueChoice" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion" unique_id=1091542712]
 script = ExtResource("5_k1frf")
 choice_text = "Keys"
-prereq_item = "CarKey"
+prereq_item = ExtResource("11_4w2fl")
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
 [node name="DialoguePlayerThought" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=721834466]
@@ -133,6 +135,9 @@ metadata/_custom_type_script = "uid://cjfyjpl406rmo"
 
 [node name="DialoguePlaySound" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn" unique_id=204943900]
 script = ExtResource("8_8abdn")
+audio_stream = ExtResource("9_dswi5")
+switch_npc_animation_to = "gone"
+after_wait = 4.0
 metadata/_custom_type_script = "uid://sl5iutsqybsx"
 
 [node name="DialogueFadeOut" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound" unique_id=104484829]
@@ -145,10 +150,11 @@ script = ExtResource("2_3mtrk")
 dialogue = "Huh. Guess it was a good thing I was here."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueReward" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3" unique_id=1479510621]
+[node name="DialogueStatSetter" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3" unique_id=1479510621]
 script = ExtResource("9_v0p3i")
+confidence_reward = 5
 metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
-[node name="DialogueSetCam" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DialogueReward" unique_id=1868548413]
+[node name="DialogueSetCam" type="Node" parent="CarKey2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DialogueStatSetter" unique_id=1868548413]
 script = ExtResource("3_k1frf")
 metadata/_custom_type_script = "uid://dv067w6ebkvde"

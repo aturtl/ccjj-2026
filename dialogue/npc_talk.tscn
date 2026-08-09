@@ -10,29 +10,12 @@
 [ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/dialogue_player_thought.gd" id="5_nbgfc"]
 [ext_resource type="Script" uid="uid://c70kymtkpjq10" path="res://dialogue/ui_templates/choice_template.gd" id="7_64tqn"]
 [ext_resource type="Script" uid="uid://c0agvk4gyihqb" path="res://dialogue/ui_talkers/ui_talk_npc.gd" id="9_ak87k"]
-[ext_resource type="Texture2D" uid="uid://r4xs3u5woly8" path="res://placeholders/placeholder_cake_0000.png" id="13_qffds"]
 [ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="14_7pvnj"]
-[ext_resource type="Texture2D" uid="uid://wj7xk48i8gfh" path="res://placeholders/placeholder_cake_0001.png" id="14_svhel"]
 [ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="15_bwfku"]
-[ext_resource type="Script" uid="uid://bh6ijehmecin3" path="res://generic/autoplay_animated_sprite_2d.gd" id="15_svhel"]
 [ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="16_nbgfc"]
 [ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="23_1lraq"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_t1u1q"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("13_qffds")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_svhel")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "dia_ex_lines", "dia_ex_choice", "dia_ex_thought", "debug_rect_display", "blip_player")]
+[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "blip_player", "dia_ex_lines", "dia_ex_choice", "dia_ex_thought", "debug_rect_display")]
 script = ExtResource("1_m8yt7")
 talk_cam = NodePath("TalkCam")
 player_sprite = NodePath("Characters/Player/Sprite")
@@ -41,11 +24,11 @@ transitioners = NodePath("Transitioners")
 ui_npc_talk = NodePath("UI/UITalkNPC")
 ui_choice_display = NodePath("UI/UIChoice")
 ui_thought_talk = NodePath("UI/UITalkThought")
+blip_player = NodePath("BlipPlayer")
 dia_ex_lines = NodePath("EXAMPLELINES/OrganizationTemplate")
 dia_ex_choice = NodePath("EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest")
 dia_ex_thought = NodePath("EXAMPLELINES/Thought")
 debug_rect_display = NodePath("tempscreen")
-blip_player = NodePath("tempblipplayer")
 
 [node name="EXAMPLELINES" type="Node" parent="." unique_id=118042448]
 
@@ -96,7 +79,6 @@ metadata/_custom_type_script = "uid://bf6xushulbekl"
 script = ExtResource("3_8o7g4")
 goto = NodePath("../../../../../../../Angry")
 choice_text = "howdy"
-prereq_item = "yeah"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
 [node name="Thought5" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest/Maybe2" unique_id=1243263768]
@@ -107,7 +89,6 @@ metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 script = ExtResource("3_8o7g4")
 goto = NodePath("../../../../../../../Happy")
 choice_text = "*fight*"
-prereq_item = "yeah"
 metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
 [node name="Thought6" type="Node" parent="EXAMPLELINES/OrganizationTemplate/YouMayChange/TheseNames/ToDepict/Dialogue/QuestionTest/Maybe3" unique_id=324860867]
@@ -208,11 +189,9 @@ bbcode_enabled = true
 text = "[center]PREREQ[/center]"
 fit_content = true
 
-[node name="Sprite" type="AnimatedSprite2D" parent="UI/UIChoice/ChoiceTemplate" unique_id=2111596517]
+[node name="Sprite" type="Sprite2D" parent="UI/UIChoice/ChoiceTemplate" unique_id=1546460758]
 position = Vector2(0, -24)
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_t1u1q")
-script = ExtResource("15_svhel")
 
 [node name="Button" type="Button" parent="UI/UIChoice/ChoiceTemplate" unique_id=1642728767]
 modulate = Color(1, 1, 1, 0)
@@ -358,5 +337,6 @@ offset_right = 512.0
 offset_bottom = 280.0
 text = "and everyone died"
 
-[node name="tempblipplayer" type="AudioStreamPlayer" parent="." unique_id=106897715]
+[node name="BlipPlayer" type="AudioStreamPlayer" parent="." unique_id=106897715]
 stream = ExtResource("23_1lraq")
+bus = &"SFX"

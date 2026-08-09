@@ -6,3 +6,5 @@ class_name DialogueLine extends Node
 
 @export var in_between_time: float = -1.0 # -1.0 to use default value
 @export var dynamic_range: float = -1.0 # -1.0 to use default value
+
+@export var after_wait: float = 0.0
