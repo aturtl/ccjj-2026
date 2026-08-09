@@ -56,8 +56,9 @@ func talk(s: String, starting_visible_characters: int = 0):
 
 
 func kill_all_box_instances():
-	for instance in box_instances:
-		animate_kill_box_instance(instance)
+	for i in box_instances:
+		animate_kill_box_instance(box_instances[i])
+		box_instances[i] = null
 
 
 func add_templated_box_instance(box_temp: BoxTemplate):

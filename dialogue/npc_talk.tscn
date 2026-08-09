@@ -116,26 +116,6 @@ dialogue = "look at me"
 switch_npc_animation_to = "wormy_basic"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="Thought2" type="Node" parent="EXAMPLELINES/OrganizationTemplate" unique_id=785672291]
-script = ExtResource("5_nbgfc")
-dialogue = "yeah"
-metadata/_custom_type_script = "uid://bt0beq6e14jlu"
-
-[node name="Thought2" type="Node" parent="EXAMPLELINES/OrganizationTemplate/Thought2" unique_id=1294598873]
-script = ExtResource("5_nbgfc")
-dialogue = "idrk why i am thinking right now"
-metadata/_custom_type_script = "uid://bt0beq6e14jlu"
-
-[node name="Thought3" type="Node" parent="EXAMPLELINES/OrganizationTemplate/Thought2/Thought2" unique_id=111994903]
-script = ExtResource("5_nbgfc")
-dialogue = "i mean sometimes i just think to think"
-metadata/_custom_type_script = "uid://bt0beq6e14jlu"
-
-[node name="Thought4" type="Node" parent="EXAMPLELINES/OrganizationTemplate/Thought2/Thought2/Thought3" unique_id=1832398477]
-script = ExtResource("5_nbgfc")
-dialogue = "i think..."
-metadata/_custom_type_script = "uid://bt0beq6e14jlu"
-
 [node name="YouMayChange" type="Node" parent="EXAMPLELINES/OrganizationTemplate" unique_id=1565826900]
 script = ExtResource("2_bwfku")
 dialogue = "i can talk"
@@ -225,6 +205,14 @@ metadata/_custom_type_script = "uid://bf6xushulbekl"
 [node name="Angry4" type="Node" parent="EXAMPLELINES/Angry/Angry2/Angry3" unique_id=1718663090]
 script = ExtResource("2_bwfku")
 dialogue = "*dies of dead*"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
+
+[node name="KILL2" type="Node" parent="EXAMPLELINES/Angry/Angry2/Angry3/Angry4" unique_id=1402318505]
+script = ExtResource("5_nbgfc")
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="KILL" type="Node" parent="EXAMPLELINES/Angry/Angry2/Angry3/Angry4" unique_id=522621753]
+script = ExtResource("2_bwfku")
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Happy" type="Node" parent="EXAMPLELINES" unique_id=1557267594]
@@ -394,7 +382,7 @@ texture = ExtResource("4_qynjn")
 [node name="Characters" type="Node2D" parent="." unique_id=992138454]
 
 [node name="Player" type="Node2D" parent="Characters" unique_id=1966904080]
-position = Vector2(-136, 24)
+position = Vector2(-864, -296)
 scale = Vector2(0.5199988, 0.56)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Characters/Player" unique_id=1581549206]
@@ -402,7 +390,7 @@ sprite_frames = SubResource("SpriteFrames_wwrea")
 animation = &"thought"
 
 [node name="NPC" type="Node2D" parent="Characters" unique_id=286059124]
-position = Vector2(128, 8)
+position = Vector2(832, -336)
 scale = Vector2(0.45118892, 0.4559301)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Characters/NPC" unique_id=1340904401]
