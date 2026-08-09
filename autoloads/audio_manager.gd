@@ -4,9 +4,18 @@ const MASTER_BUS: String = "Master"
 const MUSIC_BUS: String = "Music"
 const SFX_BUS: String = "SFX"
 
-const MAX_SFX := 8
+const MAX_SFX : int = 8
 
-var active_sfx := 0
+var active_sfx : int = 0
+
+var music_player: AudioStreamPlayer
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	music_player = AudioStreamPlayer.new()
+	music_player.bus = MUSIC_BUS
+	#music_player
+	add_child(music_player)
 
 #region VOLUME
 
@@ -47,6 +56,15 @@ func _set_bus_muted(bus_name: String, muted: bool) -> void:
 	AudioServer.set_bus_mute(bus, muted)
 
 #endregion
+
+#region MUSIC
+func play_music(stream: AudioStream) -> void:
+	music_player.stream = stream
+	music_player.play()
+
+
+func stop_music() -> void:
+	music_player.stop()
 
 #region SFX
 

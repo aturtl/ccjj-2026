@@ -15,7 +15,7 @@ func _on_master_volume_toggled(toggled_on: bool) -> void:
 
 
 func _on_master_slider_value_changed(value: float) -> void:
-	AudioManager.set_master_volume(value)
+	AudioManager.set_master_volume(value / 100)
 
 
 func _on_music_volume_toggled(toggled_on: bool) -> void:
@@ -24,7 +24,7 @@ func _on_music_volume_toggled(toggled_on: bool) -> void:
 
 
 func _on_music_slider_value_changed(value: float) -> void:
-	AudioManager.set_music_volume(value)
+	AudioManager.set_music_volume(value / 100)
 
 
 func _on_effects_volume_toggled(toggled_on: bool) -> void:
@@ -33,4 +33,4 @@ func _on_effects_volume_toggled(toggled_on: bool) -> void:
 
 
 func _on_effects_slider_value_changed(value: float) -> void:
-	AudioManager.set_sfx_volume(value)
+	AudioManager.set_sfx_volume(value / 100)
