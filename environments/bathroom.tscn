@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://copvaonpw53r2"]
+
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="1_1ess3"]
+
+[node name="Bathroom" type="Node2D" unique_id=1154042809]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1471044018]
+modulate = Color(0, 0.023529412, 1, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("1_1ess3")

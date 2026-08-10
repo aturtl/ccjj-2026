@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0fri55hif3q5"]
 
-[ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/GameJam_Background.png" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dp31gpxs4x57e" path="res://entities/objects/key/key.tscn" id="2_eow3j"]
 [ext_resource type="PackedScene" uid="uid://d1dsnitsm7cwe" path="res://entities/npc/reef/reef.tscn" id="3_7sc4i"]
@@ -9,9 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
 [ext_resource type="Script" uid="uid://cv375brw8kgef" path="res://dialogue/dialogue_instance_connectors.gd" id="5_215e1"]
 [ext_resource type="Script" uid="uid://cg11uyllsqbg" path="res://dialogue/dialogue_instance_connector.gd" id="5_lc2xo"]
+[ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
+[ext_resource type="Script" uid="uid://bhi504klelxkd" path="res://environments/environment.gd" id="4_x5p1p"]
 [ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
+[ext_resource type="PackedScene" uid="uid://cgup25de442gh" path="res://environments/living_room.tscn" id="5_x5p1p"]
 [ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
+[ext_resource type="PackedScene" uid="uid://b48dqgav8yttt" path="res://environments/kitchen.tscn" id="6_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://ix4858unbekg" path="res://ui/inventory_ui/inventory_ui.tscn" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://bfgo03um2pv78" path="res://environments/hallway.tscn" id="7_f1jbl"]
+[ext_resource type="PackedScene" uid="uid://copvaonpw53r2" path="res://environments/bathroom.tscn" id="8_vaj68"]
+[ext_resource type="PackedScene" uid="uid://bke8xvgcn8qkd" path="res://environments/backyard.tscn" id="9_i2p71"]
 [ext_resource type="PackedScene" uid="uid://c0vcgctyyu75u" path="res://cheats/cheats.tscn" id="9_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://c6rulyvkfnu6t" path="res://dialogue/npc_talk.tscn" id="10_215e1"]
 [ext_resource type="PackedScene" uid="uid://bvg0cccacnihn" path="res://ui/credits_menu/credits_menu.tscn" id="14_215e1"]
@@ -26,10 +33,41 @@ z_index = 1000
 position = Vector2(576, 324)
 
 [node name="BG" type="Sprite2D" parent="." unique_id=747760484]
-modulate = Color(0.14406255, 0.14406255, 0.14406255, 1)
+visible = false
 position = Vector2(589, 317)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_80nbo")
+
+[node name="Environment" type="Node2D" parent="." unique_id=718944105]
+script = ExtResource("4_x5p1p")
+
+[node name="FrontYard" parent="Environment" unique_id=1755393680 instance=ExtResource("4_hb5m1")]
+unique_name_in_owner = true
+
+[node name="LivingRoom" parent="Environment" unique_id=1056652401 instance=ExtResource("5_x5p1p")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(2651, 18)
+
+[node name="Kitchen" parent="Environment" unique_id=190051855 instance=ExtResource("6_qhcbd")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(4181, 6)
+
+[node name="Hallway" parent="Environment" unique_id=2102377602 instance=ExtResource("7_f1jbl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(5688, 1)
+
+[node name="Bathroom" parent="Environment" unique_id=1154042809 instance=ExtResource("8_vaj68")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(7191, 30)
+
+[node name="Backyard" parent="Environment" unique_id=1847859133 instance=ExtResource("9_i2p71")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(8786, -17)
 
 [node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
 position = Vector2(304, 784)
@@ -120,6 +158,7 @@ unique_name_in_owner = true
 [node name="StartMenu" parent="UI" unique_id=1065199818 instance=ExtResource("4_fc0e3")]
 unique_name_in_owner = true
 process_mode = 2
+visible = false
 
 [node name="PauseMenu" parent="UI" unique_id=784381929 instance=ExtResource("6_eow3j")]
 unique_name_in_owner = true
