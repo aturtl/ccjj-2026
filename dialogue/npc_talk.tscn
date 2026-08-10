@@ -5,11 +5,12 @@
 [ext_resource type="Script" uid="uid://d0wrttl5pqxhg" path="res://dialogue/stackables/functionality/dialogue_choice.gd" id="3_8o7g4"]
 [ext_resource type="Script" uid="uid://vyopck2u0qf4" path="res://dialogue/stackables/functionality/dialogue_question.gd" id="3_nbgfc"]
 [ext_resource type="Script" uid="uid://b04fwqkn4w1tf" path="res://dialogue/ui_templates/box_template.gd" id="4_muvp4"]
-[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="4_qynjn"]
 [ext_resource type="Script" uid="uid://cefhro15wp6v7" path="res://dialogue/ui_choice_displays/ui_choice_display.gd" id="4_s0v2e"]
 [ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/functionality/dialogue_player_thought.gd" id="5_nbgfc"]
 [ext_resource type="Script" uid="uid://c70kymtkpjq10" path="res://dialogue/ui_templates/choice_template.gd" id="7_64tqn"]
 [ext_resource type="Script" uid="uid://c0agvk4gyihqb" path="res://dialogue/ui_talkers/ui_talk_npc.gd" id="9_ak87k"]
+[ext_resource type="Texture2D" uid="uid://duhua14dmi18j" path="res://assets/ui/npc_dialogue_box.png" id="10_ak87k"]
+[ext_resource type="Texture2D" uid="uid://cf5j5prldlckw" path="res://assets/ui/mc_dialogue_box.png" id="12_bwfku"]
 [ext_resource type="Script" uid="uid://y2w71ew3be3l" path="res://dialogue/ui_talkers/ui_reward.gd" id="12_svhel"]
 [ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="14_7pvnj"]
 [ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="15_bwfku"]
@@ -224,21 +225,21 @@ positioner = NodePath("Positioner")
 [node name="Sizer" type="Node2D" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater" unique_id=899929884]
 position = Vector2(-76, -4)
 
+[node name="Background" type="Sprite2D" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1306438264]
+texture_filter = 1
+position = Vector2(-234.00003, 8)
+texture = ExtResource("10_ak87k")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=491054044]
 clip_contents = false
-offset_left = -518.0
+offset_left = -497.0
 offset_top = -51.0
-offset_right = 82.0
+offset_right = -27.0
 offset_bottom = 49.0
-theme_override_font_sizes/normal_font_size = 26
+theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "DIALOGUE"
-
-[node name="Background" type="Sprite2D" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1306438264]
-z_index = -1
-position = Vector2(-234.00003, 8)
-scale = Vector2(4.851242, 1.2489974)
-texture = ExtResource("4_qynjn")
 
 [node name="UITalkThought" type="Node2D" parent="UI" unique_id=1801668213 node_paths=PackedStringArray("box_template")]
 z_index = 10
@@ -261,21 +262,20 @@ positioner = NodePath("Positioner")
 [node name="Sizer" type="Node2D" parent="UI/UITalkThought/BoxTemplate/Positioner/Rotater" unique_id=1627653351]
 position = Vector2(-76, -4)
 
+[node name="Background" type="Sprite2D" parent="UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1448479009]
+position = Vector2(-234.00003, 8)
+texture = ExtResource("12_bwfku")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=192639951]
 clip_contents = false
-offset_left = -518.0
-offset_top = -51.0
-offset_right = 82.0
+offset_left = -452.0
+offset_top = -44.0
+offset_right = -28.0
 offset_bottom = 49.0
-theme_override_font_sizes/normal_font_size = 26
+theme_override_colors/default_color = Color(0.33140886, 0.060379684, 0.5436291, 1)
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "DIALOGUE"
-
-[node name="Background" type="Sprite2D" parent="UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1448479009]
-z_index = -1
-position = Vector2(-234.00003, 8)
-scale = Vector2(4.851242, 1.2489974)
-texture = ExtResource("4_qynjn")
 
 [node name="UIReward" type="Node2D" parent="UI" unique_id=1354403908 node_paths=PackedStringArray("box_template", "reward_screen")]
 z_index = 10
@@ -285,6 +285,7 @@ reward_screen = NodePath("BoxTemplate/RewardScreen")
 metadata/_custom_type_script = "uid://y2w71ew3be3l"
 
 [node name="BoxTemplate" type="Node2D" parent="UI/UIReward" unique_id=727790164 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+visible = false
 position = Vector2(296, 192)
 script = ExtResource("4_muvp4")
 label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")

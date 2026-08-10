@@ -25,11 +25,14 @@
 [ext_resource type="PackedScene" uid="uid://bkld8nuvrrlnt" path="res://dialogue/stackables/scenes/event/dialogue_play_sound.tscn" id="19_bieie"]
 [ext_resource type="PackedScene" uid="uid://3pkkj171l7os" path="res://dialogue/stackables/scenes/visual/question/dialogue_choice.tscn" id="22_ikrlq"]
 [ext_resource type="PackedScene" uid="uid://cwfb74agbws57" path="res://dialogue/stackables/scenes/visual/dialogue_statement.tscn" id="23_258b8"]
+[ext_resource type="Resource" uid="uid://u7e1cuomsyhr" path="res://data/items/earring.tres" id="24_v3i0m"]
 [ext_resource type="PackedScene" uid="uid://c0lwbakueisyc" path="res://dialogue/stackables/scenes/event/dialogue_fade_screen.tscn" id="25_xyyno"]
+[ext_resource type="Resource" uid="uid://3t4hgxj0jd8t" path="res://data/items/stepladder.tres" id="26_v3i0m"]
 [ext_resource type="Resource" uid="uid://b7x8mlbvim3un" path="res://data/items/stepladder_quest.tres" id="27_1vab1"]
 [ext_resource type="Resource" uid="uid://dcs0wnd2i8w6q" path="res://data/items/drink.tres" id="28_sh30a"]
 [ext_resource type="Resource" uid="uid://dirbwttvxbhpf" path="res://data/items/drink_quest.tres" id="29_ikg4h"]
 [ext_resource type="Resource" uid="uid://jlfjfmwpsoc7" path="res://data/items/screwdriver.tres" id="30_d0pek"]
+[ext_resource type="Resource" uid="uid://bmx3vehdapu8n" path="res://data/items/painkillers.tres" id="31_74mgt"]
 [ext_resource type="PackedScene" uid="uid://dvofh1tg0fuun" path="res://dialogue/stackables/scenes/event/dialogue_switch.tscn" id="33_sh30a"]
 [ext_resource type="Script" uid="uid://cl1iols5nby6h" path="res://dialogue/stackables/functionality/dialogue_switch.gd" id="34_ikg4h"]
 
@@ -41,23 +44,7 @@ id = "key"
 description = "Key item for keying things"
 metadata/_custom_type_script = "uid://cnnmfouky31n8"
 
-[sub_resource type="Resource" id="Resource_d0pek"]
-script = ExtResource("13_1vab1")
-name = "Key"
-texture = ExtResource("14_sh30a")
-id = "key"
-description = "Key item for keying things"
-metadata/_custom_type_script = "uid://cnnmfouky31n8"
-
 [sub_resource type="Resource" id="Resource_74mgt"]
-script = ExtResource("13_1vab1")
-name = "Key"
-texture = ExtResource("14_sh30a")
-id = "key"
-description = "Key item for keying things"
-metadata/_custom_type_script = "uid://cnnmfouky31n8"
-
-[sub_resource type="Resource" id="Resource_kbda5"]
 script = ExtResource("13_1vab1")
 name = "Key"
 texture = ExtResource("14_sh30a")
@@ -272,7 +259,7 @@ metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="DialogueStatSetter" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2" unique_id=1491847242]
 script = ExtResource("9_v0p3i")
-add_item = SubResource("Resource_ikg4h")
+add_item = ExtResource("26_v3i0m")
 metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
 [node name="DialogueReward" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter" unique_id=428732571]
@@ -445,7 +432,7 @@ choice_text = "On it!"
 
 [node name="DialogueChoice2" parent="Pacifica2/DialogueStatement/DialogueQuestion" unique_id=1334563762 instance=ExtResource("22_ikrlq")]
 choice_text = "Your earring?"
-prereq_item = SubResource("Resource_d0pek")
+prereq_item = ExtResource("24_v3i0m")
 
 [node name="DialoguePlayerThought" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=1764489708 instance=ExtResource("17_xyyno")]
 dialogue = "I found your-"
@@ -458,7 +445,7 @@ dialogue = "No problem!"
 
 [node name="DialogueStatSetter" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1805016260 instance=ExtResource("13_s3jmc")]
 confidence_reward = 10
-remove_item = SubResource("Resource_d0pek")
+remove_item = ExtResource("24_v3i0m")
 
 [node name="DialogueReward" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter" index="0" unique_id=1748942105]
 reward_text = "CONFIDENCE INCREASED BY 10!"
@@ -674,7 +661,7 @@ dialogue = "Hmm… okay!"
 
 [node name="DialogueStatSetter2" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement" unique_id=1814918896 instance=ExtResource("13_s3jmc")]
 confidence_reward = 0
-add_item = SubResource("Resource_74mgt")
+add_item = ExtResource("26_v3i0m")
 remove_item = ExtResource("27_1vab1")
 
 [node name="DialogueReward" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2" index="0" unique_id=1748942105]
@@ -1031,11 +1018,11 @@ dialogue = "Need something?"
 choice_text = "Nah"
 
 [node name="DialogueChoice2" parent="Brad2/DialogueStatement/DialogueQuestion" unique_id=1274239076 instance=ExtResource("22_ikrlq")]
-choice_text = "Painkillers"
-prereq_item = SubResource("Resource_kbda5")
+choice_text = "Got yer painkillers"
+prereq_item = ExtResource("31_74mgt")
 
 [node name="DialoguePlayerThought" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=392996154 instance=ExtResource("17_xyyno")]
-dialogue = "I brought you some pain killers for that headache. Thought you could use them."
+dialogue = "I brought you some painkillers for that headache. Thought you could use them."
 
 [node name="DialogueStatement" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=695315346 instance=ExtResource("23_258b8")]
 dialogue = "You did? Damn! You’re, like, a hero! Thanks dude!"
@@ -1043,7 +1030,7 @@ dialogue = "You did? Damn! You’re, like, a hero! Thanks dude!"
 [node name="DialogueStatSetter" type="Node" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=960920805]
 script = ExtResource("9_v0p3i")
 confidence_reward = 10
-remove_item = SubResource("Resource_kbda5")
+remove_item = ExtResource("31_74mgt")
 metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
 [node name="DialogueReward" type="Node" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatSetter" unique_id=524373253]
@@ -1221,7 +1208,7 @@ dialogue = "Looks like there’s an earring in here."
 
 [node name="DialogueStatSetter" type="Node" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought" unique_id=154662198]
 script = ExtResource("9_v0p3i")
-add_item = SubResource("Resource_d0pek")
+add_item = ExtResource("24_v3i0m")
 metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
 [node name="DialogueReward" type="Node" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueStatSetter" unique_id=1817814052]
@@ -1279,8 +1266,8 @@ prereq_item = SubResource("Resource_74mgt")
 dialogue = "Perfect. Now I can reach the medicine."
 
 [node name="DialogueStatSetter" parent="MedicineCabinet/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=432209291 instance=ExtResource("10_n5o83")]
-add_item = SubResource("Resource_kbda5")
-remove_item = SubResource("Resource_74mgt")
+add_item = ExtResource("31_74mgt")
+remove_item = ExtResource("26_v3i0m")
 
 [node name="DialogueReward" type="Node" parent="MedicineCabinet/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter" unique_id=450765729]
 script = ExtResource("12_na5fk")
