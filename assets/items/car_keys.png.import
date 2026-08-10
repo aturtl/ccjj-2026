@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq33kacbaqr3i"
-path="res://.godot/imported/earing.png-dae30fbfaaac871a0883f131cdf38010.ctex"
+uid="uid://dqc63p1arl47u"
+path="res://.godot/imported/car_keys.png-0c5017a68725d625565eebf638d93dba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/earing.png"
-dest_files=["res://.godot/imported/earing.png-dae30fbfaaac871a0883f131cdf38010.ctex"]
+source_file="res://assets/items/car_keys.png"
+dest_files=["res://.godot/imported/car_keys.png-0c5017a68725d625565eebf638d93dba.ctex"]
 
 [params]
 

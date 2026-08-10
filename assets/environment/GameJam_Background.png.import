@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crsfuhocr3l2t"
-path="res://.godot/imported/drink.png-95b29dbf091a53076327ce23d6f75eb9.ctex"
+uid="uid://ceh663ehfuf31"
+path="res://.godot/imported/GameJam_Background.png-7c8f0caf20abd441f9f305e2e74f20e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drink.png"
-dest_files=["res://.godot/imported/drink.png-95b29dbf091a53076327ce23d6f75eb9.ctex"]
+source_file="res://assets/environment/GameJam_Background.png"
+dest_files=["res://.godot/imported/GameJam_Background.png-7c8f0caf20abd441f9f305e2e74f20e9.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnb2gey5c5r6p"]
 
-[ext_resource type="Texture2D" uid="uid://dq33kacbaqr3i" path="res://assets/earing.png" id="1_21vyq"]
+[ext_resource type="Texture2D" uid="uid://dq33kacbaqr3i" path="res://assets/items/earing.png" id="1_21vyq"]
 [ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_pvr0t"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="2_aujs6"]
 [ext_resource type="Script" uid="uid://ca8xxc5vq7uj2" path="res://entities/objects/earing/lost_earing.gd" id="3_1nu7m"]

@@ -39,6 +39,7 @@ folder_colors={
 "res://components/": "gray",
 "res://data/": "blue",
 "res://entities/": "yellow",
+"res://environments/": "orange",
 "res://placeholders/": "purple",
 "res://ui/": "teal"
 }

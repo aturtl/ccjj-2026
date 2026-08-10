@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1opdnrtfen84"]
 
-[ext_resource type="Texture2D" uid="uid://crsfuhocr3l2t" path="res://assets/drink.png" id="1_5gcke"]
+[ext_resource type="Texture2D" uid="uid://crsfuhocr3l2t" path="res://assets/items/drink.png" id="1_5gcke"]
 [ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_7wwwq"]
 [ext_resource type="Script" uid="uid://qy4gdvchbos8" path="res://entities/objects/drink/drink.gd" id="2_qfbci"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="2_vfboi"]

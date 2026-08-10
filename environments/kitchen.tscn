@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b48dqgav8yttt"]
+
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="1_4tydl"]
+
+[node name="Kitchen" type="Node2D" unique_id=190051855]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1508942394]
+modulate = Color(1, 0, 1, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("1_4tydl")
