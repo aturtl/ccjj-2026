@@ -1,7 +1,7 @@
 extends Node2D
 
-
+@export var connector: DialogueInstanceConnector
 
 func _on_interactable_interacted(text: String) -> void:
-	# hook up dialogue
-	pass
+	if connector:
+		connector.play_tree()

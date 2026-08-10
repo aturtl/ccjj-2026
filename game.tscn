@@ -33,12 +33,10 @@ texture = ExtResource("1_80nbo")
 
 [node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
 
-[node name="NPC" parent="NPCs" unique_id=1676980202 instance=ExtResource("3_7sc4i")]
-
-[node name="NPCTalk" parent="." unique_id=1866522664 instance=ExtResource("10_215e1")]
+[node name="NPC" parent="NPCs" unique_id=1676980202 node_paths=PackedStringArray("connector") instance=ExtResource("3_7sc4i")]
+connector = NodePath("../../DialogueInstanceConnectors/NoName")
 
 [node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
-
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
