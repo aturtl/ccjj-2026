@@ -910,27 +910,27 @@ metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
 [node name="DialogueSwitch" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement/DialogueSetCam" unique_id=1114251432 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
 switch_connector_name = "Dog"
-switch_tree = NodePath("../../../../../../../../../../../../../../../DogDontGotNothing")
+switch_tree = NodePath("../../../../../../../../../../../../../../../../DogDontGotNothing")
 
-[node name="DogDontGotNothing" type="Node2D" parent="Dog" unique_id=2129785519]
+[node name="DogDontGotNothing" type="Node2D" parent="." unique_id=2129785519]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
-[node name="DialoguePlayerThought" parent="Dog/DogDontGotNothing" unique_id=2107573301 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" parent="DogDontGotNothing" unique_id=2107573301 instance=ExtResource("17_xyyno")]
 dialogue = "DOG!"
 
-[node name="DialogueQuestion" parent="Dog/DogDontGotNothing/DialoguePlayerThought" unique_id=97577930 instance=ExtResource("15_0v8oo")]
+[node name="DialogueQuestion" parent="DogDontGotNothing/DialoguePlayerThought" unique_id=97577930 instance=ExtResource("15_0v8oo")]
 
-[node name="DialogueChoice2" parent="Dog/DogDontGotNothing/DialoguePlayerThought/DialogueQuestion" unique_id=1934957268 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice2" parent="DogDontGotNothing/DialoguePlayerThought/DialogueQuestion" unique_id=1934957268 instance=ExtResource("22_ikrlq")]
 choice_text = "Don't pet dog. (Why would you choose this?)"
 
-[node name="DialogueChoice" parent="Dog/DogDontGotNothing/DialoguePlayerThought/DialogueQuestion" unique_id=204704089 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice" parent="DogDontGotNothing/DialoguePlayerThought/DialogueQuestion" unique_id=204704089 instance=ExtResource("22_ikrlq")]
 choice_text = "Pet dog"
 
-[node name="DialoguePlayerThought" parent="Dog/DogDontGotNothing/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=822168766 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" parent="DogDontGotNothing/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=822168766 instance=ExtResource("17_xyyno")]
 dialogue = "Hehe. Good puppy!!!!!!"
 
-[node name="DialogueStatement" parent="Dog/DogDontGotNothing/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=139342264 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" parent="DogDontGotNothing/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=139342264 instance=ExtResource("23_258b8")]
 dialogue = "Arf!"
 
 [node name="Brad1" type="Node2D" parent="." unique_id=1810273092]

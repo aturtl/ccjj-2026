@@ -1,5 +1,9 @@
 @tool
+
 class_name DialogueLineTree extends Node2D
+
+const print_prereqs_and_stats: bool = false
+const print_switches: bool = true
 
 var descendents = []
 
@@ -15,16 +19,26 @@ func get_all_descendents(parent:Node):
 func _ready():
 	if Engine.is_editor_hint(): # checks once per editor run
 		get_all_descendents(self)
-		print("")
-		print_rich("[color=yellow]TREE: ", name, "[/color]")
-		for descendent in descendents:
-			if descendent is DialogueReward:
-				print_rich("[color=purple]Reward Display: ", descendent.reward_text, "[/color]")
-			elif descendent is DialogueStatSetter:
-				print_rich("[color=magenta]Stat Change: ", descendent.confidence_reward, " + ", descendent.add_item, " - ", descendent.remove_item, "[/color]")
-			elif descendent is DialogueChoice:
-				print("Choice: ", descendent.choice_text)
-				if descendent.prereq_confidence != 0.0 or descendent.prereq_item:
-					print_rich("[color=cyan] <*> Requirements: ", descendent.prereq_confidence, " + ", descendent.prereq_item, "[/color]")
-				else:
-					print_rich("[color=red] * Requirements: NONE[/color]")
+		if print_prereqs_and_stats:
+			print("")
+			print_rich("[color=yellow]TREE: ", name, "[/color]")
+			for descendent in descendents:
+				if descendent is DialogueReward:
+					print_rich("[color=purple]Reward Display: ", descendent.reward_text, "[/color]")
+				elif descendent is DialogueStatSetter:
+					print_rich("[color=magenta]Stat Change: ", descendent.confidence_reward, " + ", descendent.add_item, " - ", descendent.remove_item, "[/color]")
+				elif descendent is DialogueChoice:
+					print("Choice: ", descendent.choice_text)
+					if descendent.prereq_confidence != 0.0 or descendent.prereq_item:
+						print_rich("[color=cyan] <*> Requirements: ", descendent.prereq_confidence, " + ", descendent.prereq_item, "[/color]")
+					else:
+						print_rich("[color=red] * Requirements: NONE[/color]")
+		if print_switches:
+			for descendent in descendents:
+				if descendent is DialogueSwitch:
+					print_rich("[color=yellow]TREE: ", name, "[/color]")
+					if descendent.switch_tree:
+						print_rich("[color=green]connector: ", descendent.switch_connector_name, "[/color] [color=red]connection:", descendent.switch_tree.name, "[/color]")
+					else:
+						print_rich("[color=green]connector: ", descendent.switch_connector_name, "[/color] [color=black]connection:", "NONE", "[/color]")
+						

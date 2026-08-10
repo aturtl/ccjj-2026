@@ -6,8 +6,6 @@ func _ready():
 
 
 func _on_cheat_entered(s: String):
-	print("CHEATING")
-	
 	if s.match("dl_*"):
 		var nm = s.substr(3)
 		play_tree(nm)
