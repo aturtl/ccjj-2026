@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://jlfjfmwpsoc7"]
 
 [ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="1_bmwqj"]
-[ext_resource type="Texture2D" uid="uid://blymom3qiax1v" path="res://assets/screwdriver.png" id="2_va70u"]
+[ext_resource type="Texture2D" uid="uid://blymom3qiax1v" path="res://assets/items/screwdriver.png" id="2_va70u"]
 
 [resource]
 script = ExtResource("1_bmwqj")

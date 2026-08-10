@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dpxc30k5pt3l0"]
+
+[ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_kbflq"]
+
+[node name="FrontYard" type="Node2D" unique_id=1755393680]
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1623040466]
+position = Vector2(559, 319)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("1_kbflq")

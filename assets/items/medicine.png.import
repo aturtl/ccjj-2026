@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceh663ehfuf31"
-path="res://.godot/imported/GameJam_Background.png-ca599a7dc3edbce1bd347bb86b2ee4da.ctex"
+uid="uid://b8mkrjtaecw4t"
+path="res://.godot/imported/medicine.png-c315e6129c27f485649e261a9656976c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GameJam_Background.png"
-dest_files=["res://.godot/imported/GameJam_Background.png-ca599a7dc3edbce1bd347bb86b2ee4da.ctex"]
+source_file="res://assets/items/medicine.png"
+dest_files=["res://.godot/imported/medicine.png-c315e6129c27f485649e261a9656976c.ctex"]
 
 [params]
 
