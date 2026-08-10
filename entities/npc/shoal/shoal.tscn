@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bywfibsphj1fs" path="res://entities/npc/shoal/shoal.gd" id="1_aaiyq"]
 [ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="2_e0pdg"]
-[ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="3_e0pdg"]
+[ext_resource type="Texture2D" uid="uid://b0wm2e8ne7l7j" path="res://assets/characters/Shaol_Sprite.png" id="3_hcuuw"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="4_vx7uo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hcuuw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymapv"]
 shader = ExtResource("2_e0pdg")
 shader_parameter/allow_out_of_bounds = true
 shader_parameter/outline_thickness = 0.0
@@ -18,15 +18,14 @@ height = 444.0
 [node name="Shoal" type="Node2D" unique_id=985543956]
 script = ExtResource("1_aaiyq")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=140576605]
-material = SubResource("ShaderMaterial_hcuuw")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1348474458]
+material = SubResource("ShaderMaterial_ymapv")
 scale = Vector2(0.25, 0.25)
-sprite_frames = ExtResource("3_e0pdg")
-animation = &"shaol_idle"
+texture = ExtResource("3_hcuuw")
 
 [node name="Interactable" type="Area2D" parent="." unique_id=189535765 node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_vx7uo")
-sprite = NodePath("../Sprite")
+sprite = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://d24v64w0rb8ei"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1078227110]

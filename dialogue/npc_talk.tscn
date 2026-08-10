@@ -13,17 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://cf5j5prldlckw" path="res://assets/ui/mc_dialogue_box.png" id="12_bwfku"]
 [ext_resource type="Script" uid="uid://y2w71ew3be3l" path="res://dialogue/ui_talkers/ui_reward.gd" id="12_svhel"]
 [ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="14_7pvnj"]
-[ext_resource type="PackedScene" uid="uid://y03etuhmnpfs" path="res://entities/npc/jellyfish/jellyfish.tscn" id="14_bwfku"]
 [ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="15_bwfku"]
+[ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="16_nbgfc"]
 [ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="23_1lraq"]
 
-[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "npc_character", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "dia_ex_lines", "dia_ex_choice", "dia_ex_thought", "debug_rect_display")]
+[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "dia_ex_lines", "dia_ex_choice", "dia_ex_thought", "debug_rect_display")]
 script = ExtResource("1_m8yt7")
-talk_cam = NodePath("")
+talk_cam = NodePath("TalkCam")
 player_sprite = NodePath("Characters/Player/Sprite")
-npc_sprite = NodePath("")
+npc_sprite = NodePath("Characters/NPC/Sprite")
 transitioners = NodePath("Transitioners")
-npc_character = NodePath("Characters/Jellyfish")
 ui_npc_talk = NodePath("UI/UITalkNPC")
 ui_choice_display = NodePath("UI/UIChoice")
 ui_thought_talk = NodePath("UI/UITalkThought")
@@ -319,40 +318,44 @@ offset_right = 280.0
 offset_bottom = 136.0
 color = Color(0.49253017, 0.0022641667, 0.76116043, 1)
 
-[node name="Characters" type="Node2D" parent="." unique_id=992138454]
+[node name="TalkCam" type="Camera2D" parent="." unique_id=993152993]
 
-[node name="Jellyfish" parent="Characters" unique_id=328680198 instance=ExtResource("14_bwfku")]
-position = Vector2(-21352, -23928)
+[node name="Characters" type="Node2D" parent="." unique_id=992138454]
 
 [node name="Player" type="Node2D" parent="Characters" unique_id=1966904080]
 position = Vector2(-776, 137)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.5199988, 0.56)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Characters/Player" unique_id=1581549206]
-visible = false
-position = Vector2(24, 54.99997)
 sprite_frames = ExtResource("15_bwfku")
 animation = &"thought"
+
+[node name="NPC" type="Node2D" parent="Characters" unique_id=286059124]
+position = Vector2(728.00006, -112)
+scale = Vector2(0.45118892, 0.4559301)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Characters/NPC" unique_id=1340904401]
+position = Vector2(78.90354, -126.98798)
+sprite_frames = ExtResource("16_nbgfc")
+animation = &"wormy_angry"
 
 [node name="Transitioners" type="Node2D" parent="." unique_id=249844191]
 
 [node name="TransPlayerTalk" type="Node2D" parent="Transitioners" unique_id=1866418926]
 position = Vector2(-416, 176)
-scale = Vector2(0.3, 0.3)
 
 [node name="TransNPCTalk" type="Node2D" parent="Transitioners" unique_id=542569004]
-position = Vector2(400, 12.999992)
-scale = Vector2(0.3, 0.3)
+position = Vector2(400, -64)
 
 [node name="TransCameraTalk" type="Node2D" parent="Transitioners" unique_id=344368334]
 
 [node name="TransPlayerThought" type="Node2D" parent="Transitioners" unique_id=861926996]
 position = Vector2(-384, 168)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(1.25, 1.25)
 
 [node name="TransNPCThought" type="Node2D" parent="Transitioners" unique_id=1177986880]
-position = Vector2(274, 192)
-scale = Vector2(0.2, 0.2)
+position = Vector2(274, 112)
+scale = Vector2(0.5, 0.5)
 
 [node name="TransCameraThought" type="Node2D" parent="Transitioners" unique_id=471356132]
 position = Vector2(-384, 0)

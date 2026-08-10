@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bbbea6rb5gyil" path="res://entities/npc/pacifica/pacifica.gd" id="1_c5lso"]
 [ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="2_bicxu"]
-[ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="3_bicxu"]
+[ext_resource type="Texture2D" uid="uid://dflduyxfni2s" path="res://assets/characters/Pacifica_Sprite.png" id="3_bicxu"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="4_itmd0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqgci"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bicxu"]
 shader = ExtResource("2_bicxu")
 shader_parameter/allow_out_of_bounds = true
 shader_parameter/outline_thickness = 0.0
@@ -18,15 +18,14 @@ height = 444.0
 [node name="Pacifica" type="Node2D" unique_id=1381500754]
 script = ExtResource("1_c5lso")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=740075792]
-material = SubResource("ShaderMaterial_rqgci")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1601775782]
+material = SubResource("ShaderMaterial_bicxu")
 scale = Vector2(0.25, 0.25)
-sprite_frames = ExtResource("3_bicxu")
-animation = &"pacifica_idle"
+texture = ExtResource("3_bicxu")
 
 [node name="Interactable" type="Area2D" parent="." unique_id=1414734891 node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_itmd0")
-sprite = NodePath("../Sprite")
+sprite = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://d24v64w0rb8ei"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=992857006]

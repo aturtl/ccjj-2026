@@ -1,73 +1,19 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://gn5nv32ihl4k"]
 
 [ext_resource type="Texture2D" uid="uid://dvqw73kytml1i" path="res://placeholders/placeholder_fish_guy.png" id="1_3swmn"]
-[ext_resource type="Texture2D" uid="uid://m4eds0q1hio" path="res://assets/characters/Annemette_Sprite.png" id="1_m3hc3"]
 [ext_resource type="Texture2D" uid="uid://qbs3dp6umr1f" path="res://placeholders/placeholder_wormy_0002.png" id="2_13ghi"]
-[ext_resource type="Texture2D" uid="uid://bg8jkdcswwj3c" path="res://assets/characters/Jellyfish_Sprite.png" id="3_1ykxt"]
 [ext_resource type="Texture2D" uid="uid://b0s0wenm6u4ud" path="res://placeholders/placeholder_wormy_0003.png" id="3_e4pui"]
-[ext_resource type="Texture2D" uid="uid://eacbfud5b882" path="res://assets/characters/Moray_Sprite.png" id="4_kblug"]
 [ext_resource type="Texture2D" uid="uid://bs13yjlxmeuhu" path="res://placeholders/placeholder_wormy_0000.png" id="4_lbol6"]
 [ext_resource type="Texture2D" uid="uid://dlm758x78w56q" path="res://placeholders/placeholder_wormy_0001.png" id="5_mbnej"]
-[ext_resource type="Texture2D" uid="uid://dflduyxfni2s" path="res://assets/characters/Pacifica_Sprite.png" id="5_o2vk7"]
-[ext_resource type="Texture2D" uid="uid://ub2rpim5l75x" path="res://assets/characters/Reef_Sprite.png" id="6_8uxyu"]
-[ext_resource type="Texture2D" uid="uid://b0wm2e8ne7l7j" path="res://assets/characters/Shaol_Sprite.png" id="7_5j87d"]
 
 [resource]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_m3hc3")
-}],
-"loop": 1,
-"name": &"annemette_idle",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_3swmn")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_1ykxt")
-}],
-"loop": 1,
-"name": &"jellyfish_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_kblug")
-}],
-"loop": 1,
-"name": &"moray_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_o2vk7")
-}],
-"loop": 1,
-"name": &"pacifica_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_8uxyu")
-}],
-"loop": 1,
-"name": &"reef_idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_5j87d")
-}],
-"loop": 1,
-"name": &"shaol_idle",
 "speed": 5.0
 }, {
 "frames": [{

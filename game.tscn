@@ -27,31 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://bvg0cccacnihn" path="res://ui/credits_menu/credits_menu.tscn" id="14_215e1"]
 [ext_resource type="PackedScene" uid="uid://b6i7gjrynvevy" path="res://entities/npc/brad/brad.tscn" id="14_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://dfhrtwvd784y6" path="res://entities/npc/shoal/shoal.tscn" id="16_5b14r"]
-[ext_resource type="Resource" uid="uid://deu730vg3le2l" path="res://data/items/car_keys.tres" id="14_qhcbd"]
-[ext_resource type="Script" uid="uid://0hjxw4qy6dyl" path="res://player.gd" id="24_i2p71"]
-[ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="24_vaj68"]
-[ext_resource type="Script" uid="uid://bh6ijehmecin3" path="res://generic/autoplay_animated_sprite_2d.gd" id="25_i2p71"]
-[ext_resource type="Script" uid="uid://kbafay87lk1i" path="res://camera_2d.gd" id="27_xa8c5"]
 
 [node name="Game" type="Node2D" unique_id=69826831]
 process_mode = 3
 script = ExtResource("1_feb5d")
-
-[node name="MAINCAMERA" type="Camera2D" parent="." unique_id=1246682185 node_paths=PackedStringArray("player_cam", "talk_cam")]
-unique_name_in_owner = true
-position = Vector2(576, 324)
-script = ExtResource("27_xa8c5")
-player_cam = NodePath("../Player/Camera")
-talk_cam = NodePath("../TalkCamera")
-
-[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
-unique_name_in_owner = true
-z_index = 100
-position = Vector2(576, 324)
-talk_cam = NodePath("../TalkCamera")
-player_sprite = NodePath("../Player/AnimatedSprite2D")
-screen_fader = NodePath("../UI/ScreenFader")
-instance_connectors = NodePath("../DialogueInstanceConnectors")
 
 [node name="Cheats" parent="." unique_id=788448949 instance=ExtResource("9_lc2xo")]
 unique_name_in_owner = true
@@ -65,7 +44,6 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_80nbo")
 
 [node name="Environment" type="Node2D" parent="." unique_id=718944105]
-unique_name_in_owner = true
 script = ExtResource("4_x5p1p")
 
 [node name="FrontYard" parent="Environment" unique_id=1755393680 instance=ExtResource("4_hb5m1")]
@@ -131,17 +109,9 @@ position = Vector2(576, 324)
 screen_fader = NodePath("../UI/ScreenFader")
 instance_connectors = NodePath("../DialogueInstanceConnectors")
 
-[node name="Reef" parent="NPCs" unique_id=1676980202 node_paths=PackedStringArray("connector") instance=ExtResource("3_7sc4i")]
-position = Vector2(408, -496)
-scale = Vector2(0.5, 0.5)
-connector = NodePath("../../DialogueInstanceConnectors/NoName")
-
 [node name="DialogueLineTreeHolder" parent="." unique_id=161622172 instance=ExtResource("4_iotsf")]
 unique_name_in_owner = true
 position = Vector2(576, 324)
-
-[node name="DialogueStatSetter" parent="DialogueLineTreeHolder/InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2" parent_id_path=PackedInt32Array(161622172, 1700302116) index="0" unique_id=1491847242]
-add_item = ExtResource("14_qhcbd")
 
 [node name="DialogueInstanceConnectors" type="Node2D" parent="." unique_id=1437585316]
 script = ExtResource("5_215e1")
@@ -186,16 +156,6 @@ connected_tree = NodePath("../../DialogueLineTreeHolder/Shoal1")
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/InteractVent")
 
-[node name="Objects" type="Node2D" parent="." unique_id=1194281747]
-
-[node name="Key" parent="Objects" unique_id=78426552 instance=ExtResource("2_eow3j")]
-position = Vector2(279, 319)
-scale = Vector2(0.324, 0.324)
-
-[node name="Door" parent="Objects" unique_id=1090625724 instance=ExtResource("3_j5wjh")]
-position = Vector2(1016, 304.00003)
-scale = Vector2(0.436, 0.436)
-
 [node name="UI" type="CanvasLayer" parent="." unique_id=1459312706]
 
 [node name="HUD" type="CanvasLayer" parent="UI" unique_id=967642215]
@@ -239,25 +199,6 @@ z_index = 50
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
-
-[node name="Player" type="Node2D" parent="." unique_id=53043045]
-unique_name_in_owner = true
-position = Vector2(104, 392)
-script = ExtResource("24_i2p71")
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=65310726]
-z_index = 50
-position = Vector2(56, 69)
-scale = Vector2(0.25, 0.25)
-sprite_frames = ExtResource("24_vaj68")
-animation = &"talk"
-script = ExtResource("25_i2p71")
-
-[node name="Camera" type="Node2D" parent="Player" unique_id=1562755005]
-position = Vector2(440, -105)
-
-[node name="TalkCamera" type="Node2D" parent="." unique_id=70303492]
 
 [connection signal="toggled" from="UI/HUD/InventoryButton" to="." method="_on_inventory_button_toggled"]
 [connection signal="start_game" from="UI/StartMenu" to="." method="_on_start_game"]
