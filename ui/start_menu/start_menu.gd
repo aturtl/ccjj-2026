@@ -1,6 +1,7 @@
 extends Control
 
 const TITLE_SONG = preload("uid://c1foiygvumej6")
+const ENDING_SONG = preload("uid://bjsle75fteq6j")
 
 signal start_game
 
@@ -22,3 +23,4 @@ func _on_quit_pressed() -> void:
 
 func _on_creddits_pressed() -> void:
 	UIManager.open_overlay(credits_menu)
+	AudioManager.play_music(ENDING_SONG)
