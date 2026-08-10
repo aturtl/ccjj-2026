@@ -2,9 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
-[ext_resource type="PackedScene" uid="uid://dp31gpxs4x57e" path="res://entities/objects/key/key.tscn" id="2_eow3j"]
-[ext_resource type="PackedScene" uid="uid://d1dsnitsm7cwe" path="res://entities/npc/reef/reef.tscn" id="3_7sc4i"]
-[ext_resource type="PackedScene" uid="uid://dfrr822kcpjnh" path="res://entities/objects/door/door.tscn" id="3_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
 [ext_resource type="Script" uid="uid://bhi504klelxkd" path="res://environments/environment.gd" id="4_x5p1p"]
@@ -71,8 +68,6 @@ position = Vector2(8786, -17)
 
 [node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
 
-[node name="NPC" parent="NPCs" unique_id=1676980202 instance=ExtResource("3_7sc4i")]
-
 [node name="NPCTalk" parent="." unique_id=1866522664 instance=ExtResource("10_215e1")]
 unique_name_in_owner = true
 z_index = 100
@@ -134,14 +129,6 @@ metadata/_custom_type_script = "uid://bf6xushulbekl"
 script = ExtResource("12_80cx4")
 dialogue = "Umm... excuse me? Are you okay?"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
-
-[node name="Objects" type="Node2D" parent="." unique_id=1194281747]
-
-[node name="Key" parent="Objects" unique_id=78426552 instance=ExtResource("2_eow3j")]
-position = Vector2(436, 300)
-
-[node name="Door" parent="Objects" unique_id=1090625724 instance=ExtResource("3_j5wjh")]
-position = Vector2(838, 327)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1459312706]
 
