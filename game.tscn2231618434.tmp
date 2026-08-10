@@ -3,11 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/GameJam_Background.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://dp31gpxs4x57e" path="res://entities/objects/key/key.tscn" id="2_eow3j"]
-[ext_resource type="PackedScene" uid="uid://d1dsnitsm7cwe" path="res://entities/npc/reef/reef.tscn" id="3_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://dfrr822kcpjnh" path="res://entities/objects/door/door.tscn" id="3_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
-[ext_resource type="Script" uid="uid://cv375brw8kgef" path="res://dialogue_instance_connectors.gd" id="5_215e1"]
 [ext_resource type="Script" uid="uid://cg11uyllsqbg" path="res://dialogue_instance_connector.gd" id="5_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
@@ -25,20 +23,7 @@ unique_name_in_owner = true
 z_index = 1000
 position = Vector2(576, 324)
 
-[node name="BG" type="Sprite2D" parent="." unique_id=747760484]
-modulate = Color(0.14406255, 0.14406255, 0.14406255, 1)
-position = Vector2(589, 317)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_80nbo")
-
-[node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
-
-[node name="NPC" parent="NPCs" unique_id=1676980202 instance=ExtResource("3_7sc4i")]
-
-[node name="NPCTalk" parent="." unique_id=1866522664 instance=ExtResource("10_215e1")]
-
 [node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
-
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
@@ -50,11 +35,16 @@ unique_name_in_owner = true
 position = Vector2(576, 324)
 
 [node name="DialogueInstanceConnectors" type="Node2D" parent="." unique_id=1437585316]
-script = ExtResource("5_215e1")
 
 [node name="NoName" type="Node2D" parent="DialogueInstanceConnectors" unique_id=862932422 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/CarKeys1")
+
+[node name="Shoal" type="Node2D" parent="DialogueInstanceConnectors" unique_id=366058241]
+script = ExtResource("5_lc2xo")
+
+[node name="Shoal2" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1970715863]
+script = ExtResource("5_lc2xo")
 
 [node name="BushNoCarKeys" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1246006895 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
@@ -64,33 +54,11 @@ connected_tree = NodePath("../../DialogueLineTreeHolder/InteractBushNoCarKeys")
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/InteractBushCarKeys")
 
-[node name="Pacifica" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1074052674 node_paths=PackedStringArray("connected_tree")]
-script = ExtResource("5_lc2xo")
-connected_tree = NodePath("../../DialogueLineTreeHolder/Pacifica1")
-
-[node name="Reef" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1599406092 node_paths=PackedStringArray("connected_tree")]
-script = ExtResource("5_lc2xo")
-connected_tree = NodePath("../../DialogueLineTreeHolder/Reef1")
-
-[node name="Moray" type="Node2D" parent="DialogueInstanceConnectors" unique_id=170992092 node_paths=PackedStringArray("connected_tree")]
-script = ExtResource("5_lc2xo")
-connected_tree = NodePath("../../DialogueLineTreeHolder/Moray1")
-
-[node name="Dog" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1358676755 node_paths=PackedStringArray("connected_tree")]
-script = ExtResource("5_lc2xo")
-connected_tree = NodePath("../../DialogueLineTreeHolder/Dog")
-
-[node name="Brad" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1791556278 node_paths=PackedStringArray("connected_tree")]
-script = ExtResource("5_lc2xo")
-connected_tree = NodePath("../../DialogueLineTreeHolder/Brad1")
-
-[node name="Shoal" type="Node2D" parent="DialogueInstanceConnectors" unique_id=366058241 node_paths=PackedStringArray("connected_tree")]
-script = ExtResource("5_lc2xo")
-connected_tree = NodePath("../../DialogueLineTreeHolder/Shoal1")
-
-[node name="Vent" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1069670587 node_paths=PackedStringArray("connected_tree")]
-script = ExtResource("5_lc2xo")
-connected_tree = NodePath("../../DialogueLineTreeHolder/InteractVent")
+[node name="BG" type="Sprite2D" parent="." unique_id=747760484]
+modulate = Color(0.14406255, 0.14406255, 0.14406255, 1)
+position = Vector2(589, 317)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_80nbo")
 
 [node name="Objects" type="Node2D" parent="." unique_id=1194281747]
 

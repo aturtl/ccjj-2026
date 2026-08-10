@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b6dc0oxjf7wsh"]
+
+[ext_resource type="Script" uid="uid://dv067w6ebkvde" path="res://dialogue/stackables/functionality/dialogue_set_cam.gd" id="1_66j0m"]
+
+[node name="DialogueSetCam" type="Node" unique_id=1105772095]
+script = ExtResource("1_66j0m")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"

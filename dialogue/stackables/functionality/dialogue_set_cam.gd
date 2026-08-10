@@ -1,6 +1,9 @@
-@icon("res://icons/icon_thought.png")
+@icon("res://placeholders/placeholder_wormy_0003.png")
 
-class_name DialoguePlayerThought extends DialogueLine
+class_name DialogueSetCam extends DialogueLine
+
+
+@export var id = "Player"
 
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue

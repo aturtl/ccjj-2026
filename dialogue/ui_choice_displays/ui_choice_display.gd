@@ -23,21 +23,23 @@ func display_choices(choices: Array):
 	for choice_info:DialogueChoice in choices:
 		var text = choice_info.choice_text
 		var prereq_item = choice_info.prereq_item
-		var prereq_sanity = choice_info.prereq_sanity
+		var prereq_confidence = choice_info.prereq_confidence
 		
-		if prereq_item != "" and !player_has_item(prereq_item): # skip if player doesnt have item
+		if prereq_item and !Inventory.has_item(prereq_item): # skip if player doesnt have item
 			continue
 		
-		if !player_has_sufficient_sanity(choice_info.prereq_sanity): # skip if player has less sanity than req
+		if Stats.confidence < prereq_confidence: # skip if player has less sanity than req
 			continue
 		
 		var choice_instance: ChoiceTemplate = add_templated_choice_instance(choice_template)
 		
 		choice_instance.label.text = "[center]"+choice_info.choice_text+"[/center]"
-		choice_instance.sprite.play(prereq_item)
+		
+		if prereq_item:
+			choice_instance.sprite.texture = prereq_item.texture
+			choice_instance.sprite.visible = true
 
-		choice_instance.sanity_display.visible = prereq_sanity != 0.0
-		choice_instance.sprite.visible = prereq_item != ""
+		choice_instance.sanity_display.visible = prereq_confidence != 0.0
 		
 		choice_instance.goto = choice_info
 
@@ -49,9 +51,11 @@ func add_templated_choice_instance(choice_temp: ChoiceTemplate):
 	var spread_start = -choice_spread
 	var spread_end = choice_spread
 	
-	var angle = spread_start + spread_end * choice_instance_count/(float(total_choice_instance_count-1)) - (PI-choice_spread)/2.0
+	var direction = Vector2(0, 1)
 	
-	var direction = Vector2(cos(angle), sin(angle))
+	if total_choice_instance_count >= 1:
+		var angle = spread_start + spread_end * choice_instance_count/(float(total_choice_instance_count-1)) - (PI-choice_spread)/2.0
+		direction = Vector2(cos(angle), sin(angle))
 	
 	choice.global_position = transitioners.get_node("TransDisplayChoices").global_position + 250.0*direction
 	
@@ -75,11 +79,3 @@ func on_choice_selected(chosen_choice):
 	if goto:
 		choice_selected.emit(goto)
 		print("emitted")
-
-
-func player_has_item(item: String):
-	return true
-
-
-func player_has_sufficient_sanity(sanity: int):
-	return true

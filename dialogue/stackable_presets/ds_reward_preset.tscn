@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://jyajy7mer30n"]
+
+[ext_resource type="Script" uid="uid://do1oojhpndbhe" path="res://dialogue/stackables/functionality/dialogue_stat_setter.gd" id="1_6j57l"]
+[ext_resource type="Script" uid="uid://bl4vdyegyay3" path="res://dialogue/stackables/functionality/dialogue_reward.gd" id="2_sfogn"]
+[ext_resource type="Script" uid="uid://dv067w6ebkvde" path="res://dialogue/stackables/functionality/dialogue_set_cam.gd" id="3_p3q58"]
+
+[node name="DialogueStatSetter" type="Node" unique_id=147542195]
+script = ExtResource("1_6j57l")
+confidence_reward = 5
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
+
+[node name="DialogueReward" type="Node" parent="." unique_id=1748942105]
+script = ExtResource("2_sfogn")
+reward_text = "YOU GAINED 5 CONFIDENCE!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialogueSetCam" type="Node" parent="DialogueReward" unique_id=619172470]
+script = ExtResource("3_p3q58")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"

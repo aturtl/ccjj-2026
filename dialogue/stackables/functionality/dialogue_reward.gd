@@ -1,14 +1,12 @@
-@icon("res://placeholders/placeholder_cake_0001.png")
+class_name DialogueReward extends DialogueLine
 
-class_name DialogueStatement extends DialogueLine
-
+@export var reward_text = ""
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 
 @export var parallel_gotos = [] # VERY SPECIFIC CASES. annoying to use so just use goto,
 	# but if you have to, this will absolutely work.
 	# also only store DialogueLines in this
-
 
 func _ready():
 	if !goto:
