@@ -6,6 +6,7 @@ class_name Interactable
 @export_custom(PROPERTY_HINT_NODE_TYPE, "AnimatedSprite2D,Sprite2D") var sprite: Node2D
 var shader: ShaderMaterial
 
+var disabled = false
 
 signal interacted(text: String)
 
@@ -21,11 +22,17 @@ func _on_mouse_entered() -> void:
 		shader.set_shader_parameter("outline_thickness", 5)
 
 
+
 func _on_mouse_exited() -> void:
-	if highlight_on_hover:
+	if highlight_on_hover and !disabled:
 		shader.set_shader_parameter("outline_thickness", 0)
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and !disabled:
 		interacted.emit(interaction_string)
+
+
+func disable():
+	disabled = true
+	shader.set_shader_parameter("outline_thickness", 0)

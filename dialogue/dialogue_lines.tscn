@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="13_1vab1"]
 [ext_resource type="Resource" uid="uid://deu730vg3le2l" path="res://data/items/car_keys.tres" id="13_dle7b"]
 [ext_resource type="PackedScene" uid="uid://jyajy7mer30n" path="res://dialogue/stackable_presets/ds_reward_preset.tscn" id="13_s3jmc"]
-[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/key.png" id="14_sh30a"]
+[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/items/key.png" id="14_sh30a"]
 [ext_resource type="PackedScene" uid="uid://c0y6fbaviheuw" path="res://dialogue/stackable_presets/ds_scenefade_preset.tscn" id="14_swbew"]
 [ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/scenes/visual/question/dialogue_question.tscn" id="15_0v8oo"]
 [ext_resource type="PackedScene" uid="uid://b6dc0oxjf7wsh" path="res://dialogue/stackables/scenes/event/dialogue_set_cam.tscn" id="16_1vab1"]
@@ -314,6 +314,9 @@ metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="DSSceneFadePreset" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=607337241 instance=ExtResource("14_swbew")]
 
+[node name="DialogueChangeScene" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset" index="0" unique_id=1413183850]
+scene = 2
+
 [node name="DialoguePlayerThought" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2" parent_id_path=PackedInt32Array(607337241, 1039843711) index="0" unique_id=43495928 instance=ExtResource("17_xyyno")]
 dialogue = "Wow, it’s loud in here. And bright. And crowded. Why did I let Marley talk me into this again?"
 
@@ -325,7 +328,7 @@ reward_text = "(LIVING ROOM can now be explored)"
 
 [node name="DialogueSetCam" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueReward" unique_id=598835482 instance=ExtResource("16_1vab1")]
 
-[node name="DialoguePlaySound" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" parent_id_path=PackedInt32Array(607337241, 1413183850) index="1" unique_id=63000943 instance=ExtResource("19_bieie")]
+[node name="DialoguePlaySound" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" index="1" unique_id=63000943 instance=ExtResource("19_bieie")]
 
 [node name="Pacifica1" type="Node2D" parent="." unique_id=1290621089]
 script = ExtResource("17_sh30a")
