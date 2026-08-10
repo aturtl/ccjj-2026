@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://bfgo03um2pv78"]
 
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="1_riibp"]
+[ext_resource type="Texture2D" uid="uid://bpanxgicoybb6" path="res://assets/environment/ShellGame_HouseParty.png" id="2_romqh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v7s"]
+atlas = ExtResource("2_romqh")
+region = Rect2(8644.103, 0, 4975.247, 3200)
 
 [node name="Hallway" type="Node2D" unique_id=2102377602]
 
@@ -11,3 +16,8 @@ offset_top = -1.0
 offset_right = 1155.0
 offset_bottom = 655.0
 texture = ExtResource("1_riibp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1544445718]
+position = Vector2(552, 352)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_g4v7s")

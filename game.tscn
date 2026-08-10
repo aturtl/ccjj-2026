@@ -76,7 +76,7 @@ position = Vector2(852, 355)
 scale = Vector2(0.5, 0.5)
 
 [node name="Dog" parent="Environment/Kitchen" unique_id=1939013120 instance=ExtResource("13_vaj68")]
-position = Vector2(236, 401)
+position = Vector2(245, 401)
 scale = Vector2(0.5, 0.5)
 
 [node name="Brad" parent="Environment/Kitchen" unique_id=196879695 instance=ExtResource("14_xa8c5")]
@@ -92,11 +92,11 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Bathroom" parent="Environment" unique_id=1154042809 instance=ExtResource("8_vaj68")]
 unique_name_in_owner = true
-position = Vector2(7191, 30)
+position = Vector2(6923, -35)
 
 [node name="Backyard" parent="Environment" unique_id=1847859133 instance=ExtResource("9_i2p71")]
 unique_name_in_owner = true
-position = Vector2(8786, -17)
+position = Vector2(8786, 0)
 
 [node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
 position = Vector2(304, 784)

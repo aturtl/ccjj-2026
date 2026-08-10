@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://cgup25de442gh"]
 
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="1_tlu2r"]
+[ext_resource type="Texture2D" uid="uid://bpanxgicoybb6" path="res://assets/environment/ShellGame_HouseParty.png" id="2_rh07w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b14r"]
+atlas = ExtResource("2_rh07w")
+region = Rect2(4673.2695, 0, 4996.874, 3200)
 
 [node name="LivingRoom" type="Node2D" unique_id=1056652401]
 
@@ -11,3 +16,8 @@ offset_top = -1.0
 offset_right = 1155.0
 offset_bottom = 655.0
 texture = ExtResource("1_tlu2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=740128837]
+position = Vector2(563, 328)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_5b14r")

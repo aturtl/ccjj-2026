@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bke8xvgcn8qkd"]
 
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="1_q27pl"]
+[ext_resource type="Texture2D" uid="uid://4uu7evqos4yn" path="res://assets/environment/Shell_Backyard.png" id="2_7pwi3"]
 
 [node name="Backyard" type="Node2D" unique_id=1847859133]
 
@@ -11,3 +12,8 @@ offset_top = -1.0
 offset_right = 1155.0
 offset_bottom = 655.0
 texture = ExtResource("1_q27pl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=671902341]
+position = Vector2(515.99994, 318.99997)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("2_7pwi3")

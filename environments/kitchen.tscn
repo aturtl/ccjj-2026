@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://b48dqgav8yttt"]
 
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="1_4tydl"]
+[ext_resource type="Texture2D" uid="uid://bpanxgicoybb6" path="res://assets/environment/ShellGame_HouseParty.png" id="2_pw5ej"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw5ej"]
+atlas = ExtResource("2_pw5ej")
+region = Rect2(0, 0, 4779.2744, 3200)
 
 [node name="Kitchen" type="Node2D" unique_id=190051855]
 
@@ -11,3 +16,8 @@ offset_top = -1.0
 offset_right = 1155.0
 offset_bottom = 655.0
 texture = ExtResource("1_4tydl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2077316878]
+position = Vector2(572, 337)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_pw5ej")
