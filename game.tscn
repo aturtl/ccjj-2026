@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://d1dsnitsm7cwe" path="res://entities/npc/reef/reef.tscn" id="3_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://dfrr822kcpjnh" path="res://entities/objects/door/door.tscn" id="3_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
+[ext_resource type="Script" uid="uid://bhi504klelxkd" path="res://environments/environment.gd" id="4_x5p1p"]
 [ext_resource type="Script" uid="uid://cv375brw8kgef" path="res://dialogue/dialogue_instance_connectors.gd" id="5_215e1"]
 [ext_resource type="Script" uid="uid://cg11uyllsqbg" path="res://dialogue/dialogue_instance_connector.gd" id="5_lc2xo"]
-[ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
-[ext_resource type="Script" uid="uid://bhi504klelxkd" path="res://environments/environment.gd" id="4_x5p1p"]
 [ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://cgup25de442gh" path="res://environments/living_room.tscn" id="5_x5p1p"]
 [ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
@@ -43,6 +43,7 @@ script = ExtResource("4_x5p1p")
 
 [node name="FrontYard" parent="Environment" unique_id=1755393680 instance=ExtResource("4_hb5m1")]
 unique_name_in_owner = true
+visible = false
 
 [node name="LivingRoom" parent="Environment" unique_id=1056652401 instance=ExtResource("5_x5p1p")]
 unique_name_in_owner = true
