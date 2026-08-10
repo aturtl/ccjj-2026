@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bmx3vehdapu8n"]
+
+[ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="1_sacq8"]
+[ext_resource type="Texture2D" uid="uid://b8mkrjtaecw4t" path="res://assets/medicine.png" id="2_pfune"]
+
+[resource]
+script = ExtResource("1_sacq8")
+name = "Medicine"
+texture = ExtResource("2_pfune")
+id = "medicine"
+metadata/_custom_type_script = "uid://cnnmfouky31n8"

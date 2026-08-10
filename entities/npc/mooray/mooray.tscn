@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bm3ndpel5oqyw"]
+
+[ext_resource type="Script" uid="uid://cl183idnqq604" path="res://entities/npc/mooray/mooray.gd" id="1_cvs8b"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="2_t1stn"]
+[ext_resource type="Texture2D" uid="uid://bg8jkdcswwj3c" path="res://assets/characters/Jellyfish_Sprite.png" id="3_0jdn3"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="4_wioba"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvs8b"]
+shader = ExtResource("2_t1stn")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xn4e8"]
+radius = 107.0
+height = 444.0
+
+[node name="Mooray" type="Node2D" unique_id=192293366]
+script = ExtResource("1_cvs8b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=454348344]
+material = SubResource("ShaderMaterial_cvs8b")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_0jdn3")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1583978403 node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_wioba")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=22819205]
+position = Vector2(4, 13)
+shape = SubResource("CapsuleShape2D_xn4e8")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

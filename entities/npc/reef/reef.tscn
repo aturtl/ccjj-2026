@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d1dsnitsm7cwe"]
+
+[ext_resource type="Texture2D" uid="uid://ub2rpim5l75x" path="res://assets/characters/Reef_Sprite.png" id="1_e3lg2"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="1_gwous"]
+[ext_resource type="Script" uid="uid://brhb8jead8hg8" path="res://entities/npc/reef/reef.gd" id="1_oktw2"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="2_037bm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8rqu"]
+shader = ExtResource("2_037bm")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7bf1a"]
+radius = 107.0
+height = 444.0
+
+[node name="Reef" type="Node2D" unique_id=1676980202]
+script = ExtResource("1_oktw2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=9797940]
+material = SubResource("ShaderMaterial_i8rqu")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_e3lg2")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1588493094 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_gwous")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=377809870]
+position = Vector2(4, 13)
+shape = SubResource("CapsuleShape2D_7bf1a")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
