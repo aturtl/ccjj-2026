@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b6i7gjrynvevy"]
+
+[ext_resource type="Script" uid="uid://imhde6raq0ub" path="res://entities/npc/npc.gd" id="1_yjucn"]
+[ext_resource type="Texture2D" uid="uid://cwt3n3hcrxv7j" path="res://assets/characters/brad.png" id="2_nvq8w"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="2_t5x5a"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="3_dqdky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ehfq"]
+shader = ExtResource("2_t5x5a")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t5x5a"]
+radius = 107.0
+height = 444.0
+
+[node name="Brad" type="Node2D" unique_id=196879695]
+script = ExtResource("1_yjucn")
+metadata/_custom_type_script = "uid://imhde6raq0ub"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1961599717]
+material = SubResource("ShaderMaterial_4ehfq")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_nvq8w")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1445889345 node_paths=PackedStringArray("sprite")]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("3_dqdky")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=2032284318]
+position = Vector2(4, 13)
+shape = SubResource("CapsuleShape2D_t5x5a")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

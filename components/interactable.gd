@@ -18,7 +18,7 @@ func _ready():
 
 func _on_mouse_entered() -> void:
 	if highlight_on_hover:
-		shader.set_shader_parameter("outline_thickness", 3)
+		shader.set_shader_parameter("outline_thickness", 5)
 
 
 func _on_mouse_exited() -> void:

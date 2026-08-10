@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://br55v2y7r0oac"]
+
+[ext_resource type="Script" uid="uid://imhde6raq0ub" path="res://entities/npc/npc.gd" id="1_v7nsm"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="2_rmfll"]
+[ext_resource type="Texture2D" uid="uid://eb1gtf87dbfp" path="res://assets/characters/Dog_Sprite.png" id="2_skujx"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="3_skujx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhmvy"]
+shader = ExtResource("2_rmfll")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rmfll"]
+radius = 107.0
+height = 444.0
+
+[node name="Dog" type="Node2D" unique_id=1939013120]
+script = ExtResource("1_v7nsm")
+metadata/_custom_type_script = "uid://imhde6raq0ub"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1651552493]
+material = SubResource("ShaderMaterial_bhmvy")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_skujx")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=831691553 node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_skujx")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=2123686528]
+position = Vector2(4, 13)
+shape = SubResource("CapsuleShape2D_rmfll")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

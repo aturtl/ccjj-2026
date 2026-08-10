@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_h30l5"]
 [ext_resource type="Texture2D" uid="uid://dqc63p1arl47u" path="res://assets/items/car_keys.png" id="2_oujsi"]
 [ext_resource type="Script" uid="uid://dcfpplq0wbdhm" path="res://entities/objects/car_keys/car_keys.gd" id="3_kpgpm"]
-[ext_resource type="Resource" uid="uid://deu730vg3le2l" path="res://data/items/lost_car_keys.tres" id="4_33vf2"]
+[ext_resource type="Resource" uid="uid://deu730vg3le2l" path="res://data/items/car_keys.tres" id="4_33vf2"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="5_q1vmr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4d85u"]
@@ -18,11 +18,14 @@ height = 140.0
 
 [node name="CarKeys" type="Sprite2D" unique_id=1779984681]
 material = SubResource("ShaderMaterial_4d85u")
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_oujsi")
 script = ExtResource("3_kpgpm")
 item = ExtResource("4_33vf2")
 
 [node name="Interactable" type="Area2D" parent="." unique_id=1820569962 node_paths=PackedStringArray("sprite")]
+position = Vector2(52, -108)
+scale = Vector2(4, 4)
 script = ExtResource("5_q1vmr")
 interaction_string = "Picked up keys"
 sprite = NodePath("..")
