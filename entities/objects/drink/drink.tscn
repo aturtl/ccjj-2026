@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://1opdnrtfen84"]
+
+[ext_resource type="Texture2D" uid="uid://crsfuhocr3l2t" path="res://assets/drink.png" id="1_5gcke"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_7wwwq"]
+[ext_resource type="Script" uid="uid://qy4gdvchbos8" path="res://entities/objects/drink/drink.gd" id="2_qfbci"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="2_vfboi"]
+[ext_resource type="Resource" uid="uid://dcs0wnd2i8w6q" path="res://data/items/drink.tres" id="3_bfpjs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_il8k7"]
+shader = ExtResource("1_7wwwq")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 47.0
+height = 122.0
+
+[node name="Drink" type="Sprite2D" unique_id=1354533552]
+material = SubResource("ShaderMaterial_il8k7")
+texture = ExtResource("1_5gcke")
+script = ExtResource("2_qfbci")
+item = ExtResource("3_bfpjs")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=486813097 node_paths=PackedStringArray("sprite")]
+script = ExtResource("2_vfboi")
+interaction_string = "Collected Drink"
+sprite = NodePath("..")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1070698629]
+position = Vector2(-4, 11)
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

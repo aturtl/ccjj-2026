@@ -125,6 +125,7 @@ unique_name_in_owner = true
 [node name="StartMenu" parent="UI" unique_id=1065199818 instance=ExtResource("4_fc0e3")]
 unique_name_in_owner = true
 process_mode = 2
+visible = false
 
 [node name="PauseMenu" parent="UI" unique_id=784381929 instance=ExtResource("6_eow3j")]
 unique_name_in_owner = true

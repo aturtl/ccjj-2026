@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bnb2gey5c5r6p"]
+
+[ext_resource type="Texture2D" uid="uid://dq33kacbaqr3i" path="res://assets/earing.png" id="1_21vyq"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_pvr0t"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="2_aujs6"]
+[ext_resource type="Script" uid="uid://ca8xxc5vq7uj2" path="res://entities/objects/earing/lost_earing.gd" id="3_1nu7m"]
+[ext_resource type="Resource" uid="uid://u7e1cuomsyhr" path="res://data/items/earing.tres" id="4_l3uwk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nu7m"]
+shader = ExtResource("1_pvr0t")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yf5fn"]
+radius = 41.0
+height = 100.0
+
+[node name="LostEaring" type="Sprite2D" unique_id=162076744]
+material = SubResource("ShaderMaterial_1nu7m")
+texture = ExtResource("1_21vyq")
+script = ExtResource("3_1nu7m")
+item = ExtResource("4_l3uwk")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=928833826 node_paths=PackedStringArray("sprite")]
+script = ExtResource("2_aujs6")
+interaction_string = "Collected Lost Earing"
+sprite = NodePath("..")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=621613650]
+position = Vector2(0, 20)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yf5fn")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
