@@ -314,6 +314,9 @@ metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="DSSceneFadePreset" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=607337241 instance=ExtResource("14_swbew")]
 
+[node name="DialogueChangeScene" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset" index="0" unique_id=1413183850]
+scene = 2
+
 [node name="DialoguePlayerThought" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2" parent_id_path=PackedInt32Array(607337241, 1039843711) index="0" unique_id=43495928 instance=ExtResource("17_xyyno")]
 dialogue = "Wow, it’s loud in here. And bright. And crowded. Why did I let Marley talk me into this again?"
 
@@ -325,7 +328,7 @@ reward_text = "(LIVING ROOM can now be explored)"
 
 [node name="DialogueSetCam" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueReward" unique_id=598835482 instance=ExtResource("16_1vab1")]
 
-[node name="DialoguePlaySound" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" parent_id_path=PackedInt32Array(607337241, 1413183850) index="1" unique_id=63000943 instance=ExtResource("19_bieie")]
+[node name="DialoguePlaySound" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" index="1" unique_id=63000943 instance=ExtResource("19_bieie")]
 
 [node name="Pacifica1" type="Node2D" parent="." unique_id=1290621089]
 script = ExtResource("17_sh30a")

@@ -1,12 +1,23 @@
 class_name DialogueChangeScene extends DialogueLine
 
-@export var scene: Node2D
+enum Environments {
+	NONE,
+	FRONT_YARD,
+	LIVING_ROOM,
+	KITCHEN,
+	HALLWAY,
+	BATHROOM,
+	BACKYARD
+}
+@export var scene = Environments.NONE
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 
 @export var parallel_gotos = [] # VERY SPECIFIC CASES. annoying to use so just use goto,
 	# but if you have to, this will absolutely work.
 	# also only store DialogueLines in this
+
+
 
 func _ready():
 	if !goto:
