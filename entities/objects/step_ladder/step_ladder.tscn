@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dl4iycpq04tmw"]
+
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="1_3a02h"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_5skd8"]
+[ext_resource type="Script" uid="uid://bnnkvaq6v3bxl" path="res://entities/objects/step_ladder/step_ladder.gd" id="1_pck06"]
+[ext_resource type="Texture2D" uid="uid://d263l6ov8olwg" path="res://assets/items/step_ladder.png" id="2_mawbt"]
+[ext_resource type="Resource" uid="uid://3t4hgxj0jd8t" path="res://data/items/stepladder.tres" id="4_tc8m4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7k0at"]
+shader = ExtResource("1_5skd8")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pck06"]
+radius = 49.0
+height = 140.0
+
+[node name="StepLadder" type="Sprite2D" unique_id=1261833975]
+material = SubResource("ShaderMaterial_7k0at")
+texture = ExtResource("2_mawbt")
+script = ExtResource("1_pck06")
+item = ExtResource("4_tc8m4")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=536329526 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_3a02h")
+interaction_string = "Collected Step Ladder"
+sprite = NodePath("..")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=826651448]
+position = Vector2(-4, 23)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_pck06")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgup25de442gh"]
 
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="1_tlu2r"]
+[ext_resource type="PackedScene" uid="uid://dl4iycpq04tmw" path="res://entities/objects/step_ladder/step_ladder.tscn" id="2_rh07w"]
 
 [node name="LivingRoom" type="Node2D" unique_id=1056652401]
 
@@ -11,3 +12,6 @@ offset_top = -1.0
 offset_right = 1155.0
 offset_bottom = 655.0
 texture = ExtResource("1_tlu2r")
+
+[node name="StepLadder" parent="." unique_id=1261833975 instance=ExtResource("2_rh07w")]
+position = Vector2(600, 316)

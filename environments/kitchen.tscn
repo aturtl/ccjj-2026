@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b48dqgav8yttt"]
 
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="1_4tydl"]
+[ext_resource type="PackedScene" uid="uid://1opdnrtfen84" path="res://entities/objects/drink/drink.tscn" id="2_pw5ej"]
 
 [node name="Kitchen" type="Node2D" unique_id=190051855]
 
@@ -11,3 +12,6 @@ offset_top = -1.0
 offset_right = 1155.0
 offset_bottom = 655.0
 texture = ExtResource("1_4tydl")
+
+[node name="Drink" parent="." unique_id=1354533552 instance=ExtResource("2_pw5ej")]
+position = Vector2(582, 301)

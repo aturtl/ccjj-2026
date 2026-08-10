@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dpxc30k5pt3l0"]
 
 [ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_kbflq"]
+[ext_resource type="PackedScene" uid="uid://b6qwr3c2hbaop" path="res://entities/objects/bushes/bushes.tscn" id="2_5j0rd"]
+[ext_resource type="PackedScene" uid="uid://dhu1u8ah5cufe" path="res://entities/objects/car_keys/car_keys.tscn" id="3_tc5ns"]
 
 [node name="FrontYard" type="Node2D" unique_id=1755393680]
 
@@ -8,3 +10,7 @@
 position = Vector2(559, 319)
 scale = Vector2(0.21, 0.21)
 texture = ExtResource("1_kbflq")
+
+[node name="Bushes" parent="." unique_id=1779984681 instance=ExtResource("2_5j0rd")]
+position = Vector2(1097, 397)
+car_key_scene = ExtResource("3_tc5ns")
