@@ -1,10 +1,7 @@
-@icon("res://placeholders/placeholder_wormy_0003.png")
+class_name DialogueSwitch extends DialogueLine
 
-class_name DialogueSetCam extends DialogueLine
-
-
-@export var id = "Player"
-
+@export var switch_connector_name: String = ""
+@export var switch_tree: DialogueLineTree
 
 @export var goto: DialogueLine # only necessary for repeatable dialogue
 

@@ -23,12 +23,11 @@ unique_name_in_owner = true
 z_index = 1000
 position = Vector2(576, 324)
 
-[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
+[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader") instance=ExtResource("10_215e1")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
 screen_fader = NodePath("../UI/ScreenFader")
-instance_connectors = NodePath("../DialogueInstanceConnectors")
 
 [node name="DialogueLineTreeHolder" parent="." unique_id=161622172 instance=ExtResource("4_iotsf")]
 unique_name_in_owner = true

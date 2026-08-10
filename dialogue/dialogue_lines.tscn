@@ -32,6 +32,8 @@
 [ext_resource type="Resource" uid="uid://dirbwttvxbhpf" path="res://data/items/drink_quest.tres" id="29_ikg4h"]
 [ext_resource type="Resource" uid="uid://jlfjfmwpsoc7" path="res://data/items/screwdriver.tres" id="30_d0pek"]
 [ext_resource type="Resource" uid="uid://ceayw5x8ois71" path="res://data/items/painkillers.tres" id="31_74mgt"]
+[ext_resource type="PackedScene" uid="uid://dvofh1tg0fuun" path="res://dialogue/stackables/scenes/event/dialogue_switch.tscn" id="33_sh30a"]
+[ext_resource type="Script" uid="uid://cl1iols5nby6h" path="res://dialogue/stackables/functionality/dialogue_switch.gd" id="34_ikg4h"]
 
 [node name="DialogueLines" type="Node2D" unique_id=161622172]
 script = ExtResource("1_3etux")
@@ -129,6 +131,10 @@ metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="DialogueSetCam" type="Node2D" parent="CarKeys1/DialogueStatement/DialoguePlayerThought/DialogueStatement2/DialogueStatement3/DialogueStatement4" unique_id=817524229]
 script = ExtResource("3_k1frf")
+
+[node name="DialogueSwitch" parent="CarKeys1/DialogueStatement/DialoguePlayerThought/DialogueStatement2/DialogueStatement3/DialogueStatement4/DialogueSetCam" unique_id=1208943949 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "NoName"
+switch_tree = NodePath("../../../../../../../../CarKeys2")
 
 [node name="CarKeys2" type="Node2D" parent="." unique_id=1047661934]
 script = ExtResource("17_sh30a")
@@ -245,6 +251,10 @@ reward_text = "CAR KEYS acquired!"
 metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
 [node name="DialogueSetCam" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter/DialogueReward" unique_id=1181379866 instance=ExtResource("16_1vab1")]
+
+[node name="DialogueSwitch" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter/DialogueReward/DialogueSetCam" unique_id=1536313701 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "BushHasCarKeys"
+switch_tree = NodePath("../../../../../../../InteractBushNoCarKeys")
 
 [node name="InteractDoor" type="Node2D" parent="." unique_id=1009226560]
 script = ExtResource("17_sh30a")
@@ -387,6 +397,10 @@ dialogue = "Well it WOULD be perfect, except that I lost one of my earrings arou
 [node name="DialoguePlayerThought" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialogueStatement" unique_id=522771564 instance=ExtResource("17_xyyno")]
 dialogue = "I’ll look out for it."
 
+[node name="DialogueSwitch" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialogueStatement/DialoguePlayerThought" unique_id=1872083923 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Pacifica"
+switch_tree = NodePath("../../../../../../../../../Pacifica2")
+
 [node name="Pacifica2" type="Node2D" parent="." unique_id=710755846]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
@@ -418,6 +432,10 @@ remove_item = ExtResource("24_v3i0m")
 
 [node name="DialogueReward" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter" index="0" unique_id=1748942105]
 reward_text = "CONFIDENCE INCREASED BY 10!"
+
+[node name="DialogueSwitch" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter/DialogueReward/DialogueSetCam" parent_id_path=PackedInt32Array(1805016260, 619172470) index="0" unique_id=1449208361 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Pacifica"
+switch_tree = NodePath("../../../../../../../../../../../Pacifica3")
 
 [node name="Pacifica3" type="Node2D" parent="." unique_id=749354460]
 script = ExtResource("17_sh30a")
@@ -463,6 +481,13 @@ dialogue = "Mmmmmm, how about... no. I’m comfortable here, thanks."
 [node name="DialogueStatement2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=900826836 instance=ExtResource("23_258b8")]
 dialogue = "Though I MIGHT be able to be persuaded. If you went and fetched me a drink."
 
+[node name="DialogueStatSetter" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1560013917 instance=ExtResource("10_n5o83")]
+add_item = ExtResource("29_ikg4h")
+
+[node name="DialogueSwitch" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatSetter" unique_id=870047498 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Reef"
+switch_tree = NodePath("../../../../../../../../../../../../../Reef2HasQuest")
+
 [node name="DialogueChoice2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1287416024 instance=ExtResource("22_ikrlq")]
 choice_text = "How did you [i]not[/i] see me?"
 
@@ -474,6 +499,13 @@ dialogue = "..."
 
 [node name="DialogueStatement2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement" unique_id=483246071 instance=ExtResource("23_258b8")]
 dialogue = "Why are you still here? Go grab me a drink."
+
+[node name="DialogueStatSetter" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement/DialogueStatement2" unique_id=1035993554 instance=ExtResource("10_n5o83")]
+add_item = ExtResource("29_ikg4h")
+
+[node name="DialogueSwitch" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement/DialogueStatement2/DialogueStatSetter" unique_id=1710745926 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Reef"
+switch_tree = NodePath("../../../../../../../../../../../../../Reef2HasQuest")
 
 [node name="DialoguePlayerThought2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement" unique_id=1899566348 instance=ExtResource("17_xyyno")]
 dialogue = "..."
@@ -516,6 +548,10 @@ dialogue = "You may pass."
 [node name="DialogueFadeScreen2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice/DialogueStatSetter/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound" unique_id=1559603373 node_paths=PackedStringArray("goto") instance=ExtResource("25_xyyno")]
 goto = NodePath("../../../../../../../../../../_Reef2_Reward/DialogueStatSetter")
 
+[node name="DialogueSwitch" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice/DialogueStatSetter/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2" unique_id=414258146 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Reef"
+switch_tree = NodePath("../../../../../../../../../../../Reef3_After")
+
 [node name="DialogueChoice3" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion" unique_id=787422757 instance=ExtResource("22_ikrlq")]
 choice_text = "Spill it on them"
 prereq_item = ExtResource("28_sh30a")
@@ -535,6 +571,7 @@ dialogue = "UGH! THIS OUTFIT WAS DESIGNER!"
 [node name="DialogueFadeScreen" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1124020636 instance=ExtResource("25_xyyno")]
 
 [node name="DialoguePlaySound" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen" unique_id=822277604 instance=ExtResource("19_bieie")]
+switch_npc_animation_to = "gone"
 
 [node name="DialogueFadeScreen2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound" unique_id=831340116 instance=ExtResource("25_xyyno")]
 
@@ -544,6 +581,9 @@ dialogue = "Aaaand they’re gone."
 [node name="DialoguePlayerThought2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought" unique_id=1661114874 node_paths=PackedStringArray("goto") instance=ExtResource("17_xyyno")]
 dialogue = "Well, serves them right I guess."
 goto = NodePath("../../../../../../../../../../../../_Reef2_Reward/DialogueStatSetter")
+
+[node name="DialogueSwitch" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought2" unique_id=586713535 instance=ExtResource("33_sh30a")]
+switch_connector_name = "Reef"
 
 [node name="_Reef2_Reward" type="Node2D" parent="." unique_id=1923701401]
 script = ExtResource("17_sh30a")
@@ -609,6 +649,9 @@ remove_item = ExtResource("27_1vab1")
 
 [node name="DialogueReward" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2" index="0" unique_id=1748942105]
 reward_text = "YOU GAINED A STEPLADDER! Now you have to carry it.."
+
+[node name="DialogueSwitch" parent="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2/DialogueReward/DialogueSetCam" parent_id_path=PackedInt32Array(1814918896, 619172470) index="0" unique_id=1749792451 instance=ExtResource("33_sh30a")]
+switch_connector_name = "Atolla"
 
 [node name="InteractDrinksCounter" type="Node2D" parent="." unique_id=97417085]
 script = ExtResource("17_sh30a")
@@ -766,6 +809,10 @@ choice_text = "Oops, gotta go! I'll be back!!"
 choice_text = "Challenge Moray to Beer Pong"
 prereq_confidence = 50
 
+[node name="DialogueSwitch" parent="_Moray1_Challenge" unique_id=1488814043 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Moray"
+switch_tree = NodePath("../../Moray2TryAgain")
+
 [node name="_Moray1_Defeat" type="Node2D" parent="." unique_id=1443946184]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
@@ -792,6 +839,9 @@ dialogue = "You may now consider yourself a VIP: Verifiably Impressive at Pong. 
 
 [node name="DialogueFadeScreen2" parent="_Moray1_Victory/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeScreen/DialoguePlaySound" unique_id=86404302 instance=ExtResource("25_xyyno")]
 fade_type = 1
+
+[node name="DialogueSwitch" parent="_Moray1_Victory/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2" unique_id=362175609 instance=ExtResource("33_sh30a")]
+switch_connector_name = "Moray"
 
 [node name="Moray2TryAgain" type="Node2D" parent="." unique_id=1731128996]
 script = ExtResource("17_sh30a")
@@ -858,6 +908,31 @@ dialogue = "Arf-!"
 script = ExtResource("3_k1frf")
 metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
+[node name="DialogueSwitch" parent="Dog/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialoguePlayerThought/DialogueStatement/DialogueSetCam" unique_id=1114251432 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Dog"
+switch_tree = NodePath("../../../../../../../../../../../../../../../DogDontGotNothing")
+
+[node name="DogDontGotNothing" type="Node2D" parent="Dog" unique_id=2129785519]
+script = ExtResource("17_sh30a")
+metadata/_custom_type_script = "uid://b6ilt730j81f4"
+
+[node name="DialoguePlayerThought" parent="Dog/DogDontGotNothing" unique_id=2107573301 instance=ExtResource("17_xyyno")]
+dialogue = "DOG!"
+
+[node name="DialogueQuestion" parent="Dog/DogDontGotNothing/DialoguePlayerThought" unique_id=97577930 instance=ExtResource("15_0v8oo")]
+
+[node name="DialogueChoice2" parent="Dog/DogDontGotNothing/DialoguePlayerThought/DialogueQuestion" unique_id=1934957268 instance=ExtResource("22_ikrlq")]
+choice_text = "Don't pet dog. (Why would you choose this?)"
+
+[node name="DialogueChoice" parent="Dog/DogDontGotNothing/DialoguePlayerThought/DialogueQuestion" unique_id=204704089 instance=ExtResource("22_ikrlq")]
+choice_text = "Pet dog"
+
+[node name="DialoguePlayerThought" parent="Dog/DogDontGotNothing/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=822168766 instance=ExtResource("17_xyyno")]
+dialogue = "Hehe. Good puppy!!!!!!"
+
+[node name="DialogueStatement" parent="Dog/DogDontGotNothing/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=139342264 instance=ExtResource("23_258b8")]
+dialogue = "Arf!"
+
 [node name="Brad1" type="Node2D" parent="." unique_id=1810273092]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
@@ -909,6 +984,10 @@ dialogue = "Oh well. I’m not gonna let some measly migraine keep me from havin
 [node name="DialogueStatement" parent="_Brad1_HeadacheGiveQuest/DialogueStatement/DialogueStatement2/DialogueStatement" unique_id=52183938 instance=ExtResource("23_258b8")]
 dialogue = "... Ouch."
 
+[node name="DialogueSwitch" parent="_Brad1_HeadacheGiveQuest/DialogueStatement/DialogueStatement2/DialogueStatement/DialogueStatement" unique_id=1811115878 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Brad"
+switch_tree = NodePath("../../../../../../Brad2")
+
 [node name="Brad2" type="Node2D" parent="." unique_id=223177975]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
@@ -934,6 +1013,7 @@ dialogue = "You did? Damn! You’re, like, a hero! Thanks dude!"
 [node name="DialogueStatSetter" type="Node" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=960920805]
 script = ExtResource("9_v0p3i")
 confidence_reward = 10
+remove_item = ExtResource("31_74mgt")
 metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
 [node name="DialogueReward" type="Node" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatSetter" unique_id=524373253]
@@ -944,6 +1024,10 @@ metadata/_custom_type_script = "uid://bl4vdyegyay3"
 [node name="DialogueSetCam" type="Node" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward" unique_id=1407282805]
 script = ExtResource("3_k1frf")
 metadata/_custom_type_script = "uid://dv067w6ebkvde"
+
+[node name="DialogueSwitch" parent="Brad2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatSetter/DialogueReward/DialogueSetCam" unique_id=20714074 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Brad"
+switch_tree = NodePath("../../../../../../../../../../Brad3After")
 
 [node name="Brad3After" type="Node2D" parent="." unique_id=1616996690]
 script = ExtResource("17_sh30a")
@@ -1024,6 +1108,10 @@ metadata/_custom_type_script = "uid://bl4vdyegyay3"
 [node name="DialogueSetCam" type="Node" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialoguePlayerThought/DialogueStatSetter/DialogueReward" unique_id=1679066092]
 script = ExtResource("3_k1frf")
 metadata/_custom_type_script = "uid://dv067w6ebkvde"
+
+[node name="DialogueSwitch" parent="Shoal1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialoguePlayerThought/DialogueStatSetter/DialogueReward/DialogueSetCam" unique_id=478992735 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+switch_connector_name = "Shoal"
+switch_tree = NodePath("../../../../../../../../../../../../../../../../../../Shoal2After")
 
 [node name="Shoal2After" type="Node2D" parent="." unique_id=97573823]
 script = ExtResource("17_sh30a")
@@ -1115,6 +1203,12 @@ metadata/_custom_type_script = "uid://bl4vdyegyay3"
 script = ExtResource("3_k1frf")
 metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
+[node name="DialogueSwitch" type="Node" parent="InteractVent/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialogueFadeScreen/DialoguePlaySound/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueStatSetter/DialogueReward/DialogueSetCam" unique_id=2124883042 node_paths=PackedStringArray("switch_tree")]
+script = ExtResource("34_ikg4h")
+switch_connector_name = "Vent"
+switch_tree = NodePath("../../../../../../../../../../../../../InteractVentAlreadyOpen")
+metadata/_custom_type_script = "uid://cl1iols5nby6h"
+
 [node name="InteractVentAlreadyOpen" type="Node2D" parent="." unique_id=1674031844]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
@@ -1126,40 +1220,49 @@ dialogue = "Oh look, an open vent."
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
-[node name="MedicineCabinet" type="Node2D" parent="." unique_id=2122998846]
+[node name="DialoguePlaySound" type="Node" parent="InteractLockedDoor" unique_id=424565591]
+script = ExtResource("8_8abdn")
+metadata/_custom_type_script = "uid://sl5iutsqybsx"
+
+[node name="MedicineCabinet" type="Node2D" parent="." unique_id=765068172]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
-[node name="DialogueStatement" parent="MedicineCabinet" unique_id=1515081810 instance=ExtResource("23_258b8")]
-dialogue = "Looks like there's some medicine on the top shelf!"
-
-[node name="MedicineCabinetHasStepladder" type="Node2D" parent="." unique_id=765068172]
-script = ExtResource("17_sh30a")
-metadata/_custom_type_script = "uid://b6ilt730j81f4"
-
-[node name="DialogueStatement" type="Node" parent="MedicineCabinetHasStepladder" unique_id=705961696]
+[node name="DialogueStatement" type="Node" parent="MedicineCabinet" unique_id=705961696]
 script = ExtResource("2_3mtrk")
 dialogue = "Looks like there's some medicine on the top shelf!"
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueQuestion" parent="MedicineCabinetHasStepladder/DialogueStatement" unique_id=50329187 instance=ExtResource("15_0v8oo")]
+[node name="DialogueQuestion" parent="MedicineCabinet/DialogueStatement" unique_id=50329187 instance=ExtResource("15_0v8oo")]
 
-[node name="DialogueChoice" parent="MedicineCabinetHasStepladder/DialogueStatement/DialogueQuestion" unique_id=1415995679 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice" parent="MedicineCabinet/DialogueStatement/DialogueQuestion" unique_id=1415995679 instance=ExtResource("22_ikrlq")]
 choice_text = "Reach for it"
 
-[node name="DialoguePlayerThought" parent="MedicineCabinetHasStepladder/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=490387026 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" parent="MedicineCabinet/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=490387026 instance=ExtResource("17_xyyno")]
 dialogue = "I'm too short to reach it.."
 
-[node name="DialogueChoice2" parent="MedicineCabinetHasStepladder/DialogueStatement/DialogueQuestion" unique_id=252591705 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice2" parent="MedicineCabinet/DialogueStatement/DialogueQuestion" unique_id=252591705 instance=ExtResource("22_ikrlq")]
 choice_text = "USE THE STEPLADDER"
 prereq_item = ExtResource("26_v3i0m")
 
-[node name="DialoguePlayerThought" parent="MedicineCabinetHasStepladder/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=1960363995 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" parent="MedicineCabinet/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=1960363995 instance=ExtResource("17_xyyno")]
 dialogue = "Perfect. Now I can reach the medicine."
 
-[node name="DialogueStatSetter" parent="MedicineCabinetHasStepladder/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=432209291 instance=ExtResource("10_n5o83")]
+[node name="DialogueStatSetter" parent="MedicineCabinet/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=432209291 instance=ExtResource("10_n5o83")]
 add_item = ExtResource("31_74mgt")
 remove_item = ExtResource("26_v3i0m")
+
+[node name="DialogueReward" type="Node" parent="MedicineCabinet/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter" unique_id=450765729]
+script = ExtResource("12_na5fk")
+reward_text = "YOU GOT PAINKILLERS!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
+
+[node name="DialogueSetCam" type="Node" parent="MedicineCabinet/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter/DialogueReward" unique_id=290956873]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
+
+[node name="DialogueSwitch" parent="MedicineCabinet/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter/DialogueReward/DialogueSetCam" unique_id=1087472742 instance=ExtResource("33_sh30a")]
+switch_connector_name = "MedicineCabinet"
 
 [node name="MarleyEndingScene" type="Node2D" parent="." unique_id=1178329272]
 script = ExtResource("17_sh30a")

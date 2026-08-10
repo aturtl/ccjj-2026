@@ -9,6 +9,8 @@ var current_camera_animation: int = 0
 @export var transitioners: Node2D
 @export var screen_fader: ColorRect
 
+@export var instance_connectors: Node2D
+
 @export_category("Talkers")
 @export var ui_npc_talk: UITalkNPC
 @export var ui_choice_display: UIChoiceDisplay
@@ -132,6 +134,7 @@ func dialogue_loop(dl:DialogueLine):
 			tween_to_talk(1.5)
 		if dl.id == "Thought":
 			tween_to_thought()
+		loop_with_parallels(dl)
 	
 	elif dl is DialogueFadeScreen:
 		screen_fader.visible = true
@@ -168,6 +171,12 @@ func dialogue_loop(dl:DialogueLine):
 	
 	elif dl is DialogueChangeScene:
 		#change scene here
+		loop_with_parallels(dl)
+	
+	elif dl is DialogueSwitch:
+		var switch_connector = instance_connectors.get_node(dl.switch_connector_name)
+		if switch_connector:
+			switch_connector.connected_tree = dl.switch_tree
 		loop_with_parallels(dl)
 
 
