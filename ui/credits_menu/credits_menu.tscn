@@ -33,8 +33,11 @@ offset_right = 338.5
 offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "(placeholder text)
-Tinkle, Wrinkle, Stinkle, Krinkle, and Doo worked very hard on this give them some love!"
+text = "Tpwnzy - Musician (Main), Pixel Artist
+Octoan1 - Co-Programmer (Main), Pixel Artist
+EtherealChaos - Writer (Main), 2D Artist, SFX
+DialmaQuiroz - 2D/3D Artist (Main), Social Media Manager
+aturtl - Co-Programmer (Main), Generalist"
 horizontal_alignment = 1
 
 [node name="Back" type="Button" parent="." unique_id=24777927]

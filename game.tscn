@@ -2,9 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
-[ext_resource type="PackedScene" uid="uid://dp31gpxs4x57e" path="res://entities/objects/key/key.tscn" id="2_eow3j"]
-[ext_resource type="PackedScene" uid="uid://d1dsnitsm7cwe" path="res://entities/npc/reef/reef.tscn" id="3_7sc4i"]
-[ext_resource type="PackedScene" uid="uid://dfrr822kcpjnh" path="res://entities/objects/door/door.tscn" id="3_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
@@ -73,11 +70,7 @@ position = Vector2(8786, -17)
 [node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
 position = Vector2(304, 784)
 
-[node name="Reef" parent="NPCs" unique_id=1676980202 node_paths=PackedStringArray("connector") instance=ExtResource("3_7sc4i")]
-position = Vector2(-208, -657)
-connector = NodePath("../../DialogueInstanceConnectors/NoName")
-
-[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
+[node name="NPCTalk" parent="." unique_id=1866522664 instance=ExtResource("10_215e1")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
@@ -130,14 +123,6 @@ connected_tree = NodePath("../../DialogueLineTreeHolder/Shoal1")
 [node name="Vent" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1069670587 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/InteractVent")
-
-[node name="Objects" type="Node2D" parent="." unique_id=1194281747]
-
-[node name="Key" parent="Objects" unique_id=78426552 instance=ExtResource("2_eow3j")]
-position = Vector2(436, 300)
-
-[node name="Door" parent="Objects" unique_id=1090625724 instance=ExtResource("3_j5wjh")]
-position = Vector2(838, 327)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1459312706]
 
