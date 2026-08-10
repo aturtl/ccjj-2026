@@ -2,8 +2,8 @@
 
 class_name DialogueLineTree extends Node2D
 
-const print_prereqs_and_stats: bool = false
-const print_switches: bool = true
+const print_prereqs_and_stats: bool = true
+const print_switches: bool = false
 
 var descendents = []
 

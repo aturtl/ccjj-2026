@@ -43,6 +43,7 @@ script = ExtResource("4_x5p1p")
 
 [node name="FrontYard" parent="Environment" unique_id=1755393680 instance=ExtResource("4_hb5m1")]
 unique_name_in_owner = true
+visible = false
 
 [node name="LivingRoom" parent="Environment" unique_id=1056652401 instance=ExtResource("5_x5p1p")]
 unique_name_in_owner = true
@@ -73,8 +74,7 @@ position = Vector2(8786, -17)
 position = Vector2(304, 784)
 
 [node name="Reef" parent="NPCs" unique_id=1676980202 node_paths=PackedStringArray("connector") instance=ExtResource("3_7sc4i")]
-position = Vector2(504, -544)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-208, -657)
 connector = NodePath("../../DialogueInstanceConnectors/NoName")
 
 [node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
@@ -134,12 +134,10 @@ connected_tree = NodePath("../../DialogueLineTreeHolder/InteractVent")
 [node name="Objects" type="Node2D" parent="." unique_id=1194281747]
 
 [node name="Key" parent="Objects" unique_id=78426552 instance=ExtResource("2_eow3j")]
-position = Vector2(279, 319)
-scale = Vector2(0.324, 0.324)
+position = Vector2(436, 300)
 
 [node name="Door" parent="Objects" unique_id=1090625724 instance=ExtResource("3_j5wjh")]
-position = Vector2(1016, 304.00003)
-scale = Vector2(0.436, 0.436)
+position = Vector2(838, 327)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1459312706]
 

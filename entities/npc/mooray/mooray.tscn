@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cl183idnqq604" path="res://entities/npc/mooray/mooray.gd" id="1_cvs8b"]
 [ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="2_t1stn"]
-[ext_resource type="Texture2D" uid="uid://eacbfud5b882" path="res://assets/characters/Moray_Sprite.png" id="3_cvs8b"]
+[ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="3_cvs8b"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="4_wioba"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvs8b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1stn"]
 shader = ExtResource("2_t1stn")
 shader_parameter/allow_out_of_bounds = true
 shader_parameter/outline_thickness = 0.0
@@ -18,14 +18,15 @@ height = 444.0
 [node name="Mooray" type="Node2D" unique_id=192293366]
 script = ExtResource("1_cvs8b")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=454348344]
-material = SubResource("ShaderMaterial_cvs8b")
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=2078495081]
+material = SubResource("ShaderMaterial_t1stn")
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_cvs8b")
+sprite_frames = ExtResource("3_cvs8b")
+animation = &"pacifica_idle"
 
 [node name="Interactable" type="Area2D" parent="." unique_id=1583978403 node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_wioba")
-sprite = NodePath("../Sprite2D")
+sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://d24v64w0rb8ei"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=22819205]
