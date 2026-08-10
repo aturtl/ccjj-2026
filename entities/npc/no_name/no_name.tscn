@@ -25,7 +25,7 @@ texture = ExtResource("3_u7io4")
 
 [node name="Interactable" type="Area2D" parent="." unique_id=1963258331 node_paths=PackedStringArray("sprite")]
 script = ExtResource("3_xxugt")
-sprite = NodePath("")
+sprite = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://d24v64w0rb8ei"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1857241638]
