@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://em4issnmvxmc"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://3t4hgxj0jd8t"]
 
-[ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="1_75fui"]
-[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/key.png" id="2_p0iry"]
+[ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="1_66hkm"]
+[ext_resource type="Texture2D" uid="uid://d263l6ov8olwg" path="res://assets/step_ladder.png" id="2_kb0tp"]
 
 [resource]
-script = ExtResource("1_75fui")
-name = "Key"
-texture = ExtResource("2_p0iry")
-id = "key"
-description = "Key item for keying things"
+script = ExtResource("1_66hkm")
+name = "Step Ladder"
+texture = ExtResource("2_kb0tp")
+id = "step_ladder"
 metadata/_custom_type_script = "uid://cnnmfouky31n8"

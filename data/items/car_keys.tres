@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dfme7khnhrmxg"]
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://deu730vg3le2l"]
 
-[ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="1_q1oxd"]
-[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/key.png" id="2_hvqyq"]
+[ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="1_gvamg"]
+[ext_resource type="Texture2D" uid="uid://dqc63p1arl47u" path="res://assets/car_keys.png" id="2_nxkga"]
 
 [resource]
-script = ExtResource("1_q1oxd")
-name = "Key"
-texture = ExtResource("2_hvqyq")
-id = "key"
-description = "Key item for keying things"
+script = ExtResource("1_gvamg")
+name = "Lost Car Keys"
+texture = ExtResource("2_nxkga")
+id = "lost_car_keys"
 metadata/_custom_type_script = "uid://cnnmfouky31n8"
