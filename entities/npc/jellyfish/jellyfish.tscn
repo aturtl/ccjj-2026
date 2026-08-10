@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://y03etuhmnpfs"]
+
+[ext_resource type="Script" uid="uid://cmbtci5bwpdfo" path="res://entities/npc/jellyfish/jellyfish.gd" id="1_oeggw"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_wmwnx"]
+[ext_resource type="Texture2D" uid="uid://bg8jkdcswwj3c" path="res://assets/characters/Jellyfish_Sprite.png" id="2_wmwnx"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="3_jkwsi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmwnx"]
+shader = ExtResource("1_wmwnx")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ghbvn"]
+radius = 107.0
+height = 444.0
+
+[node name="Jellyfish" type="Node2D" unique_id=328680198]
+script = ExtResource("1_oeggw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1962991542]
+material = SubResource("ShaderMaterial_wmwnx")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_wmwnx")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=324106285 node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_jkwsi")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=365227836]
+position = Vector2(4, 13)
+shape = SubResource("CapsuleShape2D_ghbvn")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
