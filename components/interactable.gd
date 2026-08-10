@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_mouse_entered() -> void:
-	if highlight_on_hover:
+	if highlight_on_hover and SettingsManager.show_outline_on_hover:
 		shader.set_shader_parameter("outline_thickness", 5)
 
 

@@ -50,6 +50,7 @@ script = ExtResource("4_x5p1p")
 unique_name_in_owner = true
 
 [node name="Bushes" parent="Environment/FrontYard" unique_id=1779984681 instance=ExtResource("6_e36ub")]
+position = Vector2(856, 319)
 
 [node name="NoName" parent="Environment/FrontYard" unique_id=1669043619 instance=ExtResource("7_hb5m1")]
 position = Vector2(160, 385)

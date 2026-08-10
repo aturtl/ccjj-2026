@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://k3eiwpbrqhfa" path="res://ui/settings_menu/settings.gd" id="1_gl4li"]
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="2_50bus"]
+[ext_resource type="Script" uid="uid://c8kk2ci27t75t" path="res://ui/settings_menu/general_tab.gd" id="3_jg1fs"]
 [ext_resource type="Script" uid="uid://duu3y4o4ts66m" path="res://ui/settings_menu/audio_tab.gd" id="3_l8i4v"]
 
 [node name="SettingsMenu" type="Control" unique_id=1151713264]
@@ -61,22 +62,24 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 clip_tabs = false
 
 [node name="General" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=1391326372]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
+script = ExtResource("3_jg1fs")
 metadata/_tab_index = 0
 
 [node name="CheckBox" type="CheckBox" parent="Panel/VBoxContainer/MarginContainer/TabContainer/General" unique_id=166409173]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+button_pressed = true
 text = "Highlight Interactables"
 
 [node name="Audio" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer" unique_id=23997449]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 script = ExtResource("3_l8i4v")
@@ -144,6 +147,7 @@ text = "Back
 
 "
 
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/TabContainer/General/CheckBox" to="Panel/VBoxContainer/MarginContainer/TabContainer/General" method="_on_check_box_toggled"]
 [connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterCheckBox" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_master_volume_toggled"]
 [connection signal="value_changed" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer/MasterSlider" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_master_slider_value_changed"]
 [connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/HBoxContainer2/MusicCheckBox" to="Panel/VBoxContainer/MarginContainer/TabContainer/Audio" method="_on_music_volume_toggled"]
