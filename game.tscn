@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
+[ext_resource type="Script" uid="uid://7844f0ujgu6s" path="res://main_camera.gd" id="2_bnpwn"]
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
@@ -33,10 +34,13 @@
 process_mode = 3
 script = ExtResource("1_feb5d")
 
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("talk_trans")]
+position = Vector2(576, 324)
+script = ExtResource("2_bnpwn")
+talk_trans = NodePath("../Node2D")
+
 [node name="Cheats" parent="." unique_id=788448949 instance=ExtResource("9_lc2xo")]
 unique_name_in_owner = true
-z_index = 1000
-position = Vector2(576, 324)
 
 [node name="BG" type="Sprite2D" parent="." unique_id=747760484]
 visible = false
@@ -216,6 +220,9 @@ z_index = 50
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2025733836]
+position = Vector2(1000, 256)
 
 [connection signal="button_down" from="UI/Button" to="UI/Button" method="_on_button_down"]
 [connection signal="toggled" from="UI/HUD/InventoryButton" to="." method="_on_inventory_button_toggled"]

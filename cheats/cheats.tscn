@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c5eqeqyrc0xnf" path="res://cheats/cheats.gd" id="1_65v6h"]
 
-[node name="Cheats" type="Node2D" unique_id=788448949]
+[node name="Cheats" type="CanvasLayer" unique_id=1591895655]
 script = ExtResource("1_65v6h")
+metadata/_custom_type_script = "uid://c5eqeqyrc0xnf"
 
 [node name="TextConsole" type="LineEdit" parent="." unique_id=261346565]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -340.0
-offset_bottom = -284.0
+offset_left = 192.0
+offset_right = 428.0
+offset_bottom = 40.0
 mouse_filter = 2
 context_menu_enabled = false
 emoji_menu_enabled = false

@@ -1,5 +1,5 @@
 @icon("uid://dvqw73kytml1i")
-class_name Cheats extends Node2D
+class_name Cheats extends CanvasLayer
 ## To make testing stuff easier
 ## This would preferably be put inside the camera in the main branch
 

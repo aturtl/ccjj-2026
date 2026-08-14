@@ -1,0 +1,37 @@
+class_name MainCamera extends Camera2D
+
+enum State {FOLLOW, CUTSCENE, DIALOGUE}
+var current_state = State.FOLLOW
+
+const MOVE_AMOUNT: float = 200
+const DEFAULT_TIME: float = .5
+
+@export var talk_trans: Node2D
+
+func _cheat_entered(cheat: String):
+	match cheat:
+		"cam_talk":
+			current_state = State.DIALOGUE
+			var t = get_tree().create_tween()
+			t.set_trans(Tween.TRANS_BOUNCE)
+			tween_to_transform(talk_trans.transform, t, .5)
+
+
+func _ready():
+	%Cheats.cheat_entered.connect(_cheat_entered)
+
+
+func tween_to_transform(trans: Transform2D, tween: Tween, time: float = DEFAULT_TIME):
+	tween.tween_property(self, "transform", trans, time)
+	tween.play()
+
+
+func state_follow(delta):
+	var axis = Input.get_axis("left","right")
+	position.x += delta*MOVE_AMOUNT*axis
+
+
+func _physics_process(delta):
+	match current_state:
+		State.FOLLOW:
+			state_follow(delta)
