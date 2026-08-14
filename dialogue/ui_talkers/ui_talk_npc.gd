@@ -5,7 +5,7 @@ class_name UITalkNPC extends UITalk
 @export var instance_count = 3
 
 @export var transitioners: Node2D
-@export var in_between_time = .09
+@export var in_between_time = .04
 
 @export var end_wait = 1.0
 
@@ -25,7 +25,7 @@ func play_talk_sound():
 
 
 #region box
-func talk(dl: DialogueLine, starting_visible_characters: int = 0):
+func talk(dl: DialogueLine, origin: Vector2 = Vector2(0, 0), starting_visible_characters: int = 0):
 	if dl.in_between_time == -1.0:
 		dl.in_between_time = in_between_time
 	
@@ -37,7 +37,7 @@ func talk(dl: DialogueLine, starting_visible_characters: int = 0):
 		kill_all_box_instances()
 		return
 	
-	var box = add_templated_box_instance(box_template)
+	var box = add_templated_box_instance(box_template, origin)
 	var label = box.label
 	
 	label.text = s
@@ -69,9 +69,13 @@ func kill_all_box_instances():
 		box_instances[i] = null
 
 
-func add_templated_box_instance(box_temp: BoxTemplate):
+func add_templated_box_instance(box_temp: BoxTemplate, origin: Vector2):
 	var box = box_temp.duplicate()
+	
+	
 	add_child(box)
+	box.positioner.global_position = origin
+	
 	
 	var repl: BoxTemplate = box
 	var old: BoxTemplate

@@ -3,6 +3,7 @@ extends Node2D
 enum CameraAnimation {TALK, THOUGHT}
 var current_camera_animation: int = 0
 
+@export var main_cam: MainCamera
 @export var talk_cam: FakeCam
 @export var player_sprite: AnimatedSprite2D
 @export var npc_sprite: AnimatedSprite2D
@@ -33,6 +34,8 @@ var original_player_pos: Vector2
 var original_npc_pos: Vector2
 var original_cam_pos: Vector2
 
+var original_cam_trans: Transform2D
+
 var parallel_count: int = 0
 
 var scene = ""
@@ -46,8 +49,14 @@ func play_blip(dyn_range: float = blip_dynamic_range):
 	blip_player.play()
 
 
+func cam_offset():
+	return original_cam_pos - Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"),ProjectSettings.get_setting("display/window/size/viewport_height"))/2.0
+
+
 #region dialogue loop
 func dialogue_start(dl:DialogueLine):
+	main_cam.current_state = main_cam.State.DIALOGUE
+	
 	parallel_count += 1
 	
 	scene = ""
@@ -55,7 +64,10 @@ func dialogue_start(dl:DialogueLine):
 	npc_sprite.visible = true
 	original_player_pos = player_sprite.get_parent().global_position
 	original_npc_pos = npc_sprite.get_parent().global_position
-	original_cam_pos = talk_cam.global_position
+	original_cam_pos = main_cam.global_position
+	
+	original_cam_trans = main_cam.global_transform
+	
 	display_ui()
 	dialogue_loop(dl)
 
@@ -83,7 +95,7 @@ func dialogue_loop(dl:DialogueLine):
 		else:
 			tween_to_talk(1.5)
 		
-		ui_npc_talk.talk(dl)
+		ui_npc_talk.talk(dl, transitioners.get_node("TransBoxTalk").global_position + cam_offset())
 		
 		await ui_npc_talk.start_next
 		
@@ -97,7 +109,7 @@ func dialogue_loop(dl:DialogueLine):
 		await tween_to_thought()
 		
 		var choices = get_choices(dl)
-		ui_choice_display.display_choices(choices)
+		ui_choice_display.display_choices(choices, transitioners.get_node("TransDisplayChoices").global_position + cam_offset())
 		
 		var choice_dl: DialogueChoice = await ui_choice_display.choice_selected
 		
@@ -108,7 +120,7 @@ func dialogue_loop(dl:DialogueLine):
 		print("QUESTION ASKED")
 	
 	elif dl is DialoguePlayerThought:
-		ui_thought_talk.talk(dl)
+		ui_thought_talk.talk(dl, transitioners.get_node("TransPlayerTalk").global_position + cam_offset())
 		
 		await ui_thought_talk.start_next
 		
@@ -178,7 +190,8 @@ func dialogue_end():
 	parallel_count -= 1
 	if parallel_count == 0:
 		kill_boxes()
-		tween_back_to_original_positions()
+		await tween_back_to_original_positions()
+		main_cam.current_state = main_cam.State.FOLLOW
 	else:
 		pass
 #endregion
@@ -210,9 +223,8 @@ func tween_back_to_original_positions(): # right now, I just send them into spac
 	player_tween.tween_property(player_sprite, "scale", Vector2(1.0,1.0), thought_trans_time).set_trans(Tween.TRANS_BACK)
 	player_tween.play()
 	
-	cam_tween.tween_property(talk_cam, "global_position", original_cam_pos, thought_trans_time).set_trans(Tween.TRANS_EXPO)
-	cam_tween.tween_property(talk_cam, "scale", Vector2(1.0,1.0), thought_trans_time).set_trans(Tween.TRANS_EXPO)
-	cam_tween.play()
+	cam_tween.set_trans(Tween.TRANS_EXPO)
+	main_cam.tween_to_transform(original_cam_trans, cam_tween, thought_trans_time)
 	
 	npc_tween.tween_property(npc_sprite.get_parent(), "global_position", original_npc_pos, thought_trans_time).set_trans(Tween.TRANS_QUINT)
 	npc_tween.tween_property(npc_sprite, "scale", Vector2(1.0,1.0), thought_trans_time).set_trans(Tween.TRANS_BACK)
@@ -228,20 +240,19 @@ func tween_to_thought():
 	var cam_tween: Tween = get_tree().create_tween().set_parallel()
 	var npc_tween: Tween = get_tree().create_tween().set_parallel()
 	
-	var thought_trans_time = 1.5
+	var trans_time = 1.5
 	
 	player_sprite.play("thought")
 	
-	player_tween.tween_property(player_sprite.get_parent(), "global_position", transitioners.get_node("TransPlayerThought").global_position, 1.2).set_trans(Tween.TRANS_BACK)
-	player_tween.tween_property(player_sprite, "scale", transitioners.get_node("TransPlayerThought").global_scale, thought_trans_time).set_trans(Tween.TRANS_BACK)
+	player_tween.tween_property(player_sprite.get_parent(), "global_position", transitioners.get_node("TransPlayerThought").global_position + cam_offset(), 1.2).set_trans(Tween.TRANS_BACK)
+	player_tween.tween_property(player_sprite, "scale", transitioners.get_node("TransPlayerThought").global_scale, trans_time).set_trans(Tween.TRANS_BACK)
 	player_tween.play()
 	
-	cam_tween.tween_property(talk_cam, "global_position", transitioners.get_node("TransCameraThought").global_position, thought_trans_time).set_trans(Tween.TRANS_EXPO)
-	cam_tween.tween_property(talk_cam, "scale", transitioners.get_node("TransCameraThought").global_scale, thought_trans_time).set_trans(Tween.TRANS_EXPO)
-	cam_tween.play()
+	cam_tween.tween_property(main_cam, "global_position", transitioners.get_node("TransCameraThought").global_position + cam_offset(), trans_time).set_trans(Tween.TRANS_EXPO)
+	cam_tween.tween_property(main_cam, "zoom", transitioners.get_node("TransCameraThought").global_scale, trans_time).set_trans(Tween.TRANS_EXPO)
 	
-	npc_tween.tween_property(npc_sprite.get_parent(), "global_position", transitioners.get_node("TransNPCThought").global_position, thought_trans_time).set_trans(Tween.TRANS_QUINT)
-	npc_tween.tween_property(npc_sprite, "scale", transitioners.get_node("TransNPCThought").global_scale, thought_trans_time).set_trans(Tween.TRANS_BACK)
+	npc_tween.tween_property(npc_sprite.get_parent(), "global_position", transitioners.get_node("TransNPCThought").global_position + cam_offset(), trans_time).set_trans(Tween.TRANS_QUINT)
+	npc_tween.tween_property(npc_sprite, "scale", transitioners.get_node("TransNPCThought").global_scale, trans_time).set_trans(Tween.TRANS_BACK)
 	npc_tween.play()
 	
 	await player_tween.finished
@@ -258,15 +269,14 @@ func tween_to_talk(trans_time: float):
 	
 	player_sprite.play("talk")
 	
-	player_tween.tween_property(player_sprite.get_parent(), "global_position", transitioners.get_node("TransPlayerTalk").global_position, trans_time*.8).set_trans(Tween.TRANS_BACK)
+	player_tween.tween_property(player_sprite.get_parent(), "global_position", transitioners.get_node("TransPlayerTalk").global_position + cam_offset(), trans_time*.8).set_trans(Tween.TRANS_BACK)
 	player_tween.tween_property(player_sprite, "scale", transitioners.get_node("TransPlayerTalk").global_scale, trans_time).set_trans(Tween.TRANS_BACK)
 	player_tween.play()
 	
-	cam_tween.tween_property(talk_cam, "global_position", transitioners.get_node("TransCameraTalk").global_position, trans_time).set_trans(Tween.TRANS_EXPO)
-	cam_tween.tween_property(talk_cam, "scale", transitioners.get_node("TransPlayerTalk").global_scale, trans_time).set_trans(Tween.TRANS_EXPO)
-	cam_tween.play()
+	cam_tween.tween_property(main_cam, "global_position", transitioners.get_node("TransCameraTalk").global_position + cam_offset(), trans_time).set_trans(Tween.TRANS_EXPO)
+	cam_tween.tween_property(main_cam, "zoom", transitioners.get_node("TransCameraTalk").global_scale, trans_time).set_trans(Tween.TRANS_EXPO)
 	
-	npc_tween.tween_property(npc_sprite.get_parent(), "global_position", transitioners.get_node("TransNPCTalk").global_position, trans_time).set_trans(Tween.TRANS_QUINT)
+	npc_tween.tween_property(npc_sprite.get_parent(), "global_position", transitioners.get_node("TransNPCTalk").global_position + cam_offset(), trans_time).set_trans(Tween.TRANS_QUINT)
 	npc_tween.tween_property(npc_sprite, "scale", transitioners.get_node("TransNPCTalk").global_scale, trans_time).set_trans(Tween.TRANS_BACK)
 	npc_tween.play()
 	

@@ -22,7 +22,8 @@ func _ready():
 
 
 func tween_to_transform(trans: Transform2D, tween: Tween, time: float = DEFAULT_TIME):
-	tween.tween_property(self, "transform", trans, time)
+	tween.tween_property(self, "global_transform", trans, time)
+	tween.parallel().tween_property(self, "zoom", trans.get_scale(), time)
 	tween.play()
 
 

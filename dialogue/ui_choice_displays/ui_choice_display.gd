@@ -17,7 +17,7 @@ func _ready():
 	choice_template.visible = false
 
 
-func display_choices(choices: Array):
+func display_choices(choices: Array, origin: Vector2):
 	total_choice_instance_count = choices.size()
 	
 	for choice_info:DialogueChoice in choices:
@@ -31,7 +31,7 @@ func display_choices(choices: Array):
 		if Stats.confidence < prereq_confidence: # skip if player has less sanity than req
 			continue
 		
-		var choice_instance: ChoiceTemplate = add_templated_choice_instance(choice_template)
+		var choice_instance: ChoiceTemplate = add_templated_choice_instance(choice_template, origin)
 		
 		choice_instance.label.text = "[center]"+choice_info.choice_text+"[/center]"
 		
@@ -44,7 +44,7 @@ func display_choices(choices: Array):
 		choice_instance.goto = choice_info
 
 
-func add_templated_choice_instance(choice_temp: ChoiceTemplate):
+func add_templated_choice_instance(choice_temp: ChoiceTemplate, origin: Vector2):
 	var choice = choice_temp.duplicate()
 	add_child(choice)
 	
@@ -57,7 +57,7 @@ func add_templated_choice_instance(choice_temp: ChoiceTemplate):
 		var angle = spread_start + spread_end * choice_instance_count/(float(total_choice_instance_count-1)) - (PI-choice_spread)/2.0
 		direction = Vector2(cos(angle), sin(angle))
 	
-	choice.position = transitioners.get_node("TransDisplayChoices").position + 250.0*direction
+	choice.global_position = origin + 250.0*direction
 	
 	choice_instance_count += 1
 	

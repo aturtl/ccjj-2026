@@ -1,7 +1,7 @@
 class_name UITalkThought extends UITalk
 
 @export var box_template: BoxTemplate
-@export var in_between_time = .06
+@export var in_between_time = .04
 @export var end_wait = .7
 
 var box_instance: BoxTemplate
@@ -20,7 +20,7 @@ func play_talk_sound():
 
 
 #region box
-func talk(dl: DialogueLine, starting_visible_characters: int = 0):
+func talk(dl: DialogueLine, origin: Vector2 = Vector2(0, 0), starting_visible_characters: int = 0):
 	if dl.in_between_time == -1.0:
 		dl.in_between_time = in_between_time
 	
@@ -32,7 +32,7 @@ func talk(dl: DialogueLine, starting_visible_characters: int = 0):
 		animate_kill_box_instance(box_instance)
 		return
 	
-	var box = add_templated_box_instance(box_template)
+	var box = add_templated_box_instance(box_template, origin)
 	var label = box.label
 	
 	label.text = s
@@ -58,9 +58,11 @@ func talk(dl: DialogueLine, starting_visible_characters: int = 0):
 	start_next.emit()
 
 
-func add_templated_box_instance(box_temp: BoxTemplate):
+func add_templated_box_instance(box_temp: BoxTemplate, origin: Vector2):
 	var box = box_temp.duplicate()
+	
 	add_child(box)
+	box.global_position = origin
 	
 	if box_instance:
 		animate_kill_box_instance(box_instance)

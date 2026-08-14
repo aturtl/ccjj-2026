@@ -35,6 +35,7 @@ process_mode = 3
 script = ExtResource("1_feb5d")
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("talk_trans")]
+unique_name_in_owner = true
 position = Vector2(576, 324)
 script = ExtResource("2_bnpwn")
 talk_trans = NodePath("../Node2D")
@@ -115,10 +116,11 @@ position = Vector2(8786, 0)
 [node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
 position = Vector2(304, 784)
 
-[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
+[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("main_cam", "screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
+main_cam = NodePath("../MainCamera")
 screen_fader = NodePath("../UI/ScreenFader")
 instance_connectors = NodePath("../DialogueInstanceConnectors")
 

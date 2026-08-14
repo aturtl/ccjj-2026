@@ -9,12 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://duhua14dmi18j" path="res://assets/ui/npc_dialogue_box.png" id="10_ak87k"]
 [ext_resource type="Texture2D" uid="uid://cf5j5prldlckw" path="res://assets/ui/mc_dialogue_box.png" id="12_bwfku"]
 [ext_resource type="Script" uid="uid://y2w71ew3be3l" path="res://dialogue/ui_talkers/ui_reward.gd" id="12_svhel"]
+[ext_resource type="AudioStream" uid="uid://dchavohcad2mt" path="res://dialogue/blips/blip_default_2.mp3" id="13_710ue"]
 [ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="14_7pvnj"]
 [ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="15_bwfku"]
 [ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="16_nbgfc"]
-[ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="23_1lraq"]
 
-[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "dia_ex_lines", "dia_ex_choice", "dia_ex_thought", "debug_rect_display")]
+[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "debug_rect_display")]
 script = ExtResource("1_m8yt7")
 talk_cam = NodePath("TalkFakeCam")
 player_sprite = NodePath("UI/Characters/Player/Sprite")
@@ -25,16 +25,16 @@ ui_choice_display = NodePath("UI/UIChoice")
 ui_thought_talk = NodePath("UI/UITalkThought")
 ui_reward = NodePath("UI/UIReward")
 blip_player = NodePath("BlipPlayer")
-dia_ex_lines = NodePath("")
-dia_ex_choice = NodePath("")
-dia_ex_thought = NodePath("")
 debug_rect_display = NodePath("tempscreen")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=120833019]
-layer = 12
+[node name="TalkFakeCam" type="Node2D" parent="." unique_id=1001578939]
+script = ExtResource("10_710ue")
+
+[node name="UI" type="Node2D" parent="." unique_id=118199913]
+z_index = 100
 
 [node name="Characters" type="Node2D" parent="UI" unique_id=992138454]
-position = Vector2(576, 328)
+position = Vector2(0, 4)
 
 [node name="Player" type="Node2D" parent="UI/Characters" unique_id=1966904080]
 position = Vector2(-776, 137)
@@ -55,7 +55,6 @@ sprite_frames = ExtResource("16_nbgfc")
 animation = &"wormy_angry"
 
 [node name="Transitioners" type="Node2D" parent="UI" unique_id=249844191]
-position = Vector2(576, 324)
 
 [node name="TransPlayerTalk" type="Node2D" parent="UI/Transitioners" unique_id=1866418926]
 position = Vector2(-416, 176)
@@ -64,6 +63,7 @@ position = Vector2(-416, 176)
 position = Vector2(400, -64)
 
 [node name="TransCameraTalk" type="Node2D" parent="UI/Transitioners" unique_id=344368334]
+scale = Vector2(1.1, 1.1)
 
 [node name="TransPlayerThought" type="Node2D" parent="UI/Transitioners" unique_id=861926996]
 position = Vector2(-384, 168)
@@ -74,15 +74,18 @@ position = Vector2(274, 112)
 scale = Vector2(0.5, 0.5)
 
 [node name="TransCameraThought" type="Node2D" parent="UI/Transitioners" unique_id=471356132]
-position = Vector2(-384, 0)
+position = Vector2(-384, 91)
 scale = Vector2(1.5, 1.5)
 
 [node name="TransDisplayChoices" type="Node2D" parent="UI/Transitioners" unique_id=2012092635]
 position = Vector2(-384, 128)
 
+[node name="TransBoxTalk" type="Node2D" parent="UI/Transitioners" unique_id=2043023182]
+position = Vector2(298, -162)
+
 [node name="UIChoice" type="Node2D" parent="UI" unique_id=2085162665 node_paths=PackedStringArray("choice_template", "transitioners")]
 z_index = 10
-position = Vector2(576, 328)
+position = Vector2(0, 4)
 script = ExtResource("4_s0v2e")
 choice_template = NodePath("ChoiceTemplate")
 transitioners = NodePath("../Transitioners")
@@ -128,10 +131,11 @@ offset_left = -40.0
 offset_top = 8.0
 offset_right = 40.0
 offset_bottom = 37.0
+metadata/_edit_use_anchors_ = true
 
 [node name="UITalkNPC" type="Node2D" parent="UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
 z_index = 10
-position = Vector2(576, 328)
+position = Vector2(0, 4)
 script = ExtResource("9_ak87k")
 box_template = NodePath("BoxTemplate")
 transitioners = NodePath("../Transitioners")
@@ -154,15 +158,16 @@ position = Vector2(-76, -4)
 
 [node name="Background" type="Sprite2D" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1306438264]
 texture_filter = 1
-position = Vector2(-234.00003, 8)
+position = Vector2(-156, 8.000004)
+scale = Vector2(0.7243589, 0.724359)
 texture = ExtResource("10_ak87k")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=491054044]
 clip_contents = false
-offset_left = -497.0
-offset_top = -51.0
-offset_right = -27.0
-offset_bottom = 49.0
+offset_left = -355.0
+offset_top = -34.0
+offset_right = 1.0
+offset_bottom = 37.0
 theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
@@ -170,7 +175,7 @@ text = "DIALOGUE"
 
 [node name="UITalkThought" type="Node2D" parent="UI" unique_id=1801668213 node_paths=PackedStringArray("box_template")]
 z_index = 10
-position = Vector2(576, 328)
+position = Vector2(0, 4)
 script = ExtResource("14_7pvnj")
 box_template = NodePath("BoxTemplate")
 metadata/_custom_type_script = "uid://2m2g0adych3l"
@@ -184,6 +189,7 @@ rotater = NodePath("Positioner/Rotater")
 positioner = NodePath("Positioner")
 
 [node name="Positioner" type="Node2D" parent="UI/UITalkThought/BoxTemplate" unique_id=1774921862]
+position = Vector2(2, 3)
 
 [node name="Rotater" type="Node2D" parent="UI/UITalkThought/BoxTemplate/Positioner" unique_id=1210155418]
 
@@ -191,15 +197,15 @@ positioner = NodePath("Positioner")
 position = Vector2(-76, -4)
 
 [node name="Background" type="Sprite2D" parent="UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1448479009]
-position = Vector2(-234.00003, 8)
+position = Vector2(385.99997, 13)
 texture = ExtResource("12_bwfku")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=192639951]
 clip_contents = false
-offset_left = -452.0
-offset_top = -44.0
-offset_right = -28.0
-offset_bottom = 49.0
+offset_left = 166.0
+offset_top = -33.0
+offset_right = 590.0
+offset_bottom = 60.0
 theme_override_colors/default_color = Color(0.33140886, 0.060379684, 0.5436291, 1)
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
@@ -207,7 +213,7 @@ text = "DIALOGUE"
 
 [node name="UIReward" type="Node2D" parent="UI" unique_id=1354403908 node_paths=PackedStringArray("box_template", "reward_screen")]
 z_index = 10
-position = Vector2(576, 328)
+position = Vector2(0, 4)
 script = ExtResource("12_svhel")
 box_template = NodePath("BoxTemplate")
 reward_screen = NodePath("BoxTemplate/RewardScreen")
@@ -247,9 +253,6 @@ offset_right = 280.0
 offset_bottom = 136.0
 color = Color(0.49253017, 0.0022641667, 0.76116043, 1)
 
-[node name="TalkFakeCam" type="Node2D" parent="." unique_id=1001578939]
-script = ExtResource("10_710ue")
-
 [node name="tempscreen" type="ColorRect" parent="." unique_id=746877131]
 visible = false
 offset_left = -576.0
@@ -267,5 +270,5 @@ offset_bottom = 280.0
 text = "and everyone died"
 
 [node name="BlipPlayer" type="AudioStreamPlayer" parent="." unique_id=106897715]
-stream = ExtResource("23_1lraq")
+stream = ExtResource("13_710ue")
 bus = &"SFX"
