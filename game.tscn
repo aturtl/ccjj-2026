@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bvg0cccacnihn" path="res://ui/credits_menu/credits_menu.tscn" id="14_215e1"]
 [ext_resource type="PackedScene" uid="uid://b6i7gjrynvevy" path="res://entities/npc/brad/brad.tscn" id="14_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://dfhrtwvd784y6" path="res://entities/npc/shoal/shoal.tscn" id="16_5b14r"]
+[ext_resource type="Script" uid="uid://c7goundowx3su" path="res://scene_change.gd" id="28_5b14r"]
 
 [node name="Game" type="Node2D" unique_id=69826831]
 process_mode = 3
@@ -44,6 +45,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_80nbo")
 
 [node name="Environment" type="Node2D" parent="." unique_id=718944105]
+unique_name_in_owner = true
 script = ExtResource("4_x5p1p")
 
 [node name="FrontYard" parent="Environment" unique_id=1755393680 instance=ExtResource("4_hb5m1")]
@@ -52,44 +54,51 @@ unique_name_in_owner = true
 [node name="Bushes" parent="Environment/FrontYard" unique_id=1779984681 instance=ExtResource("6_e36ub")]
 position = Vector2(856, 319)
 
-[node name="NoName" parent="Environment/FrontYard" unique_id=1669043619 instance=ExtResource("7_hb5m1")]
+[node name="NoName" parent="Environment/FrontYard" unique_id=1669043619 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
 position = Vector2(160, 385)
 scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../DialogueInstanceConnectors/NoName")
 
 [node name="LivingRoom" parent="Environment" unique_id=1056652401 instance=ExtResource("5_x5p1p")]
 unique_name_in_owner = true
 position = Vector2(2651, 18)
 
-[node name="Pacifica" parent="Environment/LivingRoom" unique_id=1381500754 instance=ExtResource("9_x5p1p")]
+[node name="Pacifica" parent="Environment/LivingRoom" unique_id=1381500754 node_paths=PackedStringArray("connector") instance=ExtResource("9_x5p1p")]
 position = Vector2(941, 386)
 scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../DialogueInstanceConnectors/Pacifica")
 
-[node name="Reef" parent="Environment/LivingRoom" unique_id=1676980202 instance=ExtResource("10_qhcbd")]
+[node name="Reef" parent="Environment/LivingRoom" unique_id=1676980202 node_paths=PackedStringArray("connector") instance=ExtResource("10_qhcbd")]
 position = Vector2(222, 372)
 scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../DialogueInstanceConnectors/Reef")
 
 [node name="Kitchen" parent="Environment" unique_id=190051855 instance=ExtResource("6_qhcbd")]
 unique_name_in_owner = true
 position = Vector2(4181, 6)
 
-[node name="Mooray" parent="Environment/Kitchen" unique_id=192293366 instance=ExtResource("12_f1jbl")]
+[node name="Mooray" parent="Environment/Kitchen" unique_id=192293366 node_paths=PackedStringArray("connector") instance=ExtResource("12_f1jbl")]
 position = Vector2(852, 355)
 scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../DialogueInstanceConnectors/Moray")
 
-[node name="Dog" parent="Environment/Kitchen" unique_id=1939013120 instance=ExtResource("13_vaj68")]
+[node name="Dog" parent="Environment/Kitchen" unique_id=1939013120 node_paths=PackedStringArray("connector") instance=ExtResource("13_vaj68")]
 position = Vector2(245, 401)
 scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../DialogueInstanceConnectors/Dog")
 
-[node name="Brad" parent="Environment/Kitchen" unique_id=196879695 instance=ExtResource("14_xa8c5")]
+[node name="Brad" parent="Environment/Kitchen" unique_id=196879695 node_paths=PackedStringArray("connector") instance=ExtResource("14_xa8c5")]
 position = Vector2(553, 380)
+connector = NodePath("../../../DialogueInstanceConnectors/Brad")
 
 [node name="Hallway" parent="Environment" unique_id=2102377602 instance=ExtResource("7_f1jbl")]
 unique_name_in_owner = true
 position = Vector2(5688, 1)
 
-[node name="Shoal" parent="Environment/Hallway" unique_id=985543956 instance=ExtResource("16_5b14r")]
+[node name="Shoal" parent="Environment/Hallway" unique_id=985543956 node_paths=PackedStringArray("connector") instance=ExtResource("16_5b14r")]
 position = Vector2(278, 302)
 scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../DialogueInstanceConnectors/Shoal")
 
 [node name="Bathroom" parent="Environment" unique_id=1154042809 instance=ExtResource("8_vaj68")]
 unique_name_in_owner = true
@@ -102,7 +111,7 @@ position = Vector2(8786, 0)
 [node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
 position = Vector2(304, 784)
 
-[node name="NPCTalk" parent="." unique_id=1866522664 instance=ExtResource("10_215e1")]
+[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
@@ -158,6 +167,14 @@ connected_tree = NodePath("../../DialogueLineTreeHolder/InteractVent")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1459312706]
 
+[node name="Button" type="Button" parent="UI" unique_id=369431034]
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 121.0
+offset_bottom = 36.0
+text = "change scene"
+script = ExtResource("28_5b14r")
+
 [node name="HUD" type="CanvasLayer" parent="UI" unique_id=967642215]
 
 [node name="InventoryButton" type="Button" parent="UI/HUD" unique_id=2031546421]
@@ -200,6 +217,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
+[connection signal="button_down" from="UI/Button" to="UI/Button" method="_on_button_down"]
 [connection signal="toggled" from="UI/HUD/InventoryButton" to="." method="_on_inventory_button_toggled"]
 [connection signal="start_game" from="UI/StartMenu" to="." method="_on_start_game"]
 [connection signal="resume" from="UI/PauseMenu" to="." method="unpause_game"]

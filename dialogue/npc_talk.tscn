@@ -324,9 +324,10 @@ color = Color(0.49253017, 0.0022641667, 0.76116043, 1)
 
 [node name="Player" type="Node2D" parent="Characters" unique_id=1966904080]
 position = Vector2(-776, 137)
-scale = Vector2(0.5199988, 0.56)
+scale = Vector2(0.3, 0.3)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Characters/Player" unique_id=1581549206]
+position = Vector2(0, 91.07143)
 sprite_frames = ExtResource("15_bwfku")
 animation = &"thought"
 

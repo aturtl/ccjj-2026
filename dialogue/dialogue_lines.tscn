@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="13_1vab1"]
 [ext_resource type="Resource" uid="uid://deu730vg3le2l" path="res://data/items/car_keys.tres" id="13_dle7b"]
 [ext_resource type="PackedScene" uid="uid://jyajy7mer30n" path="res://dialogue/stackable_presets/ds_reward_preset.tscn" id="13_s3jmc"]
-[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/key.png" id="14_sh30a"]
+[ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/items/key.png" id="14_sh30a"]
 [ext_resource type="PackedScene" uid="uid://c0y6fbaviheuw" path="res://dialogue/stackable_presets/ds_scenefade_preset.tscn" id="14_swbew"]
 [ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/scenes/visual/question/dialogue_question.tscn" id="15_0v8oo"]
 [ext_resource type="PackedScene" uid="uid://b6dc0oxjf7wsh" path="res://dialogue/stackables/scenes/event/dialogue_set_cam.tscn" id="16_1vab1"]
@@ -35,14 +35,6 @@
 [ext_resource type="Resource" uid="uid://bmx3vehdapu8n" path="res://data/items/painkillers.tres" id="31_74mgt"]
 [ext_resource type="PackedScene" uid="uid://dvofh1tg0fuun" path="res://dialogue/stackables/scenes/event/dialogue_switch.tscn" id="33_sh30a"]
 [ext_resource type="Script" uid="uid://cl1iols5nby6h" path="res://dialogue/stackables/functionality/dialogue_switch.gd" id="34_ikg4h"]
-
-[sub_resource type="Resource" id="Resource_ikg4h"]
-script = ExtResource("13_1vab1")
-name = "Key"
-texture = ExtResource("14_sh30a")
-id = "key"
-description = "Key item for keying things"
-metadata/_custom_type_script = "uid://cnnmfouky31n8"
 
 [sub_resource type="Resource" id="Resource_74mgt"]
 script = ExtResource("13_1vab1")
@@ -203,7 +195,7 @@ dialogue = "Okay, well. Bye. Enjoy the party!"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="DialogueStatSetter" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=2019433984 instance=ExtResource("10_n5o83")]
-remove_item = SubResource("Resource_ikg4h")
+remove_item = ExtResource("13_dle7b")
 
 [node name="DialogueFadeIn" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=669915050]
 script = ExtResource("7_aux7e")

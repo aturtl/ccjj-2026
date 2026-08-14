@@ -5,6 +5,7 @@ class_name DialogueInstanceConnector extends Node2D
 
 
 func play_tree():
+	print("PLAYING")
 	for child in connected_tree.get_children():
 		if child is DialogueLine:
 			%NPCTalk.dialogue_start(child)
