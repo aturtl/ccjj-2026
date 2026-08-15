@@ -2,7 +2,7 @@ class_name UITalkNPC extends UITalk
 
 @export var box_template: BoxTemplate
 
-@export var instance_count = 3
+@export var instance_count = 1
 
 @export var transitioners: Node2D
 @export var in_between_time = .04

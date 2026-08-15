@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://7844f0ujgu6s" path="res://main_camera.gd" id="2_bnpwn"]
+[ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="3_36jdj"]
+[ext_resource type="Script" uid="uid://0hjxw4qy6dyl" path="res://player.gd" id="3_xfvwf"]
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
@@ -34,11 +36,42 @@
 process_mode = 3
 script = ExtResource("1_feb5d")
 
-[node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("talk_trans")]
+[node name="Player" type="Node2D" parent="." unique_id=1760946569]
+unique_name_in_owner = true
+position = Vector2(144, 368)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("3_xfvwf")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1837903203]
+z_index = 100
+position = Vector2(0, 91.07143)
+sprite_frames = ExtResource("3_36jdj")
+animation = &"walk_right"
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("talk_trans", "player")]
 unique_name_in_owner = true
 position = Vector2(576, 324)
 script = ExtResource("2_bnpwn")
 talk_trans = NodePath("../Node2D")
+player = NodePath("../Player")
+
+[node name="PlayerWalkPos" type="Node2D" parent="MainCamera" unique_id=575210671]
+position = Vector2(-232, 168)
+
+[node name="BlackScreen" type="ColorRect" parent="MainCamera" unique_id=493484777]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Cheats" parent="." unique_id=788448949 instance=ExtResource("9_lc2xo")]
 unique_name_in_owner = true
@@ -116,17 +149,25 @@ position = Vector2(8786, 0)
 [node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
 position = Vector2(304, 784)
 
-[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("main_cam", "screen_fader", "instance_connectors") instance=ExtResource("10_215e1")]
+[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("main_cam", "screen_fader", "instance_connectors", "player") instance=ExtResource("10_215e1")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
 main_cam = NodePath("../MainCamera")
-screen_fader = NodePath("../UI/ScreenFader")
+screen_fader = NodePath("../MainCamera/BlackScreen")
 instance_connectors = NodePath("../DialogueInstanceConnectors")
+player = NodePath("../Player")
 
-[node name="DialogueLineTreeHolder" parent="." unique_id=161622172 instance=ExtResource("4_iotsf")]
+[node name="DialogueLineTreeHolder" parent="." unique_id=161622172 node_paths=PackedStringArray("debug_npc") instance=ExtResource("4_iotsf")]
 unique_name_in_owner = true
 position = Vector2(576, 324)
+debug_npc = NodePath("../Environment/FrontYard/NoName")
+
+[node name="DialoguePlayerThought" parent="DialogueLineTreeHolder/_Pacifica1_2/DialogueStatement/DialogueStatement2" parent_id_path=PackedInt32Array(161622172, 1587880844) index="0" unique_id=1753856372]
+after_wait = 0.0
+
+[node name="DialoguePlayerThought2" parent="DialogueLineTreeHolder/_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought" index="0" unique_id=1832313626]
+after_wait = 0.0
 
 [node name="DialogueInstanceConnectors" type="Node2D" parent="." unique_id=1437585316]
 script = ExtResource("5_215e1")

@@ -11,21 +11,22 @@
 [ext_resource type="Script" uid="uid://y2w71ew3be3l" path="res://dialogue/ui_talkers/ui_reward.gd" id="12_svhel"]
 [ext_resource type="AudioStream" uid="uid://dchavohcad2mt" path="res://dialogue/blips/blip_default_2.mp3" id="13_710ue"]
 [ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="14_7pvnj"]
-[ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="15_bwfku"]
 [ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="16_nbgfc"]
 
-[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "debug_rect_display")]
+[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "player_sprite", "npc_sprite", "transitioners", "ui_npc_talk_left", "ui_npc_talk_right", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "debug_rect_display", "player")]
 script = ExtResource("1_m8yt7")
 talk_cam = NodePath("TalkFakeCam")
-player_sprite = NodePath("UI/Characters/Player/Sprite")
+player_sprite = NodePath("")
 npc_sprite = NodePath("UI/Characters/NPC/Sprite")
 transitioners = NodePath("UI/Transitioners")
-ui_npc_talk = NodePath("UI/UITalkNPC")
+ui_npc_talk_left = NodePath("UI/UITalkNPCLeft")
+ui_npc_talk_right = NodePath("UI/UITalkNPCRight")
 ui_choice_display = NodePath("UI/UIChoice")
 ui_thought_talk = NodePath("UI/UITalkThought")
 ui_reward = NodePath("UI/UIReward")
 blip_player = NodePath("BlipPlayer")
 debug_rect_display = NodePath("tempscreen")
+player = NodePath("")
 
 [node name="TalkFakeCam" type="Node2D" parent="." unique_id=1001578939]
 script = ExtResource("10_710ue")
@@ -35,15 +36,6 @@ z_index = 100
 
 [node name="Characters" type="Node2D" parent="UI" unique_id=992138454]
 position = Vector2(0, 4)
-
-[node name="Player" type="Node2D" parent="UI/Characters" unique_id=1966904080]
-position = Vector2(-776, 137)
-scale = Vector2(0.3, 0.3)
-
-[node name="Sprite" type="AnimatedSprite2D" parent="UI/Characters/Player" unique_id=1581549206]
-position = Vector2(0, 91.07143)
-sprite_frames = ExtResource("15_bwfku")
-animation = &"thought"
 
 [node name="NPC" type="Node2D" parent="UI/Characters" unique_id=286059124]
 position = Vector2(728.00006, -112)
@@ -133,7 +125,7 @@ offset_right = 40.0
 offset_bottom = 37.0
 metadata/_edit_use_anchors_ = true
 
-[node name="UITalkNPC" type="Node2D" parent="UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
+[node name="UITalkNPCLeft" type="Node2D" parent="UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
 z_index = 10
 position = Vector2(0, 4)
 script = ExtResource("9_ak87k")
@@ -141,7 +133,7 @@ box_template = NodePath("BoxTemplate")
 transitioners = NodePath("../Transitioners")
 metadata/_custom_type_script = "uid://c0agvk4gyihqb"
 
-[node name="BoxTemplate" type="Node2D" parent="UI/UITalkNPC" unique_id=1136927499 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+[node name="BoxTemplate" type="Node2D" parent="UI/UITalkNPCLeft" unique_id=1136927499 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
 position = Vector2(247, -170)
 script = ExtResource("4_muvp4")
 label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
@@ -149,25 +141,67 @@ sizer = NodePath("Positioner/Rotater/Sizer")
 rotater = NodePath("Positioner/Rotater")
 positioner = NodePath("Positioner")
 
-[node name="Positioner" type="Node2D" parent="UI/UITalkNPC/BoxTemplate" unique_id=1253478562]
+[node name="Positioner" type="Node2D" parent="UI/UITalkNPCLeft/BoxTemplate" unique_id=1253478562]
 
-[node name="Rotater" type="Node2D" parent="UI/UITalkNPC/BoxTemplate/Positioner" unique_id=1596749516]
+[node name="Rotater" type="Node2D" parent="UI/UITalkNPCLeft/BoxTemplate/Positioner" unique_id=1596749516]
 
-[node name="Sizer" type="Node2D" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater" unique_id=899929884]
+[node name="Sizer" type="Node2D" parent="UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater" unique_id=899929884]
 position = Vector2(-76, -4)
 
-[node name="Background" type="Sprite2D" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1306438264]
+[node name="Background" type="Sprite2D" parent="UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1306438264]
 texture_filter = 1
 position = Vector2(-156, 8.000004)
 scale = Vector2(0.7243589, 0.724359)
 texture = ExtResource("10_ak87k")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/UITalkNPC/BoxTemplate/Positioner/Rotater/Sizer" unique_id=491054044]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=491054044]
 clip_contents = false
 offset_left = -355.0
 offset_top = -34.0
 offset_right = 1.0
 offset_bottom = 37.0
+theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UITalkNPCRight" type="Node2D" parent="UI" unique_id=105658780 node_paths=PackedStringArray("box_template", "transitioners")]
+z_index = 10
+position = Vector2(0, 4)
+scale = Vector2(-1, 1)
+script = ExtResource("9_ak87k")
+box_template = NodePath("BoxTemplate")
+transitioners = NodePath("../Transitioners")
+metadata/_custom_type_script = "uid://c0agvk4gyihqb"
+
+[node name="BoxTemplate" type="Node2D" parent="UI/UITalkNPCRight" unique_id=1132812259 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(247, -170)
+script = ExtResource("4_muvp4")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="UI/UITalkNPCRight/BoxTemplate" unique_id=1279728768]
+
+[node name="Rotater" type="Node2D" parent="UI/UITalkNPCRight/BoxTemplate/Positioner" unique_id=1160517676]
+
+[node name="Sizer" type="Node2D" parent="UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater" unique_id=2081270962]
+position = Vector2(-76, -4)
+
+[node name="Background" type="Sprite2D" parent="UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=164076434]
+texture_filter = 1
+position = Vector2(-156, 8.000004)
+scale = Vector2(0.7243589, 0.724359)
+texture = ExtResource("10_ak87k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1779555196]
+clip_contents = false
+offset_left = -5.0
+offset_top = -34.0
+offset_right = 351.0
+offset_bottom = 37.0
+scale = Vector2(-1, 1)
 theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true

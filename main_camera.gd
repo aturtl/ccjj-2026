@@ -8,6 +8,8 @@ const DEFAULT_TIME: float = .5
 
 @export var talk_trans: Node2D
 
+@export var player: Player
+
 func _cheat_entered(cheat: String):
 	match cheat:
 		"cam_talk":
@@ -30,6 +32,17 @@ func tween_to_transform(trans: Transform2D, tween: Tween, time: float = DEFAULT_
 func state_follow(delta):
 	var axis = Input.get_axis("left","right")
 	position.x += delta*MOVE_AMOUNT*axis
+	player.global_position = $PlayerWalkPos.global_position
+	
+	if axis > 0:
+		player.sprite.flip_h = false
+		player.sprite.play("walk_right")
+	elif axis < 0:
+		player.sprite.flip_h = true
+		player.sprite.play("walk_right")
+	else:
+		player.sprite.flip_h = false
+		player.sprite.play("talk")
 
 
 func _physics_process(delta):

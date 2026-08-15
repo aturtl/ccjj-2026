@@ -5,6 +5,8 @@ class_name DialogueObject extends Node
 	# but if you have to, this will absolutely work.
 	# also only store DialogueLines in this
 
+@export var after_wait: float = 0.0
+
 func _ready():
 	if !goto:
 		set_goto_from_child()
