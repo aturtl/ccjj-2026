@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0y6fbaviheuw"]
 
-[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/stackables/functionality/dialogue_fade_screen.gd" id="1_yfqrg"]
-[ext_resource type="Script" uid="uid://da0e24hbw4uct" path="res://dialogue/stackables/functionality/dialogue_change_scene.gd" id="2_qk28l"]
+[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/stackables/functionality/event/dialogue_fade_screen.gd" id="1_yfqrg"]
+[ext_resource type="Script" uid="uid://da0e24hbw4uct" path="res://dialogue/stackables/functionality/event/dialogue_change_scene.gd" id="2_qk28l"]
 
 [node name="DialogueFadeScreen" type="Node" unique_id=607337241]
 script = ExtResource("1_yfqrg")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dli177chi42cs"]
 
-[ext_resource type="Script" uid="uid://bl4vdyegyay3" path="res://dialogue/stackables/functionality/dialogue_reward.gd" id="1_tycno"]
+[ext_resource type="Script" uid="uid://bl4vdyegyay3" path="res://dialogue/stackables/functionality/event/dialogue_reward.gd" id="1_tycno"]
 
 [node name="DialogueReward" type="Node" unique_id=1972223848]
 script = ExtResource("1_tycno")

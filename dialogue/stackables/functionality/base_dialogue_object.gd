@@ -1,13 +1,6 @@
-@icon("res://placeholders/placeholder_wormy_0003.png")
+class_name DialogueObject extends Node
 
-class_name DialogueSetCam extends DialogueLine
-
-
-@export var id = "Player"
-
-
-@export var goto: DialogueLine # only necessary for repeatable dialogue
-
+@export var goto: DialogueObject # only necessary for repeatable dialogue
 @export var parallel_gotos = [] # VERY SPECIFIC CASES. annoying to use so just use goto,
 	# but if you have to, this will absolutely work.
 	# also only store DialogueLines in this
@@ -19,7 +12,7 @@ func _ready():
 
 func set_goto_from_child():
 	for child in self.get_children():
-		if child is DialogueLine:
+		if child is DialogueObject:
 			if !goto:
 				goto = child
 			else:

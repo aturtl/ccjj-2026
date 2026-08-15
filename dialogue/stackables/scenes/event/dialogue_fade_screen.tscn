@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0lwbakueisyc"]
 
-[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/stackables/functionality/dialogue_fade_screen.gd" id="1_6k4hw"]
+[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/stackables/functionality/event/dialogue_fade_screen.gd" id="1_6k4hw"]
 
 [node name="DialogueFadeScreen" type="Node" unique_id=129186986]
 script = ExtResource("1_6k4hw")

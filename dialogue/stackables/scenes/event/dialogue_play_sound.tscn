@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkld8nuvrrlnt"]
 
-[ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/stackables/functionality/dialogue_play_sound.gd" id="1_w7yyi"]
+[ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/stackables/functionality/event/dialogue_play_sound.gd" id="1_w7yyi"]
 
 [node name="DialoguePlaySound" type="Node" unique_id=63000943]
 script = ExtResource("1_w7yyi")

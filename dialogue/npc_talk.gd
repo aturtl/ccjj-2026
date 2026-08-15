@@ -54,7 +54,7 @@ func cam_offset():
 
 
 #region dialogue loop
-func dialogue_start(dl:DialogueLine):
+func dialogue_start(d_object:DialogueLine, npc: NPC = null):
 	main_cam.current_state = main_cam.State.DIALOGUE
 	
 	parallel_count += 1
@@ -69,24 +69,24 @@ func dialogue_start(dl:DialogueLine):
 	original_cam_trans = main_cam.global_transform
 	
 	display_ui()
-	dialogue_loop(dl)
+	dialogue_loop(d_object, npc)
 
 
-func dialogue_loop(dl:DialogueLine):
-	if !dl:
+func dialogue_loop(d_object:DialogueObject, npc: NPC = null):
+	if !d_object:
 		dialogue_end()
 		return
 	
-	if dl.switch_npc_animation_to != "":
-		if dl.switch_npc_animation_to == "gone":
+	if d_object.switch_npc_animation_to != "":
+		if d_object.switch_npc_animation_to == "gone":
 			npc_sprite.visible = false
 		else:
-			npc_sprite.play(dl.switch_npc_animation_to)
+			npc_sprite.play(d_object.switch_npc_animation_to)
 	
-	if dl.switch_player_animation_to != "":
-		player_sprite.play(dl.switch_player_animation_to)
+	if d_object.switch_player_animation_to != "":
+		player_sprite.play(d_object.switch_player_animation_to)
 	
-	if dl is DialogueStatement:
+	if d_object is DialogueStatement:
 		player_sprite.play("talk")
 		# current_camera_animation = CameraAnimation.TALK
 		
@@ -95,90 +95,90 @@ func dialogue_loop(dl:DialogueLine):
 		else:
 			tween_to_talk(1.5)
 		
-		ui_npc_talk.talk(dl, transitioners.get_node("TransBoxTalk").global_position + cam_offset())
+		ui_npc_talk.talk(d_object, transitioners.get_node("TransBoxTalk").global_position + cam_offset())
 		
 		await ui_npc_talk.start_next
 		
-		if !(dl.goto is DialogueStatement):
+		if !(d_object.goto is DialogueStatement):
 			ui_npc_talk.kill_all_box_instances()
-		loop_with_parallels(dl)
+		loop_with_parallels(d_object)
 		
-	elif dl is DialogueQuestion:
+	elif d_object is DialogueQuestion:
 		kill_boxes()
 		
 		await tween_to_thought()
 		
-		var choices = get_choices(dl)
+		var choices = get_choices(d_object)
 		ui_choice_display.display_choices(choices, transitioners.get_node("TransDisplayChoices").global_position + cam_offset())
 		
-		var choice_dl: DialogueChoice = await ui_choice_display.choice_selected
+		var choice_d_object: DialogueChoice = await ui_choice_display.choice_selected
 		
 		tween_to_talk(1.5)
 		
-		loop_with_parallels(choice_dl)
+		loop_with_parallels(choice_d_object)
 		
 		print("QUESTION ASKED")
 	
-	elif dl is DialoguePlayerThought:
-		ui_thought_talk.talk(dl, transitioners.get_node("TransPlayerTalk").global_position + cam_offset())
+	elif d_object is DialoguePlayerThought:
+		ui_thought_talk.talk(d_object, transitioners.get_node("TransPlayerTalk").global_position + cam_offset())
 		
 		await ui_thought_talk.start_next
 		
-		if !(dl.goto is DialoguePlayerThought):
+		if !(d_object.goto is DialoguePlayerThought):
 			ui_thought_talk.kill_box_instance()
-		loop_with_parallels(dl)
+		loop_with_parallels(d_object)
 	
-	elif dl is DialogueSetCam:
-		if dl.id == "Player":
+	elif d_object is DialogueSetCam:
+		if d_object.id == "Player":
 			tween_back_to_original_positions()
-		if dl.id == "Talk":
+		if d_object.id == "Talk":
 			tween_to_talk(1.5)
-		if dl.id == "Thought":
+		if d_object.id == "Thought":
 			tween_to_thought()
-		loop_with_parallels(dl)
+		loop_with_parallels(d_object)
 	
-	elif dl is DialogueFadeScreen:
+	elif d_object is DialogueFadeScreen:
 		screen_fader.visible = true
 		
-		var alpha = 1.0 if dl.fade_type == dl.FadeType.IN else 0.0
+		var alpha = 1.0 if d_object.fade_type == d_object.FadeType.IN else 0.0
 		
 		var tween = get_tree().create_tween()
-		tween.tween_property(screen_fader,"modulate:a",alpha,dl.fade_time)
+		tween.tween_property(screen_fader,"modulate:a",alpha,d_object.fade_time)
 		tween.play()
 		
 		await tween.finished
 		
-		if dl.fade_type == dl.FadeType.OUT:
+		if d_object.fade_type == d_object.FadeType.OUT:
 			screen_fader.visible = false
 		
-		loop_with_parallels(dl)
+		loop_with_parallels(d_object)
 	
-	elif dl is DialoguePlaySound:
-		AudioManager.play_sfx(dl.audio_stream)
-		loop_with_parallels(dl) # add func
+	elif d_object is DialoguePlaySound:
+		AudioManager.play_sfx(d_object.audio_stream)
+		loop_with_parallels(d_object) # add func
 	
-	elif dl is DialogueStatSetter:
-		Stats.confidence += dl.confidence_reward
-		dl.confidence_reward = 0
-		if dl.add_item:
-			Inventory.add_item(dl.add_item)
-		if dl.remove_item:
-			Inventory.remove_item(dl.remove_item)
-		loop_with_parallels(dl) # add func
+	elif d_object is DialogueStatSetter:
+		Stats.confidence += d_object.confidence_reward
+		d_object.confidence_reward = 0
+		if d_object.add_item:
+			Inventory.add_item(d_object.add_item)
+		if d_object.remove_item:
+			Inventory.remove_item(d_object.remove_item)
+		loop_with_parallels(d_object) # add func
 	
-	elif dl is DialogueReward:
-		await ui_reward.display(dl.reward_text)
-		loop_with_parallels(dl)
+	elif d_object is DialogueReward:
+		await ui_reward.display(d_object.reward_text)
+		loop_with_parallels(d_object)
 	
-	elif dl is DialogueChangeScene:
+	elif d_object is DialogueChangeScene:
 		#change scene here
-		loop_with_parallels(dl)
+		loop_with_parallels(d_object)
 	
-	elif dl is DialogueSwitch:
-		var switch_connector = instance_connectors.get_node(dl.switch_connector_name)
+	elif d_object is DialogueSwitch:
+		var switch_connector = instance_connectors.get_node(d_object.switch_connector_name)
 		if switch_connector:
-			switch_connector.connected_tree = dl.switch_tree
-		loop_with_parallels(dl)
+			switch_connector.connected_tree = d_object.switch_tree
+		loop_with_parallels(d_object)
 
 
 func kill_boxes():
@@ -197,12 +197,12 @@ func dialogue_end():
 #endregion
 
 
-func loop_with_parallels(dl: DialogueLine):
-	if dl.after_wait > 0.0:
-		await get_tree().create_timer(dl.after_wait).timeout
-	dialogue_loop(dl.goto)
-	for goto in dl.parallel_gotos:
-		print("p_loop", dl)
+func loop_with_parallels(d_object: DialogueLine):
+	if d_object.after_wait > 0.0:
+		await get_tree().create_timer(d_object.after_wait).timeout
+	dialogue_loop(d_object.goto)
+	for goto in d_object.parallel_gotos:
+		print("p_loop", d_object)
 		dialogue_loop(goto)
 
 
@@ -283,10 +283,10 @@ func tween_to_talk(trans_time: float):
 	await player_tween.finished
 
 
-func get_choices(dl: DialogueLine):
+func get_choices(d_object: DialogueLine):
 	var choices = []
 	
-	for child in dl.get_children():
+	for child in d_object.get_children():
 		if child is DialogueChoice:
 			choices.append(child)
 	

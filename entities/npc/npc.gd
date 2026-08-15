@@ -7,4 +7,4 @@ func _ready():
 
 func _on_interactable_interacted(text: String) -> void:
 	if connector:
-		connector.play_tree()
+		connector.play_tree(self)

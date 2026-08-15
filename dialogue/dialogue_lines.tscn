@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://b6u44p43el3vx"]
 
 [ext_resource type="Script" uid="uid://sdj0thafmbhh" path="res://dialogue/dialogue_line_tree_holder.gd" id="1_3etux"]
-[ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/functionality/dialogue_player_thought.gd" id="2_3mtrk"]
-[ext_resource type="Script" uid="uid://bf6xushulbekl" path="res://dialogue/stackables/functionality/dialogue_statement.gd" id="3_jak5m"]
-[ext_resource type="Script" uid="uid://dv067w6ebkvde" path="res://dialogue/stackables/functionality/dialogue_set_cam.gd" id="3_k1frf"]
-[ext_resource type="Script" uid="uid://vyopck2u0qf4" path="res://dialogue/stackables/functionality/dialogue_question.gd" id="4_jak5m"]
-[ext_resource type="Script" uid="uid://d0wrttl5pqxhg" path="res://dialogue/stackables/functionality/dialogue_choice.gd" id="5_k1frf"]
-[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/stackables/functionality/dialogue_fade_screen.gd" id="7_aux7e"]
-[ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/stackables/functionality/dialogue_play_sound.gd" id="8_8abdn"]
+[ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/functionality/line/dialogue_player_thought.gd" id="2_3mtrk"]
+[ext_resource type="Script" uid="uid://bf6xushulbekl" path="res://dialogue/stackables/functionality/line/dialogue_statement.gd" id="3_jak5m"]
+[ext_resource type="Script" uid="uid://dv067w6ebkvde" path="res://dialogue/stackables/functionality/event/dialogue_set_cam.gd" id="3_k1frf"]
+[ext_resource type="Script" uid="uid://vyopck2u0qf4" path="res://dialogue/stackables/functionality/choice/dialogue_question.gd" id="4_jak5m"]
+[ext_resource type="Script" uid="uid://d0wrttl5pqxhg" path="res://dialogue/stackables/functionality/choice/dialogue_choice.gd" id="5_k1frf"]
+[ext_resource type="Script" uid="uid://cjfyjpl406rmo" path="res://dialogue/stackables/functionality/event/dialogue_fade_screen.gd" id="7_aux7e"]
+[ext_resource type="Script" uid="uid://sl5iutsqybsx" path="res://dialogue/stackables/functionality/event/dialogue_play_sound.gd" id="8_8abdn"]
 [ext_resource type="AudioStream" uid="uid://ygbifg5cqmkj" path="res://dialogue/blips/blip_default.mp3" id="9_dswi5"]
-[ext_resource type="Script" uid="uid://do1oojhpndbhe" path="res://dialogue/stackables/functionality/dialogue_stat_setter.gd" id="9_v0p3i"]
+[ext_resource type="Script" uid="uid://do1oojhpndbhe" path="res://dialogue/stackables/functionality/event/dialogue_stat_setter.gd" id="9_v0p3i"]
 [ext_resource type="PackedScene" uid="uid://dln6nhlu213ty" path="res://dialogue/stackables/scenes/event/dialogue_stat_setter.tscn" id="10_n5o83"]
-[ext_resource type="Script" uid="uid://bl4vdyegyay3" path="res://dialogue/stackables/functionality/dialogue_reward.gd" id="12_na5fk"]
+[ext_resource type="Script" uid="uid://bl4vdyegyay3" path="res://dialogue/stackables/functionality/event/dialogue_reward.gd" id="12_na5fk"]
 [ext_resource type="Script" uid="uid://cnnmfouky31n8" path="res://data/item_data.gd" id="13_1vab1"]
 [ext_resource type="Resource" uid="uid://deu730vg3le2l" path="res://data/items/car_keys.tres" id="13_dle7b"]
 [ext_resource type="PackedScene" uid="uid://jyajy7mer30n" path="res://dialogue/stackable_presets/ds_reward_preset.tscn" id="13_s3jmc"]
@@ -34,7 +34,7 @@
 [ext_resource type="Resource" uid="uid://jlfjfmwpsoc7" path="res://data/items/screwdriver.tres" id="30_d0pek"]
 [ext_resource type="Resource" uid="uid://bmx3vehdapu8n" path="res://data/items/painkillers.tres" id="31_74mgt"]
 [ext_resource type="PackedScene" uid="uid://dvofh1tg0fuun" path="res://dialogue/stackables/scenes/event/dialogue_switch.tscn" id="33_sh30a"]
-[ext_resource type="Script" uid="uid://cl1iols5nby6h" path="res://dialogue/stackables/functionality/dialogue_switch.gd" id="34_ikg4h"]
+[ext_resource type="Script" uid="uid://cl1iols5nby6h" path="res://dialogue/stackables/functionality/event/dialogue_switch.gd" id="34_ikg4h"]
 
 [sub_resource type="Resource" id="Resource_74mgt"]
 script = ExtResource("13_1vab1")
@@ -204,8 +204,6 @@ metadata/_custom_type_script = "uid://cjfyjpl406rmo"
 [node name="DialoguePlaySound" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn" unique_id=204943900]
 script = ExtResource("8_8abdn")
 audio_stream = ExtResource("9_dswi5")
-switch_npc_animation_to = "gone"
-after_wait = 4.0
 metadata/_custom_type_script = "uid://sl5iutsqybsx"
 
 [node name="DialogueFadeOut" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound" unique_id=104484829]
@@ -352,9 +350,8 @@ dialogue = "Is it your first party, then?"
 [node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=1787742748 instance=ExtResource("17_xyyno")]
 dialogue = " guess so. My friend Marley asked me to come with her, but I can't seem to find her anywhere."
 
-[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1601622614 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1601622614 instance=ExtResource("23_258b8")]
 dialogue = "Hm. Well, I haven’t seen her, but I’ll be sure to keep an eye out!"
-goto = NodePath("../../../../../../../../../../../_Pacifica1_2/DialogueStatement")
 
 [node name="DialogueChoice2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1697917284 instance=ExtResource("22_ikrlq")]
 choice_text = "Eh"
@@ -362,9 +359,8 @@ choice_text = "Eh"
 [node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=899733109 instance=ExtResource("17_xyyno")]
 dialogue = "Parties aren't really my thing"
 
-[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=1008160164 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=1008160164 instance=ExtResource("23_258b8")]
 dialogue = "Awe, that’s a shame. I love a good party, but I get why you might not."
-goto = NodePath("../../../../../../../../../_Pacifica1_2/DialogueStatement")
 
 [node name="DialogueChoice3" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1100904278 instance=ExtResource("22_ikrlq")]
 choice_text = "HATE THOSE"
@@ -375,9 +371,8 @@ dialogue = "I hate it"
 [node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought" unique_id=684865818 instance=ExtResource("23_258b8")]
 dialogue = "Oh."
 
-[node name="DialogueStatement2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement" unique_id=323940230 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+[node name="DialogueStatement2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement" unique_id=323940230 instance=ExtResource("23_258b8")]
 dialogue = "Well.... I guess it's not for everyone"
-goto = NodePath("../../../../../../../../../../_Pacifica1_2/DialogueStatement")
 
 [node name="_Pacifica1_2" type="Node2D" parent="." unique_id=1112845183]
 script = ExtResource("17_sh30a")
@@ -580,7 +575,6 @@ dialogue = "UGH! THIS OUTFIT WAS DESIGNER!"
 [node name="DialogueFadeScreen" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1124020636 instance=ExtResource("25_xyyno")]
 
 [node name="DialoguePlaySound" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen" unique_id=822277604 instance=ExtResource("19_bieie")]
-switch_npc_animation_to = "gone"
 
 [node name="DialogueFadeScreen2" parent="Reef2HasQuest/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueFadeScreen/DialoguePlaySound" unique_id=831340116 instance=ExtResource("25_xyyno")]
 
@@ -753,16 +747,14 @@ choice_text = "That’s not what VIP stands for"
 [node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion/DialogueChoice" unique_id=1833936544 instance=ExtResource("23_258b8")]
 dialogue = "Well what else is it supposed to stand for?"
 
-[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion/DialogueChoice/DialogueStatement" unique_id=1884263650 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion/DialogueChoice/DialogueStatement" unique_id=1884263650 instance=ExtResource("23_258b8")]
 dialogue = "Never mind that- unless you beat ME, the Beer Pong Champion, in an epic battle of pong, you aren’t getting anywhere near this door."
-goto = NodePath("../../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
 
 [node name="DialogueChoice2" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion" unique_id=1867289303 instance=ExtResource("22_ikrlq")]
 choice_text = "So I’ve got to win at beer pong to get in?"
 
-[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion/DialogueChoice2" unique_id=461888566 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueQuestion/DialogueChoice2" unique_id=461888566 instance=ExtResource("23_258b8")]
 dialogue = "If you think you can beat me, heheheh…"
-goto = NodePath("../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
 
 [node name="DialogueChoice2" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion" unique_id=1892746536 instance=ExtResource("22_ikrlq")]
 choice_text = "Winners?"
@@ -784,23 +776,20 @@ dialogue = "Doesn’t the very name send shivers down your spine?"
 [node name="DialogueChoice" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion" unique_id=1630309921 instance=ExtResource("22_ikrlq")]
 choice_text = "Yes"
 
-[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=409222882 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=409222882 instance=ExtResource("23_258b8")]
 dialogue = "You are a kindred spirit, I can tell. Perhaps you have a chance of defeating me."
-goto = NodePath("../../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
 
 [node name="DialogueChoice2" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion" unique_id=473699289 instance=ExtResource("22_ikrlq")]
 choice_text = "No"
 
-[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=216455528 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=216455528 instance=ExtResource("23_258b8")]
 dialogue = "Hmph. That kind of attitude will get you nowhere in this challenge."
-goto = NodePath("../../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
 
 [node name="DialogueChoice3" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion" unique_id=1009797916 instance=ExtResource("22_ikrlq")]
 choice_text = "What"
 
-[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice3" unique_id=1125210033 node_paths=PackedStringArray("goto") instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" parent="Moray1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement/DialogueStatement/DialogueQuestion/DialogueChoice3" unique_id=1125210033 instance=ExtResource("23_258b8")]
 dialogue = "Already your knowledge of the artform seems to be lacking. I doubt your ability to match my undeniable skill."
-goto = NodePath("../../../../../../../../../../../../../../../_Moray1_Challenge/DialogueStatement")
 
 [node name="_Moray1_Challenge" type="Node2D" parent="." unique_id=967226241]
 script = ExtResource("17_sh30a")
@@ -974,8 +963,8 @@ dialogue = "What do you mean?"
 goto = NodePath("../../../../../../../../../_Brad1_HeadacheGiveQuest/DialogueStatement")
 
 [node name="DialogueChoice2" parent="Brad1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=143260560 node_paths=PackedStringArray("goto") instance=ExtResource("22_ikrlq")]
-goto = NodePath("../../../../../../../_Brad1_HeadacheGiveQuest/DialogueStatement")
 choice_text = "What’s up with you?"
+goto = NodePath("../../../../../../../_Brad1_HeadacheGiveQuest/DialogueStatement")
 
 [node name="_Brad1_HeadacheGiveQuest" type="Node2D" parent="." unique_id=1322704987]
 script = ExtResource("17_sh30a")
