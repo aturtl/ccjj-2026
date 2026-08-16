@@ -7,24 +7,18 @@
 [ext_resource type="Script" uid="uid://0hjxw4qy6dyl" path="res://player.gd" id="3_xfvwf"]
 [ext_resource type="Script" uid="uid://bxinhru5uqlbf" path="res://cameras/fake_cam.gd" id="4_3gvs5"]
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
 [ext_resource type="Script" uid="uid://bhi504klelxkd" path="res://environments/environment.gd" id="4_x5p1p"]
 [ext_resource type="Script" uid="uid://cv375brw8kgef" path="res://dialogue/dialogue_instance_connectors.gd" id="5_215e1"]
 [ext_resource type="Script" uid="uid://cg11uyllsqbg" path="res://dialogue/dialogue_instance_connector.gd" id="5_lc2xo"]
 [ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="5_mc3al"]
 [ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
-[ext_resource type="PackedScene" uid="uid://cgup25de442gh" path="res://environments/living_room.tscn" id="5_x5p1p"]
 [ext_resource type="Script" uid="uid://cefhro15wp6v7" path="res://dialogue/ui_choice_displays/ui_choice_display.gd" id="6_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
-[ext_resource type="PackedScene" uid="uid://b48dqgav8yttt" path="res://environments/kitchen.tscn" id="6_qhcbd"]
 [ext_resource type="Script" uid="uid://c70kymtkpjq10" path="res://dialogue/ui_templates/choice_template.gd" id="7_du4n2"]
 [ext_resource type="PackedScene" uid="uid://ix4858unbekg" path="res://ui/inventory_ui/inventory_ui.tscn" id="7_eow3j"]
-[ext_resource type="PackedScene" uid="uid://bfgo03um2pv78" path="res://environments/hallway.tscn" id="7_f1jbl"]
 [ext_resource type="PackedScene" uid="uid://chqgt7wswap28" path="res://entities/npc/no_name/no_name.tscn" id="7_hb5m1"]
 [ext_resource type="Script" uid="uid://c0agvk4gyihqb" path="res://dialogue/ui_talkers/ui_talk_npc.gd" id="8_ra4rb"]
-[ext_resource type="PackedScene" uid="uid://copvaonpw53r2" path="res://environments/bathroom.tscn" id="8_vaj68"]
-[ext_resource type="PackedScene" uid="uid://bke8xvgcn8qkd" path="res://environments/backyard.tscn" id="9_i2p71"]
 [ext_resource type="Script" uid="uid://da2o3mrfbfqni" path="res://confidence.gd" id="9_klri6"]
 [ext_resource type="PackedScene" uid="uid://c0vcgctyyu75u" path="res://cheats/cheats.tscn" id="9_lc2xo"]
 [ext_resource type="Script" uid="uid://b04fwqkn4w1tf" path="res://dialogue/ui_templates/box_template.gd" id="9_ple6s"]
@@ -57,7 +51,11 @@
 [ext_resource type="Texture2D" uid="uid://hgn4fl3ndy5c" path="res://assets/objects/coral3.png" id="24_iu0sx"]
 [ext_resource type="Texture2D" uid="uid://7gj2dlm1wm0v" path="res://assets/objects/door_closed.png" id="26_r62pu"]
 [ext_resource type="Script" uid="uid://c7goundowx3su" path="res://scene_change.gd" id="28_5b14r"]
+[ext_resource type="Texture2D" uid="uid://cta4eyh2nqgo6" path="res://assets/environment/frontyard.png" id="36_2tki7"]
 [ext_resource type="Texture2D" uid="uid://c01m5sod15qd6" path="res://assets/environment/static_background.png" id="39_l1i01"]
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="47_ib7ph"]
+[ext_resource type="Texture2D" uid="uid://bpanxgicoybb6" path="res://assets/environment/ShellGame_HouseParty.png" id="48_vuohh"]
+[ext_resource type="Texture2D" uid="uid://4uu7evqos4yn" path="res://assets/environment/Shell_Backyard.png" id="55_3gvs5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsx87"]
 atlas = ExtResource("15_6qn5j")
@@ -187,6 +185,22 @@ height = 192.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klri6"]
 size = Vector2(317, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b14r"]
+atlas = ExtResource("48_vuohh")
+region = Rect2(4673.2695, 0, 4996.874, 3200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw5ej"]
+atlas = ExtResource("48_vuohh")
+region = Rect2(0, 0, 4779.2744, 3200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v7s"]
+atlas = ExtResource("48_vuohh")
+region = Rect2(8644.103, 0, 4975.247, 3200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pwi3"]
+atlas = ExtResource("48_vuohh")
+region = Rect2(11194.355, 0, 4305.6445, 3200)
 
 [node name="Game" type="Node2D" unique_id=69826831]
 process_mode = 3
@@ -732,9 +746,15 @@ follow_viewport_enabled = true
 unique_name_in_owner = true
 script = ExtResource("4_x5p1p")
 
-[node name="FrontYard" parent="World/Environment" unique_id=1755393680 instance=ExtResource("4_hb5m1")]
+[node name="FrontYard" type="Node2D" parent="World/Environment" unique_id=1655396645]
 unique_name_in_owner = true
 script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="BG" type="Sprite2D" parent="World/Environment/FrontYard" unique_id=1623040466]
+position = Vector2(559, 319)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("36_2tki7")
 
 [node name="NoName" parent="World/Environment/FrontYard" unique_id=1669043619 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
 position = Vector2(99, 224)
@@ -743,6 +763,11 @@ connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/NoName")
 
 [node name="NoName2" parent="World/Environment/FrontYard" unique_id=1143430473 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
 position = Vector2(1275, 259)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/NoName")
+
+[node name="NoName3" parent="World/Environment/FrontYard" unique_id=924122991 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
+position = Vector2(555, 253)
 scale = Vector2(0.5, 0.5)
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/NoName")
 
@@ -839,7 +864,8 @@ shape = SubResource("CapsuleShape2D_4v2jo")
 
 [node name="CoralBush4" type="Node2D" parent="World/Environment/FrontYard" unique_id=2128997071 node_paths=PackedStringArray("connector")]
 position = Vector2(1232, 505)
-scale = Vector2(-1, 1)
+rotation = -3.1415927
+scale = Vector2(1, -1)
 script = ExtResource("22_xex6t")
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
 metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
@@ -863,7 +889,8 @@ shape = SubResource("CapsuleShape2D_yh7tv")
 
 [node name="CoralBush5HASKEYS" type="Node2D" parent="World/Environment/FrontYard" unique_id=1951597270 node_paths=PackedStringArray("connector")]
 position = Vector2(1077, 495)
-scale = Vector2(-1, 1)
+rotation = -3.1415927
+scale = Vector2(1, -1)
 script = ExtResource("22_xex6t")
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushHasCarKeys")
 metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
@@ -887,7 +914,8 @@ shape = SubResource("CapsuleShape2D_iu0sx")
 
 [node name="CoralBush6" type="Node2D" parent="World/Environment/FrontYard" unique_id=562404587 node_paths=PackedStringArray("connector")]
 position = Vector2(936, 495)
-scale = Vector2(-1, 1)
+rotation = -3.1415927
+scale = Vector2(1, -1)
 script = ExtResource("22_xex6t")
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
 metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
@@ -912,7 +940,8 @@ shape = SubResource("CapsuleShape2D_4v2jo")
 [node name="DoorClosed" type="Node2D" parent="World/Environment/FrontYard" unique_id=2118764912 node_paths=PackedStringArray("connector")]
 z_index = -1
 position = Vector2(936, 495)
-scale = Vector2(-1, 1)
+rotation = -3.1415927
+scale = Vector2(1, -1)
 script = ExtResource("22_xex6t")
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
 metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
@@ -934,9 +963,24 @@ metadata/_custom_type_script = "uid://d24v64w0rb8ei"
 position = Vector2(397.125, -185.25)
 shape = SubResource("RectangleShape2D_klri6")
 
-[node name="LivingRoom" parent="World/Environment" unique_id=1056652401 instance=ExtResource("5_x5p1p")]
+[node name="LivingRoom" type="Node2D" parent="World/Environment" unique_id=583145584]
 unique_name_in_owner = true
 position = Vector2(2651, 18)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/LivingRoom" unique_id=577599091]
+modulate = Color(1, 1, 0, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/LivingRoom" unique_id=740128837]
+position = Vector2(563, 328)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_5b14r")
 
 [node name="Pacifica" parent="World/Environment/LivingRoom" unique_id=1381500754 node_paths=PackedStringArray("connector") instance=ExtResource("9_x5p1p")]
 position = Vector2(941, 386)
@@ -948,9 +992,24 @@ position = Vector2(222, 372)
 scale = Vector2(0.5, 0.5)
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Reef")
 
-[node name="Kitchen" parent="World/Environment" unique_id=190051855 instance=ExtResource("6_qhcbd")]
+[node name="Kitchen" type="Node2D" parent="World/Environment" unique_id=1684170949]
 unique_name_in_owner = true
 position = Vector2(4181, 6)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/Kitchen" unique_id=1508942394]
+modulate = Color(1, 0, 1, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/Kitchen" unique_id=2077316878]
+position = Vector2(572, 337)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_pw5ej")
 
 [node name="Mooray" parent="World/Environment/Kitchen" unique_id=192293366 node_paths=PackedStringArray("connector") instance=ExtResource("12_f1jbl")]
 position = Vector2(852, 355)
@@ -966,22 +1025,67 @@ connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Dog")
 position = Vector2(553, 380)
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Brad")
 
-[node name="Hallway" parent="World/Environment" unique_id=2102377602 instance=ExtResource("7_f1jbl")]
+[node name="Hallway" type="Node2D" parent="World/Environment" unique_id=1090738671]
 unique_name_in_owner = true
 position = Vector2(5688, 1)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/Hallway" unique_id=1082302994]
+modulate = Color(1, 0.23529412, 0.1254902, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/Hallway" unique_id=1544445718]
+position = Vector2(552, 352)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_g4v7s")
 
 [node name="Shoal" parent="World/Environment/Hallway" unique_id=985543956 node_paths=PackedStringArray("connector") instance=ExtResource("16_5b14r")]
 position = Vector2(278, 302)
 scale = Vector2(0.5, 0.5)
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Shoal")
 
-[node name="Bathroom" parent="World/Environment" unique_id=1154042809 instance=ExtResource("8_vaj68")]
+[node name="Bathroom" type="Node2D" parent="World/Environment" unique_id=1399007386]
 unique_name_in_owner = true
 position = Vector2(6923, -35)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
 
-[node name="Backyard" parent="World/Environment" unique_id=1847859133 instance=ExtResource("9_i2p71")]
+[node name="TextureRect" type="TextureRect" parent="World/Environment/Bathroom" unique_id=1471044018]
+modulate = Color(0, 0.023529412, 1, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/Bathroom" unique_id=297943418]
+position = Vector2(575, 424)
+scale = Vector2(0.27, 0.27)
+texture = SubResource("AtlasTexture_7pwi3")
+
+[node name="Backyard" type="Node2D" parent="World/Environment" unique_id=67658964]
 unique_name_in_owner = true
 position = Vector2(8786, 0)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/Backyard" unique_id=91521700]
+modulate = Color(0, 1, 0, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/Backyard" unique_id=671902341]
+position = Vector2(515.99994, 318.99997)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("55_3gvs5")
 
 [node name="NPCs" type="Node2D" parent="World" unique_id=1409111629]
 position = Vector2(304, 784)
