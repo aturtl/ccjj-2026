@@ -384,7 +384,7 @@ offset_top = -34.0
 offset_right = 1.0
 offset_bottom = 37.0
 theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "DIALOGUE"
 
@@ -427,7 +427,7 @@ offset_right = 351.0
 offset_bottom = 37.0
 scale = Vector2(-1, 1)
 theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "DIALOGUE"
 
@@ -717,7 +717,7 @@ script = ExtResource("3_xfvwf")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player/Player" unique_id=1837903203]
 z_index = 100
-position = Vector2(-167.99997, -104.000015)
+position = Vector2(1.5258789e-05, -104.000015)
 scale = Vector2(0.72812194, 0.72812194)
 sprite_frames = ExtResource("3_36jdj")
 animation = &"idle"

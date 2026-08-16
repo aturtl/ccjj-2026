@@ -41,12 +41,12 @@ func state_follow(delta):
 	
 	to_pos.x += delta*MOVE_AMOUNT*axis
 	
-	var lerp_pos = lerp(player.global_position.x, global_position.x, .9)
+	to_pos = keep_in_bounds(to_pos)
+	
+	var lerp_pos = lerp(player.global_position.x, to_pos.x, .9)
 	player.global_position.x = lerp_pos
 	
-	to_pos = restrict_to_cam_bounds(to_pos)
-	
-	global_position = global_position.lerp(to_pos, .2)
+	global_position = global_position.lerp(restrict_to_cam_bounds(to_pos), .2)
 	
 	if axis > 0:
 		player.sprite.flip_h = false
@@ -58,13 +58,33 @@ func state_follow(delta):
 		player.sprite.play("idle")
 
 
+func is_out_of_bounds(pos: Vector2):
+	var oob = false
+	
+	if pos.x < environment_holder.left_bound:
+		oob = true
+	elif pos.x > environment_holder.right_bound:
+		oob = true
+	
+	return oob
+
+
+func keep_in_bounds(pos: Vector2):
+	var new_pos = pos
+	
+	if new_pos.x < environment_holder.left_bound:
+		new_pos.x = environment_holder.left_bound
+	elif pos.x > environment_holder.right_bound:
+		new_pos.x = environment_holder.right_bound
+	
+	return new_pos
+
+
 func restrict_to_cam_bounds(pos: Vector2, z: Vector2 = zoom):
 	var new_pos = pos
 	
 	var camera_rect = get_viewport_rect() #thanks Lertos on Reddit!! This is really helpful!
 		#actually the solution wasn't the one I needed... but thanks for leading me in the right direction anyways!
-	
-	print(z)
 	
 	var s = camera_rect.size/z
 	

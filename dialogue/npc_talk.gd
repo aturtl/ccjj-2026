@@ -48,7 +48,7 @@ var player_talking_instances = 0
 var npc_talking_instances = 0
 var player_thinking_instances = 0
 
-enum CameraState {NONE, NPC_TALK, PLAYER_TALK, PLAYER_THOUGHT}
+enum CameraState {NONE, NPC_TALK, PLAYER_TALK, PLAYER_THOUGHT, RETURN}
 var current_camera_state = CameraState.NONE
 
 func _ready():
@@ -68,36 +68,12 @@ func cam_offset():
 func dialogue_start(d_object:DialogueLine, npc: NPC):
 	original_player_pos = player.global_position
 	original_cam_pos = main_cam.global_position
+	if npc:
+		original_npc_pos = npc.global_position
 	
 	print("STARTEDaaaaa")
 	
 	GameState.in_dialogue = true
-	
-	if npc:
-		var npc_player_dist_x = npc.global_position.x - player.global_position.x
-		var npc_player_sign_x = -sign(npc_player_dist_x)
-		
-		var new_pos_x = player.global_position.x
-		
-		if abs(npc_player_dist_x) < 400.0:
-			new_pos_x = npc.global_position.x-sign(npc_player_dist_x)*400.0
-			var correct_tween = get_tree().create_tween()
-			correct_tween.tween_property(player, "global_position:x", new_pos_x, .6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
-			correct_tween.play()
-			await correct_tween.finished
-		
-			original_player_pos = Vector2(new_pos_x, player.global_position.x)
-			original_cam_pos.x = main_cam.restrict_to_cam_bounds(original_player_pos, Vector2(1.0,1.0)).x
-			main_cam.to_pos.x = original_cam_pos.x
-		
-		center_cam_pos = (npc.position + original_player_pos)/2.0
-		
-		player.sprite.flip_h = npc_player_sign_x == 1
-	else:
-		center_cam_pos = player.position
-	
-	
-	print(GameState.in_dialogue)
 	
 	player.dialogue_lock = true
 	main_cam.current_state = main_cam.State.DIALOGUE
@@ -107,10 +83,59 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 	parallel_count += 1
 	
 	scene = ""
-	if npc:
-		original_npc_pos = npc.global_position
 	
 	original_cam_trans = main_cam.global_transform
+	
+	if npc:
+		var npc_player_start_dist_x = npc.global_position.x - player.global_position.x
+		
+		var new_pos_x = player.global_position.x
+		
+		var tweening = false
+		var correct_tween = get_tree().create_tween()
+		
+		var jump_tween = get_tree().create_tween()
+		
+		if abs(npc_player_start_dist_x) < 400.0:
+			tweening = true
+			new_pos_x = npc.global_position.x-sign(npc_player_start_dist_x)*400.0
+			
+			if main_cam.is_out_of_bounds(new_pos_x*Vector2.RIGHT):
+				new_pos_x = npc.global_position.x+sign(npc_player_start_dist_x)*400.0
+			
+			correct_tween.tween_property(player, "global_position:x", new_pos_x, .4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+			correct_tween.play()
+			
+			player.sprite.play("walk")
+			
+			original_player_pos = Vector2(new_pos_x, player.global_position.y)
+			original_cam_pos.x = main_cam.restrict_to_cam_bounds(original_player_pos, Vector2(1.0,1.0)).x
+			main_cam.to_pos.x = original_cam_pos.x
+			
+			jump_tween.tween_property(player, "global_position:y", original_player_pos.y - 12.0, .2).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
+			jump_tween.tween_property(player, "global_position:y", original_player_pos.y, .2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+			jump_tween.play()
+		
+		center_cam_pos = (npc.position + original_player_pos)/2.0
+		
+		current_camera_state = CameraState.PLAYER_TALK
+		reposition_cam()
+		
+		var npc_player_real_dist_x = npc.global_position.x - original_player_pos.x
+		
+		var npc_player_sign_x = -sign(npc_player_real_dist_x)
+		
+		player.sprite.flip_h = npc_player_sign_x == 1
+		
+		if tweening:
+			await correct_tween.finished
+		
+		player.sprite.play("idle")
+	else:
+		center_cam_pos = player.position
+	
+	
+	print(GameState.in_dialogue)
 	
 	display_ui()
 	dialogue_loop(d_object)
@@ -120,7 +145,6 @@ func dialogue_loop(d_object:DialogueObject):
 	var npc_pos = npc.global_position if npc else Vector2(0,0)
 	
 	if !d_object:
-		update_cam_state()
 		dialogue_branch_end()
 		return
 	
@@ -244,6 +268,23 @@ func dialogue_loop(d_object:DialogueObject):
 		loop_with_parallels(d_object)
 
 
+func dialogue_branch_end():
+	parallel_count -= 1
+	print("BRANCH ENDED: ",parallel_count)
+	if parallel_count == 0:
+		dialogue_end()
+
+
+func dialogue_end():
+	kill_boxes()
+	current_camera_state = CameraState.RETURN
+	await cam_return()
+	main_cam.current_state = main_cam.State.FOLLOW
+	player.dialogue_lock = false
+	GameState.in_dialogue = false
+#endregion
+
+#region cam state
 func update_cam_state():
 	var decision: int
 	if player_thinking_instances > 0:
@@ -271,7 +312,7 @@ func reposition_cam():
 		CameraState.NPC_TALK:
 			cam_npc_talk()
 		CameraState.NONE:
-			cam_player_return()
+			pass
 
 
 func cam_player_thought():
@@ -299,7 +340,7 @@ func cam_player_talk():
 	var zoom = Vector2(1.3,1.3)
 	
 	if npc:
-		tween.tween_property(main_cam, "global_position", Vector2(x,y), .5).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(main_cam, "global_position", main_cam.restrict_to_cam_bounds(Vector2(x,y), Vector2(1.3,1.3)), .5).set_trans(Tween.TRANS_SINE)
 	
 	tween.parallel().tween_property(main_cam, "zoom", zoom, .5).set_trans(Tween.TRANS_SINE)
 	
@@ -311,7 +352,7 @@ func cam_npc_talk():
 	
 	var tween = get_tree().create_tween()
 	
-	var x = npc.global_position.x + x_sign*250.0
+	var x = npc.global_position.x + x_sign*200.0
 	var y = original_cam_pos.y - 60.0
 	
 	var pos = Vector2(x,y)
@@ -327,7 +368,7 @@ func cam_npc_talk():
 	tween.play()
 
 
-func cam_player_return():
+func cam_return():
 	var tween = get_tree().create_tween()
 	
 	var x = original_cam_pos.x
@@ -338,10 +379,14 @@ func cam_player_return():
 	if npc:
 		tween.tween_property(main_cam, "global_position", Vector2(x,y), .5).set_trans(Tween.TRANS_SINE)
 	
+	tween.parallel().tween_property(player, "global_position", original_player_pos, .5).set_trans(Tween.TRANS_SINE)
+	
 	tween.parallel().tween_property(main_cam, "zoom", zoom, .5).set_trans(Tween.TRANS_SINE)
 	
 	tween.play()
-
+	
+	await tween.finished
+#endregion
 
 func fade_screen(show: bool, time: float):
 	var alpha = 1.0 if show else 0.0
@@ -362,22 +407,6 @@ func kill_boxes():
 	ui_npc_talk_right.kill_all_box_instances()
 	ui_player_talk_left.kill_box_instance()
 	ui_player_talk_right.kill_box_instance()
-
-
-func dialogue_branch_end():
-	parallel_count -= 1
-	print("BRANCH ENDED: ",parallel_count)
-	if parallel_count == 0:
-		dialogue_end()
-
-
-func dialogue_end():
-	kill_boxes()
-	await get_tree().create_timer(.5).timeout
-	main_cam.current_state = main_cam.State.FOLLOW
-	player.dialogue_lock = false
-	GameState.in_dialogue = false
-#endregion
 
 
 func loop_with_parallels(d_object: DialogueObject):
