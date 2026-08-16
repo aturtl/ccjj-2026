@@ -36,6 +36,10 @@ func tween_to_transform(trans: Transform2D, tween: Tween, time: float = DEFAULT_
 	tween.play()
 
 
+func snap_cam_to_bounds():
+	global_position = restrict_to_cam_bounds(global_position)
+
+
 func state_follow(delta):
 	var axis = Input.get_axis("left","right")
 	

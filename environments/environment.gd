@@ -1,11 +1,11 @@
 extends Node2D
 
-@onready var front_yard: Node2D = %FrontYard
-@onready var living_room: Node2D = %LivingRoom
-@onready var kitchen: Node2D = %Kitchen
-@onready var hallway: Node2D = %Hallway
-@onready var bathroom: Node2D = %Bathroom
-@onready var backyard: Node2D = %Backyard
+@onready var front_yard: EnvironmentHolder = $FrontYard
+@onready var living_room: EnvironmentHolder = $LivingRoom
+@onready var kitchen: EnvironmentHolder = $Kitchen
+@onready var hallway: EnvironmentHolder = $Hallway
+@onready var bathroom: EnvironmentHolder = $Bathroom
+@onready var backyard: EnvironmentHolder = $Backyard
 
 var current_environment: Environments
 
@@ -30,29 +30,30 @@ func _cheat_entered(cheat: String):
 			print("ENV:", env)
 			switch_environment(env)
 
+func show_environment(env: EnvironmentHolder):
+	env.global_position = Vector2.ZERO
+	env.calculate_bounds()
+	%MainCamera.environment_holder = env
+	%MainCamera.snap_cam_to_bounds()
+	env.show()
+
 func switch_environment(new_evironment: Environments) -> void:
 	move_old_environment(current_environment)
 	current_environment = new_evironment
 	
 	match new_evironment:
 		Environments.FRONT_YARD:
-			front_yard.global_position = Vector2(0,0)
-			front_yard.show()
+			show_environment(front_yard)
 		Environments.LIVING_ROOM:
-			living_room.global_position = Vector2(0,0)
-			living_room.show()
+			show_environment(living_room)
 		Environments.KITCHEN:
-			kitchen.global_position = Vector2(0,0)
-			kitchen.show()
+			show_environment(kitchen)
 		Environments.HALLWAY:
-			hallway.global_position = Vector2(0,0)
-			hallway.show()
+			show_environment(hallway)
 		Environments.BATHROOM:
-			bathroom.global_position = Vector2(0,0)
-			bathroom.show()
+			show_environment(bathroom)
 		Environments.BACKYARD:
-			backyard.global_position = Vector2(0,0)
-			backyard.show()
+			show_environment(backyard)
 	
 func move_old_environment(environment: Environments) -> void:
 	match environment:
