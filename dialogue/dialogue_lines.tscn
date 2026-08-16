@@ -66,10 +66,6 @@ script = ExtResource("12_na5fk")
 reward_text = "YOU GAINED 5 CONFIDENCE"
 metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
-[node name="DialogueSetCam" type="Node" parent="TestReward/DialogueStatement3/DialogueStatSetter/DialogueReward" unique_id=204209715]
-script = ExtResource("3_k1frf")
-metadata/_custom_type_script = "uid://dv067w6ebkvde"
-
 [node name="Intro" type="Node2D" parent="." unique_id=27641073]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
@@ -227,8 +223,6 @@ script = ExtResource("2_3mtrk")
 dialogue = "The bushes here are well maintained."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueSetCam" parent="InteractBushNoCarKeys/DialoguePlayerThought" unique_id=1105772095 instance=ExtResource("16_1vab1")]
-
 [node name="InteractBushCarKeys" type="Node2D" parent="." unique_id=1046178965]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
@@ -249,7 +243,7 @@ metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="DialogueStatSetter" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2" unique_id=1491847242]
 script = ExtResource("9_v0p3i")
-add_item = ExtResource("26_v3i0m")
+add_item = ExtResource("13_dle7b")
 metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
 [node name="DialogueReward" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter" unique_id=428732571]

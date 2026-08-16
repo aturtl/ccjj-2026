@@ -205,6 +205,7 @@ func kill_boxes():
 
 func dialogue_end():
 	parallel_count -= 1
+	print(parallel_count, "COUNT")
 	if parallel_count == 0:
 		kill_boxes()
 		await tween_back_to_original_positions()
@@ -221,6 +222,7 @@ func loop_with_parallels(d_object: DialogueObject):
 		await get_tree().create_timer(d_object.after_wait).timeout
 	dialogue_loop(d_object.goto)
 	for goto in d_object.parallel_gotos:
+		parallel_count += 1
 		print("p_loop", d_object)
 		dialogue_loop(goto)
 
