@@ -2,8 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="1_i5o1n"]
 [ext_resource type="Texture2D" uid="uid://bkcowf73ih4k8" path="res://assets/bush.png" id="2_2x3i4"]
-[ext_resource type="Script" uid="uid://dq0ws72uxeeqa" path="res://entities/objects/bushes/bushes.gd" id="3_2x3i4"]
-[ext_resource type="PackedScene" uid="uid://dhu1u8ah5cufe" path="res://entities/objects/car_keys/car_keys.tscn" id="4_i5o1n"]
+[ext_resource type="Script" uid="uid://dq0ws72uxeeqa" path="res://entities/objects/world_object_holds_item.gd" id="3_2x3i4"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="5_baw05"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2x3i4"]
@@ -13,14 +12,13 @@ shader_parameter/outline_thickness = 0.0
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yh7tv"]
-radius = 49.0
-height = 140.0
+radius = 81.0
+height = 272.0
 
 [node name="Bushes" type="Sprite2D" unique_id=1779984681]
 material = SubResource("ShaderMaterial_2x3i4")
 texture = ExtResource("2_2x3i4")
 script = ExtResource("3_2x3i4")
-car_key_scene = ExtResource("4_i5o1n")
 
 [node name="Interactable" type="Area2D" parent="." unique_id=135423678 node_paths=PackedStringArray("sprite")]
 script = ExtResource("5_baw05")

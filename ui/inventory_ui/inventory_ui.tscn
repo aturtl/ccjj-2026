@@ -15,7 +15,37 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_6ch5n")
 
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1265516247]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1024.0
+offset_top = -541.5
+offset_right = 4.0
+offset_bottom = -25.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="InventorySlot" parent="HBoxContainer" unique_id=1721475489 instance=ExtResource("2_jm3eq")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="HBoxContainer" unique_id=543803140 instance=ExtResource("2_jm3eq")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="HBoxContainer" unique_id=1268248406 instance=ExtResource("2_jm3eq")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="HBoxContainer" unique_id=1852960441 instance=ExtResource("2_jm3eq")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="HBoxContainer" unique_id=385296264 instance=ExtResource("2_jm3eq")]
+layout_mode = 2
+
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=624989962]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -31,30 +61,3 @@ title_position = 1
 [node name="TextureRect" type="TextureRect" parent="FoldableContainer" unique_id=239783201]
 layout_mode = 2
 texture = ExtResource("3_84fpp")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="FoldableContainer/TextureRect" unique_id=926062491]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="InventorySlot" parent="FoldableContainer/TextureRect/HBoxContainer" unique_id=1721475489 instance=ExtResource("2_jm3eq")]
-layout_mode = 2
-
-[node name="InventorySlot2" parent="FoldableContainer/TextureRect/HBoxContainer" unique_id=543803140 instance=ExtResource("2_jm3eq")]
-layout_mode = 2
-
-[node name="InventorySlot3" parent="FoldableContainer/TextureRect/HBoxContainer" unique_id=1268248406 instance=ExtResource("2_jm3eq")]
-layout_mode = 2
-
-[node name="InventorySlot4" parent="FoldableContainer/TextureRect/HBoxContainer" unique_id=1852960441 instance=ExtResource("2_jm3eq")]
-layout_mode = 2
-
-[node name="InventorySlot5" parent="FoldableContainer/TextureRect/HBoxContainer" unique_id=385296264 instance=ExtResource("2_jm3eq")]
-layout_mode = 2

@@ -5,7 +5,7 @@ var slots: Array[InventorySlot] = []
 func _ready() -> void:
 	Inventory.inventory_changed.connect(refresh)
 
-	for slot in $FoldableContainer/TextureRect/HBoxContainer.get_children():
+	for slot in $HBoxContainer.get_children():
 		slots.append(slot)
 
 	refresh()

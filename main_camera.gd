@@ -3,12 +3,17 @@ class_name MainCamera extends Camera2D
 enum State {FOLLOW, CUTSCENE, DIALOGUE}
 var current_state = State.FOLLOW
 
-const MOVE_AMOUNT: float = 200
+const MOVE_AMOUNT: float = 300
 const DEFAULT_TIME: float = .5
 
 @export var talk_trans: Node2D
 
 @export var player: Player
+
+@export var left_bound: float = 0
+@export var right_bound: float = 1000
+
+@export var environment_holder: EnvironmentHolder
 
 func _cheat_entered(cheat: String):
 	match cheat:
@@ -31,8 +36,20 @@ func tween_to_transform(trans: Transform2D, tween: Tween, time: float = DEFAULT_
 
 func state_follow(delta):
 	var axis = Input.get_axis("left","right")
-	position.x += delta*MOVE_AMOUNT*axis
+	
+	global_position.x += delta*MOVE_AMOUNT*axis
 	player.global_position = $PlayerWalkPos.global_position
+	
+	var camera_rect = get_viewport_rect() #thanks Lertos on Reddit!! This is really helpful!
+	
+	var left = global_position.x-camera_rect.size.x/2.0
+	var right = left+camera_rect.size.x
+	
+	if left < environment_holder.left_bound:
+		global_position.x = environment_holder.left_bound + camera_rect.size.x/2.0
+	
+	if right > environment_holder.right_bound:
+		global_position.x = environment_holder.right_bound - camera_rect.size.x/2.0
 	
 	if axis > 0:
 		player.sprite.flip_h = false
@@ -41,8 +58,7 @@ func state_follow(delta):
 		player.sprite.flip_h = true
 		player.sprite.play("walk_right")
 	else:
-		player.sprite.flip_h = false
-		player.sprite.play("talk")
+		player.sprite.play("idle")
 
 
 func _physics_process(delta):

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpxc30k5pt3l0"]
 
-[ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_kbflq"]
+[ext_resource type="Texture2D" uid="uid://cta4eyh2nqgo6" path="res://assets/environment/frontyard.png" id="1_kbflq"]
 
 [node name="FrontYard" type="Node2D" unique_id=1755393680]
 

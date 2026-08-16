@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://162frumgr484" path="res://IMG_2037.png" id="3_jsx87"]
 [ext_resource type="Texture2D" uid="uid://bap0db04k0425" path="res://assets/characters/annemette_walk.png" id="4_jsx87"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsx87"]
+atlas = ExtResource("4_jsx87")
+region = Rect2(2034, 0, 1017, 2026)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2b1i"]
 atlas = ExtResource("4_jsx87")
 region = Rect2(0, 0, 1017, 2026)
@@ -39,6 +43,14 @@ region = Rect2(3051, 2026, 1017, 2026)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsx87")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_jsx87")

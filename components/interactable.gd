@@ -13,6 +13,7 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	input_event.connect(_on_input_event)
+	sprite.material = sprite.material.duplicate() # so duplicated objects have unique outlines
 	shader = sprite.material as ShaderMaterial
 
 

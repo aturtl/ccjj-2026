@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://c0fri55hif3q5"]
 
-[ext_resource type="Texture2D" uid="uid://ceh663ehfuf31" path="res://assets/environment/GameJam_Background.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://7844f0ujgu6s" path="res://main_camera.gd" id="2_bnpwn"]
 [ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="3_36jdj"]
@@ -13,7 +12,6 @@
 [ext_resource type="Script" uid="uid://cg11uyllsqbg" path="res://dialogue/dialogue_instance_connector.gd" id="5_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://cgup25de442gh" path="res://environments/living_room.tscn" id="5_x5p1p"]
-[ext_resource type="PackedScene" uid="uid://b6qwr3c2hbaop" path="res://entities/objects/bushes/bushes.tscn" id="6_e36ub"]
 [ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
 [ext_resource type="PackedScene" uid="uid://b48dqgav8yttt" path="res://environments/kitchen.tscn" id="6_qhcbd"]
 [ext_resource type="PackedScene" uid="uid://ix4858unbekg" path="res://ui/inventory_ui/inventory_ui.tscn" id="7_eow3j"]
@@ -29,34 +27,52 @@
 [ext_resource type="PackedScene" uid="uid://br55v2y7r0oac" path="res://entities/npc/dog/dog.tscn" id="13_vaj68"]
 [ext_resource type="PackedScene" uid="uid://bvg0cccacnihn" path="res://ui/credits_menu/credits_menu.tscn" id="14_215e1"]
 [ext_resource type="PackedScene" uid="uid://b6i7gjrynvevy" path="res://entities/npc/brad/brad.tscn" id="14_xa8c5"]
+[ext_resource type="Script" uid="uid://dv81dikbp6dgf" path="res://environments/background.gd" id="16_4v2jo"]
 [ext_resource type="PackedScene" uid="uid://dfhrtwvd784y6" path="res://entities/npc/shoal/shoal.tscn" id="16_5b14r"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="17_082n1"]
+[ext_resource type="Texture2D" uid="uid://cnnllqarr4p2q" path="res://assets/objects/coral1.png" id="17_xfvwf"]
+[ext_resource type="Script" uid="uid://dq0ws72uxeeqa" path="res://entities/objects/world_object_holds_item.gd" id="19_xex6t"]
+[ext_resource type="PackedScene" uid="uid://dhu1u8ah5cufe" path="res://entities/objects/car_keys/car_keys.tscn" id="20_aa0lp"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="21_iu0sx"]
+[ext_resource type="Script" uid="uid://c3mwtx0cejlyx" path="res://entities/objects/world_object_has_dialogue_connector.gd" id="22_xex6t"]
+[ext_resource type="Texture2D" uid="uid://f6numrlvxx6j" path="res://assets/objects/coral2.png" id="23_aa0lp"]
+[ext_resource type="Texture2D" uid="uid://hgn4fl3ndy5c" path="res://assets/objects/coral3.png" id="24_iu0sx"]
 [ext_resource type="Script" uid="uid://c7goundowx3su" path="res://scene_change.gd" id="28_5b14r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2x3i4"]
+shader = ExtResource("17_082n1")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yh7tv"]
+radius = 75.625
+height = 228.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iu0sx"]
+radius = 88.0
+height = 176.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4v2jo"]
+radius = 60.0
+height = 192.0
 
 [node name="Game" type="Node2D" unique_id=69826831]
 process_mode = 3
 script = ExtResource("1_feb5d")
 
-[node name="Player" type="Node2D" parent="." unique_id=1760946569]
-unique_name_in_owner = true
-position = Vector2(144, 368)
-scale = Vector2(0.25, 0.25)
-script = ExtResource("3_xfvwf")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1837903203]
-z_index = 100
-position = Vector2(0, 91.07143)
-sprite_frames = ExtResource("3_36jdj")
-animation = &"walk_right"
-
-[node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("talk_trans", "player")]
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("talk_trans", "player", "environment_holder")]
 unique_name_in_owner = true
 position = Vector2(576, 324)
 script = ExtResource("2_bnpwn")
 talk_trans = NodePath("../Node2D")
-player = NodePath("../Player")
+player = NodePath("../World/Player")
+left_bound = -400.0
+right_bound = 1600.0
+environment_holder = NodePath("../World/Environment/FrontYard")
 
 [node name="PlayerWalkPos" type="Node2D" parent="MainCamera" unique_id=575210671]
-position = Vector2(-232, 168)
+position = Vector2(-384, 144)
 
 [node name="BlackScreen" type="ColorRect" parent="MainCamera" unique_id=493484777]
 visible = false
@@ -73,142 +89,68 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Cheats" parent="." unique_id=788448949 instance=ExtResource("9_lc2xo")]
-unique_name_in_owner = true
+[node name="Dialogue" type="CanvasLayer" parent="." unique_id=67819007]
 
-[node name="BG" type="Sprite2D" parent="." unique_id=747760484]
-visible = false
-position = Vector2(589, 317)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_80nbo")
-
-[node name="Environment" type="Node2D" parent="." unique_id=718944105]
-unique_name_in_owner = true
-script = ExtResource("4_x5p1p")
-
-[node name="FrontYard" parent="Environment" unique_id=1755393680 instance=ExtResource("4_hb5m1")]
-unique_name_in_owner = true
-
-[node name="Bushes" parent="Environment/FrontYard" unique_id=1779984681 instance=ExtResource("6_e36ub")]
-position = Vector2(856, 319)
-
-[node name="NoName" parent="Environment/FrontYard" unique_id=1669043619 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
-position = Vector2(160, 385)
-scale = Vector2(0.5, 0.5)
-connector = NodePath("../../../DialogueInstanceConnectors/NoName")
-
-[node name="LivingRoom" parent="Environment" unique_id=1056652401 instance=ExtResource("5_x5p1p")]
-unique_name_in_owner = true
-position = Vector2(2651, 18)
-
-[node name="Pacifica" parent="Environment/LivingRoom" unique_id=1381500754 node_paths=PackedStringArray("connector") instance=ExtResource("9_x5p1p")]
-position = Vector2(941, 386)
-scale = Vector2(0.5, 0.5)
-connector = NodePath("../../../DialogueInstanceConnectors/Pacifica")
-
-[node name="Reef" parent="Environment/LivingRoom" unique_id=1676980202 node_paths=PackedStringArray("connector") instance=ExtResource("10_qhcbd")]
-position = Vector2(222, 372)
-scale = Vector2(0.5, 0.5)
-connector = NodePath("../../../DialogueInstanceConnectors/Reef")
-
-[node name="Kitchen" parent="Environment" unique_id=190051855 instance=ExtResource("6_qhcbd")]
-unique_name_in_owner = true
-position = Vector2(4181, 6)
-
-[node name="Mooray" parent="Environment/Kitchen" unique_id=192293366 node_paths=PackedStringArray("connector") instance=ExtResource("12_f1jbl")]
-position = Vector2(852, 355)
-scale = Vector2(0.5, 0.5)
-connector = NodePath("../../../DialogueInstanceConnectors/Moray")
-
-[node name="Dog" parent="Environment/Kitchen" unique_id=1939013120 node_paths=PackedStringArray("connector") instance=ExtResource("13_vaj68")]
-position = Vector2(245, 401)
-scale = Vector2(0.5, 0.5)
-connector = NodePath("../../../DialogueInstanceConnectors/Dog")
-
-[node name="Brad" parent="Environment/Kitchen" unique_id=196879695 node_paths=PackedStringArray("connector") instance=ExtResource("14_xa8c5")]
-position = Vector2(553, 380)
-connector = NodePath("../../../DialogueInstanceConnectors/Brad")
-
-[node name="Hallway" parent="Environment" unique_id=2102377602 instance=ExtResource("7_f1jbl")]
-unique_name_in_owner = true
-position = Vector2(5688, 1)
-
-[node name="Shoal" parent="Environment/Hallway" unique_id=985543956 node_paths=PackedStringArray("connector") instance=ExtResource("16_5b14r")]
-position = Vector2(278, 302)
-scale = Vector2(0.5, 0.5)
-connector = NodePath("../../../DialogueInstanceConnectors/Shoal")
-
-[node name="Bathroom" parent="Environment" unique_id=1154042809 instance=ExtResource("8_vaj68")]
-unique_name_in_owner = true
-position = Vector2(6923, -35)
-
-[node name="Backyard" parent="Environment" unique_id=1847859133 instance=ExtResource("9_i2p71")]
-unique_name_in_owner = true
-position = Vector2(8786, 0)
-
-[node name="NPCs" type="Node2D" parent="." unique_id=1409111629]
-position = Vector2(304, 784)
-
-[node name="NPCTalk" parent="." unique_id=1866522664 node_paths=PackedStringArray("main_cam", "screen_fader", "instance_connectors", "player") instance=ExtResource("10_215e1")]
+[node name="NPCTalk" parent="Dialogue" unique_id=1866522664 node_paths=PackedStringArray("main_cam", "screen_fader", "instance_connectors", "player") instance=ExtResource("10_215e1")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
-main_cam = NodePath("../MainCamera")
-screen_fader = NodePath("../MainCamera/BlackScreen")
+main_cam = NodePath("../../MainCamera")
+screen_fader = NodePath("../../MainCamera/BlackScreen")
 instance_connectors = NodePath("../DialogueInstanceConnectors")
-player = NodePath("../Player")
+player = NodePath("../../World/Player")
 
-[node name="DialogueLineTreeHolder" parent="." unique_id=161622172 node_paths=PackedStringArray("debug_npc") instance=ExtResource("4_iotsf")]
+[node name="DialogueLineTreeHolder" parent="Dialogue" unique_id=161622172 node_paths=PackedStringArray("debug_npc") instance=ExtResource("4_iotsf")]
 unique_name_in_owner = true
 position = Vector2(576, 324)
-debug_npc = NodePath("../Environment/FrontYard/NoName")
+debug_npc = NodePath("../../World/Environment/FrontYard/NoName")
 
-[node name="DialoguePlayerThought" parent="DialogueLineTreeHolder/_Pacifica1_2/DialogueStatement/DialogueStatement2" parent_id_path=PackedInt32Array(161622172, 1587880844) index="0" unique_id=1753856372]
+[node name="DialoguePlayerThought" parent="Dialogue/DialogueLineTreeHolder/_Pacifica1_2/DialogueStatement/DialogueStatement2" parent_id_path=PackedInt32Array(161622172, 1587880844) index="0" unique_id=1753856372]
 after_wait = 0.0
 
-[node name="DialoguePlayerThought2" parent="DialogueLineTreeHolder/_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought" index="0" unique_id=1832313626]
+[node name="DialoguePlayerThought2" parent="Dialogue/DialogueLineTreeHolder/_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought" index="0" unique_id=1832313626]
 after_wait = 0.0
 
-[node name="DialogueInstanceConnectors" type="Node2D" parent="." unique_id=1437585316]
+[node name="DialogueInstanceConnectors" type="Node2D" parent="Dialogue" unique_id=1437585316]
 script = ExtResource("5_215e1")
 
-[node name="NoName" type="Node2D" parent="DialogueInstanceConnectors" unique_id=862932422 node_paths=PackedStringArray("connected_tree")]
+[node name="NoName" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=862932422 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/CarKeys1")
 
-[node name="BushNoCarKeys" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1246006895 node_paths=PackedStringArray("connected_tree")]
+[node name="BushNoCarKeys" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=1246006895 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/InteractBushNoCarKeys")
 
-[node name="BushHasCarKeys" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1913285303 node_paths=PackedStringArray("connected_tree")]
+[node name="BushHasCarKeys" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=1913285303 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/InteractBushCarKeys")
 
-[node name="Pacifica" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1074052674 node_paths=PackedStringArray("connected_tree")]
+[node name="Pacifica" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=1074052674 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/Pacifica1")
 
-[node name="Reef" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1599406092 node_paths=PackedStringArray("connected_tree")]
+[node name="Reef" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=1599406092 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/Reef1")
 
-[node name="Moray" type="Node2D" parent="DialogueInstanceConnectors" unique_id=170992092 node_paths=PackedStringArray("connected_tree")]
+[node name="Moray" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=170992092 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/Moray1")
 
-[node name="Dog" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1358676755 node_paths=PackedStringArray("connected_tree")]
+[node name="Dog" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=1358676755 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/Dog")
 
-[node name="Brad" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1791556278 node_paths=PackedStringArray("connected_tree")]
+[node name="Brad" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=1791556278 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/Brad1")
 
-[node name="Shoal" type="Node2D" parent="DialogueInstanceConnectors" unique_id=366058241 node_paths=PackedStringArray("connected_tree")]
+[node name="Shoal" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=366058241 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/Shoal1")
 
-[node name="Vent" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1069670587 node_paths=PackedStringArray("connected_tree")]
+[node name="Vent" type="Node2D" parent="Dialogue/DialogueInstanceConnectors" unique_id=1069670587 node_paths=PackedStringArray("connected_tree")]
 script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/InteractVent")
 
@@ -264,18 +206,274 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
+[node name="Cheats" parent="UI" unique_id=788448949 instance=ExtResource("9_lc2xo")]
+unique_name_in_owner = true
+
 [node name="Node2D" type="Node2D" parent="." unique_id=2025733836]
 position = Vector2(1000, 256)
+
+[node name="World" type="CanvasLayer" parent="." unique_id=624641402]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="Environment" type="Node2D" parent="World" unique_id=718944105]
+unique_name_in_owner = true
+script = ExtResource("4_x5p1p")
+
+[node name="FrontYard" parent="World/Environment" unique_id=1755393680 instance=ExtResource("4_hb5m1")]
+unique_name_in_owner = true
+script = ExtResource("16_4v2jo")
+
+[node name="NoName" parent="World/Environment/FrontYard" unique_id=1669043619 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
+position = Vector2(99, 224)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/NoName")
+
+[node name="test" type="Node2D" parent="World/Environment/FrontYard" unique_id=540964584]
+position = Vector2(1536, 576)
+script = ExtResource("19_xex6t")
+item_scene = ExtResource("20_aa0lp")
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/test" unique_id=1779984681]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-19.625, -114.25)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_xfvwf")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/test" unique_id=135423678 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/test/Interactable" unique_id=1848227161]
+position = Vector2(16, 0)
+shape = SubResource("CapsuleShape2D_yh7tv")
+
+[node name="CoralBush1" type="Node2D" parent="World/Environment/FrontYard" unique_id=1772661946 node_paths=PackedStringArray("connector")]
+position = Vector2(-136, 505)
+script = ExtResource("22_xex6t")
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush1" unique_id=427750555]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-19.625, -114.25)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_xfvwf")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush1" unique_id=1408952056 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush1/Interactable" unique_id=817140090]
+position = Vector2(16, 0)
+shape = SubResource("CapsuleShape2D_yh7tv")
+
+[node name="CoralBush2" type="Node2D" parent="World/Environment/FrontYard" unique_id=1920123561 node_paths=PackedStringArray("connector")]
+position = Vector2(29, 495)
+script = ExtResource("22_xex6t")
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush2" unique_id=1197702117]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-12, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("23_aa0lp")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush2" unique_id=1104665324 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush2/Interactable" unique_id=1894885376]
+position = Vector2(7.625, 42.25)
+shape = SubResource("CapsuleShape2D_iu0sx")
+
+[node name="CoralBush3" type="Node2D" parent="World/Environment/FrontYard" unique_id=738185857 node_paths=PackedStringArray("connector")]
+position = Vector2(180, 495)
+script = ExtResource("22_xex6t")
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush3" unique_id=1527672507]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-12, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("24_iu0sx")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush3" unique_id=695234865 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush3/Interactable" unique_id=3835727]
+position = Vector2(3.625, 51.25)
+shape = SubResource("CapsuleShape2D_4v2jo")
+
+[node name="CoralBush4" type="Node2D" parent="World/Environment/FrontYard" unique_id=2128997071 node_paths=PackedStringArray("connector")]
+position = Vector2(1232, 505)
+scale = Vector2(-1, 1)
+script = ExtResource("22_xex6t")
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush4" unique_id=1738317702]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-19.625, -114.25)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_xfvwf")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush4" unique_id=879696772 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush4/Interactable" unique_id=1039906086]
+position = Vector2(16, 0)
+shape = SubResource("CapsuleShape2D_yh7tv")
+
+[node name="CoralBush5HASKEYS" type="Node2D" parent="World/Environment/FrontYard" unique_id=1951597270 node_paths=PackedStringArray("connector")]
+position = Vector2(1077, 495)
+scale = Vector2(-1, 1)
+script = ExtResource("22_xex6t")
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushHasCarKeys")
+metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush5HASKEYS" unique_id=1113744269]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-12, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("23_aa0lp")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush5HASKEYS" unique_id=539283377 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush5HASKEYS/Interactable" unique_id=507348245]
+position = Vector2(7.625, 42.25)
+shape = SubResource("CapsuleShape2D_iu0sx")
+
+[node name="CoralBush6" type="Node2D" parent="World/Environment/FrontYard" unique_id=562404587 node_paths=PackedStringArray("connector")]
+position = Vector2(936, 495)
+scale = Vector2(-1, 1)
+script = ExtResource("22_xex6t")
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush6" unique_id=1806383049]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-12, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("24_iu0sx")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush6" unique_id=1615489817 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush6/Interactable" unique_id=677898336]
+position = Vector2(3.625, 51.25)
+shape = SubResource("CapsuleShape2D_4v2jo")
+
+[node name="LivingRoom" parent="World/Environment" unique_id=1056652401 instance=ExtResource("5_x5p1p")]
+unique_name_in_owner = true
+position = Vector2(2651, 18)
+
+[node name="Pacifica" parent="World/Environment/LivingRoom" unique_id=1381500754 node_paths=PackedStringArray("connector") instance=ExtResource("9_x5p1p")]
+position = Vector2(941, 386)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Pacifica")
+
+[node name="Reef" parent="World/Environment/LivingRoom" unique_id=1676980202 node_paths=PackedStringArray("connector") instance=ExtResource("10_qhcbd")]
+position = Vector2(222, 372)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Reef")
+
+[node name="Kitchen" parent="World/Environment" unique_id=190051855 instance=ExtResource("6_qhcbd")]
+unique_name_in_owner = true
+position = Vector2(4181, 6)
+
+[node name="Mooray" parent="World/Environment/Kitchen" unique_id=192293366 node_paths=PackedStringArray("connector") instance=ExtResource("12_f1jbl")]
+position = Vector2(852, 355)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Moray")
+
+[node name="Dog" parent="World/Environment/Kitchen" unique_id=1939013120 node_paths=PackedStringArray("connector") instance=ExtResource("13_vaj68")]
+position = Vector2(245, 401)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Dog")
+
+[node name="Brad" parent="World/Environment/Kitchen" unique_id=196879695 node_paths=PackedStringArray("connector") instance=ExtResource("14_xa8c5")]
+position = Vector2(553, 380)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Brad")
+
+[node name="Hallway" parent="World/Environment" unique_id=2102377602 instance=ExtResource("7_f1jbl")]
+unique_name_in_owner = true
+position = Vector2(5688, 1)
+
+[node name="Shoal" parent="World/Environment/Hallway" unique_id=985543956 node_paths=PackedStringArray("connector") instance=ExtResource("16_5b14r")]
+position = Vector2(278, 302)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/Shoal")
+
+[node name="Bathroom" parent="World/Environment" unique_id=1154042809 instance=ExtResource("8_vaj68")]
+unique_name_in_owner = true
+position = Vector2(6923, -35)
+
+[node name="Backyard" parent="World/Environment" unique_id=1847859133 instance=ExtResource("9_i2p71")]
+unique_name_in_owner = true
+position = Vector2(8786, 0)
+
+[node name="Player" type="Node2D" parent="World" unique_id=1760946569]
+unique_name_in_owner = true
+position = Vector2(144, 368)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("3_xfvwf")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="World/Player" unique_id=1837903203]
+visible = false
+z_index = 100
+position = Vector2(0, 91.07143)
+sprite_frames = ExtResource("3_36jdj")
+animation = &"idle"
+frame_progress = 0.30366665
+
+[node name="NPCs" type="Node2D" parent="World" unique_id=1409111629]
+position = Vector2(304, 784)
 
 [connection signal="button_down" from="UI/Button" to="UI/Button" method="_on_button_down"]
 [connection signal="toggled" from="UI/HUD/InventoryButton" to="." method="_on_inventory_button_toggled"]
 [connection signal="start_game" from="UI/StartMenu" to="." method="_on_start_game"]
 [connection signal="resume" from="UI/PauseMenu" to="." method="unpause_game"]
+[connection signal="interacted" from="World/Environment/FrontYard/test/Interactable" to="World/Environment/FrontYard/test" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush1/Interactable" to="World/Environment/FrontYard/CoralBush1" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush2/Interactable" to="World/Environment/FrontYard/CoralBush2" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush3/Interactable" to="World/Environment/FrontYard/CoralBush3" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush4/Interactable" to="World/Environment/FrontYard/CoralBush4" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush5HASKEYS/Interactable" to="World/Environment/FrontYard/CoralBush5HASKEYS" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush6/Interactable" to="World/Environment/FrontYard/CoralBush6" method="_on_interactable_interacted"]
 
-[editable path="DialogueLineTreeHolder"]
-[editable path="DialogueLineTreeHolder/CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DSRewardPreset"]
-[editable path="DialogueLineTreeHolder/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]
-[editable path="DialogueLineTreeHolder/Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter"]
-[editable path="DialogueLineTreeHolder/_Reef2_Reward/DialogueStatSetter"]
-[editable path="DialogueLineTreeHolder/Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2"]
-[editable path="DialogueLineTreeHolder/InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialogueStatSetter"]
+[editable path="Dialogue/DialogueLineTreeHolder"]
+[editable path="Dialogue/DialogueLineTreeHolder/CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DSRewardPreset"]
+[editable path="Dialogue/DialogueLineTreeHolder/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]
+[editable path="Dialogue/DialogueLineTreeHolder/Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter"]
+[editable path="Dialogue/DialogueLineTreeHolder/_Reef2_Reward/DialogueStatSetter"]
+[editable path="Dialogue/DialogueLineTreeHolder/Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2"]
+[editable path="Dialogue/DialogueLineTreeHolder/InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialogueStatSetter"]

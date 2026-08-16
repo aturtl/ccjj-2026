@@ -68,7 +68,8 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 	
 	scene = ""
 	original_player_pos = player.global_position
-	original_npc_pos = npc.global_position
+	if npc:
+		original_npc_pos = npc.global_position
 	original_cam_pos = main_cam.global_position
 	
 	original_cam_trans = main_cam.global_transform
