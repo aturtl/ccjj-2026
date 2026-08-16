@@ -59,6 +59,12 @@ func cam_offset():
 
 #region dialogue loop
 func dialogue_start(d_object:DialogueLine, npc: NPC):
+	print("STARTEDaaaaa")
+	
+	GameState.in_dialogue = true
+	
+	print(GameState.in_dialogue)
+	
 	player.dialogue_lock = true
 	main_cam.current_state = main_cam.State.DIALOGUE
 	
@@ -82,7 +88,7 @@ func dialogue_loop(d_object:DialogueObject):
 	var npc_pos = npc.global_position if npc else Vector2(0,0)
 	
 	if !d_object:
-		dialogue_end()
+		dialogue_branch_end()
 		return
 	
 	if d_object is DialogueLine:
@@ -100,9 +106,9 @@ func dialogue_loop(d_object:DialogueObject):
 		# current_camera_animation = CameraAnimation.TALK
 		
 		if scene == "":
-			await tween_to_talk(1.5)
+			tween_to_talk(.5)
 		else:
-			tween_to_talk(1.5)
+			tween_to_talk(1.0)
 		
 		var ui_npc_talk = ui_npc_talk_left if main_cam.global_position.x < npc.global_position.x else ui_npc_talk_right
 		
@@ -129,14 +135,14 @@ func dialogue_loop(d_object:DialogueObject):
 		await tween_to_thought()
 		
 		var choices = get_choices(d_object)
-		ui_choice_display.display_choices(choices, transitioners.get_node("TransDisplayChoices").global_position + cam_offset())
+		ui_choice_display.display_choices(choices, Vector2(576,320))
 		
 		var choice_d_object: DialogueChoice = await ui_choice_display.choice_selected
 		
 		fade_screen(false, .5)
 		
 		
-		tween_to_talk(1.5)
+		await tween_to_talk(1.0)
 		
 		loop_with_parallels(choice_d_object)
 		
@@ -203,27 +209,28 @@ func kill_boxes():
 	ui_thought_talk.kill_box_instance()
 
 
-func dialogue_end():
+func dialogue_branch_end():
 	parallel_count -= 1
-	print(parallel_count, "COUNT")
+	print("BRANCH ENDED: ",parallel_count)
 	if parallel_count == 0:
-		kill_boxes()
-		await tween_back_to_original_positions()
-		main_cam.current_state = main_cam.State.FOLLOW
-		player.dialogue_lock = false
-		
-	else:
-		pass
+		dialogue_end()
+
+
+func dialogue_end():
+	kill_boxes()
+	await tween_back_to_original_positions()
+	main_cam.current_state = main_cam.State.FOLLOW
+	player.dialogue_lock = false
+	GameState.in_dialogue = false
 #endregion
 
 
 func loop_with_parallels(d_object: DialogueObject):
 	if d_object.after_wait > 0.0:
 		await get_tree().create_timer(d_object.after_wait).timeout
+	parallel_count += d_object.parallel_gotos.size()
 	dialogue_loop(d_object.goto)
 	for goto in d_object.parallel_gotos:
-		parallel_count += 1
-		print("p_loop", d_object)
 		dialogue_loop(goto)
 
 
@@ -236,16 +243,16 @@ func tween_back_to_original_positions(): # right now, I just send them into spac
 	var cam_tween: Tween = get_tree().create_tween().set_parallel()
 	var npc_tween: Tween = get_tree().create_tween().set_parallel()
 	
-	var thought_trans_time = 1.5
+	var trans_time = .2
 	
 	player.sprite.play("idle")
 	
 	#player_tween.tween_property(player, "global_position", original_player_pos, .6).set_trans(Tween.TRANS_CIRC)
-	player_tween.tween_property(player.sprite, "scale", Vector2(1.0,1.0), .5).set_trans(Tween.TRANS_CIRC)
+	player_tween.tween_property(player.sprite, "scale", Vector2(1.0,1.0), trans_time).set_trans(Tween.TRANS_CIRC)
 	player_tween.play()
 	
-	cam_tween.tween_property(main_cam, "global_position", original_cam_pos, .5)
-	cam_tween.tween_property(main_cam, "zoom", Vector2(1.0,1.0), .5)
+	cam_tween.tween_property(main_cam, "global_position", original_cam_pos, trans_time)
+	cam_tween.tween_property(main_cam, "zoom", Vector2(1.0,1.0), trans_time)
 	
 	#if npc:
 		#npc_tween.tween_property(npc_sprite.get_parent(), "global_position", original_npc_pos, thought_trans_time).set_trans(Tween.TRANS_QUINT)

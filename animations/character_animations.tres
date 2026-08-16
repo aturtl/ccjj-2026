@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://m4eds0q1hio" path="res://assets/characters/Annemette_Sprite.png" id="1_jsx87"]
 [ext_resource type="Texture2D" uid="uid://cgctem2atnxye" path="res://IMG_2036.png" id="2_8uif5"]
+[ext_resource type="Texture2D" uid="uid://bchcjt000nkq3" path="res://placeholders/placeholder_player_converse.png" id="2_q2b1i"]
 [ext_resource type="Texture2D" uid="uid://162frumgr484" path="res://IMG_2037.png" id="3_jsx87"]
 [ext_resource type="Texture2D" uid="uid://bap0db04k0425" path="res://assets/characters/annemette_walk.png" id="4_jsx87"]
 
@@ -49,6 +50,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q2b1i")
+}],
+"loop": 1,
+"name": &"proto",
 "speed": 5.0
 }, {
 "frames": [{

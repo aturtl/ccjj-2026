@@ -10,6 +10,8 @@ var shader: ShaderMaterial
 signal interacted(text: String)
 
 func _ready():
+	GameState.in_dialogue_changed.connect(_game_in_dialogue_changed)
+	
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	input_event.connect(_on_input_event)
@@ -18,15 +20,29 @@ func _ready():
 
 
 func _on_mouse_entered() -> void:
+	if GameState.in_dialogue:
+		return
+	
 	if highlight_on_hover and SettingsManager.show_outline_on_hover:
 		shader.set_shader_parameter("outline_thickness", 5)
 
 
 func _on_mouse_exited() -> void:
+	if GameState.in_dialogue:
+		return
+	
 	if highlight_on_hover:
 		shader.set_shader_parameter("outline_thickness", 0)
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if GameState.in_dialogue:
+		return
+	
 	if event.is_action_pressed("interact"):
 		interacted.emit(interaction_string)
+
+
+func _game_in_dialogue_changed(in_dialogue):
+	if in_dialogue:
+		shader.set_shader_parameter("outline_thickness", 0)

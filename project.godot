@@ -26,6 +26,7 @@ UIManager="*uid://b6ilicojuqm50"
 AudioManager="*uid://dk60r14rx1pqk"
 Stats="*uid://cjo3urgnnyugi"
 SettingsManager="*uid://ca5p1dlxu7wso"
+GameState="*uid://cla1wf0j5eah7"
 
 [display]
 

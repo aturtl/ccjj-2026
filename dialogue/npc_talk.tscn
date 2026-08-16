@@ -7,17 +7,132 @@
 [ext_resource type="Script" uid="uid://c0agvk4gyihqb" path="res://dialogue/ui_talkers/ui_talk_npc.gd" id="9_ak87k"]
 [ext_resource type="Script" uid="uid://bxinhru5uqlbf" path="res://cameras/fake_cam.gd" id="10_710ue"]
 [ext_resource type="Texture2D" uid="uid://duhua14dmi18j" path="res://assets/ui/npc_dialogue_box.png" id="10_ak87k"]
+[ext_resource type="Texture2D" uid="uid://bkeesrcbl2ui6" path="res://assets/ui/reward_backdrop.png" id="12_710ue"]
 [ext_resource type="Texture2D" uid="uid://cf5j5prldlckw" path="res://assets/ui/mc_dialogue_box.png" id="12_bwfku"]
 [ext_resource type="Script" uid="uid://y2w71ew3be3l" path="res://dialogue/ui_talkers/ui_reward.gd" id="12_svhel"]
 [ext_resource type="AudioStream" uid="uid://dchavohcad2mt" path="res://dialogue/blips/blip_default_2.mp3" id="13_710ue"]
+[ext_resource type="Texture2D" uid="uid://bap0db04k0425" path="res://assets/characters/annemette_walk.png" id="13_nbgfc"]
 [ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="14_7pvnj"]
+[ext_resource type="Texture2D" uid="uid://bchcjt000nkq3" path="res://placeholders/placeholder_player_converse.png" id="14_vdras"]
+[ext_resource type="Texture2D" uid="uid://m4eds0q1hio" path="res://assets/characters/Annemette_Sprite.png" id="15_ha07r"]
+[ext_resource type="Texture2D" uid="uid://cgctem2atnxye" path="res://IMG_2036.png" id="16_hieh2"]
 [ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="16_nbgfc"]
+[ext_resource type="Texture2D" uid="uid://162frumgr484" path="res://IMG_2037.png" id="17_1lraq"]
 
-[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "npc_sprite", "transitioners", "ui_npc_talk_left", "ui_npc_talk_right", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "debug_rect_display")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsx87"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(2034, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2b1i"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(0, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avo8k"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(1017, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da8va"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(2034, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahgs1"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(3051, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ap5n"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(0, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3swkp"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(1017, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6tc8"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(2034, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bewxf"]
+atlas = ExtResource("13_nbgfc")
+region = Rect2(3051, 2026, 1017, 2026)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04flo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsx87")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_vdras")
+}],
+"loop": 1,
+"name": &"proto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ha07r")
+}],
+"loop": 1,
+"name": &"talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_hieh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_1lraq")
+}],
+"loop": 1,
+"name": &"thought",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2b1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avo8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da8va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahgs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ap5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3swkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6tc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bewxf")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[node name="NPCTalk" type="Node2D" unique_id=1866522664 node_paths=PackedStringArray("talk_cam", "npc_sprite", "transitioners", "screen_fader", "ui_npc_talk_left", "ui_npc_talk_right", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "debug_rect_display")]
 script = ExtResource("1_m8yt7")
 talk_cam = NodePath("TalkFakeCam")
 npc_sprite = NodePath("UI/Characters/NPC/Sprite")
 transitioners = NodePath("UI/Transitioners")
+screen_fader = NodePath("UI/UIChoice/ChoiceTemplate/CanvasLayer/BlackScreen")
 ui_npc_talk_left = NodePath("UI/UITalkNPCLeft")
 ui_npc_talk_right = NodePath("UI/UITalkNPCRight")
 ui_choice_display = NodePath("UI/UIChoice")
@@ -82,17 +197,22 @@ choice_template = NodePath("ChoiceTemplate")
 transitioners = NodePath("../Transitioners")
 
 [node name="ChoiceTemplate" type="Node2D" parent="UI/UIChoice" unique_id=1659226158 node_paths=PackedStringArray("select_button", "label", "sprite", "sanity_display")]
+z_index = 10
 script = ExtResource("7_64tqn")
-select_button = NodePath("Button")
-label = NodePath("RichTextLabel")
-sprite = NodePath("Sprite")
-sanity_display = NodePath("SanityDisplay")
+select_button = NodePath("CanvasLayer/Button")
+label = NodePath("CanvasLayer/RichTextLabel")
+sprite = NodePath("CanvasLayer/Sprite")
+sanity_display = NodePath("CanvasLayer/SanityDisplay")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/UIChoice/ChoiceTemplate" unique_id=754513161]
+[node name="CanvasLayer" type="CanvasLayer" parent="UI/UIChoice/ChoiceTemplate" unique_id=710000964]
+layer = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/UIChoice/ChoiceTemplate/CanvasLayer" unique_id=754513161]
+z_index = 24
 offset_left = -136.0
-offset_top = 7.9999847
+offset_top = 11.999985
 offset_right = 136.0
-offset_bottom = 52.999985
+offset_bottom = 56.999985
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
@@ -100,11 +220,12 @@ bbcode_enabled = true
 text = "[center]Choice[/center]"
 fit_content = true
 
-[node name="SanityDisplay" type="RichTextLabel" parent="UI/UIChoice/ChoiceTemplate" unique_id=1365563672]
+[node name="SanityDisplay" type="RichTextLabel" parent="UI/UIChoice/ChoiceTemplate/CanvasLayer" unique_id=1365563672]
+z_index = 24
 offset_left = -136.0
-offset_top = -8.000015
+offset_top = -4.0000153
 offset_right = 136.0
-offset_bottom = 36.999985
+offset_bottom = 40.999985
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 12
@@ -112,17 +233,32 @@ bbcode_enabled = true
 text = "[center]PREREQ[/center]"
 fit_content = true
 
-[node name="Sprite" type="Sprite2D" parent="UI/UIChoice/ChoiceTemplate" unique_id=1546460758]
-position = Vector2(0, -24)
+[node name="Sprite" type="Sprite2D" parent="UI/UIChoice/ChoiceTemplate/CanvasLayer" unique_id=1546460758]
+z_index = 24
+position = Vector2(0, -20)
 scale = Vector2(0.1, 0.1)
 
-[node name="Button" type="Button" parent="UI/UIChoice/ChoiceTemplate" unique_id=1642728767]
+[node name="Button" type="Button" parent="UI/UIChoice/ChoiceTemplate/CanvasLayer" unique_id=1642728767]
 modulate = Color(1, 1, 1, 0)
+z_index = 24
 offset_left = -40.0
-offset_top = 8.0
+offset_top = 12.0
 offset_right = 40.0
-offset_bottom = 37.0
-metadata/_edit_use_anchors_ = true
+offset_bottom = 41.0
+
+[node name="BlackScreen" type="ColorRect" parent="UI/UIChoice/ChoiceTemplate/CanvasLayer" unique_id=33215654]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="UITalkNPCLeft" type="Node2D" parent="UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
 z_index = 10
@@ -245,47 +381,55 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "DIALOGUE"
 
-[node name="UIReward" type="Node2D" parent="UI" unique_id=1354403908 node_paths=PackedStringArray("box_template", "reward_screen")]
+[node name="UIReward" type="Node2D" parent="UI" unique_id=1354403908 node_paths=PackedStringArray("box_template", "label", "char_sticker")]
 z_index = 10
 position = Vector2(0, 4)
 script = ExtResource("12_svhel")
-box_template = NodePath("BoxTemplate")
-reward_screen = NodePath("BoxTemplate/RewardScreen")
+box_template = NodePath("Screen/BoxTemplate")
+label = NodePath("Screen/BoxTemplate/Positioner/Rotater/Sizer/RichTextLabel")
+char_sticker = NodePath("Screen/BoxTemplate/CharSticker")
 metadata/_custom_type_script = "uid://y2w71ew3be3l"
 
-[node name="BoxTemplate" type="Node2D" parent="UI/UIReward" unique_id=727790164 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+[node name="Screen" type="CanvasLayer" parent="UI/UIReward" unique_id=1966280548]
+layer = 10
+
+[node name="BoxTemplate" type="Node2D" parent="UI/UIReward/Screen" unique_id=727790164 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
 visible = false
-position = Vector2(296, 192)
+position = Vector2(296, 196)
 script = ExtResource("4_muvp4")
 label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
 sizer = NodePath("Positioner/Rotater/Sizer")
 rotater = NodePath("Positioner/Rotater")
 positioner = NodePath("Positioner")
 
-[node name="Positioner" type="Node2D" parent="UI/UIReward/BoxTemplate" unique_id=930387693]
+[node name="Positioner" type="Node2D" parent="UI/UIReward/Screen/BoxTemplate" unique_id=930387693]
 
-[node name="Rotater" type="Node2D" parent="UI/UIReward/BoxTemplate/Positioner" unique_id=1966331764]
+[node name="Rotater" type="Node2D" parent="UI/UIReward/Screen/BoxTemplate/Positioner" unique_id=1966331764]
+position = Vector2(280, 132)
 
-[node name="Sizer" type="Node2D" parent="UI/UIReward/BoxTemplate/Positioner/Rotater" unique_id=962859680]
-position = Vector2(-76, -4)
+[node name="Sizer" type="Node2D" parent="UI/UIReward/Screen/BoxTemplate/Positioner/Rotater" unique_id=962859680]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/UIReward/BoxTemplate/Positioner/Rotater/Sizer" unique_id=495928341]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/UIReward/Screen/BoxTemplate/Positioner/Rotater/Sizer" unique_id=495928341]
 z_index = 25
 clip_contents = false
-offset_left = -518.0
-offset_top = -212.0
-offset_right = 82.0
-offset_bottom = -112.0
+offset_left = -289.0
+offset_top = -19.0
+offset_right = 311.0
+offset_bottom = 81.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "[center]Reward: YOU OBTAINED"
 
-[node name="RewardScreen" type="ColorRect" parent="UI/UIReward/BoxTemplate" unique_id=1338023676]
-offset_left = -872.0
-offset_top = -520.0
-offset_right = 280.0
-offset_bottom = 136.0
-color = Color(0.49253017, 0.0022641667, 0.76116043, 1)
+[node name="Sprite2D" type="Sprite2D" parent="UI/UIReward/Screen/BoxTemplate" unique_id=1300686617]
+position = Vector2(280, 128)
+texture = ExtResource("12_710ue")
+
+[node name="CharSticker" type="AnimatedSprite2D" parent="UI/UIReward/Screen/BoxTemplate" unique_id=1830394438]
+position = Vector2(-105.999985, 307)
+scale = Vector2(0.42225963, 0.42225966)
+sprite_frames = SubResource("SpriteFrames_04flo")
+animation = &"proto"
 
 [node name="tempscreen" type="ColorRect" parent="." unique_id=746877131]
 visible = false

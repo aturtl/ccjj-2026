@@ -46,7 +46,7 @@ func display_choices(choices: Array, origin: Vector2):
 
 func add_templated_choice_instance(choice_temp: ChoiceTemplate, origin: Vector2):
 	var choice = choice_temp.duplicate()
-	add_child(choice)
+	choice_temp.get_parent().add_child(choice)
 	
 	var spread_start = -choice_spread
 	var spread_end = choice_spread
@@ -57,7 +57,7 @@ func add_templated_choice_instance(choice_temp: ChoiceTemplate, origin: Vector2)
 		var angle = spread_start + spread_end * choice_instance_count/(float(total_choice_instance_count-1)) - (PI-choice_spread)/2.0
 		direction = Vector2(cos(angle), sin(angle))
 	
-	choice.global_position = origin + 250.0*direction
+	choice.position = origin + 250.0*direction
 	
 	choice_instance_count += 1
 	

@@ -3,7 +3,7 @@ class_name MainCamera extends Camera2D
 enum State {FOLLOW, CUTSCENE, DIALOGUE}
 var current_state = State.FOLLOW
 
-const MOVE_AMOUNT: float = 300
+const MOVE_AMOUNT: float = 500
 const DEFAULT_TIME: float = .5
 
 @export var talk_trans: Node2D

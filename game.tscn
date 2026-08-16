@@ -3,35 +3,53 @@
 [ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://7844f0ujgu6s" path="res://main_camera.gd" id="2_bnpwn"]
 [ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="3_36jdj"]
+[ext_resource type="Script" uid="uid://sl735wmgnlki" path="res://dialogue/npc_talk.gd" id="3_vuohh"]
 [ext_resource type="Script" uid="uid://0hjxw4qy6dyl" path="res://player.gd" id="3_xfvwf"]
+[ext_resource type="Script" uid="uid://bxinhru5uqlbf" path="res://cameras/fake_cam.gd" id="4_3gvs5"]
 [ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dpxc30k5pt3l0" path="res://environments/front_yard.tscn" id="4_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
 [ext_resource type="Script" uid="uid://bhi504klelxkd" path="res://environments/environment.gd" id="4_x5p1p"]
 [ext_resource type="Script" uid="uid://cv375brw8kgef" path="res://dialogue/dialogue_instance_connectors.gd" id="5_215e1"]
 [ext_resource type="Script" uid="uid://cg11uyllsqbg" path="res://dialogue/dialogue_instance_connector.gd" id="5_lc2xo"]
+[ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="5_mc3al"]
 [ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://cgup25de442gh" path="res://environments/living_room.tscn" id="5_x5p1p"]
+[ext_resource type="Script" uid="uid://cefhro15wp6v7" path="res://dialogue/ui_choice_displays/ui_choice_display.gd" id="6_bqa6y"]
 [ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
 [ext_resource type="PackedScene" uid="uid://b48dqgav8yttt" path="res://environments/kitchen.tscn" id="6_qhcbd"]
+[ext_resource type="Script" uid="uid://c70kymtkpjq10" path="res://dialogue/ui_templates/choice_template.gd" id="7_du4n2"]
 [ext_resource type="PackedScene" uid="uid://ix4858unbekg" path="res://ui/inventory_ui/inventory_ui.tscn" id="7_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bfgo03um2pv78" path="res://environments/hallway.tscn" id="7_f1jbl"]
 [ext_resource type="PackedScene" uid="uid://chqgt7wswap28" path="res://entities/npc/no_name/no_name.tscn" id="7_hb5m1"]
+[ext_resource type="Script" uid="uid://c0agvk4gyihqb" path="res://dialogue/ui_talkers/ui_talk_npc.gd" id="8_ra4rb"]
 [ext_resource type="PackedScene" uid="uid://copvaonpw53r2" path="res://environments/bathroom.tscn" id="8_vaj68"]
 [ext_resource type="PackedScene" uid="uid://bke8xvgcn8qkd" path="res://environments/backyard.tscn" id="9_i2p71"]
+[ext_resource type="Script" uid="uid://da2o3mrfbfqni" path="res://confidence.gd" id="9_klri6"]
 [ext_resource type="PackedScene" uid="uid://c0vcgctyyu75u" path="res://cheats/cheats.tscn" id="9_lc2xo"]
+[ext_resource type="Script" uid="uid://b04fwqkn4w1tf" path="res://dialogue/ui_templates/box_template.gd" id="9_ple6s"]
 [ext_resource type="PackedScene" uid="uid://cwelbtwv0u607" path="res://entities/npc/pacifica/pacifica.tscn" id="9_x5p1p"]
-[ext_resource type="PackedScene" uid="uid://c6rulyvkfnu6t" path="res://dialogue/npc_talk.tscn" id="10_215e1"]
+[ext_resource type="Texture2D" uid="uid://duhua14dmi18j" path="res://assets/ui/npc_dialogue_box.png" id="10_jo4nb"]
 [ext_resource type="PackedScene" uid="uid://d1dsnitsm7cwe" path="res://entities/npc/reef/reef.tscn" id="10_qhcbd"]
+[ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="11_56gn1"]
+[ext_resource type="Texture2D" uid="uid://cf5j5prldlckw" path="res://assets/ui/mc_dialogue_box.png" id="12_avmo2"]
 [ext_resource type="PackedScene" uid="uid://bm3ndpel5oqyw" path="res://entities/npc/mooray/mooray.tscn" id="12_f1jbl"]
 [ext_resource type="PackedScene" uid="uid://br55v2y7r0oac" path="res://entities/npc/dog/dog.tscn" id="13_vaj68"]
+[ext_resource type="Script" uid="uid://y2w71ew3be3l" path="res://dialogue/ui_talkers/ui_reward.gd" id="13_vyqle"]
 [ext_resource type="PackedScene" uid="uid://bvg0cccacnihn" path="res://ui/credits_menu/credits_menu.tscn" id="14_215e1"]
 [ext_resource type="PackedScene" uid="uid://b6i7gjrynvevy" path="res://entities/npc/brad/brad.tscn" id="14_xa8c5"]
+[ext_resource type="Texture2D" uid="uid://bkeesrcbl2ui6" path="res://assets/ui/reward_backdrop.png" id="14_xoeau"]
+[ext_resource type="Texture2D" uid="uid://bap0db04k0425" path="res://assets/characters/annemette_walk.png" id="15_6qn5j"]
 [ext_resource type="Script" uid="uid://dv81dikbp6dgf" path="res://environments/background.gd" id="16_4v2jo"]
 [ext_resource type="PackedScene" uid="uid://dfhrtwvd784y6" path="res://entities/npc/shoal/shoal.tscn" id="16_5b14r"]
+[ext_resource type="Texture2D" uid="uid://bchcjt000nkq3" path="res://placeholders/placeholder_player_converse.png" id="16_wj41c"]
 [ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="17_082n1"]
+[ext_resource type="Texture2D" uid="uid://m4eds0q1hio" path="res://assets/characters/Annemette_Sprite.png" id="17_baljx"]
 [ext_resource type="Texture2D" uid="uid://cnnllqarr4p2q" path="res://assets/objects/coral1.png" id="17_xfvwf"]
+[ext_resource type="Texture2D" uid="uid://cgctem2atnxye" path="res://IMG_2036.png" id="18_t2ssd"]
+[ext_resource type="Texture2D" uid="uid://162frumgr484" path="res://IMG_2037.png" id="19_7noa1"]
 [ext_resource type="Script" uid="uid://dq0ws72uxeeqa" path="res://entities/objects/world_object_holds_item.gd" id="19_xex6t"]
+[ext_resource type="AudioStream" uid="uid://dchavohcad2mt" path="res://dialogue/blips/blip_default_2.mp3" id="20_3xib3"]
 [ext_resource type="PackedScene" uid="uid://dhu1u8ah5cufe" path="res://entities/objects/car_keys/car_keys.tscn" id="20_aa0lp"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="21_iu0sx"]
 [ext_resource type="Script" uid="uid://c3mwtx0cejlyx" path="res://entities/objects/world_object_has_dialogue_connector.gd" id="22_xex6t"]
@@ -40,6 +58,114 @@
 [ext_resource type="Texture2D" uid="uid://7gj2dlm1wm0v" path="res://assets/objects/door_closed.png" id="26_r62pu"]
 [ext_resource type="Script" uid="uid://c7goundowx3su" path="res://scene_change.gd" id="28_5b14r"]
 [ext_resource type="Texture2D" uid="uid://c01m5sod15qd6" path="res://assets/environment/static_background.png" id="39_l1i01"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsx87"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(2034, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2b1i"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(0, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avo8k"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(1017, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da8va"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(2034, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahgs1"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(3051, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ap5n"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(0, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3swkp"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(1017, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6tc8"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(2034, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bewxf"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(3051, 2026, 1017, 2026)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04flo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsx87")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_wj41c")
+}],
+"loop": 1,
+"name": &"proto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_baljx")
+}],
+"loop": 1,
+"name": &"talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_t2ssd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_7noa1")
+}],
+"loop": 1,
+"name": &"thought",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2b1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avo8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da8va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahgs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ap5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3swkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6tc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bewxf")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2x3i4"]
 shader = ExtResource("17_082n1")
@@ -70,8 +196,8 @@ script = ExtResource("1_feb5d")
 unique_name_in_owner = true
 position = Vector2(576, 324)
 script = ExtResource("2_bnpwn")
-talk_trans = NodePath("../Node2D")
-player = NodePath("../World/Player")
+talk_trans = NodePath("")
+player = NodePath("../Player/Player")
 left_bound = -400.0
 right_bound = 1600.0
 environment_holder = NodePath("../World/Environment/FrontYard")
@@ -79,31 +205,324 @@ environment_holder = NodePath("../World/Environment/FrontYard")
 [node name="PlayerWalkPos" type="Node2D" parent="MainCamera" unique_id=575210671]
 position = Vector2(-384, 144)
 
-[node name="BlackScreen" type="ColorRect" parent="MainCamera" unique_id=493484777]
-visible = false
-modulate = Color(1, 1, 1, 0)
-z_index = 5
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="Dialogue" type="CanvasLayer" parent="." unique_id=67819007]
+layer = 4
 
-[node name="NPCTalk" parent="Dialogue" unique_id=1866522664 node_paths=PackedStringArray("main_cam", "screen_fader", "instance_connectors", "player") instance=ExtResource("10_215e1")]
+[node name="NPCTalk" type="Node2D" parent="Dialogue" unique_id=1866522664 node_paths=PackedStringArray("main_cam", "talk_cam", "npc_sprite", "transitioners", "screen_fader", "instance_connectors", "ui_npc_talk_left", "ui_npc_talk_right", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "debug_rect_display", "player")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
+script = ExtResource("3_vuohh")
 main_cam = NodePath("../../MainCamera")
-screen_fader = NodePath("../../MainCamera/BlackScreen")
+talk_cam = NodePath("TalkFakeCam")
+npc_sprite = NodePath("UI/Characters/NPC/Sprite")
+transitioners = NodePath("UI/Transitioners")
+screen_fader = NodePath("../../ThoughtBackdrop/ThoughtBackdrop")
 instance_connectors = NodePath("../DialogueInstanceConnectors")
-player = NodePath("../../World/Player")
+ui_npc_talk_left = NodePath("UI/UITalkNPCLeft")
+ui_npc_talk_right = NodePath("UI/UITalkNPCRight")
+ui_choice_display = NodePath("UI/UIChoice")
+ui_thought_talk = NodePath("UI/UITalkThought")
+ui_reward = NodePath("UI/UIReward")
+blip_player = NodePath("BlipPlayer")
+debug_rect_display = NodePath("tempscreen")
+player = NodePath("../../Player/Player")
+
+[node name="TalkFakeCam" type="Node2D" parent="Dialogue/NPCTalk" unique_id=1001578939]
+script = ExtResource("4_3gvs5")
+
+[node name="UI" type="CanvasLayer" parent="Dialogue/NPCTalk" unique_id=1617838828]
+layer = 4
+follow_viewport_enabled = true
+
+[node name="Characters" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=992138454]
+position = Vector2(0, 4)
+
+[node name="NPC" type="Node2D" parent="Dialogue/NPCTalk/UI/Characters" unique_id=286059124]
+position = Vector2(728.00006, -112)
+scale = Vector2(0.45118892, 0.4559301)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Dialogue/NPCTalk/UI/Characters/NPC" unique_id=1340904401]
+position = Vector2(78.90354, -126.98798)
+sprite_frames = ExtResource("5_mc3al")
+animation = &"wormy_angry"
+
+[node name="Transitioners" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=249844191]
+
+[node name="TransPlayerTalk" type="Node2D" parent="Dialogue/NPCTalk/UI/Transitioners" unique_id=1866418926]
+position = Vector2(-416, 176)
+
+[node name="TransNPCTalk" type="Node2D" parent="Dialogue/NPCTalk/UI/Transitioners" unique_id=542569004]
+position = Vector2(400, -64)
+
+[node name="TransCameraTalk" type="Node2D" parent="Dialogue/NPCTalk/UI/Transitioners" unique_id=344368334]
+scale = Vector2(1.1, 1.1)
+
+[node name="TransPlayerThought" type="Node2D" parent="Dialogue/NPCTalk/UI/Transitioners" unique_id=861926996]
+position = Vector2(-384, 168)
+scale = Vector2(1.25, 1.25)
+
+[node name="TransNPCThought" type="Node2D" parent="Dialogue/NPCTalk/UI/Transitioners" unique_id=1177986880]
+position = Vector2(274, 112)
+scale = Vector2(0.5, 0.5)
+
+[node name="TransCameraThought" type="Node2D" parent="Dialogue/NPCTalk/UI/Transitioners" unique_id=471356132]
+position = Vector2(-384, 91)
+scale = Vector2(1.5, 1.5)
+
+[node name="TransDisplayChoices" type="Node2D" parent="Dialogue/NPCTalk/UI/Transitioners" unique_id=2012092635]
+position = Vector2(-384, 128)
+
+[node name="TransBoxTalk" type="Node2D" parent="Dialogue/NPCTalk/UI/Transitioners" unique_id=2043023182]
+position = Vector2(298, -162)
+
+[node name="UIChoice" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=2085162665 node_paths=PackedStringArray("choice_template", "transitioners")]
+z_index = 10
+position = Vector2(0, 4)
+script = ExtResource("6_bqa6y")
+choice_template = NodePath("CanvasLayer/ChoiceTemplate")
+transitioners = NodePath("../Transitioners")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Dialogue/NPCTalk/UI/UIChoice" unique_id=710000964]
+layer = 5
+
+[node name="ChoiceTemplate" type="Node2D" parent="Dialogue/NPCTalk/UI/UIChoice/CanvasLayer" unique_id=1659226158 node_paths=PackedStringArray("select_button", "label", "sprite", "sanity_display")]
+z_index = 10
+script = ExtResource("7_du4n2")
+select_button = NodePath("Button")
+label = NodePath("RichTextLabel")
+sprite = NodePath("Sprite")
+sanity_display = NodePath("SanityDisplay")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UIChoice/CanvasLayer/ChoiceTemplate" unique_id=754513161]
+z_index = 24
+offset_left = -136.0
+offset_top = 7.9999847
+offset_right = 136.0
+offset_bottom = 52.999985
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Choice[/center]"
+fit_content = true
+
+[node name="SanityDisplay" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UIChoice/CanvasLayer/ChoiceTemplate" unique_id=1365563672]
+z_index = 24
+offset_left = -136.0
+offset_top = -8.000015
+offset_right = 136.0
+offset_bottom = 36.999985
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]PREREQ[/center]"
+fit_content = true
+
+[node name="Sprite" type="Sprite2D" parent="Dialogue/NPCTalk/UI/UIChoice/CanvasLayer/ChoiceTemplate" unique_id=1546460758]
+z_index = 24
+position = Vector2(0, -24)
+scale = Vector2(0.1, 0.1)
+
+[node name="Button" type="Button" parent="Dialogue/NPCTalk/UI/UIChoice/CanvasLayer/ChoiceTemplate" unique_id=1642728767]
+modulate = Color(1, 1, 1, 0)
+z_index = 24
+offset_left = -40.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 37.0
+
+[node name="UITalkNPCLeft" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
+z_index = 10
+position = Vector2(0, 4)
+script = ExtResource("8_ra4rb")
+box_template = NodePath("BoxTemplate")
+transitioners = NodePath("../Transitioners")
+metadata/_custom_type_script = "uid://c0agvk4gyihqb"
+
+[node name="BoxTemplate" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkNPCLeft" unique_id=1136927499 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(247, -170)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkNPCLeft/BoxTemplate" unique_id=1253478562]
+
+[node name="Rotater" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkNPCLeft/BoxTemplate/Positioner" unique_id=1596749516]
+
+[node name="Sizer" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater" unique_id=899929884]
+position = Vector2(-76, -4)
+
+[node name="Background" type="Sprite2D" parent="Dialogue/NPCTalk/UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1306438264]
+texture_filter = 1
+position = Vector2(-156, 8.000004)
+scale = Vector2(0.7243589, 0.724359)
+texture = ExtResource("10_jo4nb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=491054044]
+clip_contents = false
+offset_left = -355.0
+offset_top = -34.0
+offset_right = 1.0
+offset_bottom = 37.0
+theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UITalkNPCRight" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=105658780 node_paths=PackedStringArray("box_template", "transitioners")]
+z_index = 10
+position = Vector2(0, 4)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+script = ExtResource("8_ra4rb")
+box_template = NodePath("BoxTemplate")
+transitioners = NodePath("../Transitioners")
+metadata/_custom_type_script = "uid://c0agvk4gyihqb"
+
+[node name="BoxTemplate" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkNPCRight" unique_id=1132812259 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(247, -170)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkNPCRight/BoxTemplate" unique_id=1279728768]
+
+[node name="Rotater" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkNPCRight/BoxTemplate/Positioner" unique_id=1160517676]
+
+[node name="Sizer" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater" unique_id=2081270962]
+position = Vector2(-76, -4)
+
+[node name="Background" type="Sprite2D" parent="Dialogue/NPCTalk/UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=164076434]
+texture_filter = 1
+position = Vector2(-156, 8.000004)
+scale = Vector2(0.7243589, 0.724359)
+texture = ExtResource("10_jo4nb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1779555196]
+clip_contents = false
+offset_left = -5.0
+offset_top = -34.0
+offset_right = 351.0
+offset_bottom = 37.0
+scale = Vector2(-1, 1)
+theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UITalkThought" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=1801668213 node_paths=PackedStringArray("box_template")]
+z_index = 10
+position = Vector2(0, 4)
+script = ExtResource("11_56gn1")
+box_template = NodePath("BoxTemplate")
+metadata/_custom_type_script = "uid://2m2g0adych3l"
+
+[node name="BoxTemplate" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkThought" unique_id=1322935405 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(296, 192)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate" unique_id=1774921862]
+position = Vector2(2, 3)
+
+[node name="Rotater" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate/Positioner" unique_id=1210155418]
+
+[node name="Sizer" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate/Positioner/Rotater" unique_id=1627653351]
+position = Vector2(-76, -4)
+
+[node name="Background" type="Sprite2D" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1448479009]
+position = Vector2(385.99997, 13)
+texture = ExtResource("12_avmo2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=192639951]
+clip_contents = false
+offset_left = 166.0
+offset_top = -33.0
+offset_right = 590.0
+offset_bottom = 60.0
+theme_override_colors/default_color = Color(0.33140886, 0.060379684, 0.5436291, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UIReward" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=1354403908 node_paths=PackedStringArray("box_template", "label", "char_sticker")]
+z_index = 10
+position = Vector2(0, 4)
+script = ExtResource("13_vyqle")
+box_template = NodePath("Screen/BoxTemplate")
+label = NodePath("Screen/BoxTemplate/Positioner/Rotater/Sizer/RichTextLabel")
+char_sticker = NodePath("Screen/BoxTemplate/CharSticker")
+metadata/_custom_type_script = "uid://y2w71ew3be3l"
+
+[node name="Screen" type="CanvasLayer" parent="Dialogue/NPCTalk/UI/UIReward" unique_id=1966280548]
+layer = 10
+
+[node name="BoxTemplate" type="Node2D" parent="Dialogue/NPCTalk/UI/UIReward/Screen" unique_id=727790164 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+visible = false
+position = Vector2(296, 196)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="Dialogue/NPCTalk/UI/UIReward/Screen/BoxTemplate" unique_id=930387693]
+
+[node name="Rotater" type="Node2D" parent="Dialogue/NPCTalk/UI/UIReward/Screen/BoxTemplate/Positioner" unique_id=1966331764]
+position = Vector2(280, 132)
+
+[node name="Sizer" type="Node2D" parent="Dialogue/NPCTalk/UI/UIReward/Screen/BoxTemplate/Positioner/Rotater" unique_id=962859680]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UIReward/Screen/BoxTemplate/Positioner/Rotater/Sizer" unique_id=495928341]
+z_index = 25
+clip_contents = false
+offset_left = -289.0
+offset_top = -19.0
+offset_right = 311.0
+offset_bottom = 81.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]Reward: YOU OBTAINED"
+
+[node name="Sprite2D" type="Sprite2D" parent="Dialogue/NPCTalk/UI/UIReward/Screen/BoxTemplate" unique_id=1300686617]
+position = Vector2(280, 128)
+texture = ExtResource("14_xoeau")
+
+[node name="CharSticker" type="AnimatedSprite2D" parent="Dialogue/NPCTalk/UI/UIReward/Screen/BoxTemplate" unique_id=1830394438]
+position = Vector2(-105.999985, 307)
+scale = Vector2(0.42225963, 0.42225966)
+sprite_frames = SubResource("SpriteFrames_04flo")
+animation = &"proto"
+
+[node name="tempscreen" type="ColorRect" parent="Dialogue/NPCTalk" unique_id=746877131]
+visible = false
+offset_left = -576.0
+offset_top = -328.0
+offset_right = 576.0
+offset_bottom = 328.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/tempscreen" unique_id=647855477]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 144.0
+offset_right = 512.0
+offset_bottom = 280.0
+text = "and everyone died"
+
+[node name="BlipPlayer" type="AudioStreamPlayer" parent="Dialogue/NPCTalk" unique_id=106897715]
+stream = ExtResource("20_3xib3")
+bus = &"SFX"
 
 [node name="DialogueLineTreeHolder" parent="Dialogue" unique_id=161622172 node_paths=PackedStringArray("debug_npc") instance=ExtResource("4_iotsf")]
 unique_name_in_owner = true
@@ -160,12 +579,13 @@ script = ExtResource("5_lc2xo")
 connected_tree = NodePath("../../DialogueLineTreeHolder/InteractVent")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1459312706]
+layer = 3
 
 [node name="Button" type="Button" parent="UI" unique_id=369431034]
-offset_left = 8.0
-offset_top = 5.0
-offset_right = 121.0
-offset_bottom = 36.0
+offset_left = 434.0
+offset_top = 6.0
+offset_right = 547.0
+offset_bottom = 37.0
 text = "change scene"
 script = ExtResource("28_5b14r")
 
@@ -183,6 +603,19 @@ text = "INVENTORY"
 
 [node name="InventoryUI" parent="UI/HUD" unique_id=964416721 instance=ExtResource("7_eow3j")]
 unique_name_in_owner = true
+
+[node name="Confidence" type="Control" parent="UI/HUD" unique_id=847833353]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("9_klri6")
+
+[node name="Counter" type="RichTextLabel" parent="UI/HUD/Confidence" unique_id=1112014496]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 553.0
+offset_bottom = 46.0
+text = "CONFIDENCE: "
 
 [node name="StartMenu" parent="UI" unique_id=1065199818 instance=ExtResource("4_fc0e3")]
 unique_name_in_owner = true
@@ -214,8 +647,36 @@ color = Color(0, 0, 0, 1)
 [node name="Cheats" parent="UI" unique_id=788448949 instance=ExtResource("9_lc2xo")]
 unique_name_in_owner = true
 
-[node name="Node2D" type="Node2D" parent="." unique_id=2025733836]
-position = Vector2(1000, 256)
+[node name="Player" type="CanvasLayer" parent="." unique_id=1211384257]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="Player" type="Node2D" parent="Player" unique_id=1760946569]
+unique_name_in_owner = true
+position = Vector2(222, 488)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("3_xfvwf")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player/Player" unique_id=1837903203]
+z_index = 100
+sprite_frames = ExtResource("3_36jdj")
+animation = &"idle"
+frame_progress = 0.30366665
+
+[node name="ThoughtBackdrop" type="CanvasLayer" parent="." unique_id=640070024]
+
+[node name="ThoughtBackdrop" type="ColorRect" parent="ThoughtBackdrop" unique_id=33215654]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 644.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="World" type="CanvasLayer" parent="." unique_id=624641402]
 layer = 0
@@ -470,20 +931,6 @@ position = Vector2(6923, -35)
 [node name="Backyard" parent="World/Environment" unique_id=1847859133 instance=ExtResource("9_i2p71")]
 unique_name_in_owner = true
 position = Vector2(8786, 0)
-
-[node name="Player" type="Node2D" parent="World" unique_id=1760946569]
-unique_name_in_owner = true
-position = Vector2(144, 368)
-scale = Vector2(0.25, 0.25)
-script = ExtResource("3_xfvwf")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="World/Player" unique_id=1837903203]
-visible = false
-z_index = 100
-position = Vector2(0, 91.07143)
-sprite_frames = ExtResource("3_36jdj")
-animation = &"idle"
-frame_progress = 0.30366665
 
 [node name="NPCs" type="Node2D" parent="World" unique_id=1409111629]
 position = Vector2(304, 784)
