@@ -37,7 +37,9 @@
 [ext_resource type="Script" uid="uid://c3mwtx0cejlyx" path="res://entities/objects/world_object_has_dialogue_connector.gd" id="22_xex6t"]
 [ext_resource type="Texture2D" uid="uid://f6numrlvxx6j" path="res://assets/objects/coral2.png" id="23_aa0lp"]
 [ext_resource type="Texture2D" uid="uid://hgn4fl3ndy5c" path="res://assets/objects/coral3.png" id="24_iu0sx"]
+[ext_resource type="Texture2D" uid="uid://7gj2dlm1wm0v" path="res://assets/objects/door_closed.png" id="26_r62pu"]
 [ext_resource type="Script" uid="uid://c7goundowx3su" path="res://scene_change.gd" id="28_5b14r"]
+[ext_resource type="Texture2D" uid="uid://c01m5sod15qd6" path="res://assets/environment/static_background.png" id="39_l1i01"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2x3i4"]
 shader = ExtResource("17_082n1")
@@ -56,6 +58,9 @@ height = 176.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4v2jo"]
 radius = 60.0
 height = 192.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klri6"]
+size = Vector2(317, 301)
 
 [node name="Game" type="Node2D" unique_id=69826831]
 process_mode = 3
@@ -392,6 +397,31 @@ metadata/_custom_type_script = "uid://d24v64w0rb8ei"
 position = Vector2(3.625, 51.25)
 shape = SubResource("CapsuleShape2D_4v2jo")
 
+[node name="DoorClosed" type="Node2D" parent="World/Environment/FrontYard" unique_id=2118764912 node_paths=PackedStringArray("connector")]
+z_index = -1
+position = Vector2(936, 495)
+scale = Vector2(-1, 1)
+script = ExtResource("22_xex6t")
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://c3mwtx0cejlyx"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/DoorClosed" unique_id=1380399941]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(377.00003, -302.00003)
+scale = Vector2(0.212, 0.212)
+texture = ExtResource("26_r62pu")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/DoorClosed" unique_id=1707782447 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/DoorClosed/Interactable" unique_id=240473853]
+position = Vector2(397.125, -185.25)
+shape = SubResource("RectangleShape2D_klri6")
+
 [node name="LivingRoom" parent="World/Environment" unique_id=1056652401 instance=ExtResource("5_x5p1p")]
 unique_name_in_owner = true
 position = Vector2(2651, 18)
@@ -458,6 +488,15 @@ frame_progress = 0.30366665
 [node name="NPCs" type="Node2D" parent="World" unique_id=1409111629]
 position = Vector2(304, 784)
 
+[node name="StaticBackgrounds" type="CanvasLayer" parent="." unique_id=2097648697]
+layer = -1
+
+[node name="StaticBackground" type="Sprite2D" parent="StaticBackgrounds" unique_id=1858024524]
+position = Vector2(562.7, 160.575)
+rotation = -1.5707964
+scale = Vector2(0.27590057, 1.2165343)
+texture = ExtResource("39_l1i01")
+
 [connection signal="button_down" from="UI/Button" to="UI/Button" method="_on_button_down"]
 [connection signal="toggled" from="UI/HUD/InventoryButton" to="." method="_on_inventory_button_toggled"]
 [connection signal="start_game" from="UI/StartMenu" to="." method="_on_start_game"]
@@ -469,6 +508,7 @@ position = Vector2(304, 784)
 [connection signal="interacted" from="World/Environment/FrontYard/CoralBush4/Interactable" to="World/Environment/FrontYard/CoralBush4" method="_on_interactable_interacted"]
 [connection signal="interacted" from="World/Environment/FrontYard/CoralBush5HASKEYS/Interactable" to="World/Environment/FrontYard/CoralBush5HASKEYS" method="_on_interactable_interacted"]
 [connection signal="interacted" from="World/Environment/FrontYard/CoralBush6/Interactable" to="World/Environment/FrontYard/CoralBush6" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/DoorClosed/Interactable" to="World/Environment/FrontYard/DoorClosed" method="_on_interactable_interacted"]
 
 [editable path="Dialogue/DialogueLineTreeHolder"]
 [editable path="Dialogue/DialogueLineTreeHolder/CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DSRewardPreset"]

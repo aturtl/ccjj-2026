@@ -33,7 +33,8 @@ func unpause_game() -> void:
 func _on_start_game() -> void:
 	get_tree().paused = false
 	UIManager.close_menu()
-	AudioManager.stop_music()
+	var audio = load("res://audio/outside door.mp3")
+	AudioManager.play_music(audio)
 	#inventory_ui.show()
 
 
