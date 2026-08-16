@@ -192,23 +192,23 @@ size = Vector2(317, 301)
 process_mode = 3
 script = ExtResource("1_feb5d")
 
-[node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("talk_trans", "player", "environment_holder")]
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("player", "environment_holder")]
 unique_name_in_owner = true
 position = Vector2(576, 324)
+process_callback = 0
 script = ExtResource("2_bnpwn")
-talk_trans = NodePath("")
 player = NodePath("../Player/Player")
 left_bound = -400.0
 right_bound = 1600.0
 environment_holder = NodePath("../World/Environment/FrontYard")
 
 [node name="PlayerWalkPos" type="Node2D" parent="MainCamera" unique_id=575210671]
-position = Vector2(-384, 144)
+position = Vector2(98, 144)
 
 [node name="Dialogue" type="CanvasLayer" parent="." unique_id=67819007]
 layer = 4
 
-[node name="NPCTalk" type="Node2D" parent="Dialogue" unique_id=1866522664 node_paths=PackedStringArray("main_cam", "talk_cam", "npc_sprite", "transitioners", "screen_fader", "instance_connectors", "ui_npc_talk_left", "ui_npc_talk_right", "ui_choice_display", "ui_thought_talk", "ui_reward", "blip_player", "debug_rect_display", "player")]
+[node name="NPCTalk" type="Node2D" parent="Dialogue" unique_id=1866522664 node_paths=PackedStringArray("main_cam", "talk_cam", "npc_sprite", "transitioners", "screen_fader", "instance_connectors", "ui_npc_talk_left", "ui_npc_talk_right", "ui_choice_display", "ui_player_talk_right", "ui_player_talk_left", "ui_reward", "blip_player", "debug_rect_display", "player")]
 unique_name_in_owner = true
 z_index = 100
 position = Vector2(576, 324)
@@ -222,7 +222,8 @@ instance_connectors = NodePath("../DialogueInstanceConnectors")
 ui_npc_talk_left = NodePath("UI/UITalkNPCLeft")
 ui_npc_talk_right = NodePath("UI/UITalkNPCRight")
 ui_choice_display = NodePath("UI/UIChoice")
-ui_thought_talk = NodePath("UI/UITalkThought")
+ui_player_talk_right = NodePath("UI/UITalkPlayerRight")
+ui_player_talk_left = NodePath("UI/UITalkPlayerLeft")
 ui_reward = NodePath("UI/UIReward")
 blip_player = NodePath("BlipPlayer")
 debug_rect_display = NodePath("tempscreen")
@@ -335,7 +336,7 @@ offset_bottom = 37.0
 
 [node name="UITalkNPCLeft" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
 z_index = 10
-position = Vector2(0, 4)
+position = Vector2(450, -207)
 script = ExtResource("8_ra4rb")
 box_template = NodePath("BoxTemplate")
 transitioners = NodePath("../Transitioners")
@@ -416,14 +417,15 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "DIALOGUE"
 
-[node name="UITalkThought" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=1801668213 node_paths=PackedStringArray("box_template")]
+[node name="UITalkPlayerRight" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=1801668213 node_paths=PackedStringArray("box_template")]
 z_index = 10
 position = Vector2(0, 4)
+scale = Vector2(0.7, 0.7)
 script = ExtResource("11_56gn1")
 box_template = NodePath("BoxTemplate")
 metadata/_custom_type_script = "uid://2m2g0adych3l"
 
-[node name="BoxTemplate" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkThought" unique_id=1322935405 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+[node name="BoxTemplate" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerRight" unique_id=1322935405 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
 position = Vector2(296, 192)
 script = ExtResource("9_ple6s")
 label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
@@ -431,24 +433,66 @@ sizer = NodePath("Positioner/Rotater/Sizer")
 rotater = NodePath("Positioner/Rotater")
 positioner = NodePath("Positioner")
 
-[node name="Positioner" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate" unique_id=1774921862]
+[node name="Positioner" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerRight/BoxTemplate" unique_id=1774921862]
 position = Vector2(2, 3)
 
-[node name="Rotater" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate/Positioner" unique_id=1210155418]
+[node name="Rotater" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerRight/BoxTemplate/Positioner" unique_id=1210155418]
+position = Vector2(-2, 36)
 
-[node name="Sizer" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate/Positioner/Rotater" unique_id=1627653351]
-position = Vector2(-76, -4)
+[node name="Sizer" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerRight/BoxTemplate/Positioner/Rotater" unique_id=1627653351]
+position = Vector2(-103, 32)
 
-[node name="Background" type="Sprite2D" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1448479009]
+[node name="Background" type="Sprite2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1448479009]
 position = Vector2(385.99997, 13)
 texture = ExtResource("12_avmo2")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UITalkThought/BoxTemplate/Positioner/Rotater/Sizer" unique_id=192639951]
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UITalkPlayerRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=192639951]
 clip_contents = false
 offset_left = 166.0
 offset_top = -33.0
 offset_right = 590.0
 offset_bottom = 60.0
+theme_override_colors/default_color = Color(0.33140886, 0.060379684, 0.5436291, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UITalkPlayerLeft" type="Node2D" parent="Dialogue/NPCTalk/UI" unique_id=1211434415 node_paths=PackedStringArray("box_template")]
+z_index = 10
+position = Vector2(0, 4)
+scale = Vector2(-0.7, 0.7)
+script = ExtResource("11_56gn1")
+box_template = NodePath("BoxTemplate")
+metadata/_custom_type_script = "uid://2m2g0adych3l"
+
+[node name="BoxTemplate" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerLeft" unique_id=1463034106 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(296, 192)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerLeft/BoxTemplate" unique_id=1191794924]
+position = Vector2(2, 3)
+
+[node name="Rotater" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerLeft/BoxTemplate/Positioner" unique_id=2105246195]
+position = Vector2(-2, 36)
+
+[node name="Sizer" type="Node2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerLeft/BoxTemplate/Positioner/Rotater" unique_id=2095953089]
+position = Vector2(-103, 32)
+
+[node name="Background" type="Sprite2D" parent="Dialogue/NPCTalk/UI/UITalkPlayerLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1807214807]
+position = Vector2(385.99997, 13)
+texture = ExtResource("12_avmo2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/NPCTalk/UI/UITalkPlayerLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=87163461]
+clip_contents = false
+offset_left = 591.0
+offset_top = -33.0
+offset_right = 1015.0
+offset_bottom = 60.0
+scale = Vector2(-1, 1)
 theme_override_colors/default_color = Color(0.33140886, 0.060379684, 0.5436291, 1)
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
@@ -659,6 +703,8 @@ script = ExtResource("3_xfvwf")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player/Player" unique_id=1837903203]
 z_index = 100
+position = Vector2(-167.99997, -104.000015)
+scale = Vector2(0.72812194, 0.72812194)
 sprite_frames = ExtResource("3_36jdj")
 animation = &"idle"
 frame_progress = 0.30366665
@@ -692,6 +738,11 @@ script = ExtResource("16_4v2jo")
 
 [node name="NoName" parent="World/Environment/FrontYard" unique_id=1669043619 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
 position = Vector2(99, 224)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/NoName")
+
+[node name="NoName2" parent="World/Environment/FrontYard" unique_id=1143430473 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
+position = Vector2(1275, 259)
 scale = Vector2(0.5, 0.5)
 connector = NodePath("../../../../Dialogue/DialogueInstanceConnectors/NoName")
 
@@ -958,7 +1009,6 @@ texture = ExtResource("39_l1i01")
 [connection signal="interacted" from="World/Environment/FrontYard/DoorClosed/Interactable" to="World/Environment/FrontYard/DoorClosed" method="_on_interactable_interacted"]
 
 [editable path="Dialogue/DialogueLineTreeHolder"]
-[editable path="Dialogue/DialogueLineTreeHolder/CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn/DialoguePlaySound/DialogueFadeOut/DialogueStatement3/DSRewardPreset"]
 [editable path="Dialogue/DialogueLineTreeHolder/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]
 [editable path="Dialogue/DialogueLineTreeHolder/Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter"]
 [editable path="Dialogue/DialogueLineTreeHolder/_Reef2_Reward/DialogueStatSetter"]

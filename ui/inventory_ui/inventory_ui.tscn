@@ -27,22 +27,28 @@ offset_right = 4.0
 offset_bottom = -25.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="InventorySlot" parent="HBoxContainer" unique_id=1721475489 instance=ExtResource("2_jm3eq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="InventorySlot2" parent="HBoxContainer" unique_id=543803140 instance=ExtResource("2_jm3eq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="InventorySlot3" parent="HBoxContainer" unique_id=1268248406 instance=ExtResource("2_jm3eq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="InventorySlot4" parent="HBoxContainer" unique_id=1852960441 instance=ExtResource("2_jm3eq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="InventorySlot5" parent="HBoxContainer" unique_id=385296264 instance=ExtResource("2_jm3eq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=624989962]
 visible = false

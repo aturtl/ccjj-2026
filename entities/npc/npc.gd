@@ -1,5 +1,7 @@
 class_name NPC extends Node2D
 
+@export var dialogue_height: float = 50.0
+@export var dialogue_distance: float = 50.0
 @export var connector: DialogueInstanceConnector
 
 func _ready():

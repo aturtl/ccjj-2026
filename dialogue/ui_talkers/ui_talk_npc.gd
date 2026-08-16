@@ -7,7 +7,7 @@ class_name UITalkNPC extends UITalk
 @export var transitioners: Node2D
 @export var in_between_time = .04
 
-@export var end_wait = 1.0
+@export var end_wait = .6
 
 var box_instances = {}
 
