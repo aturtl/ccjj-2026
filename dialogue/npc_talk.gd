@@ -110,7 +110,6 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 			
 			original_player_pos = Vector2(new_pos_x, player.global_position.y)
 			original_cam_pos.x = main_cam.restrict_to_cam_bounds(original_player_pos, Vector2(1.0,1.0)).x
-			main_cam.to_pos.x = original_cam_pos.x
 			
 			jump_tween.tween_property(player, "global_position:y", original_player_pos.y - 12.0, .2).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 			jump_tween.tween_property(player, "global_position:y", original_player_pos.y, .2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
@@ -134,6 +133,7 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 	else:
 		center_cam_pos = player.position
 	
+	main_cam.to_pos.x = original_player_pos.x
 	
 	print(GameState.in_dialogue)
 	
