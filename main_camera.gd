@@ -27,7 +27,7 @@ func _cheat_entered(cheat: String):
 
 
 func _ready():
-	%Cheats.cheat_entered.connect(_cheat_entered)
+	%CheatsUI.cheat_entered.connect(_cheat_entered)
 
 
 func tween_to_transform(trans: Transform2D, tween: Tween, time: float = DEFAULT_TIME):

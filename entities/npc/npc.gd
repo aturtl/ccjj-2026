@@ -1,4 +1,4 @@
-class_name NPC extends Node2D
+class_name NPC extends WorldEntity
 
 @export var dialogue_height: float = 50.0
 @export var dialogue_distance: float = 50.0

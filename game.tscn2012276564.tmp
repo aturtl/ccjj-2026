@@ -1,0 +1,1142 @@
+[gd_scene format=3 uid="uid://c0fri55hif3q5"]
+
+[ext_resource type="Script" uid="uid://c0j831wd34olk" path="res://game.gd" id="1_feb5d"]
+[ext_resource type="Script" uid="uid://7844f0ujgu6s" path="res://main_camera.gd" id="2_bnpwn"]
+[ext_resource type="SpriteFrames" uid="uid://cptx6biw1bgdv" path="res://animations/character_animations.tres" id="3_36jdj"]
+[ext_resource type="Script" uid="uid://sl735wmgnlki" path="res://dialogue/npc_talk.gd" id="3_vuohh"]
+[ext_resource type="Script" uid="uid://0hjxw4qy6dyl" path="res://player.gd" id="3_xfvwf"]
+[ext_resource type="Script" uid="uid://bxinhru5uqlbf" path="res://cameras/fake_cam.gd" id="4_3gvs5"]
+[ext_resource type="PackedScene" uid="uid://c7eb7hqkfw4g3" path="res://ui/start_menu/start_menu.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://b6u44p43el3vx" path="res://dialogue/dialogue_lines.tscn" id="4_iotsf"]
+[ext_resource type="Script" uid="uid://bhi504klelxkd" path="res://environments/environment.gd" id="4_x5p1p"]
+[ext_resource type="Script" uid="uid://cv375brw8kgef" path="res://dialogue/dialogue_instance_connectors.gd" id="5_215e1"]
+[ext_resource type="Script" uid="uid://cg11uyllsqbg" path="res://dialogue/dialogue_instance_connector.gd" id="5_lc2xo"]
+[ext_resource type="SpriteFrames" uid="uid://gn5nv32ihl4k" path="res://animations/npc_animations.tres" id="5_mc3al"]
+[ext_resource type="PackedScene" uid="uid://be0yxybpackxn" path="res://ui/settings_menu/settings.tscn" id="5_ryrav"]
+[ext_resource type="Script" uid="uid://cefhro15wp6v7" path="res://dialogue/ui_choice_displays/ui_choice_display.gd" id="6_bqa6y"]
+[ext_resource type="PackedScene" uid="uid://h566jkatlbcl" path="res://ui/paused_menu/paused.tscn" id="6_eow3j"]
+[ext_resource type="Script" uid="uid://c70kymtkpjq10" path="res://dialogue/ui_templates/choice_template.gd" id="7_du4n2"]
+[ext_resource type="PackedScene" uid="uid://ix4858unbekg" path="res://ui/inventory_ui/inventory_ui.tscn" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://chqgt7wswap28" path="res://entities/npc/no_name/no_name.tscn" id="7_hb5m1"]
+[ext_resource type="Script" uid="uid://c0agvk4gyihqb" path="res://dialogue/ui_talkers/ui_talk_npc.gd" id="8_ra4rb"]
+[ext_resource type="Script" uid="uid://da2o3mrfbfqni" path="res://confidence.gd" id="9_klri6"]
+[ext_resource type="PackedScene" uid="uid://c0vcgctyyu75u" path="res://cheats/cheats.tscn" id="9_lc2xo"]
+[ext_resource type="Script" uid="uid://b04fwqkn4w1tf" path="res://dialogue/ui_templates/box_template.gd" id="9_ple6s"]
+[ext_resource type="PackedScene" uid="uid://cwelbtwv0u607" path="res://entities/npc/pacifica/pacifica.tscn" id="9_x5p1p"]
+[ext_resource type="Texture2D" uid="uid://duhua14dmi18j" path="res://assets/ui/npc_dialogue_box.png" id="10_jo4nb"]
+[ext_resource type="PackedScene" uid="uid://d1dsnitsm7cwe" path="res://entities/npc/reef/reef.tscn" id="10_qhcbd"]
+[ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="11_56gn1"]
+[ext_resource type="Texture2D" uid="uid://cf5j5prldlckw" path="res://assets/ui/mc_dialogue_box.png" id="12_avmo2"]
+[ext_resource type="PackedScene" uid="uid://bm3ndpel5oqyw" path="res://entities/npc/mooray/mooray.tscn" id="12_f1jbl"]
+[ext_resource type="PackedScene" uid="uid://br55v2y7r0oac" path="res://entities/npc/dog/dog.tscn" id="13_vaj68"]
+[ext_resource type="Script" uid="uid://y2w71ew3be3l" path="res://dialogue/ui_talkers/ui_reward.gd" id="13_vyqle"]
+[ext_resource type="PackedScene" uid="uid://bvg0cccacnihn" path="res://ui/credits_menu/credits_menu.tscn" id="14_215e1"]
+[ext_resource type="PackedScene" uid="uid://b6i7gjrynvevy" path="res://entities/npc/brad/brad.tscn" id="14_xa8c5"]
+[ext_resource type="Texture2D" uid="uid://bkeesrcbl2ui6" path="res://assets/ui/reward_backdrop.png" id="14_xoeau"]
+[ext_resource type="Texture2D" uid="uid://bap0db04k0425" path="res://assets/characters/annemette_walk.png" id="15_6qn5j"]
+[ext_resource type="Script" uid="uid://dv81dikbp6dgf" path="res://environments/background.gd" id="16_4v2jo"]
+[ext_resource type="PackedScene" uid="uid://dfhrtwvd784y6" path="res://entities/npc/shoal/shoal.tscn" id="16_5b14r"]
+[ext_resource type="Texture2D" uid="uid://bchcjt000nkq3" path="res://placeholders/placeholder_player_converse.png" id="16_wj41c"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="17_082n1"]
+[ext_resource type="Texture2D" uid="uid://m4eds0q1hio" path="res://assets/characters/Annemette_Sprite.png" id="17_baljx"]
+[ext_resource type="Texture2D" uid="uid://cnnllqarr4p2q" path="res://assets/objects/coral1.png" id="17_xfvwf"]
+[ext_resource type="Texture2D" uid="uid://cgctem2atnxye" path="res://IMG_2036.png" id="18_t2ssd"]
+[ext_resource type="Texture2D" uid="uid://162frumgr484" path="res://IMG_2037.png" id="19_7noa1"]
+[ext_resource type="AudioStream" uid="uid://dchavohcad2mt" path="res://dialogue/blips/blip_default_2.mp3" id="20_3xib3"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="21_iu0sx"]
+[ext_resource type="Texture2D" uid="uid://f6numrlvxx6j" path="res://assets/objects/coral2.png" id="23_aa0lp"]
+[ext_resource type="Texture2D" uid="uid://hgn4fl3ndy5c" path="res://assets/objects/coral3.png" id="24_iu0sx"]
+[ext_resource type="Texture2D" uid="uid://7gj2dlm1wm0v" path="res://assets/objects/door_closed.png" id="26_r62pu"]
+[ext_resource type="Script" uid="uid://c7goundowx3su" path="res://scene_change.gd" id="28_5b14r"]
+[ext_resource type="Texture2D" uid="uid://cta4eyh2nqgo6" path="res://assets/environment/frontyard.png" id="36_2tki7"]
+[ext_resource type="Texture2D" uid="uid://c01m5sod15qd6" path="res://assets/environment/static_background.png" id="39_l1i01"]
+[ext_resource type="Script" uid="uid://d1ixo8511f4na" path="res://entities/objects/base_world_object.gd" id="43_2tki7"]
+[ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="47_ib7ph"]
+[ext_resource type="Texture2D" uid="uid://bpanxgicoybb6" path="res://assets/environment/ShellGame_HouseParty.png" id="48_vuohh"]
+[ext_resource type="Texture2D" uid="uid://4uu7evqos4yn" path="res://assets/environment/Shell_Backyard.png" id="55_3gvs5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsx87"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(2034, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2b1i"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(0, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avo8k"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(1017, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da8va"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(2034, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahgs1"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(3051, 0, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ap5n"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(0, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3swkp"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(1017, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6tc8"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(2034, 2026, 1017, 2026)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bewxf"]
+atlas = ExtResource("15_6qn5j")
+region = Rect2(3051, 2026, 1017, 2026)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04flo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsx87")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_wj41c")
+}],
+"loop": 1,
+"name": &"proto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_baljx")
+}],
+"loop": 1,
+"name": &"talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_t2ssd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_7noa1")
+}],
+"loop": 1,
+"name": &"thought",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2b1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avo8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da8va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahgs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ap5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3swkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6tc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bewxf")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_gh0px"]
+script/source = "class_name WorldObjectHoldsItem extends WorldObject
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2x3i4"]
+shader = ExtResource("17_082n1")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yh7tv"]
+radius = 75.625
+height = 228.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iu0sx"]
+radius = 88.0
+height = 176.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4v2jo"]
+radius = 60.0
+height = 192.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klri6"]
+size = Vector2(317, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b14r"]
+atlas = ExtResource("48_vuohh")
+region = Rect2(4673.2695, 0, 4996.874, 3200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw5ej"]
+atlas = ExtResource("48_vuohh")
+region = Rect2(0, 0, 4779.2744, 3200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4v7s"]
+atlas = ExtResource("48_vuohh")
+region = Rect2(8644.103, 0, 4975.247, 3200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pwi3"]
+atlas = ExtResource("48_vuohh")
+region = Rect2(11194.355, 0, 4305.6445, 3200)
+
+[node name="Game" type="Node2D" unique_id=69826831]
+process_mode = 3
+script = ExtResource("1_feb5d")
+
+[node name="DialogueLineTreeHolder" parent="." unique_id=161622172 node_paths=PackedStringArray("debug_npc") instance=ExtResource("4_iotsf")]
+unique_name_in_owner = true
+position = Vector2(576, 324)
+debug_npc = NodePath("../World/Environment/FrontYard/NoName")
+
+[node name="DialoguePlayerThought" parent="DialogueLineTreeHolder/_Pacifica1_2/DialogueStatement/DialogueStatement2" parent_id_path=PackedInt32Array(161622172, 1587880844) index="0" unique_id=1753856372]
+after_wait = 0.0
+
+[node name="DialoguePlayerThought2" parent="DialogueLineTreeHolder/_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought" index="0" unique_id=1832313626]
+after_wait = 0.0
+
+[node name="DialogueInstanceConnectors" type="Node2D" parent="." unique_id=1437585316]
+script = ExtResource("5_215e1")
+
+[node name="NoName" type="Node2D" parent="DialogueInstanceConnectors" unique_id=862932422 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/CarKeys1")
+
+[node name="BushNoCarKeys" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1246006895 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/InteractBushNoCarKeys")
+
+[node name="BushHasCarKeys" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1913285303 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/InteractBushCarKeys")
+
+[node name="Pacifica" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1074052674 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/Pacifica1")
+
+[node name="Reef" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1599406092 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/Reef1")
+
+[node name="Moray" type="Node2D" parent="DialogueInstanceConnectors" unique_id=170992092 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/Moray1")
+
+[node name="Dog" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1358676755 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/Dog")
+
+[node name="Brad" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1791556278 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/Brad1")
+
+[node name="Shoal" type="Node2D" parent="DialogueInstanceConnectors" unique_id=366058241 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/Shoal1")
+
+[node name="Vent" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1069670587 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/InteractVent")
+
+[node name="EntranceDoor" type="Node2D" parent="DialogueInstanceConnectors" unique_id=1339894479 node_paths=PackedStringArray("connected_tree")]
+script = ExtResource("5_lc2xo")
+connected_tree = NodePath("../../DialogueLineTreeHolder/EntranceDoor")
+metadata/_custom_type_script = "uid://cg11uyllsqbg"
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1709221058 node_paths=PackedStringArray("player", "environment_holder")]
+unique_name_in_owner = true
+position = Vector2(576, 324)
+process_callback = 0
+script = ExtResource("2_bnpwn")
+player = NodePath("../Player/Player")
+left_bound = -400.0
+right_bound = 1600.0
+environment_holder = NodePath("../World/Environment/FrontYard")
+
+[node name="PlayerWalkPos" type="Node2D" parent="MainCamera" unique_id=575210671]
+position = Vector2(98, 144)
+
+[node name="NPCTalk" type="Node2D" parent="." unique_id=1866522664 node_paths=PackedStringArray("main_cam", "talk_cam", "npc_sprite", "transitioners", "screen_fader", "instance_connectors", "ui_npc_talk_left", "ui_npc_talk_right", "ui_choice_display", "ui_player_talk_right", "ui_player_talk_left", "ui_reward", "blip_player", "debug_rect_display", "player")]
+unique_name_in_owner = true
+z_index = 100
+position = Vector2(576, 324)
+script = ExtResource("3_vuohh")
+main_cam = NodePath("../MainCamera")
+talk_cam = NodePath("TalkFakeCam")
+npc_sprite = NodePath("UI/Characters/NPC/Sprite")
+transitioners = NodePath("UI/Transitioners")
+screen_fader = NodePath("../ThoughtBackdrop/ThoughtBackdrop")
+instance_connectors = NodePath("../DialogueInstanceConnectors")
+ui_npc_talk_left = NodePath("UI/UITalkNPCLeft")
+ui_npc_talk_right = NodePath("UI/UITalkNPCRight")
+ui_choice_display = NodePath("UI/UIChoice")
+ui_player_talk_right = NodePath("UI/UITalkPlayerRight")
+ui_player_talk_left = NodePath("UI/UITalkPlayerLeft")
+ui_reward = NodePath("UI/UIReward")
+blip_player = NodePath("BlipPlayer")
+debug_rect_display = NodePath("tempscreen")
+player = NodePath("../Player/Player")
+
+[node name="TalkFakeCam" type="Node2D" parent="NPCTalk" unique_id=1001578939]
+script = ExtResource("4_3gvs5")
+
+[node name="UI" type="CanvasLayer" parent="NPCTalk" unique_id=1617838828]
+layer = 4
+follow_viewport_enabled = true
+
+[node name="Characters" type="Node2D" parent="NPCTalk/UI" unique_id=992138454]
+position = Vector2(0, 4)
+
+[node name="NPC" type="Node2D" parent="NPCTalk/UI/Characters" unique_id=286059124]
+position = Vector2(728.00006, -112)
+scale = Vector2(0.45118892, 0.4559301)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="NPCTalk/UI/Characters/NPC" unique_id=1340904401]
+position = Vector2(78.90354, -126.98798)
+sprite_frames = ExtResource("5_mc3al")
+animation = &"wormy_angry"
+
+[node name="Transitioners" type="Node2D" parent="NPCTalk/UI" unique_id=249844191]
+
+[node name="TransPlayerTalk" type="Node2D" parent="NPCTalk/UI/Transitioners" unique_id=1866418926]
+position = Vector2(-416, 176)
+
+[node name="TransNPCTalk" type="Node2D" parent="NPCTalk/UI/Transitioners" unique_id=542569004]
+position = Vector2(400, -64)
+
+[node name="TransCameraTalk" type="Node2D" parent="NPCTalk/UI/Transitioners" unique_id=344368334]
+scale = Vector2(1.1, 1.1)
+
+[node name="TransPlayerThought" type="Node2D" parent="NPCTalk/UI/Transitioners" unique_id=861926996]
+position = Vector2(-384, 168)
+scale = Vector2(1.25, 1.25)
+
+[node name="TransNPCThought" type="Node2D" parent="NPCTalk/UI/Transitioners" unique_id=1177986880]
+position = Vector2(274, 112)
+scale = Vector2(0.5, 0.5)
+
+[node name="TransCameraThought" type="Node2D" parent="NPCTalk/UI/Transitioners" unique_id=471356132]
+position = Vector2(-384, 91)
+scale = Vector2(1.5, 1.5)
+
+[node name="TransDisplayChoices" type="Node2D" parent="NPCTalk/UI/Transitioners" unique_id=2012092635]
+position = Vector2(-384, 128)
+
+[node name="TransBoxTalk" type="Node2D" parent="NPCTalk/UI/Transitioners" unique_id=2043023182]
+position = Vector2(298, -162)
+
+[node name="UIChoice" type="Node2D" parent="NPCTalk/UI" unique_id=2085162665 node_paths=PackedStringArray("choice_template", "transitioners")]
+z_index = 10
+position = Vector2(0, 4)
+script = ExtResource("6_bqa6y")
+choice_template = NodePath("CanvasLayer/ChoiceTemplate")
+transitioners = NodePath("../Transitioners")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="NPCTalk/UI/UIChoice" unique_id=710000964]
+layer = 5
+
+[node name="ChoiceTemplate" type="Node2D" parent="NPCTalk/UI/UIChoice/CanvasLayer" unique_id=1659226158 node_paths=PackedStringArray("select_button", "label", "sprite", "sanity_display")]
+z_index = 10
+script = ExtResource("7_du4n2")
+select_button = NodePath("Button")
+label = NodePath("RichTextLabel")
+sprite = NodePath("Sprite")
+sanity_display = NodePath("SanityDisplay")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NPCTalk/UI/UIChoice/CanvasLayer/ChoiceTemplate" unique_id=754513161]
+z_index = 24
+offset_left = -136.0
+offset_top = 7.9999847
+offset_right = 136.0
+offset_bottom = 52.999985
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Choice[/center]"
+fit_content = true
+
+[node name="SanityDisplay" type="RichTextLabel" parent="NPCTalk/UI/UIChoice/CanvasLayer/ChoiceTemplate" unique_id=1365563672]
+z_index = 24
+offset_left = -136.0
+offset_top = -8.000015
+offset_right = 136.0
+offset_bottom = 36.999985
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]PREREQ[/center]"
+fit_content = true
+
+[node name="Sprite" type="Sprite2D" parent="NPCTalk/UI/UIChoice/CanvasLayer/ChoiceTemplate" unique_id=1546460758]
+z_index = 24
+position = Vector2(0, -24)
+scale = Vector2(0.1, 0.1)
+
+[node name="Button" type="Button" parent="NPCTalk/UI/UIChoice/CanvasLayer/ChoiceTemplate" unique_id=1642728767]
+modulate = Color(1, 1, 1, 0)
+z_index = 24
+offset_left = -40.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 37.0
+
+[node name="UITalkNPCLeft" type="Node2D" parent="NPCTalk/UI" unique_id=429074447 node_paths=PackedStringArray("box_template", "transitioners")]
+z_index = 10
+position = Vector2(450, -207)
+script = ExtResource("8_ra4rb")
+box_template = NodePath("BoxTemplate")
+transitioners = NodePath("../Transitioners")
+metadata/_custom_type_script = "uid://c0agvk4gyihqb"
+
+[node name="BoxTemplate" type="Node2D" parent="NPCTalk/UI/UITalkNPCLeft" unique_id=1136927499 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(247, -170)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="NPCTalk/UI/UITalkNPCLeft/BoxTemplate" unique_id=1253478562]
+
+[node name="Rotater" type="Node2D" parent="NPCTalk/UI/UITalkNPCLeft/BoxTemplate/Positioner" unique_id=1596749516]
+
+[node name="Sizer" type="Node2D" parent="NPCTalk/UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater" unique_id=899929884]
+position = Vector2(-76, -4)
+
+[node name="Background" type="Sprite2D" parent="NPCTalk/UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1306438264]
+texture_filter = 1
+position = Vector2(-156, 8.000004)
+scale = Vector2(0.7243589, 0.724359)
+texture = ExtResource("10_jo4nb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NPCTalk/UI/UITalkNPCLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=491054044]
+clip_contents = false
+offset_left = -355.0
+offset_top = -34.0
+offset_right = 1.0
+offset_bottom = 37.0
+theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UITalkNPCRight" type="Node2D" parent="NPCTalk/UI" unique_id=105658780 node_paths=PackedStringArray("box_template", "transitioners")]
+z_index = 10
+position = Vector2(0, 4)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+script = ExtResource("8_ra4rb")
+box_template = NodePath("BoxTemplate")
+transitioners = NodePath("../Transitioners")
+metadata/_custom_type_script = "uid://c0agvk4gyihqb"
+
+[node name="BoxTemplate" type="Node2D" parent="NPCTalk/UI/UITalkNPCRight" unique_id=1132812259 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(247, -170)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="NPCTalk/UI/UITalkNPCRight/BoxTemplate" unique_id=1279728768]
+
+[node name="Rotater" type="Node2D" parent="NPCTalk/UI/UITalkNPCRight/BoxTemplate/Positioner" unique_id=1160517676]
+
+[node name="Sizer" type="Node2D" parent="NPCTalk/UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater" unique_id=2081270962]
+position = Vector2(-76, -4)
+
+[node name="Background" type="Sprite2D" parent="NPCTalk/UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=164076434]
+texture_filter = 1
+position = Vector2(-156, 8.000004)
+scale = Vector2(0.7243589, 0.724359)
+texture = ExtResource("10_jo4nb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NPCTalk/UI/UITalkNPCRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1779555196]
+clip_contents = false
+offset_left = -5.0
+offset_top = -34.0
+offset_right = 351.0
+offset_bottom = 37.0
+scale = Vector2(-1, 1)
+theme_override_colors/default_color = Color(0.33333334, 0.05882353, 0.54509807, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UITalkPlayerRight" type="Node2D" parent="NPCTalk/UI" unique_id=1801668213 node_paths=PackedStringArray("box_template")]
+z_index = 10
+position = Vector2(0, 4)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("11_56gn1")
+box_template = NodePath("BoxTemplate")
+metadata/_custom_type_script = "uid://2m2g0adych3l"
+
+[node name="BoxTemplate" type="Node2D" parent="NPCTalk/UI/UITalkPlayerRight" unique_id=1322935405 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(296, 192)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="NPCTalk/UI/UITalkPlayerRight/BoxTemplate" unique_id=1774921862]
+position = Vector2(2, 3)
+
+[node name="Rotater" type="Node2D" parent="NPCTalk/UI/UITalkPlayerRight/BoxTemplate/Positioner" unique_id=1210155418]
+position = Vector2(-2, 36)
+
+[node name="Sizer" type="Node2D" parent="NPCTalk/UI/UITalkPlayerRight/BoxTemplate/Positioner/Rotater" unique_id=1627653351]
+position = Vector2(-103, 32)
+
+[node name="Background" type="Sprite2D" parent="NPCTalk/UI/UITalkPlayerRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1448479009]
+position = Vector2(385.99997, 13)
+texture = ExtResource("12_avmo2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NPCTalk/UI/UITalkPlayerRight/BoxTemplate/Positioner/Rotater/Sizer" unique_id=192639951]
+clip_contents = false
+offset_left = 166.0
+offset_top = -33.0
+offset_right = 590.0
+offset_bottom = 60.0
+theme_override_colors/default_color = Color(0.33140886, 0.060379684, 0.5436291, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UITalkPlayerLeft" type="Node2D" parent="NPCTalk/UI" unique_id=1211434415 node_paths=PackedStringArray("box_template")]
+z_index = 10
+position = Vector2(0, 4)
+scale = Vector2(-0.7, 0.7)
+script = ExtResource("11_56gn1")
+box_template = NodePath("BoxTemplate")
+metadata/_custom_type_script = "uid://2m2g0adych3l"
+
+[node name="BoxTemplate" type="Node2D" parent="NPCTalk/UI/UITalkPlayerLeft" unique_id=1463034106 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+position = Vector2(296, 192)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="NPCTalk/UI/UITalkPlayerLeft/BoxTemplate" unique_id=1191794924]
+position = Vector2(2, 3)
+
+[node name="Rotater" type="Node2D" parent="NPCTalk/UI/UITalkPlayerLeft/BoxTemplate/Positioner" unique_id=2105246195]
+position = Vector2(-2, 36)
+
+[node name="Sizer" type="Node2D" parent="NPCTalk/UI/UITalkPlayerLeft/BoxTemplate/Positioner/Rotater" unique_id=2095953089]
+position = Vector2(-103, 32)
+
+[node name="Background" type="Sprite2D" parent="NPCTalk/UI/UITalkPlayerLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=1807214807]
+position = Vector2(385.99997, 13)
+texture = ExtResource("12_avmo2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NPCTalk/UI/UITalkPlayerLeft/BoxTemplate/Positioner/Rotater/Sizer" unique_id=87163461]
+clip_contents = false
+offset_left = 591.0
+offset_top = -33.0
+offset_right = 1015.0
+offset_bottom = 60.0
+scale = Vector2(-1, 1)
+theme_override_colors/default_color = Color(0.33140886, 0.060379684, 0.5436291, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "DIALOGUE"
+
+[node name="UIReward" type="Node2D" parent="NPCTalk/UI" unique_id=1354403908 node_paths=PackedStringArray("box_template", "label", "char_sticker")]
+z_index = 10
+position = Vector2(0, 4)
+script = ExtResource("13_vyqle")
+box_template = NodePath("Screen/BoxTemplate")
+label = NodePath("Screen/BoxTemplate/Positioner/Rotater/Sizer/RichTextLabel")
+char_sticker = NodePath("Screen/BoxTemplate/CharSticker")
+metadata/_custom_type_script = "uid://y2w71ew3be3l"
+
+[node name="Screen" type="CanvasLayer" parent="NPCTalk/UI/UIReward" unique_id=1966280548]
+layer = 10
+
+[node name="BoxTemplate" type="Node2D" parent="NPCTalk/UI/UIReward/Screen" unique_id=727790164 node_paths=PackedStringArray("label", "sizer", "rotater", "positioner")]
+visible = false
+position = Vector2(296, 196)
+script = ExtResource("9_ple6s")
+label = NodePath("Positioner/Rotater/Sizer/RichTextLabel")
+sizer = NodePath("Positioner/Rotater/Sizer")
+rotater = NodePath("Positioner/Rotater")
+positioner = NodePath("Positioner")
+
+[node name="Positioner" type="Node2D" parent="NPCTalk/UI/UIReward/Screen/BoxTemplate" unique_id=930387693]
+
+[node name="Rotater" type="Node2D" parent="NPCTalk/UI/UIReward/Screen/BoxTemplate/Positioner" unique_id=1966331764]
+position = Vector2(280, 132)
+
+[node name="Sizer" type="Node2D" parent="NPCTalk/UI/UIReward/Screen/BoxTemplate/Positioner/Rotater" unique_id=962859680]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NPCTalk/UI/UIReward/Screen/BoxTemplate/Positioner/Rotater/Sizer" unique_id=495928341]
+z_index = 25
+clip_contents = false
+offset_left = -289.0
+offset_top = -19.0
+offset_right = 311.0
+offset_bottom = 81.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]Reward: YOU OBTAINED"
+
+[node name="Sprite2D" type="Sprite2D" parent="NPCTalk/UI/UIReward/Screen/BoxTemplate" unique_id=1300686617]
+position = Vector2(280, 128)
+texture = ExtResource("14_xoeau")
+
+[node name="CharSticker" type="AnimatedSprite2D" parent="NPCTalk/UI/UIReward/Screen/BoxTemplate" unique_id=1830394438]
+position = Vector2(-105.999985, 307)
+scale = Vector2(0.42225963, 0.42225966)
+sprite_frames = SubResource("SpriteFrames_04flo")
+animation = &"proto"
+
+[node name="tempscreen" type="ColorRect" parent="NPCTalk" unique_id=746877131]
+visible = false
+offset_left = -576.0
+offset_top = -328.0
+offset_right = 576.0
+offset_bottom = 328.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NPCTalk/tempscreen" unique_id=647855477]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 144.0
+offset_right = 512.0
+offset_bottom = 280.0
+text = "and everyone died"
+
+[node name="BlipPlayer" type="AudioStreamPlayer" parent="NPCTalk" unique_id=106897715]
+stream = ExtResource("20_3xib3")
+bus = &"SFX"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1459312706]
+layer = 3
+
+[node name="Button" type="Button" parent="UI" unique_id=369431034]
+offset_left = 434.0
+offset_top = 6.0
+offset_right = 547.0
+offset_bottom = 37.0
+text = "change scene"
+script = ExtResource("28_5b14r")
+
+[node name="HUD" type="CanvasLayer" parent="UI" unique_id=967642215]
+
+[node name="InventoryButton" type="Button" parent="UI/HUD" unique_id=2031546421]
+visible = false
+offset_left = 899.0
+offset_top = 505.0
+offset_right = 1132.0
+offset_bottom = 568.0
+theme_override_font_sizes/font_size = 40
+toggle_mode = true
+text = "INVENTORY"
+
+[node name="InventoryUI" parent="UI/HUD" unique_id=964416721 instance=ExtResource("7_eow3j")]
+unique_name_in_owner = true
+
+[node name="Confidence" type="Control" parent="UI/HUD" unique_id=847833353]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("9_klri6")
+
+[node name="Counter" type="RichTextLabel" parent="UI/HUD/Confidence" unique_id=1112014496]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 553.0
+offset_bottom = 46.0
+text = "CONFIDENCE: "
+
+[node name="StartMenu" parent="UI" unique_id=1065199818 instance=ExtResource("4_fc0e3")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="PauseMenu" parent="UI" unique_id=784381929 instance=ExtResource("6_eow3j")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="SettingsMenu" parent="UI" unique_id=1151713264 instance=ExtResource("5_ryrav")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="CreditsMenu" parent="UI" unique_id=1868038932 instance=ExtResource("14_215e1")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ScreenFader" type="ColorRect" parent="UI" unique_id=466942919]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 50
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Cheats" parent="UI" unique_id=788448949 instance=ExtResource("9_lc2xo")]
+unique_name_in_owner = true
+
+[node name="Player" type="CanvasLayer" parent="." unique_id=1211384257]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="Player" type="Node2D" parent="Player" unique_id=1760946569]
+unique_name_in_owner = true
+position = Vector2(222, 488)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("3_xfvwf")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player/Player" unique_id=1837903203]
+z_index = 100
+position = Vector2(1.5258789e-05, -104.000015)
+scale = Vector2(0.72812194, 0.72812194)
+sprite_frames = ExtResource("3_36jdj")
+animation = &"idle"
+frame_progress = 0.30366665
+
+[node name="ThoughtBackdrop" type="CanvasLayer" parent="." unique_id=640070024]
+
+[node name="ThoughtBackdrop" type="ColorRect" parent="ThoughtBackdrop" unique_id=33215654]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 644.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="World" type="CanvasLayer" parent="." unique_id=624641402]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="Environment" type="Node2D" parent="World" unique_id=718944105]
+unique_name_in_owner = true
+script = ExtResource("4_x5p1p")
+
+[node name="FrontYard" type="Node2D" parent="World/Environment" unique_id=1655396645]
+unique_name_in_owner = true
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="BG" type="Sprite2D" parent="World/Environment/FrontYard" unique_id=1623040466]
+position = Vector2(559, 319)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("36_2tki7")
+
+[node name="NoName" parent="World/Environment/FrontYard" unique_id=1669043619 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
+position = Vector2(99, 224)
+scale = Vector2(0.5, 0.5)
+dialogue_height = null
+dialogue_distance = null
+connector = NodePath("../../../../DialogueInstanceConnectors/NoName")
+
+[node name="NoName2" parent="World/Environment/FrontYard" unique_id=1143430473 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
+position = Vector2(1275, 259)
+scale = Vector2(0.5, 0.5)
+dialogue_height = null
+dialogue_distance = null
+connector = NodePath("../../../../DialogueInstanceConnectors/NoName")
+
+[node name="NoName3" parent="World/Environment/FrontYard" unique_id=924122991 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
+position = Vector2(555, 253)
+scale = Vector2(0.5, 0.5)
+dialogue_height = null
+dialogue_distance = null
+connector = NodePath("../../../../DialogueInstanceConnectors/NoName")
+
+[node name="test" type="Node2D" parent="World/Environment/FrontYard" unique_id=1473151192]
+position = Vector2(1536, 576)
+script = SubResource("GDScript_gh0px")
+item_spawn_offset = null
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/test" unique_id=1779984681]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-19.625, -114.25)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_xfvwf")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/test" unique_id=135423678 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/test/Interactable" unique_id=1848227161]
+position = Vector2(16, 0)
+shape = SubResource("CapsuleShape2D_yh7tv")
+
+[node name="CoralBush1" type="Node2D" parent="World/Environment/FrontYard" unique_id=236202213 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(-136, 505)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../DialogueInstanceConnectors/BushHasCarKeys")
+item_spawn_offset = null
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush1" unique_id=427750555]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-19.625, -114.25)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_xfvwf")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush1" unique_id=1408952056 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush1/Interactable" unique_id=817140090]
+position = Vector2(16, 0)
+shape = SubResource("CapsuleShape2D_yh7tv")
+
+[node name="CoralBush2" type="Node2D" parent="World/Environment/FrontYard" unique_id=2129109465 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(29, 495)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../DialogueInstanceConnectors/BushNoCarKeys")
+item_spawn_offset = null
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush2" unique_id=1197702117]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-12, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("23_aa0lp")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush2" unique_id=1104665324 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush2/Interactable" unique_id=1894885376]
+position = Vector2(7.625, 42.25)
+shape = SubResource("CapsuleShape2D_iu0sx")
+
+[node name="CoralBush3" type="Node2D" parent="World/Environment/FrontYard" unique_id=1543322903 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(180, 495)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../DialogueInstanceConnectors/BushNoCarKeys")
+item_spawn_offset = null
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush3" unique_id=1527672507]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-12, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("24_iu0sx")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush3" unique_id=695234865 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush3/Interactable" unique_id=3835727]
+position = Vector2(3.625, 51.25)
+shape = SubResource("CapsuleShape2D_4v2jo")
+
+[node name="CoralBush4" type="Node2D" parent="World/Environment/FrontYard" unique_id=557807734 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(1232, 505)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../DialogueInstanceConnectors/BushNoCarKeys")
+item_spawn_offset = null
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush4" unique_id=1738317702]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-19.625, -114.25)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_xfvwf")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush4" unique_id=879696772 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush4/Interactable" unique_id=1039906086]
+position = Vector2(16, 0)
+shape = SubResource("CapsuleShape2D_yh7tv")
+
+[node name="CoralBush5HASKEYS" type="Node2D" parent="World/Environment/FrontYard" unique_id=642095075 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(1077, 495)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../DialogueInstanceConnectors/BushHasCarKeys")
+item_spawn_offset = null
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush5HASKEYS" unique_id=1113744269]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-12, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("23_aa0lp")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush5HASKEYS" unique_id=539283377 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush5HASKEYS/Interactable" unique_id=507348245]
+position = Vector2(7.625, 42.25)
+shape = SubResource("CapsuleShape2D_iu0sx")
+
+[node name="CoralBush6" type="Node2D" parent="World/Environment/FrontYard" unique_id=1390619776 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(936, 495)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../DialogueInstanceConnectors/BushNoCarKeys")
+item_spawn_offset = null
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/CoralBush6" unique_id=1806383049]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-12, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("24_iu0sx")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/CoralBush6" unique_id=1615489817 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/CoralBush6/Interactable" unique_id=677898336]
+position = Vector2(3.625, 51.25)
+shape = SubResource("CapsuleShape2D_4v2jo")
+
+[node name="EntranceDoor" type="Node2D" parent="World/Environment/FrontYard" unique_id=898767805 node_paths=PackedStringArray("dialogue_connector")]
+z_index = -1
+position = Vector2(936, 495)
+rotation = -3.1415927
+scale = Vector2(1, -1)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../DialogueInstanceConnectors/EntranceDoor")
+item_spawn_offset = null
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Bushes" type="Sprite2D" parent="World/Environment/FrontYard/EntranceDoor" unique_id=1380399941]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(377.00003, -302.00003)
+scale = Vector2(0.212, 0.212)
+texture = ExtResource("26_r62pu")
+
+[node name="Interactable" type="Area2D" parent="World/Environment/FrontYard/EntranceDoor" unique_id=1707782447 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Bushes")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/FrontYard/EntranceDoor/Interactable" unique_id=240473853]
+position = Vector2(397.125, -185.25)
+shape = SubResource("RectangleShape2D_klri6")
+
+[node name="LivingRoom" type="Node2D" parent="World/Environment" unique_id=583145584]
+unique_name_in_owner = true
+position = Vector2(2651, 18)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/LivingRoom" unique_id=577599091]
+modulate = Color(1, 1, 0, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/LivingRoom" unique_id=740128837]
+position = Vector2(563, 328)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_5b14r")
+
+[node name="Pacifica" parent="World/Environment/LivingRoom" unique_id=1381500754 node_paths=PackedStringArray("connector") instance=ExtResource("9_x5p1p")]
+position = Vector2(941, 386)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../DialogueInstanceConnectors/Pacifica")
+
+[node name="Reef" parent="World/Environment/LivingRoom" unique_id=1676980202 node_paths=PackedStringArray("connector") instance=ExtResource("10_qhcbd")]
+position = Vector2(222, 372)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../DialogueInstanceConnectors/Reef")
+
+[node name="Kitchen" type="Node2D" parent="World/Environment" unique_id=1684170949]
+unique_name_in_owner = true
+position = Vector2(4181, 6)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/Kitchen" unique_id=1508942394]
+modulate = Color(1, 0, 1, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/Kitchen" unique_id=2077316878]
+position = Vector2(572, 337)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_pw5ej")
+
+[node name="Mooray" parent="World/Environment/Kitchen" unique_id=192293366 node_paths=PackedStringArray("connector") instance=ExtResource("12_f1jbl")]
+position = Vector2(852, 355)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../DialogueInstanceConnectors/Moray")
+
+[node name="Dog" parent="World/Environment/Kitchen" unique_id=1939013120 node_paths=PackedStringArray("connector") instance=ExtResource("13_vaj68")]
+position = Vector2(245, 401)
+scale = Vector2(0.5, 0.5)
+dialogue_height = null
+dialogue_distance = null
+connector = NodePath("../../../../DialogueInstanceConnectors/Dog")
+
+[node name="Brad" parent="World/Environment/Kitchen" unique_id=196879695 node_paths=PackedStringArray("connector") instance=ExtResource("14_xa8c5")]
+position = Vector2(553, 380)
+dialogue_height = null
+dialogue_distance = null
+connector = NodePath("../../../../DialogueInstanceConnectors/Brad")
+
+[node name="Hallway" type="Node2D" parent="World/Environment" unique_id=1090738671]
+unique_name_in_owner = true
+position = Vector2(5688, 1)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/Hallway" unique_id=1082302994]
+modulate = Color(1, 0.23529412, 0.1254902, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/Hallway" unique_id=1544445718]
+position = Vector2(552, 352)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_g4v7s")
+
+[node name="Shoal" parent="World/Environment/Hallway" unique_id=985543956 node_paths=PackedStringArray("connector") instance=ExtResource("16_5b14r")]
+position = Vector2(278, 302)
+scale = Vector2(0.5, 0.5)
+connector = NodePath("../../../../DialogueInstanceConnectors/Shoal")
+
+[node name="Bathroom" type="Node2D" parent="World/Environment" unique_id=1399007386]
+unique_name_in_owner = true
+position = Vector2(6923, -35)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/Bathroom" unique_id=1471044018]
+modulate = Color(0, 0.023529412, 1, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/Bathroom" unique_id=297943418]
+position = Vector2(575, 424)
+scale = Vector2(0.27, 0.27)
+texture = SubResource("AtlasTexture_7pwi3")
+
+[node name="Backyard" type="Node2D" parent="World/Environment" unique_id=67658964]
+unique_name_in_owner = true
+position = Vector2(8786, 0)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="TextureRect" type="TextureRect" parent="World/Environment/Backyard" unique_id=91521700]
+modulate = Color(0, 1, 0, 1)
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1155.0
+offset_bottom = 655.0
+texture = ExtResource("47_ib7ph")
+
+[node name="BG" type="Sprite2D" parent="World/Environment/Backyard" unique_id=671902341]
+position = Vector2(515.99994, 318.99997)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("55_3gvs5")
+
+[node name="NPCs" type="Node2D" parent="World" unique_id=1409111629]
+position = Vector2(304, 784)
+
+[node name="StaticBackgrounds" type="CanvasLayer" parent="." unique_id=2097648697]
+layer = -1
+
+[node name="StaticBackground" type="Sprite2D" parent="StaticBackgrounds" unique_id=1858024524]
+position = Vector2(562.7, 160.575)
+rotation = -1.5707964
+scale = Vector2(0.27590057, 1.2165343)
+texture = ExtResource("39_l1i01")
+
+[connection signal="button_down" from="UI/Button" to="UI/Button" method="_on_button_down"]
+[connection signal="toggled" from="UI/HUD/InventoryButton" to="." method="_on_inventory_button_toggled"]
+[connection signal="start_game" from="UI/StartMenu" to="." method="_on_start_game"]
+[connection signal="resume" from="UI/PauseMenu" to="." method="unpause_game"]
+[connection signal="interacted" from="World/Environment/FrontYard/test/Interactable" to="World/Environment/FrontYard/test" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush1/Interactable" to="World/Environment/FrontYard/CoralBush1" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush2/Interactable" to="World/Environment/FrontYard/CoralBush2" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush3/Interactable" to="World/Environment/FrontYard/CoralBush3" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush4/Interactable" to="World/Environment/FrontYard/CoralBush4" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush5HASKEYS/Interactable" to="World/Environment/FrontYard/CoralBush5HASKEYS" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/CoralBush6/Interactable" to="World/Environment/FrontYard/CoralBush6" method="_on_interactable_interacted"]
+[connection signal="interacted" from="World/Environment/FrontYard/EntranceDoor/Interactable" to="World/Environment/FrontYard/EntranceDoor" method="_on_interactable_interacted"]
+
+[editable path="DialogueLineTreeHolder"]
+[editable path="DialogueLineTreeHolder/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]
+[editable path="DialogueLineTreeHolder/Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter"]
+[editable path="DialogueLineTreeHolder/_Reef2_Reward/DialogueStatSetter"]
+[editable path="DialogueLineTreeHolder/Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2"]
+[editable path="DialogueLineTreeHolder/InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialogueStatSetter"]

@@ -1,6 +1,6 @@
 @tool
 
-class_name DialogueLineTree extends Node2D
+class_name DialogueLineTree extends Node
 
 const print_prereqs_and_stats: bool = false
 const print_switches: bool = true

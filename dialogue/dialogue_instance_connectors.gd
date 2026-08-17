@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 func cheat_entered(cheat: String):
@@ -8,4 +8,4 @@ func cheat_entered(cheat: String):
 			conn.play_tree()
 
 func _ready():
-	%Cheats.cheat_entered.connect(cheat_entered)
+	%CheatsUI.cheat_entered.connect(cheat_entered)

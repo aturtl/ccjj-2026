@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var main_cam: MainCamera
 @export var talk_cam: FakeCam
@@ -7,7 +7,7 @@ extends Node2D
 @export var transitioners: Node2D
 @export var screen_fader: ColorRect
 
-@export var instance_connectors: Node2D
+@export var instance_connectors: Node
 
 @export_category("Talkers")
 @export var ui_npc_talk_left: UITalkNPC
@@ -30,7 +30,7 @@ extends Node2D
 @export var blip_dynamic_range: float = .1
 
 var original_player_pos: Vector2
-var original_npc_pos: Vector2
+var original_subject_pos: Vector2
 var original_cam_pos: Vector2
 
 var center_cam_pos: Vector2
@@ -41,11 +41,11 @@ var parallel_count: int = 0
 
 var scene = ""
 
-var npc: NPC = null
+var subject: WorldEntity = null
 @export var player: Player
 
 var player_talking_instances = 0
-var npc_talking_instances = 0
+var subject_talking_instances = 0
 var player_thinking_instances = 0
 
 enum CameraState {NONE, NPC_TALK, PLAYER_TALK, PLAYER_THOUGHT, RETURN}
@@ -65,11 +65,11 @@ func cam_offset():
 
 
 #region dialogue loop
-func dialogue_start(d_object:DialogueLine, npc: NPC):
+func dialogue_start(d_object:DialogueLine, subject: WorldEntity):
 	original_player_pos = player.global_position
 	original_cam_pos = main_cam.global_position
-	if npc:
-		original_npc_pos = npc.global_position
+	if subject:
+		original_subject_pos = subject.global_position
 	
 	print("STARTEDaaaaa")
 	
@@ -78,7 +78,7 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 	player.dialogue_lock = true
 	main_cam.current_state = main_cam.State.DIALOGUE
 	
-	self.npc = npc
+	self.subject = subject
 	
 	parallel_count += 1
 	
@@ -86,8 +86,8 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 	
 	original_cam_trans = main_cam.global_transform
 	
-	if npc:
-		var npc_player_start_dist_x = npc.global_position.x - player.global_position.x
+	if subject:
+		var subject_player_start_dist_x = subject.global_position.x - player.global_position.x
 		
 		var new_pos_x = player.global_position.x
 		
@@ -96,14 +96,14 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 		
 		var jump_tween = get_tree().create_tween()
 		
-		if abs(npc_player_start_dist_x) < 400.0:
+		if abs(subject_player_start_dist_x) < 200.0:
 			tweening = true
-			new_pos_x = npc.global_position.x-sign(npc_player_start_dist_x)*400.0
+			new_pos_x = subject.global_position.x-sign(subject_player_start_dist_x)*200.0
 			
 			if main_cam.is_out_of_bounds(new_pos_x*Vector2.RIGHT):
-				new_pos_x = npc.global_position.x+sign(npc_player_start_dist_x)*400.0
+				new_pos_x = subject.global_position.x+sign(subject_player_start_dist_x)*200.0
 			
-			correct_tween.tween_property(player, "global_position:x", new_pos_x, .4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+			correct_tween.tween_property(player, "global_position:x", new_pos_x, .6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 			correct_tween.play()
 			
 			player.sprite.play("walk")
@@ -115,21 +115,21 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 			jump_tween.tween_property(player, "global_position:y", original_player_pos.y, .2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 			jump_tween.play()
 		
-		center_cam_pos = (npc.position + original_player_pos)/2.0
+		center_cam_pos = (subject.position + original_player_pos)/2.0
 		
 		current_camera_state = CameraState.PLAYER_TALK
 		reposition_cam()
 		
-		var npc_player_real_dist_x = npc.global_position.x - original_player_pos.x
+		var subject_player_real_dist_x = subject.global_position.x - original_player_pos.x
 		
-		var npc_player_sign_x = -sign(npc_player_real_dist_x)
+		var subject_player_sign_x = -sign(subject_player_real_dist_x)
 		
-		player.sprite.flip_h = npc_player_sign_x == 1
+		player.sprite.flip_h = subject_player_sign_x == 1
 		
 		if tweening:
 			await correct_tween.finished
 		
-		player.sprite.play("idle")
+		player.sprite.play("talk")
 	else:
 		center_cam_pos = player.position
 	
@@ -142,7 +142,7 @@ func dialogue_start(d_object:DialogueLine, npc: NPC):
 
 
 func dialogue_loop(d_object:DialogueObject):
-	var npc_pos = npc.global_position if npc else Vector2(0,0)
+	var subject_pos = subject.global_position if subject else Vector2(0,0)
 	
 	if !d_object:
 		dialogue_branch_end()
@@ -159,7 +159,7 @@ func dialogue_loop(d_object:DialogueObject):
 			player_sprite.play(d_object.switch_player_animation_to)
 	
 	if d_object is DialogueStatement:
-		npc_talking_instances += 1
+		subject_talking_instances += 1
 		update_cam_state()
 		
 		#if scene == "":
@@ -167,25 +167,27 @@ func dialogue_loop(d_object:DialogueObject):
 		#else:
 			#tween_to_talk(1.0)
 		
-		var x_sign = -sign(main_cam.global_position.x - npc.global_position.x)
+		var x_sign = -sign(main_cam.global_position.x - subject.global_position.x)
 		
 		var ui_npc_talk = ui_npc_talk_left if x_sign == 1 else ui_npc_talk_right
 		
-		ui_npc_talk.talk(d_object, npc_pos + Vector2(x_sign*-npc.dialogue_distance, -npc.dialogue_height))
+		ui_npc_talk.talk(d_object, subject_pos + Vector2(x_sign*-subject.dialogue_distance, -subject.dialogue_height))
 		
 		await ui_npc_talk.start_next
 		
-		npc_talking_instances -= 1
+		subject_talking_instances -= 1
 		
 		if !(d_object.goto is DialogueStatement):
 			ui_npc_talk.kill_all_box_instances()
 		loop_with_parallels(d_object)
 	
 	elif d_object is DialoguePlayerThought:
+		player.sprite.play("talk")
+		
 		var x_sign = 1
 		
-		if npc:
-			x_sign = -sign(main_cam.global_position.x - npc.global_position.x)
+		if subject:
+			x_sign = -sign(main_cam.global_position.x - subject.global_position.x)
 		
 		player_talking_instances += 1
 		update_cam_state()
@@ -291,7 +293,7 @@ func update_cam_state():
 		decision = CameraState.PLAYER_THOUGHT
 	elif player_talking_instances > 0:
 		decision = CameraState.PLAYER_TALK
-	elif npc_talking_instances > 0:
+	elif subject_talking_instances > 0:
 		decision = CameraState.NPC_TALK
 	else:
 		decision = CameraState.NONE
@@ -319,11 +321,11 @@ func cam_player_thought():
 	var tween = get_tree().create_tween()
 	
 	var x = player.global_position.x
-	var y = player.global_position.y - 200.0
+	var y = player.global_position.y - 100.0
 	
-	var zoom = Vector2(2.0,2.0)
+	var zoom = Vector2(3.0,3.0)
 	
-	if npc:
+	if subject:
 		tween.tween_property(main_cam, "global_position", Vector2(x,y), .5).set_trans(Tween.TRANS_SINE)
 	
 	tween.parallel().tween_property(main_cam, "zoom", zoom, .5).set_trans(Tween.TRANS_SINE)
@@ -339,7 +341,7 @@ func cam_player_talk():
 	
 	var zoom = Vector2(1.3,1.3)
 	
-	if npc:
+	if subject:
 		tween.tween_property(main_cam, "global_position", main_cam.restrict_to_cam_bounds(Vector2(x,y), Vector2(1.3,1.3)), .5).set_trans(Tween.TRANS_SINE)
 	
 	tween.parallel().tween_property(main_cam, "zoom", zoom, .5).set_trans(Tween.TRANS_SINE)
@@ -348,11 +350,11 @@ func cam_player_talk():
 
 
 func cam_npc_talk():
-	var x_sign = sign(original_cam_pos.x - npc.global_position.x)
+	var x_sign = sign(original_cam_pos.x - subject.global_position.x)
 	
 	var tween = get_tree().create_tween()
 	
-	var x = npc.global_position.x + x_sign*200.0
+	var x = subject.global_position.x + x_sign*200.0
 	var y = original_cam_pos.y - 60.0
 	
 	var pos = Vector2(x,y)
@@ -360,7 +362,7 @@ func cam_npc_talk():
 	
 	pos = main_cam.restrict_to_cam_bounds(pos, zoom)
 	
-	if npc:
+	if subject:
 		tween.tween_property(main_cam, "global_position", pos, .5).set_trans(Tween.TRANS_SINE)
 	
 	tween.parallel().tween_property(main_cam, "zoom", zoom, .5).set_trans(Tween.TRANS_SINE)
@@ -376,7 +378,7 @@ func cam_return():
 	
 	var zoom = Vector2(1.0,1.0)
 	
-	if npc:
+	if subject:
 		tween.tween_property(main_cam, "global_position", Vector2(x,y), .5).set_trans(Tween.TRANS_SINE)
 	
 	tween.parallel().tween_property(player, "global_position", original_player_pos, .5).set_trans(Tween.TRANS_SINE)
@@ -425,7 +427,7 @@ func display_ui():
 func tween_back_to_original_positions(): # right now, I just send them into space
 	var player_tween: Tween = get_tree().create_tween().set_parallel()
 	var cam_tween: Tween = get_tree().create_tween().set_parallel()
-	var npc_tween: Tween = get_tree().create_tween().set_parallel()
+	var subject_tween: Tween = get_tree().create_tween().set_parallel()
 	
 	var trans_time = .2
 	
@@ -451,11 +453,11 @@ func tween_to_talk(trans_time: float):
 	
 	var player_tween: Tween = get_tree().create_tween().set_parallel()
 	var cam_tween: Tween = get_tree().create_tween().set_parallel()
-	var npc_tween: Tween = get_tree().create_tween().set_parallel()
+	var subject_tween: Tween = get_tree().create_tween().set_parallel()
 	
 	player.sprite.play("talk")
 	
-	if npc:
+	if subject:
 		player_tween.tween_property(player.sprite.get_parent(), "global_position", original_player_pos, trans_time*.8).set_trans(Tween.TRANS_BACK)
 		player_tween.play()
 	
@@ -475,13 +477,13 @@ func tween_to_thought():
 	
 	var player_tween: Tween = get_tree().create_tween().set_parallel()
 	var cam_tween: Tween = get_tree().create_tween().set_parallel()
-	var npc_tween: Tween = get_tree().create_tween().set_parallel()
+	var subject_tween: Tween = get_tree().create_tween().set_parallel()
 	
 	var trans_time = 1.5
 	
 	player.sprite.play("thought")
 	
-	if npc:
+	if subject:
 		#player_tween.tween_property(player, "global_position", main_cam.global_position, 1.2).set_trans(Tween.TRANS_BACK)
 		player_tween.tween_property(player.sprite, "scale", transitioners.get_node("TransPlayerThought").global_scale, trans_time).set_trans(Tween.TRANS_BACK)
 		player_tween.play()

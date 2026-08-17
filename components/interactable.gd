@@ -9,6 +9,8 @@ var shader: ShaderMaterial
 
 signal interacted(text: String)
 
+var true_mouse_enter = false
+
 func _ready():
 	GameState.in_dialogue_changed.connect(_game_in_dialogue_changed)
 	
@@ -20,6 +22,8 @@ func _ready():
 
 
 func _on_mouse_entered() -> void:
+	true_mouse_enter = true
+	
 	if GameState.in_dialogue:
 		return
 	
@@ -28,6 +32,8 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
+	true_mouse_enter = false
+	
 	if GameState.in_dialogue:
 		return
 	
@@ -46,3 +52,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 func _game_in_dialogue_changed(in_dialogue):
 	if in_dialogue:
 		shader.set_shader_parameter("outline_thickness", 0)
+	if true_mouse_enter:
+		_on_mouse_entered()

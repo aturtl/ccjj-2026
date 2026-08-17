@@ -1312,6 +1312,15 @@ switch_connector_name = "MedicineCabinet"
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
+[node name="EntranceDoor" type="Node2D" parent="." unique_id=1022427059]
+script = ExtResource("17_sh30a")
+metadata/_custom_type_script = "uid://b6ilt730j81f4"
+
+[node name="DialoguePlayerThought" type="Node" parent="EntranceDoor" unique_id=1652375706]
+script = ExtResource("2_3mtrk")
+dialogue = "I can't seem to muster up the courage to go in there..."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
 [editable path="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]
 [editable path="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter"]
 [editable path="_Reef2_Reward/DialogueStatSetter"]

@@ -21,7 +21,7 @@ enum Environments {
 
 func _ready() -> void:
 	switch_environment(Environments.FRONT_YARD)
-	%Cheats.cheat_entered.connect(_cheat_entered)
+	%CheatsUI.cheat_entered.connect(_cheat_entered)
 
 func _cheat_entered(cheat: String):
 	if cheat.match("env_*"):

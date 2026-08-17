@@ -1,9 +1,9 @@
-extends Node2D
+extends Node
 
 @export var debug_npc: NPC
 
 func _ready():
-	%Cheats.cheat_entered.connect(_on_cheat_entered)
+	%CheatsUI.cheat_entered.connect(_on_cheat_entered)
 
 
 func _on_cheat_entered(s: String):
@@ -18,4 +18,4 @@ func play_tree(nm: String):
 		return
 	for child in line_holder.get_children():
 		if child is DialogueLine:
-			%NPCTalk.dialogue_start(child, debug_npc)
+			%DialoguePlayer.dialogue_start(child, debug_npc)

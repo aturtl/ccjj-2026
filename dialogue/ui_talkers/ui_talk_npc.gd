@@ -48,9 +48,9 @@ func talk(dl: DialogueLine, origin: Vector2 = Vector2(0, 0), starting_visible_ch
 	for i in label.get_parsed_text().length() - starting_visible_characters:
 		if s[true_index] != ' ':
 			if dl.dynamic_range == -1.0:
-				get_parent().get_parent().play_blip() #temp
+				%DialoguePlayer.play_blip() #temp
 			else:
-				get_parent().get_parent().play_blip(dl.dynamic_range) #temp
+				%DialoguePlayer.play_blip(dl.dynamic_range) #temp
 		await get_tree().create_timer(dl.in_between_time).timeout
 		if label and !label.is_queued_for_deletion():
 			label.visible_characters += 1
