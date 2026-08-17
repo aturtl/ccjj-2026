@@ -58,7 +58,7 @@ func _set_bus_muted(bus_name: String, muted: bool) -> void:
 #endregion
 
 #region MUSIC
-func play_music(stream: AudioStream, volume_db: float = 0.0) -> void:
+func play_music(stream: AudioStream, volume_db: float = -6.0) -> void:
 	music_player.volume_db = volume_db
 	music_player.stream = stream
 	music_player.play()

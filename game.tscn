@@ -33,7 +33,7 @@
 [ext_resource type="Resource" uid="uid://deu730vg3le2l" path="res://data/items/car_keys.tres" id="10_ftkif"]
 [ext_resource type="Texture2D" uid="uid://duhua14dmi18j" path="res://assets/ui/npc_dialogue_box.png" id="10_jo4nb"]
 [ext_resource type="PackedScene" uid="uid://d1dsnitsm7cwe" path="res://entities/npc/reef/reef.tscn" id="10_qhcbd"]
-[ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_thought.gd" id="11_56gn1"]
+[ext_resource type="Script" uid="uid://2m2g0adych3l" path="res://dialogue/ui_talkers/ui_talk_player.gd" id="11_56gn1"]
 [ext_resource type="PackedScene" uid="uid://dln6nhlu213ty" path="res://dialogue/stackables/scenes/event/dialogue_stat_setter.tscn" id="11_71bxy"]
 [ext_resource type="Texture2D" uid="uid://cf5j5prldlckw" path="res://assets/ui/mc_dialogue_box.png" id="12_avmo2"]
 [ext_resource type="PackedScene" uid="uid://bm3ndpel5oqyw" path="res://entities/npc/mooray/mooray.tscn" id="12_f1jbl"]
@@ -53,9 +53,12 @@
 [ext_resource type="Texture2D" uid="uid://m4eds0q1hio" path="res://assets/characters/Annemette_Sprite.png" id="17_baljx"]
 [ext_resource type="Texture2D" uid="uid://cnnllqarr4p2q" path="res://assets/objects/coral1.png" id="17_xfvwf"]
 [ext_resource type="Texture2D" uid="uid://cgctem2atnxye" path="res://assets/characters/mc_thought1.png" id="18_t2ssd"]
+[ext_resource type="Script" uid="uid://cgaa7e47mtlwe" path="res://dialogue/stackables/functionality/event/dialogue_change_state.gd" id="18_w37fy"]
 [ext_resource type="Texture2D" uid="uid://162frumgr484" path="res://assets/characters/mc_thought2.png" id="19_7noa1"]
 [ext_resource type="Script" uid="uid://da0e24hbw4uct" path="res://dialogue/stackables/functionality/event/dialogue_change_environment.gd" id="19_fuuk6"]
 [ext_resource type="AudioStream" uid="uid://dchavohcad2mt" path="res://dialogue/blips/blip_default_2.mp3" id="20_3xib3"]
+[ext_resource type="AudioStream" uid="uid://rqpjhligqnkx" path="res://audio/key_jingle2.mp3" id="21_0s2o4"]
+[ext_resource type="AudioStream" uid="uid://de16g2hveo1gw" path="res://audio/door opening and closing.mp3" id="21_66xay"]
 [ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="21_iu0sx"]
 [ext_resource type="Script" uid="uid://cr5c7d3kcn5wc" path="res://dialogue/stackables/functionality/event/dialogue_play_music.gd" id="21_lh772"]
 [ext_resource type="AudioStream" uid="uid://bc2f7q07brecj" path="res://audio/Party LivingRoom.mp3" id="22_lh772"]
@@ -80,6 +83,7 @@
 [ext_resource type="Texture2D" uid="uid://cpql43g5ii105" path="res://icon.svg" id="47_ib7ph"]
 [ext_resource type="Texture2D" uid="uid://bpanxgicoybb6" path="res://assets/environment/ShellGame_HouseParty.png" id="48_vuohh"]
 [ext_resource type="Texture2D" uid="uid://4uu7evqos4yn" path="res://assets/environment/Shell_Backyard.png" id="55_3gvs5"]
+[ext_resource type="Script" uid="uid://bbiyxf3q58p81" path="res://entities/states.gd" id="67_7x3ck"]
 
 [sub_resource type="Resource" id="Resource_74mgt"]
 script = ExtResource("35_vbt48")
@@ -492,8 +496,13 @@ metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
 [node name="DialogueFadeIn" type="Node" parent="DialogueManager/DialogueLines/CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=669915050]
 script = ExtResource("13_tssr6")
-after_wait = 1.0
 metadata/_custom_type_script = "uid://cjfyjpl406rmo"
+
+[node name="DialogueStateKill" type="Node" parent="DialogueManager/DialogueLines/CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn" unique_id=439654993 node_paths=PackedStringArray("state_holder")]
+script = ExtResource("18_w37fy")
+state_holder = NodePath("../../../../../../../../../../../../CanvasLayers/World/Environment/FrontYard/NoName/States")
+state = "kill"
+metadata/_custom_type_script = "uid://cgaa7e47mtlwe"
 
 [node name="DialoguePlaySound" type="Node" parent="DialogueManager/DialogueLines/CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3/DialogueFadeIn" unique_id=204943900]
 script = ExtResource("14_i3uta")
@@ -568,6 +577,11 @@ switch_connector_name = "BushHasCarKeys"
 switch_tree = NodePath("../../../../../../../InteractBushNoCarKeys")
 metadata/_custom_type_script = "uid://cl1iols5nby6h"
 
+[node name="DialoguePlaySound" type="Node" parent="DialogueManager/DialogueLines/InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2" unique_id=901287868]
+script = ExtResource("14_i3uta")
+audio_stream = ExtResource("21_0s2o4")
+metadata/_custom_type_script = "uid://sl5iutsqybsx"
+
 [node name="InteractEntranceDoor" type="Node" parent="DialogueManager/DialogueLines" unique_id=571633411]
 script = ExtResource("3_vqo61")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
@@ -641,37 +655,59 @@ script = ExtResource("4_pwsyv")
 dialogue = "Well, here goes nothing."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
+[node name="DialogueStopMusic" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=195996889]
+script = ExtResource("21_lh772")
+metadata/_custom_type_script = "uid://cr5c7d3kcn5wc"
+
 [node name="DSSceneFadePreset" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=607337241]
 script = ExtResource("13_tssr6")
-after_wait = 1.0
 metadata/_custom_type_script = "uid://cjfyjpl406rmo"
 
-[node name="DialogueChangeScene" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset" unique_id=1413183850]
+[node name="DialoguePlaySound" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset" unique_id=1795462722]
+script = ExtResource("14_i3uta")
+audio_stream = ExtResource("21_66xay")
+after_wait = 8.0
+metadata/_custom_type_script = "uid://sl5iutsqybsx"
+
+[node name="DialogueChangeScene" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound" unique_id=1413183850]
 script = ExtResource("19_fuuk6")
 environment_holder = 2
 metadata/_custom_type_script = "uid://da0e24hbw4uct"
 
-[node name="DialogueFadeScreen2" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" unique_id=1039843711]
+[node name="DialogueFadeScreen2" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound/DialogueChangeScene" unique_id=1039843711]
 script = ExtResource("13_tssr6")
 fade_type = 1
 metadata/_custom_type_script = "uid://cjfyjpl406rmo"
 
-[node name="DialoguePlayerThought" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2" unique_id=43495928]
+[node name="DialoguePlayerThought" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound/DialogueChangeScene/DialogueFadeScreen2" unique_id=43495928]
 script = ExtResource("4_pwsyv")
-dialogue = "Wow, it’s loud in here. And bright. And crowded. Why did I let Marley talk me into this again?"
+dialogue = "Wow, it’s loud in here. And bright. And crowded."
+after_wait = 1.0
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialoguePlayerThought" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought" unique_id=236610748]
+[node name="DialoguePlayerThought2" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought" unique_id=628460279]
+script = ExtResource("4_pwsyv")
+dialogue = "..."
+after_wait = 1.0
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DialoguePlayerThought3" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought2" unique_id=1509100608]
+script = ExtResource("4_pwsyv")
+dialogue = "Why did I let Marley talk me into this again?"
+after_wait = 0.2
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
+
+[node name="DialoguePlayerThought" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3" unique_id=2050266631]
 script = ExtResource("4_pwsyv")
 dialogue = "... Well, in any case, I guess I’m here now. She must be around here somewhere."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueReward" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought" unique_id=1972223848]
+[node name="DialogueReward" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialoguePlayerThought" unique_id=1211323426]
 script = ExtResource("6_r3ggl")
 reward_text = "(LIVING ROOM can now be explored)"
 metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
-[node name="DialoguePlayMusic" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" unique_id=973584101]
+[node name="DialoguePlayMusic" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound" unique_id=973584101]
 script = ExtResource("21_lh772")
 audio_stream = ExtResource("22_lh772")
 volume_db = -24.0
@@ -2631,19 +2667,9 @@ dialogue_height = null
 dialogue_distance = null
 connector = NodePath("../../../../../DialogueManager/DialogueConnectors/NoName")
 
-[node name="NoName2" parent="CanvasLayers/World/Environment/FrontYard" unique_id=1143430473 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
-position = Vector2(1275, 259)
-scale = Vector2(0.5, 0.5)
-dialogue_height = null
-dialogue_distance = null
-connector = NodePath("../../../../../DialogueManager/DialogueConnectors/NoName")
-
-[node name="NoName3" parent="CanvasLayers/World/Environment/FrontYard" unique_id=924122991 node_paths=PackedStringArray("connector") instance=ExtResource("7_hb5m1")]
-position = Vector2(555, 253)
-scale = Vector2(0.5, 0.5)
-dialogue_height = null
-dialogue_distance = null
-connector = NodePath("../../../../../DialogueManager/DialogueConnectors/NoName")
+[node name="States" type="Node" parent="CanvasLayers/World/Environment/FrontYard/NoName" unique_id=779402769]
+script = ExtResource("67_7x3ck")
+metadata/_custom_type_script = "uid://bbiyxf3q58p81"
 
 [node name="test" type="Node2D" parent="CanvasLayers/World/Environment/FrontYard" unique_id=1473151192]
 position = Vector2(1536, 576)
@@ -2983,5 +3009,3 @@ texture = ExtResource("39_l1i01")
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/CoralBush5HASKEYS/Interactable" to="CanvasLayers/World/Environment/FrontYard/CoralBush5HASKEYS" method="_on_interactable_interacted"]
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/CoralBush6/Interactable" to="CanvasLayers/World/Environment/FrontYard/CoralBush6" method="_on_interactable_interacted"]
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/EntranceDoor/Interactable" to="CanvasLayers/World/Environment/FrontYard/EntranceDoor" method="_on_interactable_interacted"]
-
-[editable path="CanvasLayers/World/Environment/FrontYard/NoName3"]

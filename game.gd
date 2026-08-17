@@ -31,6 +31,9 @@ func unpause_game() -> void:
 
 
 func _on_start_game() -> void:
+	AudioManager.stop_music()
+	AudioManager.play_sfx(load("res://audio/button click slightly different.mp3"))
+	await get_tree().create_timer(1.0).timeout
 	get_tree().paused = false
 	UIManager.close_menu()
 	var audio = load("res://audio/outside door.mp3")

@@ -40,16 +40,19 @@ func talk(dl: DialogueLine, origin: Vector2 = Vector2(0, 0), starting_visible_ch
 	
 	var true_index = starting_visible_characters
 	
-	for i in s.length() - starting_visible_characters:
-		if s[true_index] != ' ':
-			if dl.dynamic_range == -1.0:
-				%DialogueManager.play_blip() #temp
-			else:
-				%DialoguePlayer.play_blip(dl.dynamic_range) #temp
-		await get_tree().create_timer(dl.in_between_time).timeout
-		if label and !label.is_queued_for_deletion():
-			label.visible_characters += 1
-		true_index += 1
+	if !%CheatsUI.skip_talk:
+		for i in s.length() - starting_visible_characters:
+			if s[true_index] != ' ':
+				if dl.dynamic_range == -1.0:
+					%DialogueManager.play_blip() #temp
+				else:
+					%DialoguePlayer.play_blip(dl.dynamic_range) #temp
+			await get_tree().create_timer(dl.in_between_time).timeout
+			if label and !label.is_queued_for_deletion():
+				label.visible_characters += 1
+			true_index += 1
+	
+	label.visible_characters = -1
 	
 	talk_ended.emit()
 	

@@ -6,6 +6,7 @@ class_name Cheats extends CanvasLayer
 @onready var text_console: LineEdit = $TextConsole
 
 var ignore_all_prerequisites = false
+var skip_talk = false
 
 signal cheat_entered # sends text on enter
 
@@ -19,6 +20,8 @@ func text_set():
 			Stats.confidence += 1000
 		"dereq":
 			ignore_all_prerequisites = true
+		"skiptalk":
+			skip_talk = true
 	if console_text.match("item_*"):
 		var item = load("res://data/items/"+console_text.substr(5)+".tres")
 		if item and item is ItemData:

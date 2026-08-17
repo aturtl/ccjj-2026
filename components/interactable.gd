@@ -25,10 +25,16 @@ func _ready():
 
 
 func _on_mouse_entered() -> void:
+	if !visible:
+		return
+	
 	GameState.add_hover(self)
 
 
 func _on_mouse_exited() -> void:
+	if !visible:
+		return
+	
 	GameState.remove_hover(self)
 
 

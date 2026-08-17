@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6h0ikgt55ms1"
+path="res://.godot/imported/Jingling keys.mp3-07b12b586e73a86f5978e8b001ff69b8.mp3str"
+
+[deps]
+
+source_file="res://audio/Jingling keys.mp3"
+dest_files=["res://.godot/imported/Jingling keys.mp3-07b12b586e73a86f5978e8b001ff69b8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
