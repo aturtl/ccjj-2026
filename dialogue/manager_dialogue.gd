@@ -155,7 +155,10 @@ func dialogue_loop(d_object:DialogueObject):
 		if d_object.switch_player_animation_to != "":
 			player_sprite.play(d_object.switch_player_animation_to)
 	
-	await d_object._play_line()
+	if !%CheatsUI.ultra_skip or d_object is DialogueQuestion:
+		await d_object._play_line()
+	else:
+		d_object._play_line()
 	
 	loop_with_parallels(d_object)
 

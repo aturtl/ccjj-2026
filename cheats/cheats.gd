@@ -7,6 +7,7 @@ class_name Cheats extends CanvasLayer
 
 var ignore_all_prerequisites = false
 var skip_talk = false
+var ultra_skip = false
 
 signal cheat_entered # sends text on enter
 
@@ -22,6 +23,9 @@ func text_set():
 			ignore_all_prerequisites = true
 		"skiptalk":
 			skip_talk = true
+		"ultraskip":
+			skip_talk = true
+			ultra_skip = true
 	if console_text.match("item_*"):
 		var item = load("res://data/items/"+console_text.substr(5)+".tres")
 		if item and item is ItemData:

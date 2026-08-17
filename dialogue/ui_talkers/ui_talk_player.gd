@@ -2,7 +2,7 @@ class_name UITalkThought extends UITalk
 
 @export var box_template: BoxTemplate
 @export var in_between_time = .04
-@export var end_wait = .7
+@export var end_wait = .6
 
 var box_instance: BoxTemplate
 
@@ -97,6 +97,6 @@ func animate_kill_box_instance(box: BoxTemplate):
 	
 	await kill_tween.finished
 	
-	
-	box.queue_free()
+	if box and !box.is_queued_for_deletion():
+		box.queue_free()
 #endregion

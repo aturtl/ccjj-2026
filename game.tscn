@@ -84,6 +84,8 @@
 [ext_resource type="Texture2D" uid="uid://bpanxgicoybb6" path="res://assets/environment/ShellGame_HouseParty.png" id="48_vuohh"]
 [ext_resource type="Texture2D" uid="uid://4uu7evqos4yn" path="res://assets/environment/Shell_Backyard.png" id="55_3gvs5"]
 [ext_resource type="Script" uid="uid://bbiyxf3q58p81" path="res://entities/states.gd" id="67_7x3ck"]
+[ext_resource type="Texture2D" uid="uid://chbj5pw4qhoa0" path="res://assets/environment/inside_house_background.png" id="84_vvpk2"]
+[ext_resource type="Texture2D" uid="uid://cuicxxq1ityib" path="res://assets/objects/ceiling_light.png" id="85_o46vb"]
 
 [sub_resource type="Resource" id="Resource_74mgt"]
 script = ExtResource("35_vbt48")
@@ -218,8 +220,8 @@ radius = 88.0
 height = 176.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4v2jo"]
-radius = 60.0
-height = 192.0
+radius = 67.0
+height = 140.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klri6"]
 size = Vector2(317, 301)
@@ -699,7 +701,7 @@ metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="DialoguePlayerThought" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3" unique_id=2050266631]
 script = ExtResource("4_pwsyv")
-dialogue = "... Well, in any case, I guess I’m here now. She must be around here somewhere."
+dialogue = "... Well, in any case, I guess I’m here now."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="DialogueReward" type="Node" parent="DialogueManager/DialogueLines/InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialoguePlaySound/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialoguePlayerThought" unique_id=1211323426]
@@ -2985,6 +2987,39 @@ position = Vector2(515.99994, 318.99997)
 scale = Vector2(0.21, 0.21)
 texture = ExtResource("55_3gvs5")
 
+[node name="NewLivingRoom" type="Node2D" parent="CanvasLayers/World/Environment" unique_id=1619312317]
+position = Vector2(-281, 1664)
+script = ExtResource("16_4v2jo")
+metadata/_custom_type_script = "uid://dv81dikbp6dgf"
+
+[node name="BG" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=262776015]
+position = Vector2(1770, 393)
+scale = Vector2(8.994619, 0.24546877)
+texture = ExtResource("84_vvpk2")
+
+[node name="CeilingLight" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1890645736 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(441, 255)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../../DialogueManager/DialogueConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight" unique_id=2078942401]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-16, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("85_o46vb")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight" unique_id=68567990 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight/Interactable" unique_id=39008773]
+position = Vector2(3.625, 51.25)
+shape = SubResource("CapsuleShape2D_4v2jo")
+
 [node name="NPCs" type="Node2D" parent="CanvasLayers/World" unique_id=1409111629]
 position = Vector2(304, 784)
 
@@ -3009,3 +3044,4 @@ texture = ExtResource("39_l1i01")
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/CoralBush5HASKEYS/Interactable" to="CanvasLayers/World/Environment/FrontYard/CoralBush5HASKEYS" method="_on_interactable_interacted"]
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/CoralBush6/Interactable" to="CanvasLayers/World/Environment/FrontYard/CoralBush6" method="_on_interactable_interacted"]
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/EntranceDoor/Interactable" to="CanvasLayers/World/Environment/FrontYard/EntranceDoor" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight" method="_on_interactable_interacted"]

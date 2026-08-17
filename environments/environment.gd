@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var front_yard: EnvironmentHolder = $FrontYard
-@onready var living_room: EnvironmentHolder = $LivingRoom
+@onready var living_room: EnvironmentHolder = $NewLivingRoom
 @onready var kitchen: EnvironmentHolder = $Kitchen
 @onready var hallway: EnvironmentHolder = $Hallway
 @onready var bathroom: EnvironmentHolder = $Bathroom
