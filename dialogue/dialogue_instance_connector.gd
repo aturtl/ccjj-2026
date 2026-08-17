@@ -8,4 +8,4 @@ func play_tree(subject: WorldEntity):
 	print("PLAYING")
 	for child in connected_tree.get_children():
 		if child is DialogueLine:
-			%DialoguePlayer.dialogue_start(child, subject)
+			%DialogueManager.dialogue_start(child, subject)

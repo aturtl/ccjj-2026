@@ -16,12 +16,10 @@
 [ext_resource type="Resource" uid="uid://deu730vg3le2l" path="res://data/items/car_keys.tres" id="13_dle7b"]
 [ext_resource type="PackedScene" uid="uid://jyajy7mer30n" path="res://dialogue/stackable_presets/ds_reward_preset.tscn" id="13_s3jmc"]
 [ext_resource type="Texture2D" uid="uid://chj3rca2mjs0e" path="res://assets/items/key.png" id="14_sh30a"]
-[ext_resource type="PackedScene" uid="uid://c0y6fbaviheuw" path="res://dialogue/stackable_presets/ds_scenefade_preset.tscn" id="14_swbew"]
 [ext_resource type="PackedScene" uid="uid://y7k70ihkpjsj" path="res://dialogue/stackables/scenes/visual/question/dialogue_question.tscn" id="15_0v8oo"]
-[ext_resource type="PackedScene" uid="uid://b6dc0oxjf7wsh" path="res://dialogue/stackables/scenes/event/dialogue_set_cam.tscn" id="16_1vab1"]
+[ext_resource type="Script" uid="uid://da0e24hbw4uct" path="res://dialogue/stackables/functionality/event/dialogue_change_scene.gd" id="15_sh30a"]
 [ext_resource type="Script" uid="uid://b6ilt730j81f4" path="res://dialogue/stackables/dialogue_line_tree.gd" id="17_sh30a"]
 [ext_resource type="PackedScene" uid="uid://dne775fhoxpao" path="res://dialogue/stackables/scenes/visual/dialogue_player_thought.tscn" id="17_xyyno"]
-[ext_resource type="PackedScene" uid="uid://dli177chi42cs" path="res://dialogue/stackables/scenes/event/dialogue_reward.tscn" id="18_ahw2j"]
 [ext_resource type="PackedScene" uid="uid://bkld8nuvrrlnt" path="res://dialogue/stackables/scenes/event/dialogue_play_sound.tscn" id="19_bieie"]
 [ext_resource type="PackedScene" uid="uid://3pkkj171l7os" path="res://dialogue/stackables/scenes/visual/question/dialogue_choice.tscn" id="22_ikrlq"]
 [ext_resource type="PackedScene" uid="uid://cwfb74agbws57" path="res://dialogue/stackables/scenes/visual/dialogue_statement.tscn" id="23_258b8"]
@@ -101,8 +99,10 @@ dialogue = "cool"
 in_between_time = 0.03
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatSetter" parent="q/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=2019433984 instance=ExtResource("10_n5o83")]
+[node name="DialogueStatSetter" type="Node" parent="q/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=2019433984]
+script = ExtResource("9_v0p3i")
 remove_item = ExtResource("13_dle7b")
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
 [node name="DialogueStatement3" type="Node" parent="q/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatSetter" unique_id=1402916021]
 script = ExtResource("2_3mtrk")
@@ -184,9 +184,11 @@ script = ExtResource("3_jak5m")
 dialogue = "Just my luck."
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueSwitch" parent="CarKeys1/DialogueStatement/DialoguePlayerThought/DialogueStatement2/DialogueStatement3/DialogueStatement4" unique_id=1208943949 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+[node name="DialogueSwitch" type="Node" parent="CarKeys1/DialogueStatement/DialoguePlayerThought/DialogueStatement2/DialogueStatement3/DialogueStatement4" unique_id=1208943949 node_paths=PackedStringArray("switch_tree")]
+script = ExtResource("34_ikg4h")
 switch_connector_name = "NoName"
 switch_tree = NodePath("../../../../../../../CarKeys2")
+metadata/_custom_type_script = "uid://cl1iols5nby6h"
 
 [node name="CarKeys2" type="Node2D" parent="." unique_id=1047661934]
 script = ExtResource("17_sh30a")
@@ -234,8 +236,10 @@ script = ExtResource("3_jak5m")
 dialogue = "Okay, well. Bye. Enjoy the party!"
 metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatSetter" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=1882986130 instance=ExtResource("10_n5o83")]
+[node name="DialogueStatSetter" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=1882986130]
+script = ExtResource("9_v0p3i")
 remove_item = ExtResource("13_dle7b")
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
 [node name="DialogueFadeIn" type="Node" parent="CarKeys2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatement3" unique_id=669915050]
 script = ExtResource("7_aux7e")
@@ -303,11 +307,15 @@ script = ExtResource("12_na5fk")
 reward_text = "CAR KEYS acquired!"
 metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
-[node name="DialogueSetCam" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter/DialogueReward" unique_id=1181379866 instance=ExtResource("16_1vab1")]
+[node name="DialogueSetCam" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter/DialogueReward" unique_id=1181379866]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
-[node name="DialogueSwitch" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter/DialogueReward/DialogueSetCam" unique_id=1536313701 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+[node name="DialogueSwitch" type="Node" parent="InteractBushCarKeys/DialoguePlayerThought/DialoguePlayerThought2/DialogueStatSetter/DialogueReward/DialogueSetCam" unique_id=1536313701 node_paths=PackedStringArray("switch_tree")]
+script = ExtResource("34_ikg4h")
 switch_connector_name = "BushHasCarKeys"
 switch_tree = NodePath("../../../../../../../InteractBushNoCarKeys")
+metadata/_custom_type_script = "uid://cl1iols5nby6h"
 
 [node name="InteractDoor" type="Node2D" parent="." unique_id=1009226560]
 script = ExtResource("17_sh30a")
@@ -332,10 +340,14 @@ script = ExtResource("2_3mtrk")
 dialogue = "Ugh, I don't know how this party thing works."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueSetCam" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=1572668965 instance=ExtResource("16_1vab1")]
+[node name="DialogueSetCam" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=1572668965]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
-[node name="DialogueSetCam" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=1083780904 instance=ExtResource("16_1vab1")]
+[node name="DialogueSetCam" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice" unique_id=1083780904]
+script = ExtResource("3_k1frf")
 id = "Talk"
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
 [node name="DialogueChoice2" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion" unique_id=1879178135]
 script = ExtResource("5_k1frf")
@@ -348,220 +360,361 @@ script = ExtResource("2_3mtrk")
 dialogue = "Well, here goes nothing."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DSSceneFadePreset" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=607337241 instance=ExtResource("14_swbew")]
+[node name="DSSceneFadePreset" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=607337241]
+script = ExtResource("7_aux7e")
+metadata/_custom_type_script = "uid://cjfyjpl406rmo"
 
-[node name="DialoguePlayerThought" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2" parent_id_path=PackedInt32Array(607337241, 1039843711) index="0" unique_id=43495928 instance=ExtResource("17_xyyno")]
+[node name="DialogueChangeScene" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset" unique_id=1413183850]
+script = ExtResource("15_sh30a")
+metadata/_custom_type_script = "uid://da0e24hbw4uct"
+
+[node name="DialogueFadeScreen2" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" unique_id=1039843711]
+script = ExtResource("7_aux7e")
+fade_type = 1
+metadata/_custom_type_script = "uid://cjfyjpl406rmo"
+
+[node name="DialoguePlayerThought" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2" unique_id=43495928]
+script = ExtResource("2_3mtrk")
 dialogue = "Wow, it’s loud in here. And bright. And crowded. Why did I let Marley talk me into this again?"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialoguePlayerThought" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought" unique_id=236610748 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought" unique_id=236610748]
+script = ExtResource("2_3mtrk")
 dialogue = "... Well, in any case, I guess I’m here now. She must be around here somewhere."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueReward" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought" unique_id=1972223848 instance=ExtResource("18_ahw2j")]
+[node name="DialogueReward" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought" unique_id=1972223848]
+script = ExtResource("12_na5fk")
 reward_text = "(LIVING ROOM can now be explored)"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
-[node name="DialogueSetCam" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueReward" unique_id=598835482 instance=ExtResource("16_1vab1")]
+[node name="DialogueSetCam" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene/DialogueFadeScreen2/DialoguePlayerThought/DialoguePlayerThought/DialogueReward" unique_id=598835482]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
-[node name="DialoguePlaySound" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" parent_id_path=PackedInt32Array(607337241, 1413183850) index="1" unique_id=63000943 instance=ExtResource("19_bieie")]
+[node name="DialoguePlaySound" type="Node" parent="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset/DialogueChangeScene" unique_id=63000943]
+script = ExtResource("8_8abdn")
+metadata/_custom_type_script = "uid://sl5iutsqybsx"
 
 [node name="Pacifica1" type="Node2D" parent="." unique_id=1290621089]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
-[node name="DialoguePlayerThought" parent="Pacifica1" unique_id=378653830 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Pacifica1" unique_id=378653830]
+script = ExtResource("2_3mtrk")
 dialogue = "Should I talk to her?"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueQuestion" parent="Pacifica1/DialoguePlayerThought" unique_id=732854441 instance=ExtResource("15_0v8oo")]
+[node name="DialogueQuestion" type="Node" parent="Pacifica1/DialoguePlayerThought" unique_id=732854441]
+script = ExtResource("4_jak5m")
+metadata/_custom_type_script = "uid://vyopck2u0qf4"
 
-[node name="DialogueChoice" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion" unique_id=1891817657 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion" unique_id=1891817657]
+script = ExtResource("5_k1frf")
 choice_text = "Avoid eye contact"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialogueChoice2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion" unique_id=1530233140 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice2" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion" unique_id=1530233140]
+script = ExtResource("5_k1frf")
 choice_text = "Talk to her"
 prereq_confidence = 10
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=1190864237 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=1190864237]
+script = ExtResource("3_jak5m")
 dialogue = "Hey! Great party, right?"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueQuestion" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement" unique_id=1277959711 instance=ExtResource("15_0v8oo")]
+[node name="DialogueQuestion" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement" unique_id=1277959711]
+script = ExtResource("4_jak5m")
+metadata/_custom_type_script = "uid://vyopck2u0qf4"
 
-[node name="DialogueChoice" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=2061609367 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=2061609367]
+script = ExtResource("5_k1frf")
 choice_text = "Yeah, it's fun"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=1841949245 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice" unique_id=1841949245]
+script = ExtResource("2_3mtrk")
 dialogue = "Yeah,...."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=859383634 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought" unique_id=859383634]
+script = ExtResource("3_jak5m")
 dialogue = "Is it your first party, then?"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=1787742748 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=1787742748]
+script = ExtResource("2_3mtrk")
 dialogue = " guess so. My friend Marley asked me to come with her, but I can't seem to find her anywhere."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1601622614 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1601622614]
+script = ExtResource("3_jak5m")
 dialogue = "Hm. Well, I haven’t seen her, but I’ll be sure to keep an eye out!"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueChoice2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1697917284 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice2" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1697917284]
+script = ExtResource("5_k1frf")
 choice_text = "Eh"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=899733109 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=899733109]
+script = ExtResource("2_3mtrk")
 dialogue = "Parties aren't really my thing"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=1008160164 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=1008160164]
+script = ExtResource("3_jak5m")
 dialogue = "Awe, that’s a shame. I love a good party, but I get why you might not."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueChoice3" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1100904278 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice3" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion" unique_id=1100904278]
+script = ExtResource("5_k1frf")
 choice_text = "HATE THOSE"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialoguePlayerThought" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3" unique_id=1775182589 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3" unique_id=1775182589]
+script = ExtResource("2_3mtrk")
 dialogue = "I hate it"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought" unique_id=684865818 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought" unique_id=684865818]
+script = ExtResource("3_jak5m")
 dialogue = "Oh."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement2" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement" unique_id=323940230 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement2" type="Node" parent="Pacifica1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialogueStatement/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement" unique_id=323940230]
+script = ExtResource("3_jak5m")
 dialogue = "Well.... I guess it's not for everyone"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="_Pacifica1_2" type="Node2D" parent="." unique_id=1112845183]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
-[node name="DialogueStatement" parent="_Pacifica1_2" unique_id=1806658433 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="_Pacifica1_2" unique_id=1806658433]
+script = ExtResource("3_jak5m")
 dialogue = "I'm Pacifica, by the way."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement2" parent="_Pacifica1_2/DialogueStatement" unique_id=1587880844 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement2" type="Node" parent="_Pacifica1_2/DialogueStatement" unique_id=1587880844]
+script = ExtResource("3_jak5m")
 dialogue = "I’ve seen you around school, but I don’t think we’ve really had the chance to introduce ourselves."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialoguePlayerThought" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2" unique_id=1753856372 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2" unique_id=1753856372]
+script = ExtResource("2_3mtrk")
 dialogue = "I’m Annemette."
 after_wait = 0.25
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialoguePlayerThought2" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought" unique_id=1832313626 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought2" type="Node" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought" unique_id=1832313626]
+script = ExtResource("2_3mtrk")
 dialogue = "Um..."
 after_wait = 0.25
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialoguePlayerThought3" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2" unique_id=1623709895 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought3" type="Node" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2" unique_id=1623709895]
+script = ExtResource("2_3mtrk")
 dialogue = "How's everything going, uh, with the party and what?"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3" unique_id=770624347 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3" unique_id=770624347]
+script = ExtResource("3_jak5m")
 dialogue = "Well it WOULD be perfect, except that I lost one of my earrings around here. If you happen to see it, would you let me know?"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialoguePlayerThought" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialogueStatement" unique_id=522771564 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialogueStatement" unique_id=522771564]
+script = ExtResource("2_3mtrk")
 dialogue = "I’ll look out for it."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueSwitch" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialogueStatement/DialoguePlayerThought" unique_id=1872083923 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+[node name="DialogueSwitch" type="Node" parent="_Pacifica1_2/DialogueStatement/DialogueStatement2/DialoguePlayerThought/DialoguePlayerThought2/DialoguePlayerThought3/DialogueStatement/DialoguePlayerThought" unique_id=1872083923 node_paths=PackedStringArray("switch_tree")]
+script = ExtResource("34_ikg4h")
 switch_connector_name = "Pacifica"
 switch_tree = NodePath("../../../../../../../../../Pacifica2")
+metadata/_custom_type_script = "uid://cl1iols5nby6h"
 
 [node name="Pacifica2" type="Node2D" parent="." unique_id=710755846]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
-[node name="DialogueStatement" parent="Pacifica2" unique_id=1304366687 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Pacifica2" unique_id=1304366687]
+script = ExtResource("3_jak5m")
 dialogue = "Keep an eye out for my earing, would you?"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueQuestion" parent="Pacifica2/DialogueStatement" unique_id=93979187 instance=ExtResource("15_0v8oo")]
+[node name="DialogueQuestion" type="Node" parent="Pacifica2/DialogueStatement" unique_id=93979187]
+script = ExtResource("4_jak5m")
+metadata/_custom_type_script = "uid://vyopck2u0qf4"
 
-[node name="DialogueChoice" parent="Pacifica2/DialogueStatement/DialogueQuestion" unique_id=1048408982 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion" unique_id=1048408982]
+script = ExtResource("5_k1frf")
 choice_text = "On it!"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialogueChoice2" parent="Pacifica2/DialogueStatement/DialogueQuestion" unique_id=1334563762 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice2" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion" unique_id=1334563762]
+script = ExtResource("5_k1frf")
 choice_text = "Your earring?"
 prereq_item = ExtResource("24_v3i0m")
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialoguePlayerThought" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=1764489708 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2" unique_id=1764489708]
+script = ExtResource("2_3mtrk")
 dialogue = "I found your-"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=865882938 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=865882938]
+script = ExtResource("3_jak5m")
 dialogue = "Oh. My God. I can’t believe you found it!! You’re an absolute LIFESAVER! Thanks so much!"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialoguePlayerThought" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=2033143360 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=2033143360]
+script = ExtResource("2_3mtrk")
 dialogue = "No problem!"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatSetter" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1805016260 instance=ExtResource("13_s3jmc")]
+[node name="DialogueStatSetter" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought" unique_id=1805016260]
+script = ExtResource("9_v0p3i")
 confidence_reward = 10
 remove_item = ExtResource("24_v3i0m")
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
-[node name="DialogueReward" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter" index="0" unique_id=1748942105]
+[node name="DialogueReward" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter" unique_id=1740124700]
+script = ExtResource("12_na5fk")
 reward_text = "CONFIDENCE INCREASED BY 10!"
+metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
-[node name="DialogueSwitch" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter/DialogueReward/DialogueSetCam" parent_id_path=PackedInt32Array(1805016260, 619172470) index="0" unique_id=1449208361 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+[node name="DialogueSetCam" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter/DialogueReward" unique_id=619172470]
+script = ExtResource("3_k1frf")
+metadata/_custom_type_script = "uid://dv067w6ebkvde"
+
+[node name="DialogueSwitch" type="Node" parent="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter/DialogueReward/DialogueSetCam" unique_id=1449208361 node_paths=PackedStringArray("switch_tree")]
+script = ExtResource("34_ikg4h")
 switch_connector_name = "Pacifica"
 switch_tree = NodePath("../../../../../../../../../../../Pacifica3")
+metadata/_custom_type_script = "uid://cl1iols5nby6h"
 
 [node name="Pacifica3" type="Node2D" parent="." unique_id=749354460]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
-[node name="DialogueStatement" parent="Pacifica3" unique_id=1821126711 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Pacifica3" unique_id=1821126711]
+script = ExtResource("3_jak5m")
 dialogue = "Thanks again for finding my earring! We should hang out sometime!"
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
 [node name="Reef1" type="Node2D" parent="." unique_id=79909167]
 script = ExtResource("17_sh30a")
 metadata/_custom_type_script = "uid://b6ilt730j81f4"
 
-[node name="DialoguePlayerThought" parent="Reef1" unique_id=292560011 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Reef1" unique_id=292560011]
+script = ExtResource("2_3mtrk")
 dialogue = "They're blocking the hallway..."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueQuestion" parent="Reef1/DialoguePlayerThought" unique_id=914629503 instance=ExtResource("15_0v8oo")]
+[node name="DialogueQuestion" type="Node" parent="Reef1/DialoguePlayerThought" unique_id=914629503]
+script = ExtResource("4_jak5m")
+metadata/_custom_type_script = "uid://vyopck2u0qf4"
 
-[node name="DialogueChoice" parent="Reef1/DialoguePlayerThought/DialogueQuestion" unique_id=1491248777 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion" unique_id=1491248777]
+script = ExtResource("5_k1frf")
 choice_text = "It's fine... They'll probably move later?"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialogueChoice2" parent="Reef1/DialoguePlayerThought/DialogueQuestion" unique_id=1237440570 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice2" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion" unique_id=1237440570]
+script = ExtResource("5_k1frf")
 choice_text = "Ask them to move."
 prereq_confidence = 15
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialoguePlayerThought" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=724052045 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2" unique_id=724052045]
+script = ExtResource("2_3mtrk")
 dialogue = "..."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=919122169 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought" unique_id=919122169]
+script = ExtResource("3_jak5m")
 dialogue = "..."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=1349722989 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement2" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement" unique_id=1349722989]
+script = ExtResource("3_jak5m")
 dialogue = "Oh. Hello. I didn't see you there."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueChoice" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=255782395 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=255782395]
+script = ExtResource("5_k1frf")
 choice_text = "Move, please??"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialoguePlayerThought" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice" unique_id=780566719 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice" unique_id=780566719]
+script = ExtResource("2_3mtrk")
 dialogue = "I need to get through that door. Could you move over a bit?"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialogueStatement" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought" unique_id=1748646008 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought" unique_id=1748646008]
+script = ExtResource("3_jak5m")
 dialogue = "Mmmmmm, how about... no. I’m comfortable here, thanks."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=900826836 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement2" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement" unique_id=900826836]
+script = ExtResource("3_jak5m")
 dialogue = "Though I MIGHT be able to be persuaded. If you went and fetched me a drink."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatSetter" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1560013917 instance=ExtResource("10_n5o83")]
+[node name="DialogueStatSetter" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1560013917]
+script = ExtResource("9_v0p3i")
 add_item = ExtResource("29_ikg4h")
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
-[node name="DialogueSwitch" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatSetter" unique_id=870047498 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+[node name="DialogueSwitch" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueStatSetter" unique_id=870047498 node_paths=PackedStringArray("switch_tree")]
+script = ExtResource("34_ikg4h")
 switch_connector_name = "Reef"
 switch_tree = NodePath("../../../../../../../../../../../../../Reef2HasQuest")
+metadata/_custom_type_script = "uid://cl1iols5nby6h"
 
-[node name="DialogueChoice2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1287416024 instance=ExtResource("22_ikrlq")]
+[node name="DialogueChoice2" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2" unique_id=1287416024]
+script = ExtResource("5_k1frf")
 choice_text = "How did you [i]not[/i] see me?"
+metadata/_custom_type_script = "uid://d0wrttl5pqxhg"
 
-[node name="DialogueStatement" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2" unique_id=1849788242 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2" unique_id=1849788242]
+script = ExtResource("3_jak5m")
 dialogue = "I don't feel the need to strain my eyes by paying attention to those who are beneath me."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement" unique_id=1632611808 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement" unique_id=1632611808]
+script = ExtResource("3_jak5m")
 dialogue = "..."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatement2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement" unique_id=483246071 instance=ExtResource("23_258b8")]
+[node name="DialogueStatement2" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement" unique_id=483246071]
+script = ExtResource("3_jak5m")
 dialogue = "Why are you still here? Go grab me a drink."
+metadata/_custom_type_script = "uid://bf6xushulbekl"
 
-[node name="DialogueStatSetter" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement/DialogueStatement2" unique_id=1035993554 instance=ExtResource("10_n5o83")]
+[node name="DialogueStatSetter" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement/DialogueStatement2" unique_id=1035993554]
+script = ExtResource("9_v0p3i")
 add_item = ExtResource("29_ikg4h")
+metadata/_custom_type_script = "uid://do1oojhpndbhe"
 
-[node name="DialogueSwitch" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement/DialogueStatement2/DialogueStatSetter" unique_id=1710745926 node_paths=PackedStringArray("switch_tree") instance=ExtResource("33_sh30a")]
+[node name="DialogueSwitch" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement/DialogueStatement/DialogueStatement2/DialogueStatSetter" unique_id=1710745926 node_paths=PackedStringArray("switch_tree")]
+script = ExtResource("34_ikg4h")
 switch_connector_name = "Reef"
 switch_tree = NodePath("../../../../../../../../../../../../../Reef2HasQuest")
+metadata/_custom_type_script = "uid://cl1iols5nby6h"
 
-[node name="DialoguePlayerThought2" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement" unique_id=1899566348 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought2" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2/DialogueStatement" unique_id=1899566348]
+script = ExtResource("2_3mtrk")
 dialogue = "..."
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[node name="DialoguePlayerThought" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2" unique_id=656636789 instance=ExtResource("17_xyyno")]
+[node name="DialoguePlayerThought" type="Node" parent="Reef1/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialogueStatement2/DialogueChoice2" unique_id=656636789]
+script = ExtResource("2_3mtrk")
 dialogue = "How did you not see me, I'm LITERALLY standing right in front of you"
+metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
 [node name="Reef2HasQuest" type="Node2D" parent="." unique_id=20326799]
 script = ExtResource("17_sh30a")
@@ -733,7 +886,7 @@ script = ExtResource("12_na5fk")
 reward_text = "CONFIDENCE increased by 10!"
 metadata/_custom_type_script = "uid://bl4vdyegyay3"
 
-[node name="DialogueSetCam" type="Node" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter/DialogueReward" unique_id=619172470]
+[node name="DialogueSetCam" type="Node" parent="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatSetter/DialogueReward" unique_id=141397479]
 script = ExtResource("3_k1frf")
 metadata/_custom_type_script = "uid://dv067w6ebkvde"
 
@@ -1321,8 +1474,6 @@ script = ExtResource("2_3mtrk")
 dialogue = "I can't seem to muster up the courage to go in there..."
 metadata/_custom_type_script = "uid://bt0beq6e14jlu"
 
-[editable path="InteractDoor/DialoguePlayerThought/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DSSceneFadePreset"]
-[editable path="Pacifica2/DialogueStatement/DialogueQuestion/DialogueChoice2/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatSetter"]
 [editable path="_Reef2_Reward/DialogueStatSetter"]
 [editable path="Atolla/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialoguePlayerThought/DialogueStatement/DialoguePlayerThought/DialogueStatement/DialogueStatSetter2"]
 [editable path="InteractDrinksCounter/DialoguePlayerThought/DialogueQuestion/DialogueChoice3/DialogueStatSetter"]

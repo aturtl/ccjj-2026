@@ -1,4 +1,4 @@
-extends Node
+class_name DialogueManager extends Node
 
 @export var main_cam: MainCamera
 @export var talk_cam: FakeCam
@@ -71,8 +71,6 @@ func dialogue_start(d_object:DialogueLine, subject: WorldEntity):
 	if subject:
 		original_subject_pos = subject.global_position
 	
-	print("STARTEDaaaaa")
-	
 	GameState.in_dialogue = true
 	
 	player.dialogue_lock = true
@@ -142,8 +140,6 @@ func dialogue_start(d_object:DialogueLine, subject: WorldEntity):
 
 
 func dialogue_loop(d_object:DialogueObject):
-	var subject_pos = subject.global_position if subject else Vector2(0,0)
-	
 	if !d_object:
 		dialogue_branch_end()
 		return
@@ -158,121 +154,13 @@ func dialogue_loop(d_object:DialogueObject):
 		if d_object.switch_player_animation_to != "":
 			player_sprite.play(d_object.switch_player_animation_to)
 	
-	if d_object is DialogueStatement:
-		subject_talking_instances += 1
-		update_cam_state()
-		
-		#if scene == "":
-			#tween_to_talk(.5)
-		#else:
-			#tween_to_talk(1.0)
-		
-		var x_sign = -sign(main_cam.global_position.x - subject.global_position.x)
-		
-		var ui_npc_talk = ui_npc_talk_left if x_sign == 1 else ui_npc_talk_right
-		
-		ui_npc_talk.talk(d_object, subject_pos + Vector2(x_sign*-subject.dialogue_distance, -subject.dialogue_height))
-		
-		await ui_npc_talk.start_next
-		
-		subject_talking_instances -= 1
-		
-		if !(d_object.goto is DialogueStatement):
-			ui_npc_talk.kill_all_box_instances()
-		loop_with_parallels(d_object)
+	await d_object._run()
 	
-	elif d_object is DialoguePlayerThought:
-		player.sprite.play("talk")
-		
-		var x_sign = 1
-		
-		if subject:
-			x_sign = -sign(main_cam.global_position.x - subject.global_position.x)
-		
-		player_talking_instances += 1
-		update_cam_state()
-		
-		var ui_player_talk = ui_player_talk_left if x_sign == -1 else ui_player_talk_right
-		
-		ui_player_talk.talk(d_object, player.global_position + Vector2.UP * 150.0 + Vector2.RIGHT * 75.0 * x_sign)
-		
-		await ui_player_talk.start_next
-		
-		player_talking_instances -= 1
-		
-		if !(d_object.goto is DialoguePlayerThought):
-			ui_player_talk.kill_box_instance()
-		loop_with_parallels(d_object)	
-	
-	elif d_object is DialogueQuestion:
-		player_thinking_instances += 1
-		update_cam_state()
-		
-		kill_boxes()
-		
-		#await tween_to_thought()
-		
-		var choices = get_choices(d_object)
-		ui_choice_display.display_choices(choices, Vector2(576,320))
-		
-		var choice_d_object: DialogueChoice = await ui_choice_display.choice_selected
-		
-		fade_screen(false, .5)
-		
-		#await tween_to_talk(1.0)
-		
-		player_thinking_instances -= 1
-		
-		loop_with_parallels(choice_d_object)
-		
-		print("QUESTION ASKED")
-	
-	elif d_object is DialogueSetCam:
-		#if d_object.id == "Player":
-			#tween_back_to_original_positions()
-		#if d_object.id == "Talk":
-			#tween_to_talk(1.5)
-		#if d_object.id == "Thought":
-			#tween_to_thought()
-		pass #deprecated
-		loop_with_parallels(d_object)
-	
-	elif d_object is DialogueFadeScreen:
-		await fade_screen(d_object.fade_type == d_object.FadeType.IN,d_object.fade_time)
-		
-		loop_with_parallels(d_object)
-	
-	elif d_object is DialoguePlaySound:
-		AudioManager.play_sfx(d_object.audio_stream)
-		loop_with_parallels(d_object) # add func
-	
-	elif d_object is DialogueStatSetter:
-		Stats.confidence += d_object.confidence_reward
-		d_object.confidence_reward = 0
-		if d_object.add_item:
-			Inventory.add_item(d_object.add_item)
-		if d_object.remove_item:
-			Inventory.remove_item(d_object.remove_item)
-		loop_with_parallels(d_object) # add func
-	
-	elif d_object is DialogueReward:
-		await ui_reward.display(d_object.reward_text)
-		loop_with_parallels(d_object)
-	
-	elif d_object is DialogueChangeScene:
-		#change scene here
-		loop_with_parallels(d_object)
-	
-	elif d_object is DialogueSwitch:
-		var switch_connector = instance_connectors.get_node(d_object.switch_connector_name)
-		if switch_connector:
-			switch_connector.connected_tree = d_object.switch_tree
-		loop_with_parallels(d_object)
+	loop_with_parallels(d_object)
 
 
 func dialogue_branch_end():
 	parallel_count -= 1
-	print("BRANCH ENDED: ",parallel_count)
 	if parallel_count == 0:
 		dialogue_end()
 
@@ -412,6 +300,9 @@ func kill_boxes():
 
 
 func loop_with_parallels(d_object: DialogueObject):
+	if d_object is DialogueQuestion:
+		d_object = d_object.chosen_choice
+	
 	if d_object.after_wait > 0.0:
 		await get_tree().create_timer(d_object.after_wait).timeout
 	parallel_count += d_object.parallel_gotos.size()

@@ -18,4 +18,4 @@ func play_tree(nm: String):
 		return
 	for child in line_holder.get_children():
 		if child is DialogueLine:
-			%DialoguePlayer.dialogue_start(child, debug_npc)
+			%DialogueManager.dialogue_start(child, debug_npc)

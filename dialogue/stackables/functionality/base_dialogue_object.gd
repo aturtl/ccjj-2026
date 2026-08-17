@@ -7,6 +7,8 @@ class_name DialogueObject extends Node
 
 @export var after_wait: float = 0.0
 
+@onready var dm: DialogueManager = %DialogueManager
+
 func _ready():
 	if !goto:
 		set_goto_from_child()
@@ -19,3 +21,7 @@ func set_goto_from_child():
 				goto = child
 			else:
 				parallel_gotos.append(child)
+
+
+func _run():
+	pass

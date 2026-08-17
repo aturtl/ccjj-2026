@@ -6,3 +6,6 @@ class_name DialogueFadeScreen extends DialogueEvent
 
 enum FadeType {IN, OUT}
 @export var fade_type = FadeType.IN
+
+func _run():
+	await dm.fade_screen(fade_type == FadeType.IN, fade_time)

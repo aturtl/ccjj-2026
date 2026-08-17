@@ -43,7 +43,7 @@ func talk(dl: DialogueLine, origin: Vector2 = Vector2(0, 0), starting_visible_ch
 	for i in s.length() - starting_visible_characters:
 		if s[true_index] != ' ':
 			if dl.dynamic_range == -1.0:
-				%DialoguePlayer.play_blip() #temp
+				%DialogueManager.play_blip() #temp
 			else:
 				%DialoguePlayer.play_blip(dl.dynamic_range) #temp
 		await get_tree().create_timer(dl.in_between_time).timeout
