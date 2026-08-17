@@ -3,6 +3,9 @@ class_name Interactable
 
 @export var interaction_string: String
 @export var highlight_on_hover : bool = true
+
+@export var hover_priority: int = 0
+
 @export_custom(PROPERTY_HINT_NODE_TYPE, "AnimatedSprite2D,Sprite2D") var sprite: Node2D
 var shader: ShaderMaterial
 
@@ -16,12 +19,20 @@ func _ready():
 	
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-	input_event.connect(_on_input_event)
+	#input_event.connect(_on_input_event)
 	sprite.material = sprite.material.duplicate() # so duplicated objects have unique outlines
 	shader = sprite.material as ShaderMaterial
 
 
 func _on_mouse_entered() -> void:
+	GameState.add_hover(self)
+
+
+func _on_mouse_exited() -> void:
+	GameState.remove_hover(self)
+
+
+func hover() -> void:
 	true_mouse_enter = true
 	
 	if GameState.in_dialogue:
@@ -31,7 +42,7 @@ func _on_mouse_entered() -> void:
 		shader.set_shader_parameter("outline_thickness", 5)
 
 
-func _on_mouse_exited() -> void:
+func unhover() -> void:
 	true_mouse_enter = false
 	
 	if GameState.in_dialogue:
@@ -41,16 +52,12 @@ func _on_mouse_exited() -> void:
 		shader.set_shader_parameter("outline_thickness", 0)
 
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if GameState.in_dialogue:
-		return
-	
-	if event.is_action_pressed("interact"):
-		interacted.emit(interaction_string)
+func _on_interact() -> void:
+	interacted.emit(interaction_string)
 
 
 func _game_in_dialogue_changed(in_dialogue):
 	if in_dialogue:
 		shader.set_shader_parameter("outline_thickness", 0)
 	if true_mouse_enter:
-		_on_mouse_entered()
+		hover()

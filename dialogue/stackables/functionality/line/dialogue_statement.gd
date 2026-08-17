@@ -14,7 +14,7 @@ var ui: UITalkNPC:
 			ui.kill_all_box_instances()
 		ui = value
 
-func _run():
+func _play_line():
 	dm.subject_talking_instances += 1
 	dm.update_cam_state()
 	
@@ -30,5 +30,5 @@ func _run():
 		ui.kill_all_box_instances()
 
 
-func _after_run():
+func _after_play_line():
 	pass

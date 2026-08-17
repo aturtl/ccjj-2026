@@ -1,6 +1,6 @@
 @icon("res://icons/icon_thought.png")
 
-class_name DialoguePlayerThought extends DialogueLine
+class_name DialoguePlayerTalk extends DialogueLine
 
 @export var dialogue: String = ""
 
@@ -13,16 +13,16 @@ var ui: UITalkThought:
 			ui.kill_box_instance()
 		ui = value
 
-func _run():
+func _play_line():
+	dm.player_talking_instances += 1
+	dm.update_cam_state()
+	
 	dm.player.sprite.play("talk")
 		
 	var x_sign = 1
 	
 	if dm.subject:
-		x_sign = -sign(dm.main_cam.global_position.x - dm.subject.global_position.x)
-	
-	dm.player_talking_instances += 1
-	dm.update_cam_state()
+		x_sign = -sign(dm.player.global_position.x - dm.subject.global_position.x)
 	
 	ui = ui_left if x_sign == -1 else ui_right
 	
@@ -32,5 +32,5 @@ func _run():
 	
 	dm.player_talking_instances -= 1
 	
-	if !(goto is DialoguePlayerThought):
+	if !(goto is DialoguePlayerTalk):
 		ui.kill_box_instance()

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dne775fhoxpao"]
 
-[ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/functionality/line/dialogue_player_thought.gd" id="1_g1b7k"]
+[ext_resource type="Script" uid="uid://bt0beq6e14jlu" path="res://dialogue/stackables/functionality/line/dialogue_player_talk.gd" id="1_g1b7k"]
 
 [node name="DialoguePlayerThought" type="Node" unique_id=43495928]
 script = ExtResource("1_g1b7k")

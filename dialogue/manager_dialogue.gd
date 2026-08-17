@@ -6,6 +6,7 @@ class_name DialogueManager extends Node
 @export var npc_sprite: AnimatedSprite2D
 @export var transitioners: Node2D
 @export var screen_fader: ColorRect
+@export var scene_screen_fader: ColorRect
 
 @export var instance_connectors: Node
 
@@ -154,7 +155,7 @@ func dialogue_loop(d_object:DialogueObject):
 		if d_object.switch_player_animation_to != "":
 			player_sprite.play(d_object.switch_player_animation_to)
 	
-	await d_object._run()
+	await d_object._play_line()
 	
 	loop_with_parallels(d_object)
 
@@ -266,8 +267,7 @@ func cam_return():
 	
 	var zoom = Vector2(1.0,1.0)
 	
-	if subject:
-		tween.tween_property(main_cam, "global_position", Vector2(x,y), .5).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(main_cam, "global_position", main_cam.restrict_to_cam_bounds(Vector2(x,y), zoom), .5).set_trans(Tween.TRANS_SINE)
 	
 	tween.parallel().tween_property(player, "global_position", original_player_pos, .5).set_trans(Tween.TRANS_SINE)
 	
@@ -290,6 +290,20 @@ func fade_screen(show: bool, time: float):
 	
 	if !show:
 		screen_fader.visible = false
+
+
+func scene_fade_screen(show: bool, time: float):
+	var alpha = 1.0 if show else 0.0
+	scene_screen_fader.visible = true
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(scene_screen_fader,"modulate:a",alpha,time)
+	tween.play()
+	
+	await tween.finished
+	
+	if !show:
+		scene_screen_fader.visible = false
 
 
 func kill_boxes():

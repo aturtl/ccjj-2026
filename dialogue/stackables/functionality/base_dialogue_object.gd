@@ -23,5 +23,5 @@ func set_goto_from_child():
 				parallel_gotos.append(child)
 
 
-func _run():
+func _play_line():
 	pass

@@ -6,7 +6,7 @@ class_name DialogueQuestion extends DialogueObject
 
 var chosen_choice: DialogueChoice
 
-func _run():
+func _play_line():
 	dm.player_thinking_instances += 1
 	dm.update_cam_state()
 	dm.kill_boxes()

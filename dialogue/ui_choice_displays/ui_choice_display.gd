@@ -25,11 +25,13 @@ func display_choices(choices: Array, origin: Vector2):
 		var prereq_item = choice_info.prereq_item
 		var prereq_confidence = choice_info.prereq_confidence
 		
-		if prereq_item and !Inventory.has_item(prereq_item): # skip if player doesnt have item
-			continue
+		if !%CheatsUI.ignore_all_prerequisites:
 		
-		if Stats.confidence < prereq_confidence: # skip if player has less sanity than req
-			continue
+			if prereq_item and !Inventory.has_item(prereq_item): # skip if player doesnt have item
+				continue
+			
+			if Stats.confidence < prereq_confidence: # skip if player has less sanity than req
+				continue
 		
 		var choice_instance: ChoiceTemplate = add_templated_choice_instance(choice_template, origin)
 		

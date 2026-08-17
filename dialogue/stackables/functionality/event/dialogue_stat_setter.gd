@@ -4,7 +4,7 @@ class_name DialogueStatSetter extends DialogueEvent
 @export var add_item: ItemData # Not blank = item, you know the drill
 @export var remove_item: ItemData
 
-func _run():
+func _play_line():
 	Stats.confidence += confidence_reward
 	confidence_reward = 0
 	if add_item:

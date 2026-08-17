@@ -4,5 +4,5 @@ class_name DialogueReward extends DialogueEvent
 
 @onready var ui = %DialogueCanvas.get_node("UIReward")
 
-func _run():
+func _play_line():
 	await ui.display(reward_text)

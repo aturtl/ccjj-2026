@@ -9,7 +9,6 @@ class_name WorldObject
 var spawned_item = false
 var interacted = false
 
-
 func _on_interactable_interacted(text: String) -> void:
 	if %Player.dialogue_lock:
 		return

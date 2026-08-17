@@ -5,7 +5,7 @@ class_name DialogueSwitch extends DialogueEvent
 
 @onready var dc = %DialogueConnectors
 
-func _ready():
+func _play_line():
 	var switch_connector = dc.get_node(switch_connector_name)
 	if switch_connector:
 		switch_connector.connected_tree = switch_tree
