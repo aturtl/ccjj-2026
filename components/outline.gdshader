@@ -20,7 +20,7 @@ void vertex() {
 	if (allow_out_of_bounds) VERTEX += (UV * 2.0 - 1.0) * outline_thickness;
 }
 
-void fragment() {
+void fragment() {	
 	if (outline_thickness > 0.0 && outline_color.a > 0.0) {
 		vec2 uv = UV;
 		vec4 texture_color = texture(TEXTURE, UV);

@@ -27,8 +27,9 @@ func _cheat_entered(cheat: String):
 	if cheat.match("env_*"):
 		var env = Environments.get(cheat.substr(4).to_upper())
 		if env:
-			print("ENV:", env)
 			switch_environment(env)
+	if cheat.match("en_*"):
+		switch_environment(int(cheat.substr(3)))
 
 func show_environment(env: EnvironmentHolder):
 	env.global_position = Vector2.ZERO

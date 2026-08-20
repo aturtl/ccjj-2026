@@ -84,8 +84,18 @@
 [ext_resource type="Texture2D" uid="uid://bpanxgicoybb6" path="res://assets/environment/ShellGame_HouseParty.png" id="48_vuohh"]
 [ext_resource type="Texture2D" uid="uid://4uu7evqos4yn" path="res://assets/environment/Shell_Backyard.png" id="55_3gvs5"]
 [ext_resource type="Script" uid="uid://bbiyxf3q58p81" path="res://entities/states.gd" id="67_7x3ck"]
+[ext_resource type="Texture2D" uid="uid://m0f0ka5no6b3" path="res://assets/objects/cabinet_table.png" id="75_o46vb"]
+[ext_resource type="Texture2D" uid="uid://cy2tairyakdvv" path="res://assets/objects/punch_bowl.png" id="84_vqo61"]
 [ext_resource type="Texture2D" uid="uid://chbj5pw4qhoa0" path="res://assets/environment/inside_house_background.png" id="84_vvpk2"]
 [ext_resource type="Texture2D" uid="uid://cuicxxq1ityib" path="res://assets/objects/ceiling_light.png" id="85_o46vb"]
+[ext_resource type="Texture2D" uid="uid://i2i45in7hhke" path="res://assets/objects/cup_stack.png" id="85_sueei"]
+[ext_resource type="Texture2D" uid="uid://c7em4lvwgavdc" path="res://assets/objects/cup.png" id="86_qhxlk"]
+[ext_resource type="Texture2D" uid="uid://d4asfx5kt66i7" path="res://assets/objects/fallen_cup.png" id="87_qw2kp"]
+[ext_resource type="Texture2D" uid="uid://05g7ql0gr3fv" path="res://assets/objects/foldable_chair.png" id="88_qw2kp"]
+[ext_resource type="Texture2D" uid="uid://66kue15ijbhf" path="res://assets/objects/couch.png" id="89_71bxy"]
+[ext_resource type="Texture2D" uid="uid://bw5nyb83i4nmk" path="res://assets/objects/sauces.png" id="89_ftkif"]
+[ext_resource type="Texture2D" uid="uid://dc0agoe7nl3vj" path="res://assets/objects/fridge.png" id="89_qhxlk"]
+[ext_resource type="Texture2D" uid="uid://drvlgwo5r4bbs" path="res://assets/objects/house_plant.png" id="90_71bxy"]
 
 [sub_resource type="Resource" id="Resource_74mgt"]
 script = ExtResource("35_vbt48")
@@ -241,6 +251,41 @@ region = Rect2(8644.103, 0, 4975.247, 3200)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pwi3"]
 atlas = ExtResource("48_vuohh")
 region = Rect2(11194.355, 0, 4305.6445, 3200)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvpk2"]
+shader = ExtResource("17_082n1")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o46vb"]
+radius = 20.25
+height = 96.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_71bxy"]
+radius = 26.949951
+height = 62.850098
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ftkif"]
+radius = 55.42505
+height = 154.8501
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8jd3k"]
+radius = 87.05005
+height = 411.1499
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tssr6"]
+radius = 70.57495
+height = 262.00024
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqo61"]
+size = Vector2(363, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qw2kp"]
+size = Vector2(140, 277)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jd3k"]
+size = Vector2(159.99997, 89.99994)
 
 [node name="Game" type="Node2D" unique_id=69826831]
 process_mode = 3
@@ -2867,7 +2912,7 @@ shape = SubResource("RectangleShape2D_klri6")
 
 [node name="LivingRoom" type="Node2D" parent="CanvasLayers/World/Environment" unique_id=583145584]
 unique_name_in_owner = true
-position = Vector2(2651, 18)
+position = Vector2(3265, 91)
 script = ExtResource("16_4v2jo")
 metadata/_custom_type_script = "uid://dv81dikbp6dgf"
 
@@ -2992,16 +3037,500 @@ position = Vector2(-281, 1664)
 script = ExtResource("16_4v2jo")
 metadata/_custom_type_script = "uid://dv81dikbp6dgf"
 
+[node name="Reef2" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1537165228 instance=ExtResource("10_qhcbd")]
+z_index = 12
+position = Vector2(1997, 363)
+scale = Vector2(0.5, 0.5)
+
+[node name="PunchBowl" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1606395733]
+position = Vector2(1078, 336)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/PunchBowl" unique_id=750889046]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("84_vqo61")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/PunchBowl" unique_id=1654965330 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/PunchBowl/Interactable" unique_id=688154997]
+position = Vector2(-0.375, 0.25)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o46vb")
+
+[node name="CupStack" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=866582767]
+position = Vector2(1324, 336)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack" unique_id=1507085036]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("85_sueei")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack" unique_id=311335512 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack/Interactable" unique_id=230643333]
+position = Vector2(-0.375, 0.25)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_71bxy")
+
+[node name="CupStack3" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1861821322]
+position = Vector2(1133, 325)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack3" unique_id=402977260]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("85_sueei")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack3" unique_id=1000256456 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack3/Interactable" unique_id=1517740550]
+position = Vector2(-0.375, 0.25)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_71bxy")
+
+[node name="CupStack4" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1070508864]
+position = Vector2(994, 336)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack4" unique_id=1125000513]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("85_sueei")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack4" unique_id=1038361243 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack4/Interactable" unique_id=836630980]
+position = Vector2(-0.375, 0.25)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_71bxy")
+
+[node name="CupStack2" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1082732639]
+position = Vector2(519, 198)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack2" unique_id=2038352900]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("85_sueei")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack2" unique_id=874750354 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupStack2/Interactable" unique_id=688403513]
+position = Vector2(-0.375, 0.25)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_71bxy")
+
+[node name="Cup" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1355944065]
+position = Vector2(1284, 349)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Cup" unique_id=1378537393]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("86_qhxlk")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Cup" unique_id=1277583145 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Cup/Interactable" unique_id=1447364181]
+position = Vector2(-0.375, 0.25)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_71bxy")
+
+[node name="CupFall" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1370329271]
+position = Vector2(691, 337)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupFall" unique_id=857100853]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("87_qw2kp")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupFall" unique_id=2014981380 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CupFall/Interactable" unique_id=1239947800]
+position = Vector2(-0.375, 0.25)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_71bxy")
+
+[node name="FoldableChair" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=997989830]
+position = Vector2(1437, 405)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair" unique_id=72588559]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("88_qw2kp")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair" unique_id=706553901 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair/Interactable" unique_id=1030826406]
+position = Vector2(-0.375, 0.25)
+shape = SubResource("CapsuleShape2D_ftkif")
+
+[node name="FoldableChair2" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1830362060]
+position = Vector2(1324, 468)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair2" unique_id=1069046125]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("88_qw2kp")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair2" unique_id=790274984 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair2/Interactable" unique_id=1904719956]
+position = Vector2(-0.375, 0.25)
+shape = SubResource("CapsuleShape2D_ftkif")
+
+[node name="FoldableChair3" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=2018842811]
+position = Vector2(583, 153)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair3" unique_id=901391911]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("88_qw2kp")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair3" unique_id=1157245960 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair3/Interactable" unique_id=704741913]
+position = Vector2(-0.375, 0.25)
+shape = SubResource("CapsuleShape2D_ftkif")
+
+[node name="Couch" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1343354216]
+position = Vector2(1680, 402)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Couch" unique_id=513354690]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("89_71bxy")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Couch" unique_id=1484843976 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Couch/Interactable" unique_id=176706867]
+position = Vector2(-0.375, 3.1999512)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_8jd3k")
+
+[node name="HousePlant" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=780563511]
+position = Vector2(1897, 353)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant" unique_id=816468479]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("90_71bxy")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant" unique_id=1549798538 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant/Interactable" unique_id=348721893]
+position = Vector2(-0.375, 3.1999512)
+rotation = -3.1415927
+shape = SubResource("CapsuleShape2D_tssr6")
+
+[node name="HousePlant2" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=721977991]
+position = Vector2(428, 350)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant2" unique_id=143062884]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("90_71bxy")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant2" unique_id=1086544233 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant2/Interactable" unique_id=454051909]
+position = Vector2(-0.375, 3.1999512)
+rotation = -3.1415927
+shape = SubResource("CapsuleShape2D_tssr6")
+
+[node name="HousePlant3" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=683438559]
+position = Vector2(74, 362)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant3" unique_id=1143526389]
+z_index = 11
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-0.19995308, 0.8000412)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("90_71bxy")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant3" unique_id=1755135361 node_paths=PackedStringArray("sprite")]
+z_index = 11
+position = Vector2(-0.19995117, 0.8000488)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/HousePlant3/Interactable" unique_id=924229039]
+position = Vector2(-0.375, 3.1999512)
+rotation = -3.1415927
+shape = SubResource("CapsuleShape2D_tssr6")
+
+[node name="CabinetTable" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=582385586]
+position = Vector2(829, 405)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable" unique_id=972890223]
+z_index = 10
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(0.29998636, 0.6002121)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("75_o46vb")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable" unique_id=1286815016 node_paths=PackedStringArray("sprite")]
+z_index = 10
+position = Vector2(0.2999878, 0.6002197)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable/Interactable" unique_id=866249916]
+position = Vector2(0.125, -0.25)
+shape = SubResource("RectangleShape2D_vqo61")
+
+[node name="Fridge" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=957813965]
+position = Vector2(568, 336)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Fridge" unique_id=1259611641]
+z_index = 10
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(0.29998636, 0.6002121)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("89_qhxlk")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Fridge" unique_id=1999212222 node_paths=PackedStringArray("sprite")]
+z_index = 10
+position = Vector2(0.2999878, 0.6002197)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Fridge/Interactable" unique_id=471202693]
+position = Vector2(-0.30004883, -0.100097656)
+shape = SubResource("RectangleShape2D_qw2kp")
+
+[node name="CabinetTable2" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=480508448]
+position = Vector2(1196, 405)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable2" unique_id=553549963]
+z_index = 10
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(0.29998636, 0.6002121)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("75_o46vb")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable2" unique_id=520720885 node_paths=PackedStringArray("sprite")]
+z_index = 10
+position = Vector2(0.2999878, 0.6002197)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable2/Interactable" unique_id=900746638]
+position = Vector2(0.125, -0.25)
+shape = SubResource("RectangleShape2D_vqo61")
+
+[node name="Sauces" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1739804107]
+position = Vector2(836, 317)
+script = ExtResource("43_2tki7")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Sauces" unique_id=772935182]
+z_index = 10
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(0.29998636, 0.6002121)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("89_ftkif")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Sauces" unique_id=1970991559 node_paths=PackedStringArray("sprite")]
+z_index = 10
+position = Vector2(0.2999878, 0.6002197)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+hover_priority = 1
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/Sauces/Interactable" unique_id=867179239]
+position = Vector2(0.7000122, -1.6002197)
+shape = SubResource("RectangleShape2D_8jd3k")
+
 [node name="BG" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=262776015]
 position = Vector2(1770, 393)
 scale = Vector2(8.994619, 0.24546877)
 texture = ExtResource("84_vvpk2")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/BG" unique_id=1387601680]
 
 [node name="CeilingLight" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1890645736 node_paths=PackedStringArray("dialogue_connector")]
-position = Vector2(441, 255)
+position = Vector2(352, 127)
 script = ExtResource("43_2tki7")
 dialogue_connector = NodePath("../../../../../DialogueManager/DialogueConnectors/BushNoCarKeys")
 metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight" unique_id=2078942401]
 material = SubResource("ShaderMaterial_2x3i4")
@@ -3017,6 +3546,54 @@ sprite = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://d24v64w0rb8ei"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight/Interactable" unique_id=39008773]
+position = Vector2(3.625, 51.25)
+shape = SubResource("CapsuleShape2D_4v2jo")
+
+[node name="CeilingLight2" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1281931801 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(881, 127)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../../DialogueManager/DialogueConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight2" unique_id=1070019077]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-16, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("85_o46vb")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight2" unique_id=597581648 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight2/Interactable" unique_id=621971310]
+position = Vector2(3.625, 51.25)
+shape = SubResource("CapsuleShape2D_4v2jo")
+
+[node name="CeilingLight3" type="Node2D" parent="CanvasLayers/World/Environment/NewLivingRoom" unique_id=1062142684 node_paths=PackedStringArray("dialogue_connector")]
+position = Vector2(1477, 127)
+script = ExtResource("43_2tki7")
+dialogue_connector = NodePath("../../../../../DialogueManager/DialogueConnectors/BushNoCarKeys")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight3" unique_id=528847396]
+material = SubResource("ShaderMaterial_2x3i4")
+position = Vector2(-16, -69)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("85_o46vb")
+
+[node name="Interactable" type="Area2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight3" unique_id=1500833518 node_paths=PackedStringArray("sprite")]
+position = Vector2(-19.625, -114.25)
+script = ExtResource("21_iu0sx")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight3/Interactable" unique_id=531727001]
 position = Vector2(3.625, 51.25)
 shape = SubResource("CapsuleShape2D_4v2jo")
 
@@ -3044,4 +3621,24 @@ texture = ExtResource("39_l1i01")
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/CoralBush5HASKEYS/Interactable" to="CanvasLayers/World/Environment/FrontYard/CoralBush5HASKEYS" method="_on_interactable_interacted"]
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/CoralBush6/Interactable" to="CanvasLayers/World/Environment/FrontYard/CoralBush6" method="_on_interactable_interacted"]
 [connection signal="interacted" from="CanvasLayers/World/Environment/FrontYard/EntranceDoor/Interactable" to="CanvasLayers/World/Environment/FrontYard/EntranceDoor" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/PunchBowl/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/PunchBowl" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CupStack/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CupStack" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CupStack3/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CupStack3" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CupStack4/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CupStack4" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CupStack2/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CupStack2" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/Cup/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/Cup" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CupFall/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CupFall" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair2/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair2" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair3/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/FoldableChair3" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/Couch/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/Couch" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/HousePlant/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/HousePlant" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/HousePlant2/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/HousePlant2" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/HousePlant3/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/HousePlant3" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/Fridge/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/Fridge" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable2/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CabinetTable2" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/Sauces/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/Sauces" method="_on_interactable_interacted"]
 [connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight2/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight2" method="_on_interactable_interacted"]
+[connection signal="interacted" from="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight3/Interactable" to="CanvasLayers/World/Environment/NewLivingRoom/CeilingLight3" method="_on_interactable_interacted"]

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://wscbqrbd8uue"]
+
+[ext_resource type="Script" uid="uid://d1ixo8511f4na" path="res://entities/objects/base_world_object.gd" id="1_jr2m4"]
+[ext_resource type="Shader" uid="uid://b8alvl8pwqf7p" path="res://components/outline.gdshader" id="2_lmqbw"]
+[ext_resource type="Texture2D" uid="uid://cnnllqarr4p2q" path="res://assets/objects/coral1.png" id="3_swogf"]
+[ext_resource type="Script" uid="uid://d24v64w0rb8ei" path="res://components/interactable.gd" id="4_npk8m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvpk2"]
+shader = ExtResource("2_lmqbw")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o46vb"]
+radius = 75.625
+height = 228.5
+
+[node name="ObjectTemplate" type="Node2D" unique_id=1606395733]
+script = ExtResource("1_jr2m4")
+metadata/_custom_type_script = "uid://d1ixo8511f4na"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=750889046]
+z_index = 10
+material = SubResource("ShaderMaterial_vvpk2")
+position = Vector2(-19.625, -114.25)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_swogf")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1654965330 node_paths=PackedStringArray("sprite")]
+z_index = 10
+position = Vector2(-19.625, -114.25)
+script = ExtResource("4_npk8m")
+interaction_string = "Rustled the Bushes"
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://d24v64w0rb8ei"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=688154997]
+position = Vector2(16, 0)
+shape = SubResource("CapsuleShape2D_o46vb")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
